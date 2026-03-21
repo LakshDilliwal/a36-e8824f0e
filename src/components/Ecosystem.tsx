@@ -18,19 +18,6 @@ const Ecosystem = () => (
         Across Web3, AI, Healthcare, and Finance.
       </p>
 
-      <div className="mt-14">
-        <p className="section-label-charcoal text-[11px] mb-6">PROTOCOL PARTNERS</p>
-        <div className="flex flex-wrap gap-8 md:gap-12 items-center">
-          {partners.map((p) => (
-            <span
-              key={p}
-              className="font-bold text-xl text-primary opacity-40 hover:opacity-100 transition-opacity cursor-default select-none"
-            >
-              {p}
-            </span>
-          ))}
-        </div>
-      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
         {verticals.map((v) => (

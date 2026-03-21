@@ -4,7 +4,7 @@ import Logo from "./Logo";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Sprints", href: "/sprints" },
+  { label: "Events", href: "/sprints" },
   { label: "Transmissions", href: "/transmissions" },
 ];
 

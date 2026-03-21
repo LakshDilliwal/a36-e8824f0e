@@ -10,10 +10,10 @@ const FieldNotes = () => (
     <div className="container max-w-5xl mx-auto px-6 md:px-16">
       <p className="section-label-charcoal mb-4">FIELD NOTES</p>
       <h2 className="font-black text-[36px] md:text-[48px] leading-[1.05] tracking-heading text-primary">
-        120+ Events.<br />Real Builders.<br />Real Rooms.
+        120+ Events<br />Real Builders<br />Real Rooms
       </h2>
       <p className="text-base text-primary/60 mt-4 max-w-lg">
-        From Indore to global stages — A36 has been in the room before it had a name.
+        From local stages to global rooms — A36 has been in the room before it had a name
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
