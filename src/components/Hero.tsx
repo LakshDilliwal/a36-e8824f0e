@@ -11,7 +11,7 @@ const Hero = () => {
         </p>
 
         <h1 className="font-black text-[40px] md:text-[72px] leading-[1.0] tracking-heading text-primary max-w-3xl">
-          Where Builders{"\n"}Become Leaders.
+          Where Builders{"\n"}Become Leaders
         </h1>
 
         <p className="mt-6 text-primary/75 text-lg max-w-[520px] leading-relaxed">
