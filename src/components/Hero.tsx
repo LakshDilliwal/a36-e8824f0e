@@ -30,9 +30,9 @@ const Hero = () => {
 
         <div className="mt-12 flex flex-wrap gap-0">
           {[
-            { num: "120+", label: "Events Hosted" },
+            { num: "120+", label: "As Operator & Host" },
             { num: "4", label: "Verticals" },
-            { num: "India → Global", label: "Reach" },
+            { num: "Open to the World", label: "Apply Now" },
           ].map((stat, i) => (
             <div
               key={stat.label}
