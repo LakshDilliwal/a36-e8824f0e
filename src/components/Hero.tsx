@@ -15,9 +15,8 @@ const Hero = () => {
         </h1>
 
         <p className="mt-6 text-primary/75 text-lg max-w-[520px] leading-relaxed">
-          A36 is the ecosystem, accelerator, and builder dojo for Web3, AI,
-          Healthcare, and Finance founders. We don't motivate. We filter,
-          build, and ship.<br />India → Global.
+          A36 is the ecosystem, accelerator, and builder dojo for Web3, AI, Healthcare, and Finance founders
+          <br />We filter, build, and ship — no exceptions
         </p>
 
         <div className="flex flex-wrap gap-4 mt-10">
