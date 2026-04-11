@@ -3,9 +3,10 @@ import Hero from "@/components/Hero";
 import Manifesto from "@/components/Manifesto";
 import Ecosystem from "@/components/Ecosystem";
 import FieldNotes from "@/components/FieldNotes";
-import TransmissionsSection from "@/components/Transmissions";
-import Passport from "@/components/Passport";
-import Comms from "@/components/Comms";
+import EcosystemPartners from "@/components/EcosystemPartners";
+import Podcast from "@/components/Podcast";
+import Newsletter from "@/components/Newsletter";
+import ApplyCTA from "@/components/ApplyCTA";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -15,9 +16,10 @@ const Index = () => (
     <Manifesto />
     <Ecosystem />
     <FieldNotes />
-    <TransmissionsSection />
-    <Passport />
-    <Comms />
+    <EcosystemPartners />
+    <Podcast />
+    <Newsletter />
+    <ApplyCTA />
     <Footer />
   </>
 );
