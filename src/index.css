@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,7 +9,7 @@
     --background: 39 90% 95%;
     --foreground: 215 30% 17%;
 
-    --card: 37 38% 88%;
+    --card: 0 0% 100%;
     --card-foreground: 215 30% 17%;
 
     --popover: 39 90% 95%;
@@ -21,8 +21,8 @@
     --secondary: 37 38% 88%;
     --secondary-foreground: 215 30% 17%;
 
-    --muted: 37 38% 88%;
-    --muted-foreground: 215 30% 40%;
+    --muted: 220 13% 46%;
+    --muted-foreground: 220 13% 46%;
 
     --accent: 42 97% 54%;
     --accent-foreground: 215 30% 17%;
@@ -34,10 +34,13 @@
     --input: 36 24% 74%;
     --ring: 42 97% 54%;
 
-    --radius: 2px;
+    --radius: 0px;
 
     --dark-bg: 215 30% 17%;
     --warm-cream: 37 38% 88%;
+    --dark-card: 213 27% 21%;
+
+    --gold-hover: 40 80% 48%;
 
     --sidebar-background: 215 30% 17%;
     --sidebar-foreground: 0 0% 100%;
@@ -62,50 +65,72 @@
   body {
     @apply bg-background text-foreground font-sans antialiased;
     overflow-wrap: break-word;
+    line-height: 1.7;
   }
 
   h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
     @apply font-black tracking-tighter;
+    line-height: 1.1;
   }
 
   p {
     text-wrap: pretty;
   }
+
+  /* Sharp corners everywhere */
+  *, *::before, *::after {
+    border-radius: 0 !important;
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-primary text-primary-foreground font-bold uppercase tracking-widest rounded-sm px-7 py-3.5 text-sm;
-    transition: opacity 0.15s ease-out;
+    @apply bg-accent text-accent-foreground font-bold uppercase tracking-[0.05em] px-6 py-3 text-sm;
+    transition: background-color 0.15s ease-out;
   }
   .btn-primary:hover {
-    opacity: 0.85;
-  }
-  .btn-primary:active {
-    transform: scale(0.98);
+    background-color: hsl(var(--gold-hover));
   }
 
-  .btn-secondary {
-    @apply bg-transparent border-2 border-primary text-primary font-bold uppercase tracking-widest rounded-sm px-7 py-3.5 text-sm;
-    transition: opacity 0.15s ease-out;
+  .btn-ghost {
+    @apply bg-transparent border-2 border-primary text-primary font-bold uppercase tracking-[0.05em] px-6 py-3 text-sm;
+    transition: all 0.15s ease-out;
   }
-  .btn-secondary:hover {
-    opacity: 0.85;
+  .btn-ghost:hover {
+    @apply bg-primary text-white;
   }
-  .btn-secondary:active {
-    transform: scale(0.98);
+
+  .btn-ghost-light {
+    @apply bg-transparent border-2 border-white text-white font-bold uppercase tracking-[0.05em] px-6 py-3 text-sm;
+    transition: all 0.15s ease-out;
+  }
+  .btn-ghost-light:hover {
+    @apply bg-white text-primary;
+  }
+
+  .btn-dark {
+    @apply bg-primary text-white font-bold uppercase tracking-[0.05em] px-6 py-3 text-sm;
+    transition: background-color 0.15s ease-out;
+  }
+  .btn-dark:hover {
+    background-color: #374151;
   }
 
   .btn-gold {
-    @apply bg-accent text-primary font-bold uppercase tracking-widest rounded-sm px-7 py-3.5 text-sm;
-    transition: opacity 0.15s ease-out;
+    @apply bg-accent text-accent-foreground font-bold uppercase tracking-[0.05em] px-6 py-3 text-sm;
+    transition: background-color 0.15s ease-out;
   }
   .btn-gold:hover {
-    opacity: 0.85;
+    background-color: hsl(var(--gold-hover));
   }
-  .btn-gold:active {
-    transform: scale(0.98);
+
+  .eyebrow {
+    @apply font-bold text-[11px] uppercase tracking-[0.15em] text-accent;
+  }
+
+  .eyebrow-dark {
+    @apply font-bold text-[11px] uppercase tracking-[0.15em] text-primary;
   }
 
   .section-label {
