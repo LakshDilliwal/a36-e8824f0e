@@ -62,11 +62,12 @@ export default {
         },
         "dark-bg": "hsl(var(--dark-bg))",
         "warm-cream": "hsl(var(--warm-cream))",
+        "dark-card": "hsl(var(--dark-card))",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0px",
+        md: "0px",
+        sm: "0px",
       },
       letterSpacing: {
         logo: "-0.09em",

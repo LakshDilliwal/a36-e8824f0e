@@ -1,65 +1,52 @@
-const verticals = [
-  {
-    label: "AI & Data",
-    tags: ["AI", "Cloud & Compute", "Data Infra"],
-    body: "The intelligence layer. Models, compute, and the security rails everything else runs on",
-  },
-  {
-    label: "Web3 & Crypto",
-    tags: ["Blockchains", "DeFi", "Zero-Knowledge"],
-    body: "The decentralised financial and physical layer. We back the math that removes trust from the equation",
-  },
-  {
-    label: "Deep Tech & Hardware",
-    tags: ["Defense Tech", "Robotics", "Quantum Computing"],
-    body: "The physical world, rebuilt. Founders building atoms, not just bytes",
-  },
-  {
-    label: "Healthcare, Climate & Beyond",
-    tags: ["Biotech", "Energy Tech", "Spatial Computing"],
-    body: "The hard problems. Builders solving what most won't touch",
-  },
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const tabs = [
+  { key: "web3", label: "WEB3", sub: "Protocols · DeFi · DePIN · ZK" },
+  { key: "ai", label: "AI", sub: "Models · Agents · Compute · Data" },
+  { key: "healthcare", label: "HEALTHCARE", sub: "MedTech · Biotech · Digital Health" },
+  { key: "finance", label: "FINANCE", sub: "Payments · DeFi · Compliance" },
 ];
 
-const Ecosystem = () => (
-  <section className="bg-background py-24">
-    <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="section-label-charcoal mb-4">THE A36 LABS ECOSYSTEM</p>
-      <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary max-w-2xl">
-        36+ verticals{"\n"}
-        <br />One network
-      </h2>
-      <p className="text-lg text-primary/65 mt-5 max-w-[600px]">
-        A36 Labs operates across the full spectrum of what's being built next, connecting serious builders with the right ecosystems, infrastructure, and capital across every major technology vertical
-      </p>
+const Ecosystem = () => {
+  const [active, setActive] = useState("web3");
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
-        {verticals.map((v) => (
-          <div
-            key={v.label}
-            className="border border-border bg-warm-cream rounded-sm p-7"
-          >
-            <h4 className="font-black text-lg text-primary">{v.label}</h4>
-            <div className="flex flex-wrap items-center gap-1 mt-3">
-              {v.tags.map((tag, i) => (
-                <span key={tag} className="flex items-center">
-                  <span className="font-bold text-[11px] text-accent uppercase tracking-wider">{tag}</span>
-                  {i < v.tags.length - 1 && <span className="text-accent mx-1.5 text-[11px]">·</span>}
-                </span>
-              ))}
-            </div>
-            <p className="text-sm text-primary/60 mt-3">{v.body}</p>
-          </div>
-        ))}
-      </div>
+  return (
+    <section className="bg-background py-24">
+      <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
+        <p className="eyebrow-dark mb-4">THE A36 ECOSYSTEM</p>
+        <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
+          Built alongside the best<br />infrastructure in the world.
+        </h2>
+        <p className="text-lg text-primary/65 mt-5 max-w-[600px]">
+          We engineer the base layer. A36 deploys capital and network resources across 36+ specific infrastructure verticals, driven by four core execution vectors.
+        </p>
 
-      <div className="mt-12 text-center">
-        <a href="/ecosystem" className="btn-secondary inline-block">
-          EXPLORE ALL 36+ VERTICALS →
-        </a>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 mt-14">
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              onClick={() => setActive(t.key)}
+              className={`p-6 text-left border border-border transition-colors duration-200 ${
+                active === t.key
+                  ? "bg-primary text-white border-b-[3px] border-b-accent"
+                  : "bg-white text-primary"
+              }`}
+            >
+              <h4 className="font-black text-lg">{t.label}</h4>
+              <p className={`text-xs mt-2 ${active === t.key ? "text-white/60" : "text-muted"}`}>{t.sub}</p>
+            </button>
+          ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <Link to="/ecosystem" className="text-accent font-bold text-sm uppercase tracking-wider hover:underline">
+            EXPLORE ALL 36+ DOMAINS →
+          </Link>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Ecosystem;
