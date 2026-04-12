@@ -12,14 +12,16 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <>
     <Nav />
-    <Hero />
-    <Manifesto />
-    <Ecosystem />
-    <FieldNotes />
-    <EcosystemPartners />
-    <Podcast />
-    <Newsletter />
-    <ApplyCTA />
+    <main className="pt-16">
+      <Hero />
+      <Manifesto />
+      <Ecosystem />
+      <FieldNotes />
+      <EcosystemPartners />
+      <Podcast />
+      <Newsletter />
+      <ApplyCTA />
+    </main>
     <Footer />
   </>
 );
