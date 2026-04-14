@@ -23,8 +23,8 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-  { label: "Twitter/X @a36labs", href: "https://x.com/a36labs" },
-  { label: "GitHub", href: "https://github.com/a36labs" },
+  { label: "X", href: "https://x.com/a36labs" },
+  { label: "​", href: "" },
 ];
 
 const FooterColumn = ({ heading, children }: { heading: string; children: React.ReactNode }) => (
@@ -54,9 +54,9 @@ const Footer = () => (
         <div className="lg:col-span-1">
           <Logo light />
           <p className="text-[13px] text-white/45 mt-2">Where Builders Become Leaders</p>
-          <p className="text-[13px] text-white/45 mt-1">Not for everyone. For the right ones.</p>
-          <a href="mailto:partnerships@a36labs.com" className="text-[13px] text-white/45 mt-3 block hover:text-white transition-opacity duration-200">
-            partnerships@a36labs.com
+          <p className="text-[13px] text-white/45 mt-1">Not for everyone but For the right ones</p>
+          <a href="mailto:hello@a36labs.com" className="text-[13px] text-white/45 mt-3 block hover:text-white transition-opacity duration-200">
+            hello@a36labs.com
           </a>
         </div>
 
