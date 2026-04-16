@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 const rows = [
-  { logos: ["Solana", "Avalanche", "Diamante"] },
-  { logos: ["AWS Startups", "Cloudflare", "GitHub"] },
-  { logos: ["Superteam", "Beehiiv"] },
+  { logos: ["Solana", "Avalanche", "Anthropic"] },
+  { logos: ["AWS Startups", "Cloudflare", "Superteam"] },
+  { logos: ["​", "​"] },
 ];
 
 const EcosystemPartners = () => (
@@ -16,7 +16,7 @@ const EcosystemPartners = () => (
 
       <div className="mt-16 space-y-8">
         {rows.map((row, ri) => (
-          <div key={ri} className="flex flex-wrap gap-16">
+          <div key={ri} className="flex-wrap gap-16 flex items-start justify-start">
             {row.logos.map((logo) => (
               <span key={logo} className="font-bold text-[22px] text-white/50 hover:text-white transition-opacity duration-200 cursor-default">
                 {logo}

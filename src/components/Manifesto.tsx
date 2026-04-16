@@ -1,7 +1,7 @@
 const pillars = [
-  { num: "01", title: "BUILD", body: "Ship real products. A36 rewards execution, not intention. Build in public. Build fast." },
-  { num: "02", title: "CONNECT", body: "Leverage the network. Give before you take. Your network is your net worth." },
-  { num: "03", title: "EARN", body: "Bounties, grants, and real work from verified ecosystems — paid on-chain." },
+  { num: "01", title: "BUILD", body: "We ship real products.\nA36 rewards execution, not intention. Build in public." },
+  { num: "02", title: "CONNECT", body: "Leverage the A36 network.\nOur network is your net worth." },
+  { num: "03", title: "EARN", body: "Bounties, grants, and real work from verified partners ." },
   { num: "04", title: "LEAD", body: "Every builder who enters A36 leaves as a leader. That is the only acceptable output." },
 ];
 

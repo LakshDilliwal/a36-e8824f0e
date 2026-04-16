@@ -15,7 +15,7 @@ const FieldNotes = () => (
         120+ Events<br />Real Builders<br />Real Rooms
       </h2>
       <p className="text-base text-primary/60 mt-4 max-w-[560px]">
-        From Indore to Bangalore to Singapore — A36 has been in the room before it had a name.
+        From MENA to APAC to LATAM to LATAM to NA<br />A36 has been in the room before it had a name.
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-12">
