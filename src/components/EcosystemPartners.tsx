@@ -1,29 +1,21 @@
-import { Link } from "react-router-dom";
-
-const rows = [
-  { logos: ["Solana", "Avalanche", "Anthropic"] },
-  { logos: ["AWS Startups", "Cloudflare", "Superteam"] },
-  { logos: ["​", "​"] },
+const partners = [
+  "Solana", "Avalanche", "Anthropic", "Diamante",
+  "AWS Startups", "Cloudflare", "Superteam", "Substack",
 ];
 
 const EcosystemPartners = () => (
-  <section className="bg-primary py-24">
+  <section className="bg-primary py-20">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow mb-4">ECOSYSTEM PARTNERS</p>
-      <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
-        Built with the builders<br />who are building what's next.
-      </h2>
+      <p className="eyebrow mb-8 text-center">ECOSYSTEM PARTNERS</p>
 
-      <div className="mt-16 space-y-8">
-        {rows.map((row, ri) => (
-          <div key={ri} className="flex-wrap gap-16 flex items-start justify-start">
-            {row.logos.map((logo) => (
-              <span key={logo} className="font-bold text-[22px] text-white/50 hover:text-white transition-opacity duration-200 cursor-default">
-                {logo}
-              </span>
-            ))}
-          </div>
-        ))}
+      <div className="overflow-hidden relative">
+        <div className="flex gap-12 md:gap-16 animate-marquee whitespace-nowrap">
+          {[...partners, ...partners].map((logo, i) => (
+            <span key={i} className="font-bold text-[20px] md:text-[24px] text-white/50 hover:text-white transition-opacity duration-200 cursor-default">
+              {logo}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   </section>
