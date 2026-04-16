@@ -15,7 +15,7 @@ import Team from "./pages/Team";
 import NewsletterPage from "./pages/NewsletterPage";
 import FAQ from "./pages/FAQ";
 import Pitch from "./pages/Pitch";
-import { Residency, Fellowship, Books } from "./pages/ComingSoon";
+import Residency from "./pages/Residency";
 import MediaKit from "./pages/MediaKit";
 import Merch from "./pages/Merch";
 import Privacy from "./pages/Privacy";
@@ -44,8 +44,6 @@ const App = () => (
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pitch" element={<Pitch />} />
           <Route path="/residency" element={<Residency />} />
-          <Route path="/fellowship" element={<Fellowship />} />
-          <Route path="/books" element={<Books />} />
           <Route path="/media-kit" element={<MediaKit />} />
           <Route path="/merch" element={<Merch />} />
           <Route path="/privacy" element={<Privacy />} />
