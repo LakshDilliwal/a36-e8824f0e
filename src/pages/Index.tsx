@@ -1,12 +1,12 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import Manifesto from "@/components/Manifesto";
-import Ecosystem from "@/components/Ecosystem";
-import FieldNotes from "@/components/FieldNotes";
 import EcosystemPartners from "@/components/EcosystemPartners";
+import Manifesto from "@/components/Manifesto";
 import Podcast from "@/components/Podcast";
 import Newsletter from "@/components/Newsletter";
-import ApplyCTA from "@/components/ApplyCTA";
+import UpcomingEvents from "@/components/UpcomingEvents";
+import VerticalsGrid from "@/components/VerticalsGrid";
+import GlobalPresence from "@/components/GlobalPresence";
 import Footer from "@/components/Footer";
 
 const Index = () => (
@@ -14,13 +14,13 @@ const Index = () => (
     <Nav />
     <main className="pt-16">
       <Hero />
-      <Manifesto />
-      <Ecosystem />
-      <FieldNotes />
       <EcosystemPartners />
+      <Manifesto />
       <Podcast />
       <Newsletter />
-      <ApplyCTA />
+      <UpcomingEvents />
+      <VerticalsGrid />
+      <GlobalPresence />
     </main>
     <Footer />
   </>

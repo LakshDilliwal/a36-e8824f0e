@@ -1,216 +1,172 @@
 import { useState, useRef, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
-import { Menu, X, ChevronDown, UserCircle } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+
+const servicesItems = [
+  { label: "Events", to: "/events" },
+  { label: "Podcast (Base Layer)", to: "/podcast" },
+  { label: "Newsletter (A36 Signal)", to: "/newsletter" },
+  { label: "Merchandise (BitSwags)", to: "/merch" },
+  { label: "Residency", to: "/residency" },
+];
+
+const companyItems = [
+  { label: "About", to: "/about" },
+  { label: "Team", to: "/team" },
+  { label: "Media Kit", to: "/media-kit" },
+  { label: "Partner With Us", to: "/pitch" },
+];
 
 const Nav = () => {
-  const [drawerOpen, setDrawerOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [contentOpen, setContentOpen] = useState(false);
-  const [mobileContentOpen, setMobileContentOpen] = useState(false);
-  const [profileOpen, setProfileOpen] = useState(false);
-  const [isLoggedIn] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
 
-  const contentRef = useRef<HTMLDivElement>(null);
-  const profileRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const companyRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    setDrawerOpen(false);
     setMobileOpen(false);
-    setContentOpen(false);
-    setMobileContentOpen(false);
-    setProfileOpen(false);
+    setServicesOpen(false);
+    setCompanyOpen(false);
+    setMobileServicesOpen(false);
+    setMobileCompanyOpen(false);
   }, [location]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (contentRef.current && !contentRef.current.contains(e.target as Node)) setContentOpen(false);
-      if (profileRef.current && !profileRef.current.contains(e.target as Node)) setProfileOpen(false);
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) setServicesOpen(false);
+      if (companyRef.current && !companyRef.current.contains(e.target as Node)) setCompanyOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, []);
-
-  const contentItems = [
-    { label: "Podcast", to: "/podcast" },
-    { label: "Newsletter", to: "/newsletter" },
-    { label: "Books", to: "/books" },
-  ];
-
-  const drawerLinks = [
-    { label: "About", to: "/about" },
-    { label: "FAQ", to: "/faq" },
-    { label: "Residency", to: "/residency" },
-    { label: "Fellowship", to: "/fellowship" },
-    { label: "Pitch", to: "/pitch" },
-    { label: "Merchandise", to: "/merch" },
-  ];
-
-  const mobileLinks = [
-    { label: "Earn", to: "/earn" },
-    { label: "Ecosystem", to: "/ecosystem" },
-    { label: "Events", to: "/events" },
-    { label: "Team", to: "/team" },
-    { label: "About", to: "/about" },
-    { label: "FAQ", to: "/faq" },
-    { label: "Residency", to: "/residency" },
-    { label: "Fellowship", to: "/fellowship" },
-    { label: "Pitch", to: "/pitch" },
-    { label: "Merchandise", to: "/merch" },
-  ];
 
   const navLinkClass = "text-white/80 hover:text-white font-bold text-sm transition-opacity duration-200";
 
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary h-16 flex items-center px-6 lg:px-10">
-        {/* DESKTOP (lg+) */}
-        {/* Zone 1 — Left links centered */}
+        {/* DESKTOP LEFT */}
         <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
-          <Link to="/earn" className={navLinkClass}>Earn</Link>
-          <Link to="/ecosystem" className={navLinkClass}>Ecosystem</Link>
-          <Link to="/events" className={navLinkClass}>Events</Link>
+          <div className="relative" ref={servicesRef}>
+            <button
+              onClick={() => { setServicesOpen(!servicesOpen); setCompanyOpen(false); }}
+              className={`${navLinkClass} flex items-center gap-1`}
+            >
+              SERVICES <ChevronDown size={14} />
+            </button>
+            {servicesOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60]">
+                {servicesItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5"
+                    onClick={() => setServicesOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+          <Link to="/earn" className={navLinkClass}>EARN</Link>
+          <Link to="/ecosystem" className={navLinkClass}>ECOSYSTEM</Link>
         </div>
 
-        {/* Zone 2 — Center logo */}
+        {/* CENTER LOGO */}
         <Link to="/" className="absolute left-1/2 -translate-x-1/2">
           <Logo light />
         </Link>
 
-        {/* Zone 3 — Right */}
-        <div className="hidden lg:flex items-center flex-1">
-          {/* Sub-group A — centered */}
-          <div className="flex items-center justify-center gap-6 flex-1">
-            <div className="relative" ref={contentRef}>
-              <button
-                onClick={() => setContentOpen(!contentOpen)}
-                className={`${navLinkClass} flex items-center gap-1`}
-              >
-                Content <ChevronDown size={14} />
-              </button>
-              {contentOpen && (
-                <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[160px] z-[60]">
-                  {contentItems.map((item) => (
-                    <Link
-                      key={item.label}
-                      to={item.to}
-                      className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5"
-                      onClick={() => setContentOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <Link to="/team" className={navLinkClass}>Team</Link>
-
+        {/* DESKTOP RIGHT */}
+        <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
+          <div className="relative" ref={companyRef}>
             <button
-              onClick={() => setDrawerOpen(true)}
-              className="text-white/80 hover:text-white transition-opacity duration-200"
-              aria-label="Open menu"
+              onClick={() => { setCompanyOpen(!companyOpen); setServicesOpen(false); }}
+              className={`${navLinkClass} flex items-center gap-1`}
             >
-              <Menu size={20} />
+              COMPANY <ChevronDown size={14} />
             </button>
-          </div>
-
-          {/* Divider */}
-          <div className="w-px h-5 bg-white/20 mx-4" />
-
-          {/* Sub-group B — right end */}
-          <div className="flex items-center gap-4">
-            {isLoggedIn ? (
-              <div className="relative" ref={profileRef}>
-                <button
-                  onClick={() => setProfileOpen(!profileOpen)}
-                  className="w-8 h-8 bg-accent text-primary font-bold text-[13px] flex items-center justify-center"
-                >
-                  AB
-                </button>
-                {profileOpen && (
-                  <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[160px] z-[60]">
-                    <Link to="/" className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5">My Profile</Link>
-                    <Link to="/" className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5">Settings</Link>
-                    <button className="block w-full text-left px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5">Sign Out</button>
-                  </div>
-                )}
+            {companyOpen && (
+              <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+                {companyItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5"
+                    onClick={() => setCompanyOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
               </div>
-            ) : (
-              <Link to="/" className={navLinkClass}>Log In</Link>
             )}
-            <Link to="/apply" className="btn-gold text-xs py-2.5 px-5">APPLY</Link>
           </div>
+          <Link to="/events" className={navLinkClass}>EVENTS</Link>
+          <Link to="/apply" className="btn-gold text-xs py-2.5 px-5">APPLY →</Link>
         </div>
 
-        {/* MOBILE/TABLET (< lg) */}
-        <div className="flex lg:hidden items-center gap-3 ml-auto">
-          {isLoggedIn ? (
-            <button className="w-8 h-8 bg-accent text-primary font-bold text-[13px] flex items-center justify-center">AB</button>
-          ) : (
-            <Link to="/" className="text-white/80 hover:text-white"><UserCircle size={20} /></Link>
-          )}
-          <button onClick={() => setMobileOpen(true)} className="text-white/80 hover:text-white" aria-label="Toggle menu">
+        {/* MOBILE TRIGGER */}
+        <div className="flex lg:hidden items-center ml-auto">
+          <button onClick={() => setMobileOpen(true)} className="text-white/80 hover:text-white" aria-label="Open menu">
             <Menu size={24} />
           </button>
         </div>
       </nav>
 
-      {/* DESKTOP DRAWER */}
-      {drawerOpen && (
-        <>
-          <div className="fixed inset-0 bg-black/40 z-[99]" onClick={() => setDrawerOpen(false)} />
-          <div className="fixed top-0 right-0 h-screen w-[320px] bg-primary border-l border-white/10 z-[100] flex flex-col px-6 pt-6 animate-slide-in-right">
-            <div className="flex items-center justify-between">
-              <Logo light />
-              <button onClick={() => setDrawerOpen(false)} className="text-white" aria-label="Close drawer"><X size={24} /></button>
-            </div>
-            <div className="flex flex-col gap-2.5 mt-12">
-              {drawerLinks.map((l) => (
-                <Link key={l.label} to={l.to} className="text-white/80 hover:text-accent font-bold text-lg py-2 transition-colors duration-200">{l.label}</Link>
-              ))}
-              <Link to="/apply" className="text-white/80 hover:text-accent font-bold text-lg py-2 transition-colors duration-200">BECOME A PARTNER</Link>
-            </div>
-          </div>
-        </>
-      )}
-
       {/* MOBILE FULL-SCREEN DRAWER */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-primary z-50 flex flex-col lg:hidden overflow-y-auto">
+        <div className="fixed inset-0 bg-primary z-[100] flex flex-col overflow-y-auto">
           <div className="flex items-center justify-between px-6 pt-6">
             <Logo light />
-            <button onClick={() => setMobileOpen(false)} className="text-white"><X size={24} /></button>
+            <button onClick={() => setMobileOpen(false)} className="text-white" aria-label="Close menu"><X size={24} /></button>
           </div>
 
-          <div className="flex flex-col gap-2 mt-12 px-6 flex-1">
-            {mobileLinks.map((l) => (
-              <Link key={l.label} to={l.to} className="text-white font-bold text-xl py-1" onClick={() => setMobileOpen(false)}>{l.label}</Link>
-            ))}
+          <div className="flex flex-col gap-1 mt-12 px-6 flex-1">
+            <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
+            <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
+            <Link to="/events" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
 
-            {/* Content expandable */}
+            {/* Services accordion */}
             <button
-              className="text-white font-bold text-xl py-1 text-left flex items-center gap-2"
-              onClick={() => setMobileContentOpen(!mobileContentOpen)}
+              className="text-white font-bold text-2xl py-2 text-left flex items-center gap-2"
+              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
             >
-              Content <ChevronDown size={16} className={`transition-transform duration-200 ${mobileContentOpen ? "rotate-180" : ""}`} />
+              SERVICES <ChevronDown size={18} className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`} />
             </button>
-            {mobileContentOpen && (
-              <div className="flex flex-col gap-1 pl-4">
-                {contentItems.map((item) => (
-                  <Link key={item.label} to={item.to} className="text-white/60 font-bold text-base py-1" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+            {mobileServicesOpen && (
+              <div className="flex flex-col gap-1 pl-4 mb-2">
+                {servicesItems.map((item) => (
+                  <Link key={item.label} to={item.to} className="text-white/60 font-bold text-base py-1.5" onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}
               </div>
             )}
 
-            <Link to="/apply" className="text-white font-bold text-xl py-1" onClick={() => setMobileOpen(false)}>Become a Partner</Link>
+            {/* Company accordion */}
+            <button
+              className="text-white font-bold text-2xl py-2 text-left flex items-center gap-2"
+              onClick={() => setMobileCompanyOpen(!mobileCompanyOpen)}
+            >
+              COMPANY <ChevronDown size={18} className={`transition-transform duration-200 ${mobileCompanyOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileCompanyOpen && (
+              <div className="flex flex-col gap-1 pl-4 mb-2">
+                {companyItems.map((item) => (
+                  <Link key={item.label} to={item.to} className="text-white/60 font-bold text-base py-1.5" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                ))}
+                <Link to="/faq" className="text-white/60 font-bold text-base py-1.5" onClick={() => setMobileOpen(false)}>FAQ</Link>
+              </div>
+            )}
           </div>
 
-          <div className="px-6 mb-8 flex flex-col gap-3 mt-auto">
-            <Link to="/" className="btn-ghost-light w-full text-center" onClick={() => setMobileOpen(false)}>LOG IN</Link>
-            <Link to="/apply" className="btn-gold w-full text-center" onClick={() => setMobileOpen(false)}>APPLY NOW</Link>
+          <div className="px-6 mb-8 mt-auto">
+            <Link to="/apply" className="btn-gold w-full text-center block" onClick={() => setMobileOpen(false)}>APPLY →</Link>
           </div>
         </div>
       )}
