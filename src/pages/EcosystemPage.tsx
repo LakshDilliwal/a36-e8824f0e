@@ -114,7 +114,7 @@ const EcosystemPage = () => {
             36 Verticals.<br />One Network.
           </h1>
           <p className="text-lg text-primary/65 mt-5 max-w-[640px]">
-            Every serious builder vertical in one place. Filter by domain, region, or type to find what you're looking for.
+            The builders, protocols, and companies worth knowing. Filter by what matters to you.
           </p>
         </div>
       </section>
@@ -272,7 +272,7 @@ const EcosystemPage = () => {
                     <div key={p.name} className="bg-white border border-border p-5 hover:border-accent transition-colors">
                       <div className="flex gap-4">
                         <img
-                          src={p.logo.startsWith("/") ? p.logo : `https://logo.clearbit.com/${p.logo}`}
+                          src={p.logo.startsWith('/') ? p.logo : p.logo.startsWith('http') ? `https://logo.clearbit.com/${new URL(p.logo).hostname}` : `https://logo.clearbit.com/${p.logo}`}
                           alt={p.name}
                           onError={(e) => {
                             e.currentTarget.src = "/logos/fallback.png";
@@ -329,50 +329,22 @@ const EcosystemPage = () => {
         </div>
       </section>
 
-      {/* Mentor Network */}
+      {/* Become a Partner */}
       <section className="bg-background py-24">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-dark mb-4">MENTOR NETWORK</p>
+          <p className="eyebrow-dark mb-4">BECOME A PARTNER</p>
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            Operators Who've Shipped.
+            Build with A36.
           </h2>
           <p className="text-base text-primary/65 mt-4 max-w-[640px]">
-            A36 Mentors don't advise. They show up. Each mentor commits to podcast appearances, live workshops, and direct access for builders in the network.
+            We partner with protocols, companies, and funds that are serious about builders. Get listed in the directory, co-host events, and tap directly into the A36 network.
           </p>
-
-          <div className="bg-white border-2 border-dashed border-border p-12 mt-10 text-center">
-            <p className="text-sm text-muted">Mentor partnerships opening soon.</p>
-            <Link to="/apply" className="text-accent font-bold text-sm uppercase hover:underline tracking-wider mt-3 inline-block">
-              Apply to become an A36 Mentor →
+          <div className="flex flex-wrap gap-4 mt-8">
+            <Link to="/apply" className="btn-primary inline-block">
+              Apply to partner with A36 →
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Builder Reads */}
-      <section className="bg-warm-cream py-24">
-        <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-dark mb-4">BUILDER READS</p>
-          <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            Books That Builders Actually Finish.
-          </h2>
-          <p className="text-base text-primary/65 mt-4 max-w-[640px]">
-            Curated by A36. Recommended by the operators in our network.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-white border border-border p-5">
-                <div className="aspect-[2/3] bg-[#C8BFB0]" />
-                <h4 className="font-black text-base text-primary mt-4">Coming Soon</h4>
-                <p className="text-xs text-muted mt-1">—</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8">
-            <a href="mailto:hello@a36labs.com" className="text-accent font-bold text-sm uppercase hover:underline tracking-wider">
-              Author partnerships opening. Feature your book in the A36 network →
+            <a href="mailto:partners@a36labs.com" className="btn-secondary inline-block">
+              Talk to us
             </a>
           </div>
         </div>
