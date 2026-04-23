@@ -19,6 +19,8 @@ export const verticalGroups = [
       "DePIN",
       "Zero-Knowledge & Privacy",
       "Tokenized Real-World Assets",
+      "Centralized Exchanges (CEX)",
+      "Decentralized Exchanges (DEX)",
     ],
   },
   {
@@ -63,6 +65,7 @@ export const verticalGroups = [
       "Creator Economy & Media",
       "GovTech & CivicTech",
       "Digital Identity & Web3 Social",
+      "Community & DAOs",
     ],
   },
 ];
