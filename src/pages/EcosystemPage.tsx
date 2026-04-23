@@ -23,7 +23,7 @@ type Partner = {
 };
 
 const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/1JQNqKedWuLidnzie8TlU1Oob6gsYFNJl/pub?gid=0&single=true&output=csv";
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMCU4CK5nt0Cnx9RgrzyBuWBbeK3or9tL3uJpOqexbLjOMACjIYDMAC43JkqF0Rg/pub?gid=2084849745&single=true&output=csv";
 
 const toBool = (v: string | undefined) => (v ?? "").trim().toUpperCase() === "TRUE";
 
