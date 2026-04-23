@@ -46,7 +46,7 @@ const EcosystemPage = () => {
     let cancelled = false;
     setLoading(true);
     setError(null);
-    fetch(CSV_URL)
+    fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(CSV_URL)}`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.text();
