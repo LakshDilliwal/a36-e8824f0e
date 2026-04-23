@@ -1,7 +1,8 @@
 import PageWrapper from "@/components/PageWrapper";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, Search } from "lucide-react";
+import Papa from "papaparse";
 import { verticalGroups, regions, partnerTypes } from "@/lib/verticals";
 
 type Partner = {
@@ -9,62 +10,28 @@ type Partner = {
   location: string;
   description: string;
   vertical: string;
+  vertical_group: string;
   region: string;
-  isA36Partner?: boolean;
-  hiring?: boolean;
+  type: string;
+  isA36Partner: boolean;
+  openToBuilders: boolean;
+  logo: string;
+  website: string;
+  twitter: string;
+  stage: string;
+  tags: string;
 };
 
-const samplePartners: Partner[] = [
-  {
-    name: "Solana Foundation",
-    location: "San Francisco, USA",
-    description: "High-performance blockchain for global adoption",
-    vertical: "Blockchain Protocols",
-    region: "Global",
-    isA36Partner: true,
-  },
-  {
-    name: "Zepto",
-    location: "Mumbai, India",
-    description: "10-minute grocery delivery at scale",
-    vertical: "E-Commerce & RetailTech",
-    region: "APAC",
-    hiring: true,
-  },
-  {
-    name: "Injective",
-    location: "New York, USA",
-    description: "Layer-1 blockchain optimized for DeFi applications",
-    vertical: "DeFi",
-    region: "Global",
-    isA36Partner: true,
-  },
-  {
-    name: "Agnikul Cosmos",
-    location: "Chennai, India",
-    description: "Semi-cryogenic rocket engines for small satellites",
-    vertical: "Space & Aerospace",
-    region: "APAC",
-    hiring: true,
-  },
-  {
-    name: "Yellow Card",
-    location: "Lagos, Nigeria",
-    description: "Crypto on-ramp for emerging markets",
-    vertical: "Stablecoins & Payments",
-    region: "Africa",
-  },
-  {
-    name: "Nillion",
-    location: "Global",
-    description: "Decentralized privacy-preserving computation network",
-    vertical: "Zero-Knowledge & Privacy",
-    region: "Global",
-    isA36Partner: true,
-  },
-];
+const CSV_URL =
+  "https://docs.google.com/spreadsheets/d/1JQNqKedWuLidnzie8TlU1Oob6gsYFNJl/pub?gid=0&single=true&output=csv";
+
+const toBool = (v: string | undefined) => (v ?? "").trim().toUpperCase() === "TRUE";
 
 const EcosystemPage = () => {
+  const [partners, setPartners] = useState<Partner[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   const [search, setSearch] = useState("");
   const [openGroups, setOpenGroups] = useState<Record<string, boolean>>(
     Object.fromEntries(verticalGroups.map((g) => [g.name, true]))
@@ -74,6 +41,54 @@ const EcosystemPage = () => {
   const [typeFilters, setTypeFilters] = useState<Set<string>>(new Set());
   const [quickFilters, setQuickFilters] = useState<Set<string>>(new Set());
   const [sort, setSort] = useState("default");
+
+  useEffect(() => {
+    let cancelled = false;
+    setLoading(true);
+    setError(null);
+    fetch(CSV_URL)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.text();
+      })
+      .then((csv) => {
+        const parsed = Papa.parse<Record<string, string>>(csv, {
+          header: true,
+          skipEmptyLines: true,
+        });
+        const rows: Partner[] = (parsed.data || [])
+          .filter((r) => r && (r.name ?? "").trim() !== "")
+          .map((r) => ({
+            name: (r.name ?? "").trim(),
+            location: (r.location ?? "").trim(),
+            description: (r.description ?? "").trim(),
+            vertical: (r.vertical ?? "").trim(),
+            vertical_group: (r.vertical_group ?? "").trim(),
+            region: (r.region ?? "").trim(),
+            type: (r.type ?? "").trim(),
+            isA36Partner: toBool(r.isA36Partner),
+            openToBuilders: toBool(r.openToBuilders),
+            logo: (r.logo ?? "").trim(),
+            website: (r.website ?? "").trim(),
+            twitter: (r.twitter ?? "").trim(),
+            stage: (r.stage ?? "").trim(),
+            tags: (r.tags ?? "").trim(),
+          }));
+        if (!cancelled) {
+          setPartners(rows);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        if (!cancelled) {
+          setError(err?.message || "Failed to load partners");
+          setLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   const toggleSet = (set: Set<string>, value: string, setter: (s: Set<string>) => void) => {
     const next = new Set(set);
@@ -91,17 +106,23 @@ const EcosystemPage = () => {
   };
 
   const filtered = useMemo(() => {
-    let list = samplePartners.filter((p) => {
-      if (search && !p.name.toLowerCase().includes(search.toLowerCase()) && !p.description.toLowerCase().includes(search.toLowerCase())) return false;
+    let list = partners.filter((p) => {
+      if (
+        search &&
+        !p.name.toLowerCase().includes(search.toLowerCase()) &&
+        !p.description.toLowerCase().includes(search.toLowerCase())
+      )
+        return false;
       if (verticalFilters.size > 0 && !verticalFilters.has(p.vertical)) return false;
       if (regionFilters.size > 0 && !regionFilters.has(p.region)) return false;
+      if (typeFilters.size > 0 && !typeFilters.has(p.type)) return false;
       if (quickFilters.has("Featured Partners") && !p.isA36Partner) return false;
-      if (quickFilters.has("Hiring Now") && !p.hiring) return false;
+      if (quickFilters.has("Open to Builders") && !p.openToBuilders) return false;
       return true;
     });
     if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     return list;
-  }, [search, verticalFilters, regionFilters, typeFilters, quickFilters, sort]);
+  }, [partners, search, verticalFilters, regionFilters, typeFilters, quickFilters, sort]);
 
   const Checkbox = ({ checked, onChange, label }: { checked: boolean; onChange: () => void; label: string }) => (
     <label className="flex items-center gap-2 py-1 cursor-pointer text-sm text-primary/80 hover:text-primary">
@@ -154,7 +175,7 @@ const EcosystemPage = () => {
                 {/* Quick Filters */}
                 <div className="mt-6">
                   <p className="font-bold text-[10px] text-primary uppercase tracking-[0.15em] mb-3">QUICK FILTERS</p>
-                  {["Featured Partners", "Hiring Now", "Open to Builders"].map((f) => (
+                  {["Featured Partners", "Open to Builders"].map((f) => (
                     <Checkbox
                       key={f}
                       checked={quickFilters.has(f)}
@@ -167,6 +188,11 @@ const EcosystemPage = () => {
                 {/* Vertical groups */}
                 <div className="mt-6">
                   <p className="font-bold text-[10px] text-primary uppercase tracking-[0.15em] mb-3">VERTICAL</p>
+                  <Checkbox
+                    label={`All verticals (${partners.length})`}
+                    checked={verticalFilters.size === 0}
+                    onChange={() => setVerticalFilters(new Set())}
+                  />
                   {verticalGroups.map((g) => (
                     <div key={g.name} className="mb-2">
                       <button
@@ -229,7 +255,13 @@ const EcosystemPage = () => {
             <div className="flex-1">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 pb-4 border-b border-border">
                 <p className="text-sm text-primary/70">
-                  Showing <span className="font-bold text-primary">{filtered.length}</span> partners in the A36 network
+                  {loading ? (
+                    <>Loading partners…</>
+                  ) : (
+                    <>
+                      Showing <span className="font-bold text-primary">{filtered.length}</span> partners in the A36 network
+                    </>
+                  )}
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="text-xs font-bold text-muted uppercase tracking-wider">Sort:</span>
@@ -245,42 +277,74 @@ const EcosystemPage = () => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                {filtered.map((p) => (
-                  <div key={p.name} className="bg-white border border-border p-5 hover:border-accent transition-colors">
-                    <div className="flex gap-4">
-                      <div className="w-12 h-12 bg-[#C8BFB0] flex-shrink-0" />
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-start justify-between gap-2">
-                          <h3 className="font-black text-base text-primary truncate">{p.name}</h3>
-                          {p.isA36Partner && (
-                            <span className="text-[9px] font-bold uppercase tracking-wider bg-accent text-primary px-1.5 py-0.5 flex-shrink-0">
-                              A36 PARTNER
-                            </span>
-                          )}
-                        </div>
-                        <p className="text-xs text-muted mt-0.5">{p.location}</p>
-                        <p className="text-sm text-primary/75 mt-2 line-clamp-2">{p.description}</p>
-                        <div className="flex flex-wrap gap-1.5 mt-3">
-                          <span className="text-[10px] font-bold uppercase tracking-wider bg-warm-cream text-primary px-2 py-1">
-                            {p.vertical}
-                          </span>
-                          <span className="text-[10px] font-bold uppercase tracking-wider border border-border text-primary/70 px-2 py-1">
-                            {p.region}
-                          </span>
-                          {p.hiring && (
-                            <span className="text-[10px] font-bold uppercase tracking-wider bg-green-600 text-white px-2 py-1">
-                              Hiring
-                            </span>
-                          )}
+              {error && (
+                <div className="bg-white border border-border p-6 mt-6">
+                  <p className="text-sm text-primary font-bold">Couldn't load partners.</p>
+                  <p className="text-xs text-muted mt-1">{error}</p>
+                </div>
+              )}
+
+              {loading ? (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                  {Array.from({ length: 6 }).map((_, i) => (
+                    <div key={i} className="bg-white border border-border p-5">
+                      <div className="flex gap-4">
+                        <div className="w-12 h-12 bg-[#C8BFB0] flex-shrink-0 animate-pulse" />
+                        <div className="flex-1 min-w-0 space-y-2">
+                          <div className="h-4 bg-[#C8BFB0] w-1/2 animate-pulse" />
+                          <div className="h-3 bg-[#C8BFB0]/70 w-1/3 animate-pulse" />
+                          <div className="h-3 bg-[#C8BFB0]/50 w-full animate-pulse mt-3" />
+                          <div className="h-3 bg-[#C8BFB0]/50 w-5/6 animate-pulse" />
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                  {filtered.map((p) => (
+                    <div key={p.name} className="bg-white border border-border p-5 hover:border-accent transition-colors">
+                      <div className="flex gap-4">
+                        <img
+                          src={p.logo.startsWith("/") ? p.logo : `https://logo.clearbit.com/${p.logo}`}
+                          alt={p.name}
+                          onError={(e) => {
+                            e.currentTarget.src = "/logos/fallback.png";
+                            e.currentTarget.onerror = null;
+                          }}
+                          className="w-12 h-12 object-contain bg-warm-cream p-1 flex-shrink-0"
+                        />
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between gap-2">
+                            <h3 className="font-black text-base text-primary truncate">{p.name}</h3>
+                            {p.isA36Partner && (
+                              <span className="text-[9px] font-bold uppercase tracking-wider bg-accent text-primary px-1.5 py-0.5 flex-shrink-0">
+                                A36 PARTNER
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-muted mt-0.5">{p.location}</p>
+                          <p className="text-sm text-primary/75 mt-2 line-clamp-2">{p.description}</p>
+                          <div className="flex flex-wrap gap-1.5 mt-3">
+                            {p.vertical && (
+                              <span className="text-[10px] font-bold uppercase tracking-wider bg-warm-cream text-primary px-2 py-1">
+                                {p.vertical}
+                              </span>
+                            )}
+                            {p.region && (
+                              <span className="text-[10px] font-bold uppercase tracking-wider border border-border text-primary/70 px-2 py-1">
+                                {p.region}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
 
-              {filtered.length === 0 && (
+              {!loading && !error && filtered.length === 0 && (
                 <div className="bg-white border border-border p-12 text-center mt-6">
                   <p className="text-sm text-muted">No partners match the current filters.</p>
                   <button onClick={clearAll} className="mt-3 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
