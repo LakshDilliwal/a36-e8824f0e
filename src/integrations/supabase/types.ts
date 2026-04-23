@@ -14,7 +14,63 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      partners: {
+        Row: {
+          created_at: string | null
+          description: string | null
+          id: number
+          isA36Partner: boolean | null
+          location: string | null
+          logo: string | null
+          name: string
+          openToBuilders: boolean | null
+          region: string | null
+          stage: string | null
+          tags: string | null
+          twitter: string | null
+          type: string | null
+          vertical: string | null
+          vertical_group: string | null
+          website: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          isA36Partner?: boolean | null
+          location?: string | null
+          logo?: string | null
+          name: string
+          openToBuilders?: boolean | null
+          region?: string | null
+          stage?: string | null
+          tags?: string | null
+          twitter?: string | null
+          type?: string | null
+          vertical?: string | null
+          vertical_group?: string | null
+          website?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          description?: string | null
+          id?: never
+          isA36Partner?: boolean | null
+          location?: string | null
+          logo?: string | null
+          name?: string
+          openToBuilders?: boolean | null
+          region?: string | null
+          stage?: string | null
+          tags?: string | null
+          twitter?: string | null
+          type?: string | null
+          vertical?: string | null
+          vertical_group?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

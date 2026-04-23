@@ -2,7 +2,7 @@ import PageWrapper from "@/components/PageWrapper";
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, Search } from "lucide-react";
-import Papa from "papaparse";
+import { supabase } from "@/integrations/supabase/client";
 import { verticalGroups, regions, partnerTypes } from "@/lib/verticals";
 
 type Partner = {
@@ -22,11 +22,6 @@ type Partner = {
   tags: string;
 };
 
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSMCU4CK5nt0Cnx9RgrzyBuWBbeK3or9tL3uJpOqexbLjOMACjIYDMAC43JkqF0Rg/pub?gid=2084849745&single=true&output=csv";
-
-const toBool = (v: string | undefined) => (v ?? "").trim().toUpperCase() === "TRUE";
-
 const EcosystemPage = () => {
   const [partners, setPartners] = useState<Partner[]>([]);
   const [loading, setLoading] = useState(true);
@@ -43,51 +38,22 @@ const EcosystemPage = () => {
   const [sort, setSort] = useState("default");
 
   useEffect(() => {
-    let cancelled = false;
-    setLoading(true);
-    setError(null);
-    fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(CSV_URL)}`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.text();
-      })
-      .then((csv) => {
-        const parsed = Papa.parse<Record<string, string>>(csv, {
-          header: true,
-          skipEmptyLines: true,
-        });
-        const rows: Partner[] = (parsed.data || [])
-          .filter((r) => r && (r.name ?? "").trim() !== "")
-          .map((r) => ({
-            name: (r.name ?? "").trim(),
-            location: (r.location ?? "").trim(),
-            description: (r.description ?? "").trim(),
-            vertical: (r.vertical ?? "").trim(),
-            vertical_group: (r.vertical_group ?? "").trim(),
-            region: (r.region ?? "").trim(),
-            type: (r.type ?? "").trim(),
-            isA36Partner: toBool(r.isA36Partner),
-            openToBuilders: toBool(r.openToBuilders),
-            logo: (r.logo ?? "").trim(),
-            website: (r.website ?? "").trim(),
-            twitter: (r.twitter ?? "").trim(),
-            stage: (r.stage ?? "").trim(),
-            tags: (r.tags ?? "").trim(),
-          }));
-        if (!cancelled) {
-          setPartners(rows);
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        if (!cancelled) {
-          setError(err?.message || "Failed to load partners");
-          setLoading(false);
-        }
-      });
-    return () => {
-      cancelled = true;
+    const fetchPartners = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const { data, error: err } = await supabase
+          .from('partners')
+          .select('*');
+        if (err) throw new Error(err.message);
+        setPartners((data as any) || []);
+      } catch (err: any) {
+        setError(err?.message || 'Failed to load partners');
+      } finally {
+        setLoading(false);
+      }
     };
+    fetchPartners();
   }, []);
 
   const toggleSet = (set: Set<string>, value: string, setter: (s: Set<string>) => void) => {
