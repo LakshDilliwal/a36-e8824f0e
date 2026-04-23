@@ -303,6 +303,30 @@ const EcosystemPage = () => {
                               </span>
                             )}
                           </div>
+                          <div className="flex items-center gap-4 mt-3 pt-3 border-t border-border">
+                            {p.website && (
+                              <a
+                                href={p.website}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs font-bold text-primary/60 hover:text-accent uppercase tracking-wider flex items-center gap-1"
+                              >
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                                Website
+                              </a>
+                            )}
+                            {p.twitter && (
+                              <a
+                                href={`https://x.com/${p.twitter.replace('@','')}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-xs font-bold text-primary/60 hover:text-accent uppercase tracking-wider flex items-center gap-1"
+                              >
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                X
+                              </a>
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
