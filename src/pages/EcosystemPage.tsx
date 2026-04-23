@@ -272,7 +272,7 @@ const EcosystemPage = () => {
                     <div key={p.name} className="bg-white border border-border p-5 hover:border-accent transition-colors">
                       <div className="flex gap-4">
                         <img
-                          src={p.logo.startsWith('/') ? p.logo : p.logo.startsWith('http') ? `https://logo.clearbit.com/${new URL(p.logo).hostname}` : `https://logo.clearbit.com/${p.logo}`}
+                          src={p.logo}
                           alt={p.name}
                           onError={(e) => {
                             e.currentTarget.src = "/logos/fallback.png";
