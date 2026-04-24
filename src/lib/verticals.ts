@@ -72,7 +72,7 @@ export const verticalGroups = [
 
 export const allVerticals = verticalGroups.flatMap((g) => g.verticals);
 
-export const regions = ["Global", "APAC", "MENA", "LATAM", "North America", "Europe", "India", "Africa"];
+export const regions = ["Global", "APAC", "MENA", "LATAM", "North America", "Europe", "Africa"];
 
 export const partnerTypes = [
   "Protocol / Infrastructure",

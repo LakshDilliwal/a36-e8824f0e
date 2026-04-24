@@ -233,11 +233,16 @@ const EcosystemPage = () => {
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
-            36 Verticals.<br />One Network.
+            36+ Verticals.<br />One Network.
           </h1>
-          <p className="text-lg text-primary/65 mt-5 max-w-[640px]">
-            The builders, protocols, and companies worth knowing. Filter by what matters to you.
+          <p className="text-lg text-primary/65 mt-5 max-w-[560px]">
+            Every serious player across 36+ verticals. Curated by A36.
           </p>
+          <div className="mt-8">
+            <Link to="/apply" className="btn-primary inline-block">
+              Apply to Join →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -400,11 +405,6 @@ const EcosystemPage = () => {
                 </div>
               )}
 
-              <div className="mt-10 text-center">
-                <Link to="/apply" className="btn-primary inline-block">
-                  Want to be listed? Apply to join the A36 ecosystem →
-                </Link>
-              </div>
             </div>
           </div>
         </div>
