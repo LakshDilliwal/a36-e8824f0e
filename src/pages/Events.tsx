@@ -72,8 +72,8 @@ const pastEvents: Array<{ name: string; loc: string; type: EventType }> = [
 ];
 
 const hackathonPartners = [
-  { name: "ETHIndia", desc: "India's largest Ethereum hackathon" },
-  { name: "Devfolio", desc: "The platform powering India's best hackathons" },
+  { name: "ETHIndia", desc: "India's largest Ethereum hackathon", link: "https://ethindia.co" },
+  { name: "Devfolio", desc: "The platform powering India's best hackathons", link: "https://devfolio.co" },
 ];
 
 const tabs = ["ALL", "MEETUPS", "SIDE EVENTS", "CONFERENCES", "HACKATHONS", "RESIDENCY"] as const;
@@ -103,12 +103,12 @@ const Events = () => {
       {/* Hero */}
       <section className="bg-primary py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
-          <p className="eyebrow mb-6">FIELD NOTES</p>
+          <p className="eyebrow mb-6">EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
             120+ Events.<br />Real Rooms.<br />No Fluff.
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
-            From campus meetups to global side events — A36 has been in the room before it had a name. We don't sponsor banners. We host rooms.
+            We don't sponsor banners. We build the room.
           </p>
         </div>
       </section>
@@ -124,7 +124,7 @@ const Events = () => {
             <iframe
               src="https://luma.com/embed/calendar/cal-PuV3v4w2KzbiPI7/events?lt=light"
               width="100%"
-              height="600"
+              height="650"
               frameBorder="0"
               style={{ border: "1px solid #bfcbda88", borderRadius: "4px" }}
               allowFullScreen
@@ -132,16 +132,14 @@ const Events = () => {
               tabIndex={0}
             />
           </div>
-          <div className="mt-6">
-            <a
-              href="https://lu.ma/a36"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-accent font-bold text-sm uppercase tracking-wider hover:underline"
-            >
-              Follow A36 on Luma for updates →
-            </a>
-          </div>
+          <a
+            href="https://lu.ma/a36"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-block mt-6"
+          >
+            Subscribe on Luma →
+          </a>
         </div>
       </section>
 
@@ -182,10 +180,10 @@ const Events = () => {
                   <h3 className="font-black text-2xl md:text-3xl">{ev.name}</h3>
                   <p className={`text-base mt-2 ${ev.dark ? "text-white/60" : "text-muted"}`}>{ev.subtitle}</p>
                   <p className={`text-sm mt-1 ${ev.dark ? "text-white/40" : "text-muted"}`}>{ev.context}</p>
-                  <div className={`mt-4 space-y-1 text-sm ${ev.dark ? "text-white/70" : "text-primary/70"}`}>
-                    <p>📅 {ev.date}</p>
-                    <p>📍 {ev.location}</p>
-                    <p>{ev.format}</p>
+                  <div className={`mt-4 space-y-1 ${ev.dark ? "text-white/70" : "text-primary/70"}`}>
+                    <p className="text-sm font-medium">{ev.date}</p>
+                    <p className="text-sm">{ev.location}</p>
+                    <p className="text-sm opacity-70">{ev.format}</p>
                   </div>
                   <div className="flex flex-wrap gap-2 mt-4">
                     {ev.tags.map((t) => (
@@ -219,7 +217,7 @@ const Events = () => {
                   <span className="text-[10px] font-bold uppercase tracking-wider bg-accent text-primary px-2 py-1">A36 Ecosystem Partner</span>
                   <h3 className="font-black text-2xl text-primary mt-4">{p.name}</h3>
                   <p className="text-sm text-muted mt-2">{p.desc}</p>
-                  <a href="#" className="text-accent font-bold text-sm uppercase tracking-wider mt-4 inline-block hover:underline">
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="text-accent font-bold text-sm uppercase tracking-wider mt-4 inline-block hover:underline">
                     Learn More →
                   </a>
                 </div>
@@ -237,16 +235,16 @@ const Events = () => {
             <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
               The rooms we've already built.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+            <div className="divide-y divide-border mt-8">
               {visiblePast.map((ev) => (
-                <div key={ev.name} className="relative bg-[#C8BFB0] min-h-[200px]">
-                  <div className="absolute bottom-0 left-0 right-0 flex justify-between p-3">
-                    <span className="bg-black/50 px-2 py-1 text-[11px] font-bold text-white">{ev.loc}</span>
-                    <span className="bg-black/50 px-2 py-1 text-[11px] font-bold text-white">{ev.type}</span>
+                <div key={ev.name} className="flex items-center justify-between py-4">
+                  <div>
+                    <p className="font-black text-base text-primary">{ev.name}</p>
+                    <p className="text-sm text-muted mt-0.5">{ev.loc}</p>
                   </div>
-                  <div className="absolute top-3 left-3">
-                    <span className="bg-primary/80 px-2 py-1 text-[11px] font-bold text-white">{ev.name}</span>
-                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider border border-border text-primary/70 px-2 py-1 flex-shrink-0">
+                    {ev.type}
+                  </span>
                 </div>
               ))}
             </div>
