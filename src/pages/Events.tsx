@@ -122,7 +122,7 @@ const Events = () => {
           </h2>
           <div className="w-full overflow-hidden">
             <iframe
-              src="https://luma.com/embed/calendar/cal-PuV3v4w2KzbiPI7/events?lt=dark"
+              src="https://luma.com/embed/calendar/cal-PuV3v4w2KzbiPI7/events?lt=light"
               width="100%"
               height="600"
               frameBorder="0"
