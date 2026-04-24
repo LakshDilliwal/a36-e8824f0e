@@ -17,9 +17,12 @@ export type Database = {
       partners: {
         Row: {
           created_at: string | null
+          crunchbase: string | null
           description: string | null
           id: number
+          instagram: string | null
           isA36Partner: boolean | null
+          linkedin: string | null
           location: string | null
           logo: string | null
           name: string
@@ -35,9 +38,12 @@ export type Database = {
         }
         Insert: {
           created_at?: string | null
+          crunchbase?: string | null
           description?: string | null
           id?: never
+          instagram?: string | null
           isA36Partner?: boolean | null
+          linkedin?: string | null
           location?: string | null
           logo?: string | null
           name: string
@@ -53,9 +59,12 @@ export type Database = {
         }
         Update: {
           created_at?: string | null
+          crunchbase?: string | null
           description?: string | null
           id?: never
+          instagram?: string | null
           isA36Partner?: boolean | null
+          linkedin?: string | null
           location?: string | null
           logo?: string | null
           name?: string
