@@ -1,18 +1,34 @@
 import PageWrapper from "@/components/PageWrapper";
 import { Link } from "react-router-dom";
 
-const placeholderImages = [
-  "/events/ev1.jpg",
-  "/events/ev2.jpg",
-  "/events/ev3.jpg",
-  "/events/ev4.jpg",
-  "/events/ev5.jpg",
-  "/events/ev6.jpg",
+const row1Images = [
+  "/events/group1.webp",
+  "/events/group2.webp",
+  "/events/group3.webp",
+  "/events/group4.webp",
+  "/events/group5.webp",
+  "/events/group6.webp",
+  "/events/group7.webp",
+  "/events/group8.webp",
+  "/events/group9.webp",
+  "/events/group10.webp",
 ];
 
-const row1 = [...placeholderImages, ...placeholderImages];
-const row2 = [...placeholderImages].reverse();
-const row2Doubled = [...row2, ...row2];
+const row2Images = [
+  "/events/candid1.webp",
+  "/events/candid2.webp",
+  "/events/candid3.webp",
+  "/events/candid4.webp",
+  "/events/candid5.webp",
+  "/events/candid6.webp",
+  "/events/candid7.webp",
+  "/events/candid8.webp",
+  "/events/candid9.webp",
+  "/events/candid10.webp",
+];
+
+const row1 = [...row1Images, ...row1Images];
+const row2Doubled = [...row2Images, ...row2Images];
 
 const Events = () => {
   return (
