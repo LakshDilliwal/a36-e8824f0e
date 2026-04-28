@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Instagram, Youtube, Send, MessageCircle } from "lucide-react";
+import { Twitter, Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-react";
 import Logo from "./Logo";
 
 const platformLinks = [
@@ -25,12 +25,12 @@ const companyLinks = [
 ];
 
 const socials = [
-  { Icon: Twitter, label: "X", href: "#" },
-  { Icon: Linkedin, label: "LinkedIn", href: "#" },
-  { Icon: Instagram, label: "Instagram", href: "#" },
-  { Icon: Youtube, label: "YouTube", href: "#" },
-  { Icon: Send, label: "Telegram", href: "#" },
-  { Icon: MessageCircle, label: "Discord", href: "#" },
+  { Icon: Twitter, label: "X", href: "https://x.com/a36labs" },
+  { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/a36labs" },
+  { Icon: Instagram, label: "Instagram", href: "https://instagram.com/a36labs" },
+  { Icon: Youtube, label: "YouTube", href: "https://youtube.com/@a36labs" },
+  { Icon: Send, label: "Telegram", href: "https://t.me/a36labs" },
+  { Icon: Calendar, label: "Luma", href: "https://lu.ma/a36" },
 ];
 
 const ColHeading = ({ children }: { children: React.ReactNode }) => (
@@ -56,9 +56,9 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <Logo light />
-          <p className="text-[13px] text-white/60 mt-3 font-bold">Where Builders Become Leaders</p>
+          <p className="text-[13px] text-white/60 mt-3 font-bold">The Home of Serious Builders</p>
           <p className="text-[13px] text-white/45 mt-3 max-w-[260px]">
-            A global builder ecosystem network. Curating serious builders across Web3, AI, and emerging tech.
+            A global builder ecosystem network. Curating serious founders across Web3, AI, and emerging tech.
           </p>
           <div className="flex flex-wrap gap-3 mt-5">
             {socials.map(({ Icon, label, href }) => (
@@ -106,7 +106,7 @@ const Footer = () => (
         <a href="mailto:hello@a36labs.com" className="text-[13px] text-white/45 hover:text-white transition-opacity duration-200">
           hello@a36labs.com
         </a>
-        <p className="text-[13px] text-white/30">© 2026 A36Labs. MSME Registered. All rights reserved.</p>
+        <p className="text-[13px] text-white/30">© 2026 A36Labs. All rights reserved.</p>
       </div>
     </div>
   </footer>
