@@ -27,8 +27,8 @@ const companyLinks = [
 const socials = [
   { Icon: Twitter, label: "X", href: "https://x.com/a36labs" },
   { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/a36labs" },
-  { Icon: Instagram, label: "Instagram", href: "https://instagram.com/a36labs" },
-  { Icon: Youtube, label: "YouTube", href: "https://youtube.com/@a36labs" },
+  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/a36labs" },
+  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@a36labs" },
   { Icon: Send, label: "Telegram", href: "https://t.me/a36labs" },
   { Icon: Calendar, label: "Luma", href: "https://lu.ma/a36" },
 ];
