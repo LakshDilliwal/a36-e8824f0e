@@ -2,8 +2,8 @@ import PageWrapper from "@/components/PageWrapper";
 import { Link } from "react-router-dom";
 
 const steps = [
-  { num: "01", title: "EXPLORE", body: "Browse open bounties and grants from verified Web3 and AI ecosystems" },
-  { num: "02", title: "APPLY", body: "Submit your work or proposal directly to the sponsor — no gatekeepers" },
+  { num: "01", title: "EXPLORE", body: "Browse open bounties and grants from verified ecosystems" },
+  { num: "02", title: "APPLY", body: "Submit your work or proposal to A36-verified partners" },
   { num: "03", title: "GET PAID", body: "Direct payouts. No middlemen. No delays." },
 ];
 
@@ -46,7 +46,7 @@ const Earn = () => (
     <section className="bg-primary py-16">
       <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
         <p className="text-white text-base">
-          A36 Earn is coming soon — Multi-chain payouts. Zero commission for builders.
+          A36 Earn is coming soon.
         </p>
       </div>
     </section>
