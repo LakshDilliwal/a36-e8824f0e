@@ -11,7 +11,7 @@ import Events from "./pages/Events";
 import PodcastPage from "./pages/PodcastPage";
 import Apply from "./pages/Apply";
 import About from "./pages/About";
-import Team from "./pages/Team";
+
 import NewsletterPage from "./pages/NewsletterPage";
 import FAQ from "./pages/FAQ";
 import Pitch from "./pages/Pitch";
@@ -39,7 +39,7 @@ const App = () => (
           <Route path="/podcast" element={<PodcastPage />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/about" element={<About />} />
-          <Route path="/team" element={<Team />} />
+          
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/pitch" element={<Pitch />} />
