@@ -2,9 +2,9 @@ import PageWrapper from "@/components/PageWrapper";
 import { Link } from "react-router-dom";
 
 const steps = [
-  { num: "01", title: "EXPLORE", body: "Browse open bounties and grants from verified ecosystems" },
-  { num: "02", title: "APPLY", body: "Submit your work or proposal directly to the sponsor" },
-  { num: "03", title: "EARN", body: "Get paid on-chain. No middlemen. No delays." },
+  { num: "01", title: "EXPLORE", body: "Browse open bounties and grants from verified Web3 and AI ecosystems" },
+  { num: "02", title: "APPLY", body: "Submit your work or proposal directly to the sponsor — no gatekeepers" },
+  { num: "03", title: "GET PAID", body: "Direct payouts. No middlemen. No delays." },
 ];
 
 const Earn = () => (
@@ -13,15 +13,22 @@ const Earn = () => (
       <div className="container max-w-5xl mx-auto px-6 md:px-16">
         <p className="eyebrow mb-6">A36 EARN</p>
         <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
-          Build.<br />Get Paid.<br />On-Chain.
+          Build.<br />Get Paid.
         </h1>
         <p className="text-base text-primary/70 mt-6 max-w-[560px]">
-          Real work from real ecosystems. Bounties, grants, and builder opportunities — curated by A36. Our full earn platform lives at earn.a36labs.com
+          Real work from real ecosystems. Bounties, grants, and builder opportunities — curated by A36. Platform launching soon.
         </p>
-        <div className="mt-10">
-          <a href="https://earn.a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
-            EXPLORE OPPORTUNITIES →
-          </a>
+
+        <div className="mt-10 max-w-[480px]">
+          <p className="text-sm text-primary/60 mb-3">Stay updated — get notified when we launch:</p>
+          <iframe
+            src="https://a36signal.substack.com/embed"
+            width="480"
+            height="150"
+            style={{ border: "none", background: "transparent", maxWidth: "100%" }}
+            frameBorder="0"
+            scrolling="no"
+          />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
@@ -33,23 +40,13 @@ const Earn = () => (
             </div>
           ))}
         </div>
-
-        <div className="mt-12 text-center">
-          <a href="https://earn.a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
-            LAUNCH EARN PLATFORM →
-          </a>
-        </div>
       </div>
     </section>
 
     <section className="bg-primary py-16">
       <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
         <p className="text-white text-base">
-          The A36 Earn platform is live at{" "}
-          <a href="https://earn.a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent font-bold hover:underline">
-            earn.a36labs.com
-          </a>{" "}
-          — Multi-chain payouts. Zero commission for builders.
+          A36 Earn is coming soon — Multi-chain payouts. Zero commission for builders.
         </p>
       </div>
     </section>
