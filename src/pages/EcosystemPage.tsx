@@ -231,12 +231,12 @@ const EcosystemPage = () => {
       {/* Hero */}
       <section className="bg-background py-20">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
+          <p className="eyebrow-dark mb-4">THE A36 LABS ECOSYSTEM</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
-            36+ Verticals.<br />One Network.
+            36+ Verticals<br />One Network
           </h1>
           <p className="text-lg text-primary/65 mt-5 max-w-[560px]">
-            Every serious player across 36+ verticals. Curated by A36.
+            Every serious player across 36+ verticals. Curated by A36 Labs.
           </p>
           <div className="mt-8">
             <Link to="/apply" className="btn-primary inline-block">

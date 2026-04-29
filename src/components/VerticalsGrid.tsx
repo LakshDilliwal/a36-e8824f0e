@@ -4,7 +4,7 @@ import { allVerticals } from "@/lib/verticals";
 const VerticalsGrid = () => (
   <section className="bg-background py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
+      <p className="eyebrow-dark mb-4">THE A36 LABS ECOSYSTEM</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         36 Verticals. One Network.
       </h2>
