@@ -44,7 +44,7 @@ const NewsletterPage = () => (
         <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
           Join A36 Signal.
         </h2>
-        <p className="text-base text-white/60 mt-4">Free. Weekly. For serious builders only.</p>
+        <p className="text-base text-white/60 mt-4">Free. Weekly. Stay ahead of what's building.</p>
 
         <div className="flex justify-center mt-10">
           <iframe
