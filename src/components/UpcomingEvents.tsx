@@ -24,7 +24,7 @@ const events = [
 const UpcomingEvents = () => (
   <section className="bg-warm-cream py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">UPCOMING</p>
+      <p className="eyebrow-dark mb-4">UPCOMING EVENTS</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Global Rooms. 2026.
       </h2>
@@ -39,8 +39,8 @@ const UpcomingEvents = () => (
             <p className={`text-sm mt-2 ${ev.dark ? "text-white/60" : "text-muted"}`}>{ev.subtitle}</p>
             <p className={`text-xs mt-1 ${ev.dark ? "text-white/40" : "text-muted"}`}>{ev.context}</p>
             <div className={`mt-4 space-y-1 text-sm ${ev.dark ? "text-white/70" : "text-primary/70"}`}>
-              <p>📅 {ev.date}</p>
-              <p>📍 {ev.location}</p>
+              <p>Date: {ev.date}</p>
+              <p>Location: {ev.location}</p>
             </div>
           </div>
         ))}
