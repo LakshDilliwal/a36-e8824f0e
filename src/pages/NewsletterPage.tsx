@@ -46,24 +46,16 @@ const NewsletterPage = () => (
         </h2>
         <p className="text-base text-white/60 mt-4">Free. Weekly. For serious builders only.</p>
 
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            window.open("https://a36labs.substack.com", "_blank", "noopener,noreferrer");
-          }}
-          className="mt-10"
-        >
-          <div className="flex flex-col sm:flex-row max-w-[480px] mx-auto">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              required
-              className="flex-grow bg-dark-card border border-[#374151] text-white placeholder:text-white/40 px-4 py-3.5 focus:outline-none focus:border-white/30"
-            />
-            <button type="submit" className="btn-gold px-6 py-3.5 whitespace-nowrap">SUBSCRIBE ON SUBSTACK →</button>
-          </div>
-          <p className="text-xs text-white/40 mt-3">Free. Unsubscribe anytime. No spam.</p>
-        </form>
+        <div className="flex justify-center mt-10">
+          <iframe
+            src="https://a36signal.substack.com/embed"
+            width="480"
+            height="150"
+            style={{ border: "none", background: "transparent", maxWidth: "100%" }}
+            frameBorder="0"
+            scrolling="no"
+          />
+        </div>
       </div>
     </section>
   </PageWrapper>
