@@ -1,8 +1,8 @@
 import PageWrapper from "@/components/PageWrapper";
 
 const features = [
-  { title: "Protocol Updates", body: "What's shipping in Web3 and AI this week" },
-  { title: "Opportunity Alerts", body: "New listings on A36 Earn — bounties, grants, jobs" },
+  { title: "Protocol Updates", body: "What's moving across tech, builder, and startup ecosystems this week" },
+  { title: "Opportunity Alerts", body: "Curated opportunities — bounties, grants, and jobs from the A36 network" },
   { title: "Event Previews", body: "Upcoming A36 rooms and partner events globally" },
 ];
 
