@@ -11,15 +11,15 @@ const NewsletterPage = () => (
     {/* Hero */}
     <section className="bg-background py-24">
       <div className="container max-w-5xl mx-auto px-6 md:px-16">
-        <p className="eyebrow-dark mb-6">A36 SIGNAL</p>
+        <p className="eyebrow-dark mb-6">NEWSLETTER</p>
         <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
           A36 Signal
         </h1>
-        <p className="text-2xl md:text-3xl text-primary/80 mt-3 font-bold">Weekly signal from the frontier.</p>
+        <p className="text-2xl md:text-3xl text-primary/80 mt-3 font-bold">Weekly signal from the frontier</p>
         <p className="text-base text-primary/70 mt-6 max-w-[640px]">
-          No recap. No noise. One email per week — curated by A36 for builders, founders, and ecosystem operators who need signal, not scroll.
+          No recap. No noise. One email per week<br />curated by A36 for builders, founders, and ecosystem operators who need alpha signal, not scroll
         </p>
-        <p className="text-sm text-muted mt-3 italic">Published every Wednesday.</p>
+        <p className="text-sm text-muted mt-3 italic">Published every Wednesday</p>
       </div>
     </section>
 
@@ -42,9 +42,9 @@ const NewsletterPage = () => (
     <section className="bg-primary py-24">
       <div className="container max-w-2xl mx-auto px-6 md:px-16 text-center">
         <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
-          Join A36 Signal.
+          Join A36 Signal
         </h2>
-        <p className="text-base text-white/60 mt-4">Free. Weekly. Stay ahead of what's building.</p>
+        <p className="text-base text-white/60 mt-4">Free. Weekly. Stay ahead of what's building</p>
 
         <div className="flex justify-center mt-10">
           <iframe
