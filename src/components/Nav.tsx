@@ -13,7 +13,6 @@ const servicesItems = [
 
 const companyItems = [
   { label: "About", to: "/about" },
-  { label: "Team", to: "/team" },
   { label: "Media Kit", to: "/media-kit" },
   { label: "Partner With Us", to: "/pitch" },
 ];
