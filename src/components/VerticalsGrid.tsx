@@ -4,12 +4,12 @@ import { allVerticals } from "@/lib/verticals";
 const VerticalsGrid = () => (
   <section className="bg-background py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">THE A36 LABS ECOSYSTEM</p>
+      <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         36 Verticals. One Network.
       </h2>
       <p className="text-base text-primary/65 mt-4 max-w-[560px]">
-        From AI infrastructure to biotech to DeFi — A36 covers the full frontier of emerging tech.
+        From infrastructure to creator economy — A36 covers the full frontier of tech and innovation.
       </p>
 
       <div className="flex flex-wrap gap-2 mt-12">

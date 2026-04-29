@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 const Hero = () => (
   <section className="min-h-[85vh] flex items-center bg-background">
     <div className="container max-w-5xl mx-auto px-6 md:px-16 py-20">
-      <p className="eyebrow mb-6">BUILDER ECOSYSTEM NETWORK</p>
+      <p className="eyebrow mb-6">A36 LABS</p>
 
       <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
         We Don't Sponsor Banners.<br />We Build The Rooms.
       </h1>
 
       <p className="mt-6 text-primary/80 text-base md:text-lg max-w-[640px]">
-        A36Labs is a global builder ecosystem network. We curate serious builders, run the rooms, and connect talent to protocols, capital, and real work — across Web3, AI, and emerging tech.
+        A36Labs is a global builder ecosystem network. We curate serious builders, run the rooms, and connect talent to protocols, capital, and real work — across emerging tech.
       </p>
 
       <div className="flex flex-wrap gap-4 mt-10">
-        <a href="https://earn.a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-primary">EXPLORE EARN →</a>
+        <Link to="/earn" className="btn-primary">EXPLORE EARN →</Link>
         <a href="/events" className="btn-ghost">VIEW EVENTS →</a>
       </div>
 
