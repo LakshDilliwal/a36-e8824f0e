@@ -19,7 +19,7 @@ const contentLinks = [
 
 const companyLinks = [
   { label: "About", to: "/about" },
-  { label: "Partner With Us", to: "/pitch" },
+  { label: "Partner With Us", to: "/apply" },
   { label: "FAQ", to: "/faq" },
 ];
 
