@@ -14,7 +14,7 @@ const servicesItems = [
 const companyItems = [
   { label: "About", to: "/about" },
   { label: "Media Kit", to: "/media-kit" },
-  { label: "Partner With Us", to: "/pitch" },
+  { label: "Partner With Us", to: "/apply" },
 ];
 
 const Nav = () => {
