@@ -14,7 +14,7 @@ import About from "./pages/About";
 
 import NewsletterPage from "./pages/NewsletterPage";
 import FAQ from "./pages/FAQ";
-import Pitch from "./pages/Pitch";
+
 import Residency from "./pages/Residency";
 import MediaKit from "./pages/MediaKit";
 import Merch from "./pages/Merch";
@@ -42,7 +42,7 @@ const App = () => (
           
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/faq" element={<FAQ />} />
-          <Route path="/pitch" element={<Pitch />} />
+          
           <Route path="/residency" element={<Residency />} />
           <Route path="/media-kit" element={<MediaKit />} />
           <Route path="/merch" element={<Merch />} />

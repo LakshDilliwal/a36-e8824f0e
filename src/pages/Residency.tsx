@@ -126,7 +126,7 @@ const Residency = () => {
             Residency sponsors get direct access to 20 of the most serious builders in the ecosystem.
           </h2>
           <div className="mt-8">
-            <Link to="/pitch" className="btn-primary inline-block">SPONSOR THE RESIDENCY →</Link>
+            <Link to="/apply" className="btn-primary inline-block">SPONSOR THE RESIDENCY →</Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
