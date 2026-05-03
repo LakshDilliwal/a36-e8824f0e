@@ -62,7 +62,7 @@ const Team = () => (
         </h2>
         <p className="text-base text-white/60 mt-4">We're looking for ecosystem operators, developers, and community builders.</p>
         <div className="mt-10">
-          <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
+          <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
             REACH OUT →
           </a>
         </div>

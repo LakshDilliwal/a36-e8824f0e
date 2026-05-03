@@ -37,7 +37,7 @@ const Merch = () => (
           </ul>
           <div className="flex flex-wrap gap-4 mt-8">
             <a href="https://bitswags.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">SHOP BITSWAGS →</a>
-            <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-ghost-light inline-block">ORDER FOR YOUR EVENT →</a>
+            <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="btn-ghost-light inline-block">ORDER FOR YOUR EVENT →</a>
           </div>
         </div>
       </div>

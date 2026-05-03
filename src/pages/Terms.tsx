@@ -30,7 +30,7 @@ const Terms = () => (
           </div>
           <div>
             <h3 className="font-black text-xl text-primary mb-3">Contact</h3>
-            <p>For questions about these terms, contact us at <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">partnerships@a36labs.com</a>.</p>
+            <p>For questions about these terms, contact us at <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">hello@a36labs.com</a>.</p>
           </div>
         </div>
       </div>
