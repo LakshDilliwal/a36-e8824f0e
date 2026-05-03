@@ -114,38 +114,6 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 4 — EVENT OF THE YEAR: THE RESIDENCY */}
-      <section className="bg-primary py-24">
-        <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="eyebrow mb-4">EVENT OF THE YEAR</p>
-          <div className="max-w-[720px]">
-            <h2 className="font-black text-[36px] md:text-[56px] leading-[1.05] tracking-heading text-white">
-              The A36 Residency.
-            </h2>
-            <p className="text-white/60 text-base mt-6 leading-relaxed">
-              Five days. Twenty builders. Zero distractions.<br />
-              An immersive sprint where the most serious Web3 builders ship, connect, and accelerate — co-located with ETH DevCon Mumbai 2026.
-            </p>
-            <ul className="mt-6 space-y-2 text-white/70 text-sm">
-              <li>→ October 29 – November 2, 2026 · Mumbai, India</li>
-              <li>→ Invite-selected · 20 seats · Free for accepted builders</li>
-              <li>→ Direct access to A36 network, capital, and ecosystem</li>
-            </ul>
-            <div className="flex flex-wrap gap-4 mt-10">
-              <Link to="/residency" className="btn-primary inline-block">
-                Apply for Residency →
-              </Link>
-              <Link
-                to="/pitch"
-                className="inline-block border border-white/30 text-white font-bold text-sm uppercase tracking-wider px-6 py-3 hover:border-white/60 transition-colors"
-              >
-                Partner With Us →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 5 — CO-HOST CTA */}
       <section className="bg-warm-cream py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
