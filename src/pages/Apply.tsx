@@ -142,8 +142,8 @@ const Apply = () => {
 
           <p className="text-sm text-muted mt-8 text-center">
             Not for everyone. For the right ones. —{" "}
-            <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-              partnerships@a36labs.com
+            <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              hello@a36labs.com
             </a>
           </p>
         </div>
@@ -193,8 +193,8 @@ const Apply = () => {
 
           <p className="text-sm text-muted mt-8 text-center">
             We respond within 48 hours. —{" "}
-            <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
-              partnerships@a36labs.com
+            <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
+              hello@a36labs.com
             </a>
           </p>
         </div>

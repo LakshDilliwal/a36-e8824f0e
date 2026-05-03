@@ -40,8 +40,8 @@ const Privacy = () => (
           <h2 className="font-bold text-xl text-primary mt-8">5. Contact</h2>
           <p>
             For questions about this privacy policy, contact us at{" "}
-            <a href="mailto:partnerships@a36labs.com" className="underline">
-              partnerships@a36labs.com
+            <a href="mailto:hello@a36labs.com" className="underline">
+              hello@a36labs.com
             </a>.
           </p>
         </div>

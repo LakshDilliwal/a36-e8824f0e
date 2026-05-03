@@ -38,7 +38,7 @@ const sections = [
   {
     heading: "PARTNERSHIPS",
     items: [
-      { q: "How do we partner with A36?", a: "Email partnerships@a36labs.com or apply via the Become a Partner form. We partner with protocols, funds, communities, and media brands." },
+      { q: "How do we partner with A36?", a: "Email hello@a36labs.com or apply via the Become a Partner form. We partner with protocols, funds, communities, and media brands." },
       { q: "Does A36 take equity?", a: "A36's model is evolving. Current engagements are ecosystem partnership-based. Equity arrangements are considered case-by-case for cohort participants." },
     ],
   },

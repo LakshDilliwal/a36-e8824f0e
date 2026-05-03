@@ -75,7 +75,7 @@ const Pitch = () => {
 
           <p className="text-sm text-muted mt-8 text-center">
             We read every pitch. Response within 7–14 business days. —{" "}
-            <a href="mailto:partnerships@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">partnerships@a36labs.com</a>
+            <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">hello@a36labs.com</a>
           </p>
         </div>
       </section>
