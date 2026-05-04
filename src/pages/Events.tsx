@@ -33,7 +33,7 @@ const row2Doubled = [...row2Images, ...row2Images];
 const Events = () => {
   return (
     <PageWrapper>
-      {/* SECTION 1 — HERO */}
+      {/* SECTION 1 - HERO */}
       <section className="bg-primary py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 | EVENTS</p>
@@ -46,7 +46,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 2 — DUAL PHOTO SLIDERS */}
+      {/* SECTION 2 - DUAL PHOTO SLIDERS */}
       <section className="bg-background py-16 overflow-hidden space-y-6">
         <div className="overflow-hidden">
           <div className="flex gap-6 w-max animate-slide-left">
@@ -82,7 +82,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 3 — LUMA CALENDAR */}
+      {/* SECTION 3 - LUMA CALENDAR */}
       <section className="bg-background py-16">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
@@ -114,7 +114,7 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 5 — CO-HOST CTA */}
+      {/* SECTION 5 - CO-HOST CTA */}
       <section className="bg-warm-cream py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">

@@ -250,7 +250,7 @@ const EcosystemPage = () => {
       <section className="bg-warm-cream py-12">
         <div className="container max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar — desktop only */}
+            {/* Sidebar - desktop only */}
             <aside className="hidden lg:block w-[280px] flex-shrink-0">
               <div className="bg-white border border-border p-5 lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
                 <FiltersContent />
@@ -259,7 +259,7 @@ const EcosystemPage = () => {
 
             {/* Right content */}
             <div className="flex-1 min-w-0">
-              {/* Search bar — full width above grid */}
+              {/* Search bar - full width above grid */}
               <div className="relative mb-4">
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
                 <input

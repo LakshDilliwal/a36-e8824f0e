@@ -23,7 +23,7 @@ const Pitch = () => {
             Got something<br />worth backing?
           </h1>
           <p className="text-base text-primary/65 mt-6 max-w-[560px]">
-            A36 reviews pitches from infrastructure founders. If you're building base-layer technology in Web3, AI, Healthcare, or Finance — we want to hear from you.
+            A36 reviews pitches from infrastructure founders. If you're building base-layer technology in Web3, AI, Healthcare, or Finance, we want to hear from you.
           </p>
         </div>
       </section>
@@ -74,7 +74,7 @@ const Pitch = () => {
           )}
 
           <p className="text-sm text-muted mt-8 text-center">
-            We read every pitch. Response within 7–14 business days. —{" "}
+            We read every pitch. Response within 7–14 business days.{" "}
             <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">hello@a36labs.com</a>
           </p>
         </div>
