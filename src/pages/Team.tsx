@@ -18,7 +18,7 @@ const Team = () => (
           The operators<br />behind A36.
         </h1>
         <p className="text-base text-primary/65 mt-6 max-w-[560px]">
-          A36 is run by ecosystem builders who have been in the room. No advisors-on-paper. No logos-for-optics.
+          A36 is run by ecosystem builders who have been in the summit. No advisors-on-paper. No logos-for-optics.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">

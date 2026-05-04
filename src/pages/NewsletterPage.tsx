@@ -2,8 +2,8 @@ import PageWrapper from "@/components/PageWrapper";
 
 const features = [
   { title: "Protocol Updates", body: "What's moving across tech, builder, and startup ecosystems this week" },
-  { title: "Opportunity Alerts", body: "Curated opportunities — bounties, grants, and jobs from the A36 network" },
-  { title: "Event Previews", body: "Upcoming A36 rooms and partner events globally" },
+  { title: "Opportunity Alerts", body: "Curated opportunities. Bounties, grants, and jobs from the A36 network" },
+  { title: "Event Previews", body: "Upcoming A36 summits and partner events globally" },
 ];
 
 const NewsletterPage = () => (
@@ -56,6 +56,17 @@ const NewsletterPage = () => (
             scrolling="no"
           />
         </div>
+        <p className="text-sm text-white/60 mt-6">
+          Read past issues at{" "}
+          <a
+            href="https://a36signal.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            a36signal.substack.com
+          </a>
+        </p>
       </div>
     </section>
   </PageWrapper>

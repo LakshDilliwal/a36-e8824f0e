@@ -6,33 +6,32 @@ const sections = [
   {
     heading: "ABOUT A36",
     items: [
-      { q: "What is A36?", a: "A36 is an infrastructure venture lab and accelerator for serious builders in Web3, AI, Healthcare, and Finance. We filter, back, and deploy resources to founders building foundational technology." },
+      { q: "What is A36?", a: "A36 Labs is a global builder network and ecosystem operator. We curate serious builders across 36 tech verticals and connect them to protocols, capital, and real work." },
       { q: 'What does "A36" mean?', a: "A36 represents 36 infrastructure domains across four core execution vectors. Every domain has a purpose. Every builder has a lane. Nothing is cosmetic." },
-      { q: "Is A36 only for Web3 builders?", a: "No. A36 operates across Web3, AI, Healthcare, Finance, and Deep Tech. The common thread is infrastructure — we back base-layer builders regardless of vertical." },
+      { q: "Is A36 only for Web3 builders?", a: "No. A36 operates across 36 tech verticals including infrastructure, deep tech, finance, healthcare, and more. The common thread is serious builders doing real work." },
     ],
   },
   {
     heading: "A36 PASSPORT (COHORT)",
     items: [
-      { q: "What is the A36 Passport?", a: "A36 Passport is our builder cohort program. Accepted builders get access to ecosystem resources, capital introductions, global event rooms, and direct operator mentorship." },
+      { q: "What is the A36 Passport?", a: "A36 Passport is our builder cohort program. Accepted builders get access to ecosystem resources, capital introductions, global event summits, and direct operator mentorship." },
       { q: "How do I apply?", a: "Submit an application at a36labs.com/apply. We review every application manually. No shortcuts, no exceptions." },
-      { q: "Is A36 Passport free?", a: "The application is free. Cohort details including any program fees are shared with accepted applicants." },
-      { q: "How long is the cohort?", a: "The A36 Passport cohort is structured as a focused 8–12 week sprint. Details shared upon acceptance." },
+      { q: "Is A36 Passport free?", a: "The application is free. Cohort details are shared with accepted applicants." },
+      { q: "How long is the cohort?", a: "Duration and structure are shared upon acceptance." },
     ],
   },
   {
     heading: "EVENTS",
     items: [
-      { q: "How do A36 events work?", a: "A36 hosts high-signal, invite-only rooms at global conferences and builder hubs. Events are curated — not open to the public unless specified. Focus is always on operators, infrastructure builders, and capital." },
-      { q: "How do I attend an A36 event?", a: "Request an invite via the Events page or apply for A36 Passport. Partner protocols and communities receive priority access." },
-      { q: "Where does A36 host events?", a: "India (Indore, Bangalore, Delhi, Mumbai), Singapore, Dubai, and expanding to other global builder hubs through 2026–2027." },
+      { q: "How do A36 events work?", a: "A36 hosts high-signal, invite-only summits at global conferences and builder hubs. Events are curated, not open to the public unless specified. Focus is always on operators, infrastructure builders, and capital." },
+      { q: "How do I attend an A36 event?", a: "Request access via the Events page or apply for A36 Passport. Partner protocols and communities receive priority access." },
+      { q: "Where does A36 host events?", a: "A36 hosts summits across APAC, MENA, LATAM, North America, Europe, and Africa. Anywhere serious builders operate." },
     ],
   },
   {
     heading: "A36 EARN",
     items: [
-      { q: "What is A36 Earn?", a: "A36 Earn (earn.a36labs.com) is our on-chain bounty and grant platform. Protocols list opportunities, builders complete work, and get paid on-chain. Zero commission for builders." },
-      { q: "Which chains are supported on A36 Earn?", a: "A36 Earn supports multi-chain payouts including Solana, Ethereum, Base, Avalanche, Polygon, and NEAR Protocol." },
+      { q: "What is A36 Earn?", a: "A36 Earn (launching mid-2026) is our bounty and grant platform. Protocols list opportunities, builders complete work, and get paid. Zero commission for builders." },
     ],
   },
   {
@@ -40,6 +39,19 @@ const sections = [
     items: [
       { q: "How do we partner with A36?", a: "Email hello@a36labs.com or apply via the Become a Partner form. We partner with protocols, funds, communities, and media brands." },
       { q: "Does A36 take equity?", a: "A36's model is evolving. Current engagements are ecosystem partnership-based. Equity arrangements are considered case-by-case for cohort participants." },
+    ],
+  },
+  {
+    heading: "A36 SIGNAL",
+    items: [
+      {
+        q: "What is A36 Signal?",
+        a: "A36 Signal is our weekly newsletter for builders, founders, and ecosystem operators. Published every Wednesday at a36signal.substack.com",
+      },
+      {
+        q: "Is A36 Signal free?",
+        a: "Yes. Free to subscribe at a36signal.substack.com",
+      },
     ],
   },
 ];

@@ -33,20 +33,20 @@ const row2Doubled = [...row2Images, ...row2Images];
 const Events = () => {
   return (
     <PageWrapper>
-      {/* SECTION 1 — HERO */}
+      {/* SECTION 1 - HERO */}
       <section className="bg-primary py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 | EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
-            120+ Rooms.<br />6 Continents.<br />All Signal.
+            120+ Summits.<br />6 Continents.<br />All Signal.
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
-            Side events, hacker houses, founder salons, and builder rooms — curated by A36 across every major tech conference globally.
+            Side events, hacker houses, founder salons, and builder summits curated by A36 across every major tech conference globally.
           </p>
         </div>
       </section>
 
-      {/* SECTION 2 — DUAL PHOTO SLIDERS */}
+      {/* SECTION 2 - DUAL PHOTO SLIDERS */}
       <section className="bg-background py-16 overflow-hidden space-y-6">
         <div className="overflow-hidden">
           <div className="flex gap-6 w-max animate-slide-left">
@@ -82,12 +82,12 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 3 — LUMA CALENDAR */}
+      {/* SECTION 3 - LUMA CALENDAR */}
       <section className="bg-background py-16">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
           <h2 className="font-black text-[32px] md:text-[44px] leading-[1.05] tracking-heading text-primary mb-8">
-            Upcoming Rooms.
+            Upcoming Summits.
           </h2>
           <div className="w-full overflow-hidden">
             <iframe
@@ -114,11 +114,11 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 5 — CO-HOST CTA */}
+      {/* SECTION 5 - CO-HOST CTA */}
       <section className="bg-warm-cream py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            Want to build a room with us?
+            Want to build a summit with us?
           </h2>
           <p className="text-base text-primary/60 mt-4 max-w-[560px] mx-auto">
             We co-host with protocols, communities, and funds globally. Singapore. Dubai. Bangalore. And everywhere the builders are.

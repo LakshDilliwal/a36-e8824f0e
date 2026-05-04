@@ -26,7 +26,7 @@ const MediaKit = () => (
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Brand Overview</h2>
           <p className="text-primary/70 max-w-2xl leading-relaxed">
             A36 Labs is a global builder ecosystem. We curate serious founders across Web3, AI,
-            and emerging tech — running high-signal events, residencies, and programs that
+            and emerging tech, running high-signal events, residencies, and programs that
             accelerate the people building the next wave of infrastructure. Our brand is
             operator-level: fast and high-conviction.
           </p>
@@ -66,12 +66,12 @@ const MediaKit = () => (
         <section className="mt-16">
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Typography</h2>
           <p className="text-primary/70 max-w-2xl leading-relaxed">
-            Montserrat — used exclusively across all A36 brand materials.
+            Montserrat. Used exclusively across all A36 brand materials.
           </p>
           <div className="mt-6 space-y-1 text-sm text-primary/60">
-            <p>Black (900) — headings</p>
-            <p>Bold (700) — subheadings</p>
-            <p>Regular (400) — body</p>
+            <p>Black (900). Headings</p>
+            <p>Bold (700). Subheadings</p>
+            <p>Regular (400). Body</p>
           </div>
           <div className="mt-6 space-y-1 text-sm text-primary/60">
             <p>Letter spacing: −0.04em (headings)</p>

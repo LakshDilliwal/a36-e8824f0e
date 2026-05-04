@@ -6,21 +6,21 @@ const paths = [
   {
     label: "FOR BUILDERS",
     title: "A36 Passport",
-    body: "For founders, devs, and designers who ship. Get into the cohort, access capital introductions, walk into invite-only global rooms, and work on real opportunities across Web3 and AI.",
+    body: "For founders, devs, and designers who ship. Get into the cohort, access capital introductions, walk into invite-only global summits, and work on real opportunities across Web3 and AI.",
     cta: "APPLY AS BUILDER →",
     dark: false,
   },
   {
     label: "FOR PROTOCOLS & SPONSORS",
     title: "List on A36 Earn",
-    body: "Post bounties, grants, and jobs directly to A36's builder network. No noise — just people who actually ship. Reach curated talent across Web3, AI, and infrastructure verticals.",
+    body: "Post bounties, grants, and jobs directly to A36's builder network. No noise. Just people who actually ship. Reach curated talent across Web3, AI, and infrastructure verticals.",
     cta: "LIST AN OPPORTUNITY →",
     dark: true,
   },
   {
     label: "FOR COMMUNITIES & FUNDS",
     title: "Partner With A36",
-    body: "Co-host rooms, sponsor A36 Signal, or build inside the A36 ecosystem as a capital or community partner. For serious operators only.",
+    body: "Co-host summits, sponsor A36 Signal, or build inside the A36 ecosystem as a capital or community partner. For serious operators only.",
     cta: "BECOME A PARTNER →",
     dark: false,
   },
@@ -74,7 +74,7 @@ const Apply = () => {
             Show Up.<br />Get Filtered.<br />Ship With Us.
           </h1>
           <p className="text-base text-primary/70 mt-6 max-w-[560px]">
-            A36 isn't a platform you sign up for. It's a room you earn access to. Pick your path.
+            A36 isn't a platform you sign up for. It's a summit you earn access to. Pick your path.
           </p>
         </div>
       </section>
@@ -141,7 +141,7 @@ const Apply = () => {
           )}
 
           <p className="text-sm text-muted mt-8 text-center">
-            Not for everyone. For the right ones. —{" "}
+            Not for everyone. For the right ones.{" "}
             <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
               hello@a36labs.com
             </a>
@@ -192,7 +192,7 @@ const Apply = () => {
           )}
 
           <p className="text-sm text-muted mt-8 text-center">
-            We respond within 48 hours. —{" "}
+            We respond within 48 hours.{" "}
             <a href="mailto:hello@a36labs.com" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
               hello@a36labs.com
             </a>

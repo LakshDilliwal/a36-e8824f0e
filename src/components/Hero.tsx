@@ -6,16 +6,16 @@ const Hero = () => (
       <p className="eyebrow mb-6">A36 LABS</p>
 
       <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
-        We Don't Sponsor Banners.<br />We Build The Rooms.
+        Where Serious<br />Builders Operate.
       </h1>
 
       <p className="mt-6 text-primary/80 text-base md:text-lg max-w-[640px]">
-        A36Labs is a global builder ecosystem network. We curate serious builders, run the rooms, and connect talent to protocols, capital, and real work — across emerging tech.
+        A36 Labs is a global builder network operating across 36+ tech verticals. We curate the builders, run the summits, and connect serious talent to protocols, capital, and real work.
       </p>
 
       <div className="flex flex-wrap gap-4 mt-10">
-        <Link to="/earn" className="btn-primary">EXPLORE EARN →</Link>
-        <a href="/events" className="btn-ghost">VIEW EVENTS →</a>
+        <Link to="/apply" className="btn-primary">APPLY FOR A36 PASSPORT →</Link>
+        <Link to="/events" className="btn-ghost">VIEW EVENTS →</Link>
       </div>
 
       <div className="mt-14 flex flex-wrap">
