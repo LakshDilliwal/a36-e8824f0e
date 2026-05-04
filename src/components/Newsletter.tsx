@@ -6,7 +6,7 @@ const Newsletter = () => (
         Weekly signal from<br />the frontier.
       </h2>
       <p className="text-base text-white/60 mt-4 max-w-[560px]">
-        No recap. No noise. Just what serious builders need to know — curated every week by A36.
+        No recap. No noise. Just what serious builders need to know, curated every week by A36.
       </p>
 
       <div className="mt-10 max-w-[480px]">

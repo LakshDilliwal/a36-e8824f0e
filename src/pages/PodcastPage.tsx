@@ -83,7 +83,7 @@ const PodcastPage = () => {
             <div className="p-8">
               <span className="bg-primary text-accent font-bold text-[11px] px-2.5 py-1">EP 001</span>
               <h2 className="font-black text-2xl md:text-3xl text-primary mt-4">
-                Coming Soon — Episode 1 Dropping Shortly
+                Coming Soon. Episode 1 Dropping Shortly
               </h2>
               <p className="text-sm text-muted mt-2">First guest announcement coming soon.</p>
               <p className="text-base text-primary/75 mt-4">
@@ -124,7 +124,7 @@ const PodcastPage = () => {
               <div key={ep.num} className="bg-white border border-border min-w-[280px] snap-start">
                 <div className="aspect-video bg-[#C8BFB0]" />
                 <div className="p-5">
-                  <span className="font-bold text-[10px] text-accent uppercase tracking-wider">{ep.num} — {ep.title}</span>
+                  <span className="font-bold text-[10px] text-accent uppercase tracking-wider">{ep.num}, {ep.title}</span>
                   <p className="text-sm text-muted mt-2">Guest: {ep.guest}</p>
                 </div>
               </div>

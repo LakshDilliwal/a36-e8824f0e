@@ -28,7 +28,7 @@ const Podcast = () => (
           <h3 className="font-black text-[24px] text-primary leading-tight">Booting Up. The A36 Signal.</h3>
           <p className="text-sm text-muted mt-2">First guest announcement coming soon.</p>
           <p className="text-sm text-primary/70 mt-3">
-            Subscribe to be notified when Base Layer Episode 001 drops. The first chapter — why A36 exists, what it's building, and who it's for.
+            Subscribe to be notified when Base Layer Episode 001 drops. The first chapter. Why A36 exists, what it's building, and who it's for.
           </p>
           <div className="flex items-center gap-4 mt-5">
             <span className="bg-primary text-accent font-bold text-[11px] px-2.5 py-1">~45 MIN</span>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const events = [
   {
     badge: "FEATURED · SIDE EVENT",
-    name: "A36 Infra Room — Singapore",
+    name: "A36 Infra Summit, Singapore",
     subtitle: "AI × Web3 × Capital. By invitation only.",
     context: "Alongside SuperAI 2026",
     date: "June 10–11, 2026",
@@ -26,7 +26,7 @@ const UpcomingEvents = () => (
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow-dark mb-4">UPCOMING EVENTS</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-        Global Rooms. 2026.
+        Global Summits. 2026.
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">

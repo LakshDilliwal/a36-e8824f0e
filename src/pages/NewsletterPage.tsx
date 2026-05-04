@@ -2,8 +2,8 @@ import PageWrapper from "@/components/PageWrapper";
 
 const features = [
   { title: "Protocol Updates", body: "What's moving across tech, builder, and startup ecosystems this week" },
-  { title: "Opportunity Alerts", body: "Curated opportunities — bounties, grants, and jobs from the A36 network" },
-  { title: "Event Previews", body: "Upcoming A36 rooms and partner events globally" },
+  { title: "Opportunity Alerts", body: "Curated opportunities. Bounties, grants, and jobs from the A36 network" },
+  { title: "Event Previews", body: "Upcoming A36 summits and partner events globally" },
 ];
 
 const NewsletterPage = () => (

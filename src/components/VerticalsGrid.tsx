@@ -9,7 +9,7 @@ const VerticalsGrid = () => (
         36 Verticals. One Network.
       </h2>
       <p className="text-base text-primary/65 mt-4 max-w-[560px]">
-        From infrastructure to creator economy — A36 covers the full frontier of tech and innovation.
+        From infrastructure to creator economy. A36 covers the full frontier of tech and innovation.
       </p>
 
       <div className="flex flex-wrap gap-2 mt-12">

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import { allVerticals } from "@/lib/verticals";
 
 const days = [
-  { day: "Day 1", date: "Oct 29", title: "CHECK-IN + CONTEXT", body: "Who's in the room. What everyone is building. A36 orientation and vertical pairing." },
+  { day: "Day 1", date: "Oct 29", title: "CHECK-IN + CONTEXT", body: "Who's in the summit. What everyone is building. A36 orientation and vertical pairing." },
   { day: "Day 2", date: "Oct 30", title: "DEEP DIVES", body: "Vertical workshops across A36's tech domains. Mentor sessions. Protocol introductions." },
   { day: "Day 3", date: "Oct 31", title: "BUILD DAY", body: "No meetings. No panels. Just builders shipping for 12 hours straight." },
   { day: "Day 4", date: "Nov 1", title: "CAPITAL DAY", body: "Investor 1:1 speed meetings. Protocol partnership intros. GTM conversations." },
-  { day: "Day 5", date: "Nov 2", title: "DEMO + DINNER", body: "Closed-room demos to investors and mentors. Builder graduation dinner. End of sprint." },
+  { day: "Day 5", date: "Nov 2", title: "DEMO + DINNER", body: "Closed-summit demos to investors and mentors. Builder graduation dinner. End of sprint." },
 ];
 
 const Residency = () => {
@@ -30,7 +30,7 @@ const Residency = () => {
             The 5-Day Sprint for<br />Serious Builders.
           </h1>
           <p className="text-base text-primary/70 mt-6 max-w-[640px]">
-            Not a conference. Not a bootcamp. A closed room where 20 selected builders spend 5 days shipping, connecting with investors, and going deep with ecosystem operators.
+            Not a conference. Not a bootcamp. A closed summit where 20 selected builders spend 5 days shipping, connecting with investors, and going deep with ecosystem operators.
           </p>
           <div className="mt-10 flex flex-col items-start gap-3">
             <a href="#apply" className="btn-primary inline-block">APPLY FOR OCT–NOV 2026 →</a>
@@ -75,7 +75,7 @@ const Residency = () => {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-12">
             {days.map((d) => (
               <div key={d.day} className="bg-white border border-border p-5">
-                <p className="font-black text-accent text-xs">{d.day} — {d.date}</p>
+                <p className="font-black text-accent text-xs">{d.day}, {d.date}</p>
                 <h3 className="font-black text-base text-primary mt-2 leading-tight">{d.title}</h3>
                 <p className="text-xs text-muted mt-3 leading-relaxed">{d.body}</p>
               </div>
