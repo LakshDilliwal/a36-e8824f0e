@@ -5,7 +5,7 @@ import { allVerticals } from "@/lib/verticals";
 
 const days = [
   { day: "Day 1", date: "Oct 29", title: "CHECK-IN + CONTEXT", body: "Who's in the room. What everyone is building. A36 orientation and vertical pairing." },
-  { day: "Day 2", date: "Oct 30", title: "DEEP DIVES", body: "Three vertical workshops (Web3 / AI / DePIN). Mentor sessions. Protocol intros." },
+  { day: "Day 2", date: "Oct 30", title: "DEEP DIVES", body: "Vertical workshops across A36's tech domains. Mentor sessions. Protocol introductions." },
   { day: "Day 3", date: "Oct 31", title: "BUILD DAY", body: "No meetings. No panels. Just builders shipping for 12 hours straight." },
   { day: "Day 4", date: "Nov 1", title: "CAPITAL DAY", body: "Investor 1:1 speed meetings. Protocol partnership intros. GTM conversations." },
   { day: "Day 5", date: "Nov 2", title: "DEMO + DINNER", body: "Closed-room demos to investors and mentors. Builder graduation dinner. End of sprint." },
@@ -47,7 +47,6 @@ const Residency = () => {
           <div className="bg-primary text-white p-8 md:p-12">
             <span className="font-bold text-[10px] uppercase tracking-[0.15em] text-accent">UPCOMING · APPLICATIONS OPEN</span>
             <h2 className="font-black text-3xl md:text-4xl mt-3">A36 Residency</h2>
-            <p className="text-lg text-white/70 mt-1">× ETH DevCon Mumbai 2026</p>
             <div className="border-t border-white/10 my-6" />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-base text-white/80">
               <p>📅 October 29 – November 2, 2026</p>
@@ -56,7 +55,7 @@ const Residency = () => {
               <p>💰 Free for accepted builders · Fully sponsored</p>
             </div>
             <p className="text-sm text-white/60 mt-6">
-              Co-located in the week leading into ETH DevCon Mumbai — the largest Ethereum developer conference.
+              Co-located with a major global tech event, Mumbai.
             </p>
             <div className="mt-8">
               <a href="#apply" className="btn-primary inline-block">APPLY NOW →</a>
@@ -136,15 +135,8 @@ const Residency = () => {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Past Residencies */}
-      <section className="bg-background py-24">
-        <div className="container max-w-[1100px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-dark mb-4">PAST RESIDENCIES</p>
-          <p className="text-sm text-muted italic mt-4">
-            A36 Residency launches November 2026. This section will be updated after each program.
+          <p className="text-sm text-white/60 mt-8">
+            Sponsorship packages available. Contact hello@a36labs.com
           </p>
         </div>
       </section>

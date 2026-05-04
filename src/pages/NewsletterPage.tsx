@@ -56,6 +56,17 @@ const NewsletterPage = () => (
             scrolling="no"
           />
         </div>
+        <p className="text-sm text-white/60 mt-6">
+          Read past issues at{" "}
+          <a
+            href="https://a36signal.substack.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:underline"
+          >
+            a36signal.substack.com
+          </a>
+        </p>
       </div>
     </section>
   </PageWrapper>
