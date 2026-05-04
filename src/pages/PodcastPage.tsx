@@ -27,9 +27,9 @@ const guestCategories = [
 
 const stats = [
   { num: "0", label: "Episodes", note: "Launching soon" },
-  { num: "—", label: "Total Views" },
+  { num: "0", label: "Total Views" },
   { num: "0", label: "Guests" },
-  { num: "—", label: "Subscribers" },
+  { num: "0", label: "Subscribers" },
 ];
 
 const PodcastPage = () => {
