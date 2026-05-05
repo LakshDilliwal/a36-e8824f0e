@@ -1,19 +1,34 @@
 import { Link } from "react-router-dom";
-import { allVerticals } from "@/lib/verticals";
+
+const featured = [
+  "Blockchain Protocols",
+  "DeFi",
+  "DePIN",
+  "Artificial Intelligence",
+  "Cloud & Compute",
+  "Developer Tools",
+  "Fintech & Payments",
+  "Healthtech & MedTech",
+  "CleanTech & Energy",
+  "Creator Economy & Media",
+  "Cybersecurity",
+  "Tokenized Real-World Assets",
+];
 
 const VerticalsGrid = () => (
-  <section className="bg-background py-24">
+  <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
-      <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-        36 Verticals. One Network.
-      </h2>
-      <p className="text-base text-primary/65 mt-4 max-w-[560px]">
-        From infrastructure to creator economy. A36 covers the full frontier of tech and innovation.
-      </p>
-
-      <div className="flex flex-wrap gap-2 mt-12">
-        {allVerticals.map((v) => (
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+        <h2 className="font-black text-[28px] md:text-[36px] leading-[1.05] tracking-heading text-primary">
+          36 Verticals. One Network.
+        </h2>
+        <Link to="/ecosystem" className="btn-ghost inline-block shrink-0">
+          VIEW ALL 36 VERTICALS →
+        </Link>
+      </div>
+      <div className="flex flex-wrap gap-2">
+        {featured.map((v) => (
           <Link
             key={v}
             to="/ecosystem"
@@ -22,10 +37,6 @@ const VerticalsGrid = () => (
             {v}
           </Link>
         ))}
-      </div>
-
-      <div className="mt-10">
-        <Link to="/ecosystem" className="btn-ghost inline-block">EXPLORE ECOSYSTEM →</Link>
       </div>
     </div>
   </section>
