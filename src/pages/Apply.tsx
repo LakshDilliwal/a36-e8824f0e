@@ -5,15 +5,15 @@ import { Link } from "react-router-dom";
 const paths = [
   {
     label: "FOR BUILDERS",
-    title: "A36 Passport",
-    body: "For founders, devs, and designers who ship. Get into the cohort, access capital introductions, walk into invite-only global summits, and work on real opportunities across Web3 and AI.",
+    title: "Join A36",
+    body: "For founders, developers, and designers who ship. Get access to capital introductions, invite-only global summits, and real opportunities across 36 tech verticals.",
     cta: "APPLY AS BUILDER →",
     dark: false,
   },
   {
     label: "FOR PROTOCOLS & SPONSORS",
     title: "List on A36 Earn",
-    body: "Post bounties, grants, and jobs directly to A36's builder network. No noise. Just people who actually ship. Reach curated talent across Web3, AI, and infrastructure verticals.",
+    body: "Post bounties, grants, and jobs directly to A36's builder network. No noise. Just people who actually ship. Reach curated talent across 36 tech verticals.",
     cta: "LIST AN OPPORTUNITY →",
     dark: true,
   },
@@ -26,7 +26,7 @@ const paths = [
   },
 ];
 
-const verticals = ["Web3", "AI", "Healthcare", "Finance", "DePIN", "Infrastructure", "Other"];
+const verticals = ["Infrastructure", "Finance", "Healthcare", "Deep Tech", "DePIN", "Consumer", "Other"];
 const partnerLookingFor = ["Post on A36 Earn", "Co-host an Event", "Sponsor A36 Signal", "Media Collab", "Other"];
 
 const Apply = () => {
@@ -99,7 +99,7 @@ const Apply = () => {
       <section className="bg-background py-24">
         <div className="container max-w-3xl mx-auto px-6 md:px-16">
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            Apply for A36 Passport
+            Apply to Join A36
           </h2>
           <p className="text-muted mt-2">Every application reviewed by hand. No shortcuts.</p>
 

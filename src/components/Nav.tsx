@@ -3,42 +3,51 @@ import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import { Menu, X, ChevronDown } from "lucide-react";
 
-const servicesItems = [
-  { label: "Events", to: "/events" },
-  { label: "Podcast (Base Layer)", to: "/podcast" },
-  { label: "Newsletter (A36 Signal)", to: "/newsletter" },
-  { label: "Merchandise (BitSwags)", to: "/merch" },
+const programsItems = [
   { label: "Residency", to: "/residency" },
+  { label: "Community", to: "/community" },
+];
+
+const contentItems = [
+  { label: "Podcast", to: "/podcast" },
+  { label: "Newsletter", to: "/newsletter" },
 ];
 
 const companyItems = [
   { label: "About", to: "/about" },
   { label: "Media Kit", to: "/media-kit" },
+  { label: "Merchandise", to: "/merch" },
   { label: "Partner With Us", to: "/apply" },
 ];
 
 const Nav = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [programsOpen, setProgramsOpen] = useState(false);
+  const [contentOpen, setContentOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
+  const [mobileContentOpen, setMobileContentOpen] = useState(false);
   const [mobileCompanyOpen, setMobileCompanyOpen] = useState(false);
 
-  const servicesRef = useRef<HTMLDivElement>(null);
+  const programsRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const companyRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
     setMobileOpen(false);
-    setServicesOpen(false);
+    setProgramsOpen(false);
+    setContentOpen(false);
     setCompanyOpen(false);
-    setMobileServicesOpen(false);
+    setMobileProgramsOpen(false);
+    setMobileContentOpen(false);
     setMobileCompanyOpen(false);
   }, [location]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) setServicesOpen(false);
+      if (programsRef.current && !programsRef.current.contains(e.target as Node)) setProgramsOpen(false);
+      if (contentRef.current && !contentRef.current.contains(e.target as Node)) setContentOpen(false);
       if (companyRef.current && !companyRef.current.contains(e.target as Node)) setCompanyOpen(false);
     };
     document.addEventListener("mousedown", handler);
@@ -52,21 +61,21 @@ const Nav = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary h-16 flex items-center px-6 lg:px-10">
         {/* DESKTOP LEFT */}
         <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
-          <div className="relative" ref={servicesRef}>
+          <div className="relative" ref={programsRef}>
             <button
-              onClick={() => { setServicesOpen(!servicesOpen); setCompanyOpen(false); }}
+              onClick={() => { setProgramsOpen(!programsOpen); setContentOpen(false); setCompanyOpen(false); }}
               className={`${navLinkClass} flex items-center gap-1`}
             >
-              SERVICES <ChevronDown size={14} />
+              PROGRAMS <ChevronDown size={14} />
             </button>
-            {servicesOpen && (
+            {programsOpen && (
               <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60]">
-                {servicesItems.map((item) => (
+                {programsItems.map((item) => (
                   <Link
                     key={item.label}
                     to={item.to}
                     className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5"
-                    onClick={() => setServicesOpen(false)}
+                    onClick={() => setProgramsOpen(false)}
                   >
                     {item.label}
                   </Link>
@@ -75,7 +84,7 @@ const Nav = () => {
             )}
           </div>
           <Link to="/earn" className={navLinkClass}>EARN</Link>
-          <Link to="/ecosystem" className={navLinkClass}>ECOSYSTEM</Link>
+          <Link to="/events" className={navLinkClass}>EVENTS</Link>
         </div>
 
         {/* CENTER LOGO */}
@@ -85,9 +94,32 @@ const Nav = () => {
 
         {/* DESKTOP RIGHT */}
         <div className="hidden lg:flex items-center justify-center gap-8 flex-1">
+          <Link to="/ecosystem" className={navLinkClass}>ECOSYSTEM</Link>
+          <div className="relative" ref={contentRef}>
+            <button
+              onClick={() => { setContentOpen(!contentOpen); setProgramsOpen(false); setCompanyOpen(false); }}
+              className={`${navLinkClass} flex items-center gap-1`}
+            >
+              CONTENT <ChevronDown size={14} />
+            </button>
+            {contentOpen && (
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+                {contentItems.map((item) => (
+                  <Link
+                    key={item.label}
+                    to={item.to}
+                    className="block px-4 py-2 text-sm text-white/70 hover:text-accent hover:bg-white/5"
+                    onClick={() => setContentOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
           <div className="relative" ref={companyRef}>
             <button
-              onClick={() => { setCompanyOpen(!companyOpen); setServicesOpen(false); }}
+              onClick={() => { setCompanyOpen(!companyOpen); setProgramsOpen(false); setContentOpen(false); }}
               className={`${navLinkClass} flex items-center gap-1`}
             >
               COMPANY <ChevronDown size={14} />
@@ -107,7 +139,6 @@ const Nav = () => {
               </div>
             )}
           </div>
-          <Link to="/events" className={navLinkClass}>EVENTS</Link>
           <Link to="/apply" className="btn-gold text-xs py-2.5 px-5">APPLY →</Link>
         </div>
 
@@ -129,19 +160,34 @@ const Nav = () => {
 
           <div className="flex flex-col gap-1 mt-12 px-6 flex-1">
             <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
-            <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
             <Link to="/events" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
+            <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
 
-            {/* Services accordion */}
+            {/* Programs accordion */}
             <button
               className="text-white font-bold text-2xl py-2 text-left flex items-center gap-2"
-              onClick={() => setMobileServicesOpen(!mobileServicesOpen)}
+              onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
             >
-              SERVICES <ChevronDown size={18} className={`transition-transform duration-200 ${mobileServicesOpen ? "rotate-180" : ""}`} />
+              PROGRAMS <ChevronDown size={18} className={`transition-transform duration-200 ${mobileProgramsOpen ? "rotate-180" : ""}`} />
             </button>
-            {mobileServicesOpen && (
+            {mobileProgramsOpen && (
               <div className="flex flex-col gap-1 pl-4 mb-2">
-                {servicesItems.map((item) => (
+                {programsItems.map((item) => (
+                  <Link key={item.label} to={item.to} className="text-white/60 font-bold text-base py-1.5" onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                ))}
+              </div>
+            )}
+
+            {/* Content accordion */}
+            <button
+              className="text-white font-bold text-2xl py-2 text-left flex items-center gap-2"
+              onClick={() => setMobileContentOpen(!mobileContentOpen)}
+            >
+              CONTENT <ChevronDown size={18} className={`transition-transform duration-200 ${mobileContentOpen ? "rotate-180" : ""}`} />
+            </button>
+            {mobileContentOpen && (
+              <div className="flex flex-col gap-1 pl-4 mb-2">
+                {contentItems.map((item) => (
                   <Link key={item.label} to={item.to} className="text-white/60 font-bold text-base py-1.5" onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}
               </div>
