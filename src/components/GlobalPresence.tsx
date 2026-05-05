@@ -14,9 +14,9 @@ const dots = [
 const GlobalPresence = () => (
   <section className="bg-warm-cream py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">WE'RE PRESENT ACROSS</p>
+      <p className="eyebrow-dark mb-4">GLOBAL PRESENCE</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-        Built from India.<br />Operating Everywhere.
+        6 Continents.<br />One Network.
       </h2>
 
       <div className="relative mt-12 bg-white border border-border aspect-[2/1] overflow-hidden">
