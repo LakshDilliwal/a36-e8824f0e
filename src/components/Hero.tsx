@@ -14,7 +14,7 @@ const Hero = () => (
       </p>
 
       <div className="flex flex-wrap gap-4 mt-10">
-        <Link to="/apply" className="btn-primary">APPLY FOR A36 PASSPORT →</Link>
+        <Link to="/community" className="btn-primary">JOIN COMMUNITY →</Link>
         <Link to="/events" className="btn-ghost">VIEW EVENTS →</Link>
       </div>
 

@@ -11,6 +11,7 @@ import Events from "./pages/Events";
 import PodcastPage from "./pages/PodcastPage";
 import Apply from "./pages/Apply";
 import About from "./pages/About";
+import Community from "./pages/Community";
 
 import NewsletterPage from "./pages/NewsletterPage";
 import FAQ from "./pages/FAQ";
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/podcast" element={<PodcastPage />} />
           <Route path="/apply" element={<Apply />} />
           <Route path="/about" element={<About />} />
+          <Route path="/community" element={<Community />} />
           
           <Route path="/newsletter" element={<NewsletterPage />} />
           <Route path="/faq" element={<FAQ />} />
