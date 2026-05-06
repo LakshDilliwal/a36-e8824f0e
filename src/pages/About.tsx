@@ -59,7 +59,7 @@ const About = () => (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { num: "120+", label: "Events Hosted" },
-            { num: "10K+", label: "Builders" },
+            { num: "36+", label: "Builders" },
             { num: "36", label: "Verticals" },
             { num: "6", label: "Continents" },
           ].map((s) => (
