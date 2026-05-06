@@ -21,7 +21,7 @@ const sections = [
     ],
   },
   {
-    heading: "EVENTS",
+    heading: "IRL EVENTS",
     items: [
       { q: "How do A36 events work?", a: "A36 hosts high-signal, invite-only summits at global conferences and builder hubs. Events are curated, not open to the public unless specified. Focus is always on operators, infrastructure builders, and capital." },
       { q: "How do I attend an A36 event?", a: "Request access via the Events page or apply for A36 Passport. Partner protocols and communities receive priority access." },
