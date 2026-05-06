@@ -1,12 +1,12 @@
 const Newsletter = () => (
-  <section id="newsletter" className="bg-primary py-24">
+  <section id="newsletter" className="bg-primary py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow mb-4">A36 SIGNAL</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
-        Weekly signal from<br />the frontier.
+        A36 Signal.
       </h2>
       <p className="text-base text-white/60 mt-4 max-w-[560px]">
-        No recap. No noise. Just what serious builders need to know, curated every week by A36.
+        Weekly intel for builders and operators. No recap. No noise. Curated every week by A36.
       </p>
 
       <div className="mt-10 max-w-[480px]">

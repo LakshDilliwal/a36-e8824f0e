@@ -8,9 +8,9 @@ const platforms = [
 ];
 
 const Podcast = () => (
-  <section className="bg-background py-24">
+  <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">BASE LAYER PODCAST</p>
+      <p className="eyebrow-dark mb-4">A36 PODCAST</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Signal Over Noise.
       </h2>
