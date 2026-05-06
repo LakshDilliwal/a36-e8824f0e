@@ -2,14 +2,14 @@ import { Link } from "react-router-dom";
 
 const Hero = () => (
   <section className="min-h-[85vh] flex items-center bg-background">
-    <div className="container max-w-5xl mx-auto px-6 md:px-16 py-20">
+    <div className="container max-w-5xl mx-auto px-6 md:px-16 py-16">
       <p className="eyebrow mb-6">A36 LABS</p>
 
       <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
         Where Serious<br />Builders Operate.
       </h1>
 
-      <p className="mt-6 text-primary/80 text-base md:text-lg max-w-[640px]">
+      <p className="mt-4 text-primary/80 text-base md:text-lg max-w-[640px]">
         A36 Labs is a global builder network operating across 36+ tech verticals. We curate the builders, run the summits, and connect serious talent to protocols, capital, and real work.
       </p>
 
@@ -18,7 +18,7 @@ const Hero = () => (
         <Link to="/events" className="btn-ghost">VIEW IRL EVENTS →</Link>
       </div>
 
-      <div className="mt-14 flex flex-wrap">
+      <div className="mt-8 flex flex-wrap">
         {[
           { num: "120+", label: "IRL EVENTS" },
           { num: "36+", label: "BUILDERS" },
