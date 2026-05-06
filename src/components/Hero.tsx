@@ -15,12 +15,12 @@ const Hero = () => (
 
       <div className="flex flex-wrap gap-4 mt-10">
         <Link to="/community" className="btn-primary">JOIN COMMUNITY →</Link>
-        <Link to="/events" className="btn-ghost">VIEW EVENTS →</Link>
+        <Link to="/events" className="btn-ghost">VIEW IRL EVENTS →</Link>
       </div>
 
       <div className="mt-14 flex flex-wrap">
         {[
-          { num: "120+", label: "EVENTS" },
+          { num: "120+", label: "IRL EVENTS" },
           { num: "36+", label: "BUILDERS" },
           { num: "36", label: "VERTICALS" },
           { num: "6", label: "CONTINENTS" },

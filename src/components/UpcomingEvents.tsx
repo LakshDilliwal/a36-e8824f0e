@@ -24,7 +24,7 @@ const events = [
 const UpcomingEvents = () => (
   <section className="bg-warm-cream py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">UPCOMING EVENTS</p>
+      <p className="eyebrow-dark mb-4">UPCOMING IRL EVENTS</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Global Summits. 2026.
       </h2>
@@ -47,7 +47,7 @@ const UpcomingEvents = () => (
       </div>
 
       <div className="mt-10">
-        <Link to="/events" className="btn-ghost inline-block">SEE ALL EVENTS →</Link>
+        <Link to="/events" className="btn-ghost inline-block">SEE ALL IRL EVENTS →</Link>
       </div>
     </div>
   </section>
