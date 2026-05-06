@@ -21,7 +21,7 @@ const Hero = () => (
       <div className="mt-14 flex flex-wrap">
         {[
           { num: "120+", label: "EVENTS" },
-          { num: "10K+", label: "BUILDERS" },
+          { num: "36+", label: "BUILDERS" },
           { num: "36", label: "VERTICALS" },
           { num: "6", label: "CONTINENTS" },
         ].map((stat, i) => (
