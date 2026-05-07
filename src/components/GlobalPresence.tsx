@@ -10,9 +10,9 @@ const regions = [
 const GlobalPresence = () => (
   <section className="bg-warm-cream py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">GLOBAL PRESENCE</p>
+      <p className="eyebrow-dark mb-4">WHERE WE OPERATE</p>
       <h2 className="font-black text-[28px] md:text-[36px] leading-[1.05] tracking-heading text-primary mb-10">
-        6 Continents.<br />One Network.
+        Everywhere<br />Builders Are.
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-border">
         {regions.map((r) => (

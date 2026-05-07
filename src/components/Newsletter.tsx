@@ -6,7 +6,7 @@ const Newsletter = () => (
         A36 Signal.
       </h2>
       <p className="text-base text-white/60 mt-4 max-w-[560px]">
-        Weekly intel for builders and operators. No recap. No noise. Curated every week by A36.
+        Weekly intel for builders and operators. No recap. No noise. Curated every week by A36 Labs
       </p>
 
       <div className="mt-10 max-w-[480px]">
