@@ -21,9 +21,9 @@ const Hero = () => (
       <div className="mt-8 flex flex-wrap">
         {[
           { num: "120+", label: "IRL EVENTS" },
-          { num: "36+", label: "BUILDERS" },
-          { num: "36", label: "VERTICALS" },
-          { num: "6", label: "CONTINENTS" },
+          { num: "50K+", label: "BUILDERS" },
+          { num: "36+", label: "VERTICALS" },
+          { num: "GLOBAL", label: "PRESENCE" },
         ].map((stat, i) => (
           <div key={stat.label} className={`flex flex-col py-4 px-6 md:px-8 ${i > 0 ? "border-l border-border" : ""}`}>
             <span className="font-black text-[28px] md:text-[32px] text-accent">{stat.num}</span>
