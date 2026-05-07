@@ -100,7 +100,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-in-right": "slide-in-right 0.3s ease-out",
         marquee: "marquee 30s linear infinite",
-        "marquee-full": "marquee-full 28s linear infinite",
+        "marquee-full": "marquee-full 25s linear infinite",
       },
     },
   },
