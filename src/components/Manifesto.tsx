@@ -12,7 +12,7 @@ const cards = [
   {
     label: "IRL EVENTS",
     title: "A36 Events",
-    body: "120+ summits across 6 continents. Side events, hacker houses, and founder salons curated around every major tech conference globally.",
+    body: "120+ summits globally. Side events, hacker houses, and founder meetups curated around every major tech conference globally.",
     cta: "View Events",
     href: "/events",
     disabled: false,
