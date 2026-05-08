@@ -121,7 +121,7 @@ const Events = () => {
             Want to build with us?
           </h2>
           <p className="text-base text-primary/60 mt-4 max-w-[560px] mx-auto">
-            We co-host with protocols, communities, and funds globally. Singapore. Dubai. Bangalore. And everywhere the builders are.
+            We co-host with protocols, communities, and funds globally.
           </p>
           <div className="mt-10">
             <Link to="/apply" className="btn-primary inline-block">
