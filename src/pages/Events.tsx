@@ -118,7 +118,7 @@ const Events = () => {
       <section className="bg-warm-cream py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            Want to build a summit with us?
+            Want to build with us?
           </h2>
           <p className="text-base text-primary/60 mt-4 max-w-[560px] mx-auto">
             We co-host with protocols, communities, and funds globally. Singapore. Dubai. Bangalore. And everywhere the builders are.
