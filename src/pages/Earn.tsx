@@ -9,7 +9,7 @@ const Earn = () => (
           Build<br />Get Paid
         </h1>
         <p className="text-base text-primary/70 mt-6 max-w-[560px]">
-          Real work from real ecosystems. Bounties, grants, and opportunities curated by A36.
+          Real work from real ecosystems. Bounties, grants, and opportunities curated by A36 Labs
         </p>
 
         <div className="mt-10 max-w-[480px]">
