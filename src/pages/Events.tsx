@@ -41,7 +41,7 @@ const Events = () => {
             120+ Summits.<br />Globally.<br />All Alpha.
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
-            Side events, hacker houses, founder salons, and builder summits curated by A36 across every major tech conference globally.
+            Side events, hacker houses, founder meetups, and builder summits curated by A36 Labs across every major tech conference globally.
           </p>
         </div>
       </section>
