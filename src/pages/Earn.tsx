@@ -29,7 +29,7 @@ const Earn = () => (
     <section className="bg-primary py-16">
       <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
         <p className="text-white text-base">
-          A36 Earn launches mid-2026. Zero commission for builders. Multi-chain payouts.
+          Zero commission for builders
         </p>
       </div>
     </section>
