@@ -38,7 +38,7 @@ const Events = () => {
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 | IRL EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
-            120+ Summits.<br />6 Continents.<br />All Signal.
+            120+ Summits.<br />Globally.<br />All Alpha.
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
             Side events, hacker houses, founder salons, and builder summits curated by A36 across every major tech conference globally.
