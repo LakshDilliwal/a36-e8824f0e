@@ -19,14 +19,17 @@ const VerticalsGrid = () => (
   <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
-      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">
         <h2 className="font-black text-[28px] md:text-[36px] leading-[1.05] tracking-heading text-primary">
-          36 Verticals. One Network.
+          36+ Verticals<br />One Network
         </h2>
         <Link to="/ecosystem" className="btn-ghost inline-block shrink-0">
-          VIEW ALL 36 VERTICALS →
+          VIEW ALL VERTICALS →
         </Link>
       </div>
+      <p className="text-base text-primary/65 mb-8 max-w-[640px]">
+        A36 maps and connects builders, communities, protocols, tools, startups, funds, and opportunity networks across high-growth technology verticals.
+      </p>
       <div className="flex flex-wrap gap-2">
         {featured.map((v) => (
           <Link

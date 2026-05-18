@@ -3,10 +3,10 @@ const Newsletter = () => (
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow mb-4">A36 SIGNAL</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
-        A36 Signal.
+        Weekly Signal For Serious Builders
       </h2>
-      <p className="text-base text-white/60 mt-4 max-w-[560px]">
-        Weekly intel for builders and operators. No recap. No noise. Curated every week by A36 Labs
+      <p className="text-base text-white/60 mt-4 max-w-[640px]">
+        Curated opportunities, grants, bounties, events, protocol updates, startup moves, and alpha drops from across Web3, AI, and emerging tech.
       </p>
 
       <div className="mt-10 max-w-[480px]">
@@ -26,7 +26,7 @@ const Newsletter = () => (
             <button type="submit" className="btn-gold px-6 py-3.5 whitespace-nowrap">SUBSCRIBE →</button>
           </div>
         </form>
-        <p className="text-xs text-white/40 mt-3">Powered by Substack. No spam. Unsubscribe anytime.</p>
+        <p className="text-xs text-white/40 mt-3">No fluff. No hype. Just useful signal</p>
       </div>
     </div>
   </section>

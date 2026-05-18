@@ -18,7 +18,7 @@ const EcosystemPartners = () => (
     />
 
     <p className="text-center text-[11px] font-extrabold tracking-[0.3em] uppercase text-black/40 mb-4 select-none">
-      IN THE ROOM WITH
+      WHERE OUR BUILDERS OPERATE
     </p>
 
     <div className="relative w-full overflow-hidden">
