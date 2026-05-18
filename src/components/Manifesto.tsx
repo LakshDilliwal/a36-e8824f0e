@@ -4,47 +4,47 @@ const cards = [
   {
     label: "EARN",
     title: "A36 Earn",
-    body: "Bounties, grants, and jobs from verified protocols. Builders find real work. Sponsors reach curated talent.",
-    cta: "Coming Soon",
+    body: "Curated grants, bounties, jobs, hackathons, fellowships, and ecosystem opportunities for builders across emerging tech",
+    cta: "Join Waitlist",
     href: "/earn",
-    disabled: true,
+    disabled: false,
   },
   {
     label: "IRL EVENTS",
     title: "A36 Events",
-    body: "120+ summits globally. Side events, hacker houses, and founder meetups curated around every major tech conference globally.",
+    body: "Hackathons, meetups, workshops, founder connects, side events, and curated builder rooms hosted across global tech ecosystems",
     cta: "View Events",
     href: "/events",
     disabled: false,
   },
   {
-    label: "COMMUNITY",
-    title: "A36 Community",
-    body: "The private network. Builders, operators, and founders who have earned their seat, connected across continents and verticals.",
-    cta: "Coming Soon",
-    href: "/community",
-    disabled: true,
+    label: "NETWORK",
+    title: "A36 Network",
+    body: "A curated global network of founders, developers, operators, researchers, community leads, and ecosystem builders serious about shipping",
+    cta: "Apply to Join",
+    href: "/apply",
+    disabled: false,
+  },
+  {
+    label: "PODCAST",
+    title: "Base Layer",
+    body: "Long-form conversations with founders, operators, protocol teams, investors, and builders working at the edge of Web3, AI, and deep tech",
+    cta: "Be a Guest",
+    href: "/apply",
+    disabled: false,
   },
   {
     label: "SIGNAL",
     title: "A36 Signal",
-    body: "Weekly dispatch for builders and operators. No recap. No noise. One email curated for founders who need alpha, not scroll.",
+    body: "Weekly alpha drops covering grants, bounties, events, protocol updates, startup opportunities, and ecosystem moves",
     cta: "Subscribe",
     href: "/newsletter",
     disabled: false,
   },
   {
-    label: "ECOSYSTEM",
-    title: "A36 Ecosystem",
-    body: "A directory of protocols, funds, and communities operating across A36's 36 tech verticals. The map of what is being built.",
-    cta: "Coming Soon",
-    href: "/ecosystem",
-    disabled: true,
-  },
-  {
     label: "RESIDENCY",
     title: "A36 Residency",
-    body: "A 5-day immersive builder sprint. 20 selected builders. Invite-only. Co-located with a major global tech event in November 2026.",
+    body: "A 15-day global builder residency for selected founders, developers, and operators to ship, collaborate, meet mentors, and access ecosystem partners",
     cta: "Apply Now",
     href: "/residency",
     disabled: false,
@@ -56,8 +56,11 @@ const Manifesto = () => (
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow mb-4">WHAT WE DO</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
-        One Network.<br />Six Ways We Operate.
+        One Network<br />Six Ways We Operate
       </h2>
+      <p className="text-base text-white/60 mt-4 max-w-[640px]">
+        A36 connects builders to people, opportunities, events, media, ecosystem access, and residency programs across emerging tech.
+      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
         {cards.map((c) => (
@@ -71,7 +74,7 @@ const Manifesto = () => (
               </span>
             ) : (
               <Link to={c.href} className="text-accent font-bold text-sm uppercase tracking-wider mt-6 hover:underline">
-                {c.cta}
+                {c.cta} →
               </Link>
             )}
           </div>

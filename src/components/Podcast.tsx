@@ -10,12 +10,12 @@ const platforms = [
 const Podcast = () => (
   <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">A36 PODCAST</p>
+      <p className="eyebrow-dark mb-4">BASE LAYER BY A36</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-        Signal Over Noise.
+        Conversations With Builders In The Arena
       </h2>
-      <p className="text-base text-primary/65 mt-4 max-w-[560px]">
-        Long-form conversations with founders, operators, and protocol leads shipping in Web3, AI, and deep tech.
+      <p className="text-base text-primary/65 mt-4 max-w-[640px]">
+        Base Layer is A36's long-form podcast featuring founders, operators, developers, protocol teams, investors, and ecosystem leaders building across Web3, AI, and emerging tech.
       </p>
 
       {/* Featured episode card */}
@@ -24,15 +24,14 @@ const Podcast = () => (
           <Mic size={56} className="text-accent" />
         </div>
         <div className="flex-1">
-          <p className="eyebrow-dark mb-2">EPISODE 001</p>
-          <h3 className="font-black text-[24px] text-primary leading-tight">Booting Up. The A36 Signal.</h3>
-          <p className="text-sm text-muted mt-2">First guest announcement coming soon.</p>
+          <p className="eyebrow-dark mb-2">SEASON 1</p>
+          <h3 className="font-black text-[24px] text-primary leading-tight">Season 1 Coming Soon</h3>
           <p className="text-sm text-primary/70 mt-3">
-            Subscribe to be notified when Base Layer Episode 001 drops. The first chapter. Why A36 exists, what it's building, and who it's for.
+            Guest outreach is open. We are speaking with builders, operators, and ecosystem leaders shaping the next layer of technology.
           </p>
-          <div className="flex items-center gap-4 mt-5">
-            <span className="bg-primary text-accent font-bold text-[11px] px-2.5 py-1">~45 MIN</span>
-            <Link to="/podcast" className="btn-primary !py-2 !px-4 text-xs">LISTEN NOW →</Link>
+          <div className="flex items-center gap-4 mt-5 flex-wrap">
+            <Link to="/apply" className="btn-primary !py-2 !px-4 text-xs">APPLY AS GUEST →</Link>
+            <a href="https://a36labs.substack.com" target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 !px-4 text-xs">GET NOTIFIED →</a>
           </div>
         </div>
         <div className="hidden md:flex items-center">
