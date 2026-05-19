@@ -10,24 +10,25 @@ const Newsletter = () => (
       </p>
 
       <div className="mt-10 max-w-[480px]">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            window.open("https://a36signal.substack.com/", "_blank", "noopener,noreferrer");
-          }}
+        <p className="text-xs text-white/40 mb-3">First drop lands soon. Subscribe before launch</p>
+        <iframe
+          src="https://a36signal.substack.com/embed"
+          title="Subscribe to A36 Signal on Substack"
+          width="480"
+          height="320"
+          style={{ border: "1px solid #EEE", background: "transparent" }}
+          frameBorder="0"
+          scrolling="no"
+          className="block h-[320px] w-full max-w-[480px]"
+        />
+        <a
+          href="https://a36signal.substack.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-3 inline-block text-xs font-bold uppercase text-white/50 hover:text-white"
         >
-          <div className="flex">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              required
-              className="flex-grow bg-dark-card border border-[#374151] text-white placeholder:text-white/40 text-[15px] px-4 py-3.5 focus:outline-none focus:border-white/30"
-            />
-            <button type="submit" className="btn-gold px-6 py-3.5 whitespace-nowrap">Subscribe →</button>
-          </div>
-        </form>
-        <p className="text-xs text-white/40 mt-3">First drop lands soon. Subscribe before launch</p>
-        <p className="text-xs text-white/30 mt-1">Powered by Substack</p>
+          Read on Substack →
+        </a>
       </div>
     </div>
   </section>
