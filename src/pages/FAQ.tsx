@@ -29,9 +29,9 @@ const sections = [
     ],
   },
   {
-    heading: "A36 EARN",
+    heading: "A36 ECOSYSTEM OPPORTUNITIES",
     items: [
-      { q: "What is A36 Earn?", a: "A36 Earn (launching mid-2026) is our bounty and grant platform. Protocols list opportunities, builders complete work, and get paid. Zero commission for builders." },
+      { q: "What is A36 Ecosystem Opportunities?", a: "A36 Ecosystem Opportunities (launching mid-2026) is our bounty and grant platform. Protocols list opportunities, builders complete work, and get paid. Zero commission for builders." },
     ],
   },
   {
