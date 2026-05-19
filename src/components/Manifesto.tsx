@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const cards = [
   {
-    label: "EARN",
+    label: "ECOSYSTEM OPPORTUNITIES",
     title: "A36 Earn",
     body: "Curated grants, bounties, jobs, hackathons, fellowships, and ecosystem opportunities for builders across emerging tech",
     cta: "Join Waitlist",
@@ -18,9 +18,9 @@ const cards = [
     disabled: false,
   },
   {
-    label: "NETWORK",
+    label: "COMMUNITY",
     title: "A36 Network",
-    body: "A curated global network of founders, developers, operators, researchers, community leads, and ecosystem builders serious about shipping",
+    body: "A curated global network of founders, developers, operators, researchers, community leads, and ecosystem builders who are serious about shipping",
     cta: "Apply to Join",
     href: "/apply",
     disabled: false,
@@ -34,7 +34,7 @@ const cards = [
     disabled: false,
   },
   {
-    label: "ECOSYSTEM OPPORTUNITIES",
+    label: "NEWSLETTER",
     title: "A36 Signal",
     body: "Weekly alpha drops covering grants, bounties, events, protocol updates, startup opportunities, and ecosystem moves",
     cta: "Subscribe",
@@ -44,7 +44,7 @@ const cards = [
   {
     label: "RESIDENCY",
     title: "A36 Residency",
-    body: "An IRL global builder residency for selected founders, developers, and operators to ship, collaborate, meet mentors, and access ecosystem partners",
+    body: "A 15-day global builder residency for selected founders, developers, and operators to ship, collaborate, meet mentors, and access ecosystem partners",
     cta: "Apply Now",
     href: "/residency",
     disabled: false,
