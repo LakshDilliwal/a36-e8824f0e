@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const cards = [
   {
     label: "ECOSYSTEM OPPORTUNITIES",
-    title: "A36 Earn",
+    title: "A36 Opportunities",
     body: "Curated grants, bounties, jobs, hackathons, fellowships, and ecosystem opportunities for builders across emerging tech",
     cta: "Join Waitlist",
     href: "/earn",
