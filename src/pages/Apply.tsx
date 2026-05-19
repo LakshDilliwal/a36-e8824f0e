@@ -12,7 +12,7 @@ const paths = [
   },
   {
     label: "FOR PROTOCOLS & SPONSORS",
-    title: "List on A36 Earn",
+    title: "List on A36 Opportunities",
     body: "Post bounties, grants, and jobs directly to A36's builder network. No noise. Just people who actually ship. Reach curated talent across 36 tech verticals.",
     cta: "LIST AN OPPORTUNITY →",
     dark: true,
@@ -27,7 +27,7 @@ const paths = [
 ];
 
 const verticals = ["Infrastructure", "Finance", "Healthcare", "Deep Tech", "DePIN", "Consumer", "Other"];
-const partnerLookingFor = ["Post on A36 Earn", "Co-host an Event", "Sponsor A36 Signal", "Media Collab", "Other"];
+const partnerLookingFor = ["Post on A36 Opportunities", "Co-host an Event", "Sponsor A36 Signal", "Media Collab", "Other"];
 
 const Apply = () => {
   const [submitted, setSubmitted] = useState(false);

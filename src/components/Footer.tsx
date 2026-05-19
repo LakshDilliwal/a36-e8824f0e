@@ -3,7 +3,7 @@ import { Twitter, Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-re
 import Logo from "./Logo";
 
 const platformLinks = [
-  { label: "Earn", href: "https://earn.a36labs.com", external: true },
+  { label: "Opportunities", href: "https://earn.a36labs.com", external: true },
   { label: "Events", to: "/events" },
   { label: "Residency", to: "/residency" },
   { label: "Ecosystem", to: "/ecosystem" },
