@@ -10,17 +10,18 @@ const Newsletter = () => (
       </p>
 
       <div className="mt-10 max-w-[480px]">
-        <p className="text-xs text-white/40 mb-3">First drop lands soon. Subscribe before launch</p>
-        <iframe
-          src="https://a36signal.substack.com/embed"
-          title="Subscribe to A36 Signal on Substack"
-          width="480"
-          height="320"
-          style={{ border: "1px solid #EEE", background: "transparent" }}
-          frameBorder="0"
-          scrolling="no"
-          className="block h-[320px] w-full max-w-[480px]"
-        />
+        <p className="text-xs text-white/40 mb-3">First Alpha Drop lands soon — subscribe before launch</p>
+        <div className="w-full max-w-[480px] overflow-hidden">
+          <iframe
+            src="https://a36signal.substack.com/embed?transparent=1&light=1"
+            title="Subscribe to A36 Signal"
+            width="100%"
+            height="320"
+            style={{ border: 0, background: "transparent" }}
+            frameBorder="0"
+            scrolling="no"
+          />
+        </div>
         <a
           href="https://a36signal.substack.com/"
           target="_blank"
