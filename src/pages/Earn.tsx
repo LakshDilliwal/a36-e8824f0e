@@ -4,7 +4,7 @@ const Earn = () => (
   <PageWrapper>
     <section className="bg-background py-24">
       <div className="container max-w-5xl mx-auto px-6 md:px-16">
-        <p className="eyebrow mb-6">A36 ECOSYSTEM OPPORTUNITIES</p>
+        <p className="eyebrow mb-6">A36 EARN</p>
         <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-primary">
           Build<br />Get Paid
         </h1>

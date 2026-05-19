@@ -83,7 +83,7 @@ const Nav = () => {
               </div>
             )}
           </div>
-          <Link to="/earn" className={navLinkClass}>OPPORTUNITIES</Link>
+          <Link to="/earn" className={navLinkClass}>EARN</Link>
           <Link to="/events" className={navLinkClass}>IRL EVENTS</Link>
         </div>
 
@@ -159,7 +159,7 @@ const Nav = () => {
           </div>
 
           <div className="flex flex-col gap-1 mt-12 px-6 flex-1">
-            <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>OPPORTUNITIES</Link>
+            <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
             <Link to="/events" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>IRL EVENTS</Link>
             <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
 
