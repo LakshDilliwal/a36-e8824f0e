@@ -34,7 +34,7 @@ const cards = [
     disabled: false,
   },
   {
-    label: "SIGNAL",
+    label: "ECOSYSTEM OPPORTUNITIES",
     title: "A36 Signal",
     body: "Weekly alpha drops covering grants, bounties, events, protocol updates, startup opportunities, and ecosystem moves",
     cta: "Subscribe",
@@ -44,7 +44,7 @@ const cards = [
   {
     label: "RESIDENCY",
     title: "A36 Residency",
-    body: "A 15-day global builder residency for selected founders, developers, and operators to ship, collaborate, meet mentors, and access ecosystem partners",
+    body: "An IRL global builder residency for selected founders, developers, and operators to ship, collaborate, meet mentors, and access ecosystem partners",
     cta: "Apply Now",
     href: "/residency",
     disabled: false,
