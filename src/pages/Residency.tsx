@@ -168,7 +168,7 @@ const Residency = () => {
 
       {/* Application via Luma */}
       <section id="apply" className="bg-warm-cream py-24">
-        <div className="container max-w-[760px] mx-auto px-6 md:px-16">
+        <div className="container max-w-[720px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">APPLY</p>
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
             Register for A36 Global Residency: Mumbai.
@@ -177,7 +177,10 @@ const Residency = () => {
             Applications are handled through Luma. Submit your registration request below. Approval is required and every application is reviewed manually.
           </p>
 
-          <div className="mt-10 w-full">
+          <div className="mt-10 w-full mx-auto">
+            <p className="text-sm font-bold uppercase tracking-wider text-primary mb-4">
+              Complete your registration request inside the Luma form below
+            </p>
             <iframe
               src="https://luma.com/embed/event/evt-Xw3tOfbza5zUUKd/simple"
               frameBorder="0"
@@ -186,7 +189,7 @@ const Residency = () => {
               aria-hidden="false"
               tabIndex={0}
               title="A36 Residency registration"
-              className="w-full block h-[620px] md:h-[700px]"
+              className="w-full block h-[620px] md:h-[700px] mx-auto"
             />
             <p className="text-sm text-primary/60 mt-6">
               Having trouble with the embed?{" "}
