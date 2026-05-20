@@ -32,7 +32,7 @@ const VerticalsGrid = () => (
         </Link>
       </div>
       <p className="text-base text-primary/65 mb-12 max-w-[680px]">
-        A36 connects builders across the verticals shaping the next decade of technology — infrastructure, intelligence, frontier systems, capital markets, and digital economies
+        A36 Labs connects builders across the verticals shaping the next decade of technology, infrastructure, intelligence, frontier systems, capital markets, and digital economies
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
         {layers.map((l) => (
