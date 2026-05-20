@@ -10,7 +10,7 @@ const platforms = [
 const Podcast = () => (
   <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">BASE LAYER BY A36</p>
+      <p className="eyebrow-dark mb-4">BASE LAYER BY A36 Labs</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Conversations With Builders In The Arena
       </h2>

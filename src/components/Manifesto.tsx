@@ -59,7 +59,7 @@ const Manifesto = () => (
         One Network<br />Six Ways We Operate
       </h2>
       <p className="text-base text-white/60 mt-4 max-w-[640px]">
-        A36 connects builders to people, opportunities, events, media, ecosystem access, and residency programs across emerging tech.
+        A36 Labs connects builders to people, opportunities, events, media, ecosystem access, and residency programs across emerging tech.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
