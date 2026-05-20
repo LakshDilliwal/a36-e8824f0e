@@ -36,9 +36,9 @@ const Events = () => {
       {/* SECTION 1 - HERO */}
       <section className="bg-primary py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
-          <p className="eyebrow mb-6">A36 | IRL EVENTS</p>
+          <p className="eyebrow mb-6">A36 EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
-            120+ Summits.<br />Globally.<br />All Alpha.
+            120+ Events.<br />Globally.<br />All Alpha.
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
             Side events, hacker houses, founder meetups, and builder summits curated by A36 Labs across every major tech conference globally.
