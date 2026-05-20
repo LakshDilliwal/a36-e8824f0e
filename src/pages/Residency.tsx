@@ -157,15 +157,11 @@ const Residency = () => {
             <a href={PARTNER_MAILTO} className="btn-primary inline-block">PARTNER WITH A36 →</a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-12">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="border-2 border-dashed border-white/20 p-12 text-center">
-                <p className="text-xs font-bold text-white/40 uppercase tracking-wider">Your brand here</p>
-              </div>
-            ))}
-          </div>
-          <p className="text-sm text-white/60 mt-8">
-            Partnership packages available. Contact hello@a36labs.com
+          <p className="text-sm text-white/60 mt-12">
+            Partnership packages available. Contact{" "}
+            <a href="mailto:hello@a36labs.com" className="font-bold text-white underline">
+              hello@a36labs.com
+            </a>
           </p>
         </div>
       </section>
