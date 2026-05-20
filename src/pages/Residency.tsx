@@ -146,7 +146,7 @@ const Residency = () => {
       {/* Sponsors */}
       <section className="bg-primary py-24">
         <div className="container max-w-[1100px] mx-auto px-6 md:px-16">
-          <p className="eyebrow mb-4">PRESENTED BY</p>
+          <p className="eyebrow mb-4">SPONSOR THE RESIDENCY</p>
           <h2 className="font-black text-[28px] md:text-[40px] leading-[1.1] tracking-heading text-white max-w-[820px]">
             Residency partners get direct access to 36 selected builders in the A36 ecosystem.
           </h2>
@@ -168,7 +168,7 @@ const Residency = () => {
 
       {/* Application via Luma */}
       <section id="apply" className="bg-warm-cream py-24">
-        <div className="container max-w-2xl mx-auto px-6 md:px-16">
+        <div className="container max-w-[760px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">APPLY</p>
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
             Register for A36 Global Residency: Mumbai.
@@ -180,20 +180,18 @@ const Residency = () => {
           <div className="mt-10 w-full">
             <iframe
               src="https://luma.com/embed/event/evt-Xw3tOfbza5zUUKd/simple"
-              width="600"
-              height="450"
               frameBorder="0"
               style={{ border: "1px solid #bfcbda88", borderRadius: 4 }}
               allow="fullscreen; payment"
               aria-hidden="false"
               tabIndex={0}
               title="A36 Residency registration"
-              className="w-full max-w-[600px] h-[450px] block"
+              className="w-full block h-[620px] md:h-[700px]"
             />
             <p className="text-sm text-primary/60 mt-6">
               Having trouble with the embed?{" "}
               <a href={LUMA_URL} target="_blank" rel="noopener noreferrer" className="font-bold text-primary underline">
-                Register directly on Luma →
+                Open full Luma registration →
               </a>
             </p>
           </div>
