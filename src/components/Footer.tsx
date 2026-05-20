@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { Twitter, Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-react";
+
+const XIcon = ({ size = 16 }: { size?: number }) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.844l-5.36-6.99L4.2 22H.94l8.02-9.17L1.5 2h7.02l4.84 6.4L18.244 2Zm-1.2 18h1.86L7.04 4H5.06l11.984 16Z" />
+  </svg>
+);
 import Logo from "./Logo";
 
 const platformLinks = [
@@ -25,7 +31,7 @@ const companyLinks = [
 ];
 
 const socials = [
-  { Icon: Twitter, label: "X", href: "https://x.com/a36labs" },
+  { Icon: XIcon, label: "X", href: "https://x.com/A36Labs" },
   { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/a36labs" },
   { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/a36labs" },
   { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@a36labs" },
