@@ -8,7 +8,7 @@ const GlobalPresence = () => (
         Global Network<br />Regional Depth
       </h2>
       <p className="text-base text-primary/65 mb-12 max-w-[680px]">
-        A36 operates through regional builder hubs, event chapters, ecosystem partners, and curated programs across key global markets
+        A36 Labs operates through regional builder hubs, event chapters, ecosystem partners, and curated programs across key global markets
       </p>
 
       {/* Abstract network visual */}
