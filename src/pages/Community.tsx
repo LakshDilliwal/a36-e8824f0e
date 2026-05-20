@@ -25,18 +25,56 @@ const Ext = ({ href, className, children }: { href: string; className?: string; 
   <a href={href} target="_blank" rel="noopener noreferrer" className={className}>{children}</a>
 );
 
-const primaryCards = [
-  { name: "WhatsApp", body: "Regional updates, events, and fast announcements", href: WHATSAPP_URL },
-  { name: "Telegram", body: "Open global discussion and community updates", href: TELEGRAM_URL },
-  { name: "Discord", body: "Builder channels, cohorts, opportunities, and deeper collaboration", href: DISCORD_URL },
-];
+type AccessCard = {
+  name: string;
+  body: string;
+  cta: string;
+  href: string;
+  socials?: { label: string; href: string }[];
+};
 
-const slimLinks = [
-  { label: "A36 Signal", href: SUBSTACK_URL },
-  { label: "Events Calendar", href: LUMA_URL },
-  { label: "X", href: X_URL },
-  { label: "LinkedIn", href: LINKEDIN_URL },
-  { label: "Instagram", href: INSTAGRAM_URL },
+const accessCards: AccessCard[] = [
+  {
+    name: "WhatsApp",
+    body: "Regional updates, event alerts, and fast announcements",
+    cta: "Join WhatsApp →",
+    href: WHATSAPP_URL,
+  },
+  {
+    name: "Telegram",
+    body: "Open global discussion and community updates",
+    cta: "Join Telegram →",
+    href: TELEGRAM_URL,
+  },
+  {
+    name: "Discord",
+    body: "Builder channels, opportunities, private rooms, and deeper collaboration",
+    cta: "Join Discord →",
+    href: DISCORD_URL,
+  },
+  {
+    name: "Events Calendar",
+    body: "Upcoming A36 Labs events, meetups, workshops, founder connects, and residency programs",
+    cta: "View Events →",
+    href: LUMA_URL,
+  },
+  {
+    name: "A36 Signal",
+    body: "Newsletter for weekly alpha drops, opportunities, grants, events, and ecosystem updates",
+    cta: "Subscribe →",
+    href: SUBSTACK_URL,
+  },
+  {
+    name: "Socials",
+    body: "Follow A36 Labs across public channels",
+    cta: "",
+    href: "",
+    socials: [
+      { label: "X", href: X_URL },
+      { label: "LinkedIn", href: LINKEDIN_URL },
+      { label: "Instagram", href: INSTAGRAM_URL },
+    ],
+  },
 ];
 
 const whoFor = [
@@ -56,8 +94,13 @@ const rules = [
   "Low-quality posts may be removed",
 ];
 
+const scrollToAccess = (e: React.MouseEvent) => {
+  e.preventDefault();
+  const el = document.getElementById("access");
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
 const Community = () => {
-  // Duplicate gallery for seamless marquee loop
   const marqueeItems = [...gallery, ...gallery];
 
   return (
@@ -70,12 +113,12 @@ const Community = () => {
             A Curated Network<br />for Builders
           </h1>
           <p className="text-base text-primary/70 mt-6 max-w-[640px]">
-            A36 Network brings together founders, developers, operators, researchers, and ecosystem partners across Web3, AI, and emerging tech. Open enough to discover, curated enough to stay high quality.
+            A36 Network brings together founders, developers, operators, researchers, and ecosystem partners across Web3, AI, and emerging tech. Open enough to discover, curated enough to stay high quality
           </p>
-          <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Ext href={WHATSAPP_URL} className="btn-primary inline-block">JOIN WHATSAPP →</Ext>
-            <Ext href={DISCORD_URL} className="btn-primary inline-block">JOIN DISCORD →</Ext>
-            <Ext href={TELEGRAM_URL} className="btn-primary inline-block">JOIN TELEGRAM →</Ext>
+          <div className="mt-8">
+            <a href="#access" onClick={scrollToAccess} className="btn-primary inline-block">
+              JOIN THE NETWORK →
+            </a>
           </div>
         </div>
       </section>
@@ -88,7 +131,7 @@ const Community = () => {
             Build in Public<br />Connect IRL
           </h2>
           <p className="text-base text-primary/70 mt-4 max-w-[640px]">
-            Events, workshops, hackathons, founder circles, and community moments from across A36
+            Events, workshops, hackathons, founder circles, and community moments from across A36 Labs
           </p>
         </div>
 
@@ -103,7 +146,7 @@ const Community = () => {
             {marqueeItems.map((g, i) => (
               <div
                 key={i}
-                className="shrink-0 w-[280px] md:w-[360px] aspect-video bg-primary/10 overflow-hidden"
+                className="shrink-0 w-[240px] md:w-[300px] aspect-video bg-primary/10 overflow-hidden"
               >
                 {g.image ? (
                   <img src={g.image} alt="" className="w-full h-full object-cover" />
@@ -131,37 +174,38 @@ const Community = () => {
       </section>
 
       {/* 3. ACCESS */}
-      <section className="bg-background py-24">
+      <section id="access" className="bg-background py-24 scroll-mt-24">
         <div className="container max-w-[1100px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">ACCESS</p>
           <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading max-w-[720px]">
-            Start open<br />Go deeper with proof
+            Choose your access layer
           </h2>
           <p className="text-base text-primary/70 mt-4 max-w-[640px]">
-            Join the public channels, show your work, meet builders, and unlock deeper access through contribution
+            Start with the public channels. Go deeper through contribution, events, and proof of work
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {primaryCards.map((c) => (
-              <div key={c.name} className="border border-primary/15 p-8 flex flex-col min-h-[220px] hover:border-accent transition-colors">
+            {accessCards.map((c) => (
+              <div key={c.name} className="border border-primary/15 p-8 flex flex-col min-h-[240px] hover:border-accent transition-colors">
                 <h3 className="font-black text-2xl text-primary">{c.name}</h3>
                 <p className="text-sm text-primary/70 mt-3 flex-1">{c.body}</p>
-                <Ext href={c.href} className="mt-6 text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
-                  Join {c.name} →
-                </Ext>
+                {c.socials ? (
+                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
+                    {c.socials.map((s, i) => (
+                      <span key={s.label} className="flex items-center gap-4">
+                        <Ext href={s.href} className="text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
+                          {s.label} →
+                        </Ext>
+                        {i < c.socials!.length - 1 && <span className="text-primary/30">·</span>}
+                      </span>
+                    ))}
+                  </div>
+                ) : (
+                  <Ext href={c.href} className="mt-6 text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
+                    {c.cta}
+                  </Ext>
+                )}
               </div>
-            ))}
-          </div>
-
-          <div className="mt-10 border-t border-primary/10 pt-6 flex flex-wrap items-center gap-x-8 gap-y-3">
-            {slimLinks.map((l) => (
-              <Ext
-                key={l.label}
-                href={l.href}
-                className="text-xs font-bold uppercase tracking-[0.18em] text-primary/70 hover:text-accent"
-              >
-                {l.label} →
-              </Ext>
             ))}
           </div>
         </div>
@@ -202,20 +246,14 @@ const Community = () => {
             A36 Network is built for access, opportunities, and high-trust connections across global builder communities
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Ext href={WHATSAPP_URL} className="btn-primary inline-block">JOIN WHATSAPP →</Ext>
+            <a href="#access" onClick={scrollToAccess} className="btn-primary inline-block">
+              JOIN THE NETWORK →
+            </a>
             <Ext
-              href={DISCORD_URL}
+              href={LUMA_URL}
               className="inline-block border-2 border-white text-white font-bold uppercase tracking-wider px-6 py-3 hover:bg-white hover:text-primary transition-colors"
             >
-              JOIN DISCORD →
-            </Ext>
-          </div>
-          <div className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2">
-            <Ext href={TELEGRAM_URL} className="text-sm font-bold uppercase tracking-wider text-white/70 hover:text-accent">
-              Telegram →
-            </Ext>
-            <Ext href={LUMA_URL} className="text-sm font-bold uppercase tracking-wider text-white/70 hover:text-accent">
-              Events Calendar →
+              VIEW EVENTS →
             </Ext>
           </div>
         </div>
