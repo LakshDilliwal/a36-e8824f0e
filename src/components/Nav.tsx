@@ -5,7 +5,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 const programsItems = [
   { label: "Residency", to: "/residency" },
-  { label: "Community", to: "/community" },
+  { label: "Network", to: "/community" },
 ];
 
 const contentItems = [
@@ -16,7 +16,7 @@ const contentItems = [
 const companyItems = [
   { label: "About", to: "/about" },
   { label: "Media Kit", to: "/media-kit" },
-  { label: "Merchandise", to: "/merch" },
+  { label: "Merch", to: "/merch" },
   { label: "Partner With Us", to: "/apply" },
 ];
 
