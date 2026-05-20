@@ -64,17 +64,7 @@ const accessCards: AccessCard[] = [
     cta: "Subscribe →",
     href: SUBSTACK_URL,
   },
-  {
-    name: "Socials",
-    body: "Follow A36 Labs across public channels",
-    cta: "",
-    href: "",
-    socials: [
-      { label: "X", href: X_URL },
-      { label: "LinkedIn", href: LINKEDIN_URL },
-      { label: "Instagram", href: INSTAGRAM_URL },
-    ],
-  },
+
 ];
 
 const whoFor = [
@@ -184,30 +174,31 @@ const Community = () => {
             Start with the public channels. Go deeper through contribution, events, and proof of work
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-            {accessCards.map((c) => (
-              <div key={c.name} className="border border-primary/15 p-8 flex flex-col min-h-[240px] hover:border-accent transition-colors">
-                <h3 className="font-black text-2xl text-primary">{c.name}</h3>
-                <p className="text-sm text-primary/70 mt-3 flex-1">{c.body}</p>
-                {c.socials ? (
-                  <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2">
-                    {c.socials.map((s, i) => (
-                      <span key={s.label} className="flex items-center gap-4">
-                        <Ext href={s.href} className="text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
-                          {s.label} →
-                        </Ext>
-                        {i < c.socials!.length - 1 && <span className="text-primary/30">·</span>}
-                      </span>
-                    ))}
-                  </div>
-                ) : (
+          <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mt-12">
+            {accessCards.map((c, i) => {
+              // First 3 cards span 2 cols each (full row). Last 2 span 3 cols each (balanced row).
+              const span = i < 3 ? "md:col-span-2" : "md:col-span-3";
+              return (
+                <div key={c.name} className={`${span} border border-primary/15 p-8 flex flex-col min-h-[240px] hover:border-accent transition-colors`}>
+                  <h3 className="font-black text-2xl text-primary">{c.name}</h3>
+                  <p className="text-sm text-primary/70 mt-3 flex-1">{c.body}</p>
                   <Ext href={c.href} className="mt-6 text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
                     {c.cta}
                   </Ext>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
           </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-primary/70">
+            <span className="font-bold uppercase tracking-wider text-primary/60">Follow A36 Labs:</span>
+            <Ext href={X_URL} className="font-bold text-primary hover:text-accent">X</Ext>
+            <span className="text-primary/30">·</span>
+            <Ext href={LINKEDIN_URL} className="font-bold text-primary hover:text-accent">LinkedIn</Ext>
+            <span className="text-primary/30">·</span>
+            <Ext href={INSTAGRAM_URL} className="font-bold text-primary hover:text-accent">Instagram</Ext>
+          </div>
+
         </div>
       </section>
 
