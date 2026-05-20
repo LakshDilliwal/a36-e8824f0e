@@ -1,5 +1,3 @@
-import { useRef } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/CdyFYIzDSMj17jWfGJGtkw";
@@ -11,16 +9,16 @@ const X_URL = "https://x.com/A36Labs";
 const LINKEDIN_URL = "https://www.linkedin.com/company/a36labs/";
 const INSTAGRAM_URL = "https://www.instagram.com/a36labs/";
 
-// Replace `image` with real photo URLs later. Keep label + caption short.
-const gallery = [
-  { label: "Hackathon", caption: "Builders shipping together over a weekend", image: "" },
-  { label: "Builder Meetup", caption: "Local hubs, real introductions", image: "" },
-  { label: "Workshop", caption: "Deep-dive sessions with operators", image: "" },
-  { label: "Founder Connect", caption: "Small-room conversations that matter", image: "" },
-  { label: "Community Gathering", caption: "Ecosystem night across cities", image: "" },
-  { label: "Residency", caption: "15 days. 36 builders. Mumbai.", image: "" },
-  { label: "Demo Day", caption: "Live demos from cohort teams", image: "" },
-  { label: "Ecosystem Event", caption: "Partner-led events across regions", image: "" },
+// Replace `image` with real photo URLs later (16:9 recommended).
+const gallery: { image: string }[] = [
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
+  { image: "" },
 ];
 
 const Ext = ({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) => (
@@ -28,9 +26,9 @@ const Ext = ({ href, className, children }: { href: string; className?: string; 
 );
 
 const primaryCards = [
-  { name: "WhatsApp", body: "Regional hubs, event updates, and fast announcements.", href: WHATSAPP_URL },
-  { name: "Telegram", body: "Global discussion, community updates, and open access conversations.", href: TELEGRAM_URL },
-  { name: "Discord", body: "Structured builder channels, curated discussion, and deeper collaboration.", href: DISCORD_URL },
+  { name: "WhatsApp", body: "Regional updates, events, and fast announcements", href: WHATSAPP_URL },
+  { name: "Telegram", body: "Open global discussion and community updates", href: TELEGRAM_URL },
+  { name: "Discord", body: "Builder channels, cohorts, opportunities, and deeper collaboration", href: DISCORD_URL },
 ];
 
 const slimLinks = [
@@ -55,17 +53,12 @@ const rules = [
   "No fake airdrops or shill groups",
   "Share proof of work, not hype",
   "No cold DMs without permission",
-  "Admins may remove low-signal content",
+  "Low-quality posts may be removed",
 ];
 
 const Community = () => {
-  const scrollerRef = useRef<HTMLDivElement>(null);
-
-  const scrollBy = (dir: 1 | -1) => {
-    const el = scrollerRef.current;
-    if (!el) return;
-    el.scrollBy({ left: dir * Math.min(el.clientWidth * 0.8, 720), behavior: "smooth" });
-  };
+  // Duplicate gallery for seamless marquee loop
+  const marqueeItems = [...gallery, ...gallery];
 
   return (
     <PageWrapper>
@@ -74,90 +67,78 @@ const Community = () => {
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-6">A36 NETWORK</p>
           <h1 className="font-black text-[40px] md:text-[60px] leading-[1.05] tracking-heading text-primary">
-            The Private Network<br />for Serious Builders.
+            A Curated Network<br />for Builders
           </h1>
           <p className="text-base text-primary/70 mt-6 max-w-[640px]">
-            A36 Network connects founders, developers, operators, researchers, and ecosystem partners across Web3, AI, and emerging tech. Built for signal, access, and real-world collaboration.
+            A36 Network brings together founders, developers, operators, researchers, and ecosystem partners across Web3, AI, and emerging tech. Open enough to discover, curated enough to stay high quality.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <Ext href={WHATSAPP_URL} className="btn-primary inline-block">JOIN WHATSAPP →</Ext>
-            <Ext href={DISCORD_URL} className="btn-ghost inline-block">JOIN DISCORD →</Ext>
-            <Ext href={TELEGRAM_URL} className="text-sm font-bold uppercase tracking-wider text-primary/70 hover:text-accent">
-              Join Telegram →
-            </Ext>
+            <Ext href={DISCORD_URL} className="btn-primary inline-block">JOIN DISCORD →</Ext>
+            <Ext href={TELEGRAM_URL} className="btn-primary inline-block">JOIN TELEGRAM →</Ext>
           </div>
         </div>
       </section>
 
-      {/* 2. HORIZONTAL PHOTO SCROLLER */}
-      <section className="bg-warm-cream py-20">
+      {/* 2. AUTO-SLIDING PHOTO MARQUEE */}
+      <section className="bg-warm-cream py-20 overflow-hidden">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <div className="flex items-end justify-between gap-6 flex-wrap">
-            <div className="max-w-[680px]">
-              <p className="eyebrow-dark mb-4">IN THE NETWORK</p>
-              <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading">
-                Built in public. Connected in real life.
-              </h2>
-              <p className="text-base text-primary/70 mt-4">
-                Events, builder meetups, workshops, founder circles, and ecosystem moments across the A36 network.
-              </p>
-            </div>
-            <div className="hidden md:flex gap-2">
-              <button
-                aria-label="Scroll left"
-                onClick={() => scrollBy(-1)}
-                className="w-11 h-11 border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-background transition-colors"
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button
-                aria-label="Scroll right"
-                onClick={() => scrollBy(1)}
-                className="w-11 h-11 border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-background transition-colors"
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
-          </div>
+          <p className="eyebrow-dark mb-4">IN THE NETWORK</p>
+          <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading">
+            Build in Public<br />Connect IRL
+          </h2>
+          <p className="text-base text-primary/70 mt-4 max-w-[640px]">
+            Events, workshops, hackathons, founder circles, and community moments from across A36
+          </p>
         </div>
 
         <div
-          ref={scrollerRef}
-          className="mt-10 flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth px-6 md:px-16 pb-4"
-          style={{ scrollbarWidth: "thin" }}
+          className="mt-12 relative w-full overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          }}
         >
-          {gallery.map((g) => (
-            <article
-              key={g.label}
-              className="snap-start shrink-0 w-[78vw] sm:w-[440px] md:w-[460px]"
-            >
-              <div className="aspect-[4/3] bg-primary/10 overflow-hidden relative">
+          <div className="marquee-track flex gap-5 w-max">
+            {marqueeItems.map((g, i) => (
+              <div
+                key={i}
+                className="shrink-0 w-[280px] md:w-[360px] aspect-video bg-primary/10 overflow-hidden"
+              >
                 {g.image ? (
-                  <img src={g.image} alt={g.label} className="w-full h-full object-cover" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-primary/30 text-xs font-bold uppercase tracking-[0.2em]">
-                    {g.label}
-                  </div>
-                )}
+                  <img src={g.image} alt="" className="w-full h-full object-cover" />
+                ) : null}
               </div>
-              <div className="mt-4">
-                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-accent">{g.label}</p>
-                <p className="text-sm text-primary/75 mt-1">{g.caption}</p>
-              </div>
-            </article>
-          ))}
+            ))}
+          </div>
         </div>
+
+        <style>{`
+          @keyframes a36-marquee {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          .marquee-track {
+            animation: a36-marquee 40s linear infinite;
+          }
+          .marquee-track:hover {
+            animation-play-state: paused;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .marquee-track { animation: none; }
+          }
+        `}</style>
       </section>
 
-      {/* 3. SIMPLIFIED ACCESS */}
+      {/* 3. ACCESS */}
       <section className="bg-background py-24">
         <div className="container max-w-[1100px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">ACCESS</p>
           <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading max-w-[720px]">
-            Choose your access layer.
+            Start open<br />Go deeper with proof
           </h2>
           <p className="text-base text-primary/70 mt-4 max-w-[640px]">
-            Start public. Go deeper through contribution, proof of work, events, and residency.
+            Join the public channels, show your work, meet builders, and unlock deeper access through contribution
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
@@ -186,11 +167,11 @@ const Community = () => {
         </div>
       </section>
 
-      {/* 4. WHO IT'S FOR + RULES */}
+      {/* 4. CURATED BY DESIGN */}
       <section className="bg-warm-cream py-24">
         <div className="container max-w-[1100px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">CURATED BY DESIGN</p>
-          <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading">Who this network is for.</h2>
+          <h2 className="font-black text-3xl md:text-5xl text-primary tracking-heading">Built for people who build</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
             <ul className="space-y-3">
@@ -200,10 +181,10 @@ const Community = () => {
             </ul>
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary/60 mb-4">SIGNAL RULES</p>
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-primary/60 mb-4">NETWORK RULES</p>
               <ul className="space-y-3">
                 {rules.map((r) => (
-                  <li key={r} className="text-sm text-primary/80">— {r}</li>
+                  <li key={r} className="text-sm text-primary/80">{r}</li>
                 ))}
               </ul>
             </div>
@@ -215,10 +196,10 @@ const Community = () => {
       <section className="bg-primary py-24">
         <div className="container max-w-4xl mx-auto px-6 md:px-16 text-center">
           <h2 className="font-black text-3xl md:text-5xl text-white tracking-heading">
-            Join the network where serious builders operate.
+            Join the network where builders operate
           </h2>
           <p className="text-base text-white/60 mt-5 max-w-[600px] mx-auto">
-            A36 Network is built for signal, opportunities, and high-trust connections across global builder communities.
+            A36 Network is built for access, opportunities, and high-trust connections across global builder communities
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Ext href={WHATSAPP_URL} className="btn-primary inline-block">JOIN WHATSAPP →</Ext>
