@@ -5,6 +5,7 @@ import Logo from "./Logo";
 const platformLinks = [
   { label: "Earn", href: "https://earn.a36labs.com", external: true },
   { label: "Events", to: "/events" },
+  { label: "Network", to: "/community" },
   { label: "Residency", to: "/residency" },
   { label: "Ecosystem", to: "/ecosystem" },
   { label: "Apply", to: "/apply" },
