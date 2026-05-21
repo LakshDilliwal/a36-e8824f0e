@@ -17,9 +17,9 @@ const About = () => (
       <div className="container max-w-3xl mx-auto px-6 md:px-16">
         <h2 className="font-black text-[28px] md:text-[36px] leading-[1.1] tracking-heading text-primary">Why A36Labs exists.</h2>
         <div className="mt-8 space-y-6 text-base text-primary/80 leading-relaxed">
-          <p>A36 Labs is a global builder network operating across 36+ tech verticals. We curate serious builders, founders, and investors, run high-signal summits, and connect talent to protocols, capital, and real work that moves the world forward.</p>
+          <p>A36 Labs is a global builder network operating across 36+ tech verticals. We curate serious builders, founders, and investors, run high-signal events, and connect talent to protocols, capital, and real work that moves the world forward.</p>
           <p>We have hosted 120+ events globally. We publish A36 Signal, a weekly dispatch for operators and founders who need alpha, not scroll.</p>
-          <p>A36 Labs is building toward a full ecosystem operator model with a physical presence, a global investor network, and a cohort program launching in 2027.</p>
+          <p>A36 Labs is building toward a full ecosystem operator model with a physical presence, a global investor network, and residency and operator programs built for serious builders.</p>
         </div>
       </div>
     </section>
