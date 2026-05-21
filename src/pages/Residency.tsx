@@ -1,7 +1,7 @@
 import PageWrapper from "@/components/PageWrapper";
 
 const LUMA_URL = "https://luma.com/g3oz48ck";
-const PARTNER_MAILTO = "mailto:hello@a36labs.com?subject=A36 Residency Partnership";
+const PARTNER_FORM_URL = "https://forms.gle/ashs3kUvVVey5k4K9";
 
 const phases = [
   { name: "Arrival & Context", body: "Kickoff, introductions, builder onboarding, residency goals, and working context." },
