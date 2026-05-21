@@ -15,7 +15,7 @@ const Merch = () => (
           Gear for<br />real builders.
         </h1>
         <p className="text-base text-primary/65 mt-6 max-w-[560px]">
-          A36 x BitSwags. Premium event merchandise, branded swags, and builder gear. Worn at 120+ events across India, Dubai, and Singapore.
+          A36 × BitSwags. Premium event merchandise, branded swag, and builder gear for hackathons, meetups, conferences, residencies, and ecosystem events.
         </p>
       </div>
     </section>
