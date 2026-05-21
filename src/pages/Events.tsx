@@ -87,7 +87,7 @@ const Events = () => {
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
           <h2 className="font-black text-[32px] md:text-[44px] leading-[1.05] tracking-heading text-primary mb-8">
-            Upcoming Summits.
+            Upcoming Events
           </h2>
           <div className="w-full overflow-hidden">
             <iframe
