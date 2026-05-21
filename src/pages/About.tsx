@@ -41,8 +41,8 @@ const About = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {[
             { title: "High Trust", body: "We curate, not aggregate. Every builder in the A36 network has earned their seat." },
-            { title: "Real Summits", body: "The most important conversations happen in person. We build the summits where they happen." },
-            { title: "Signal Over Noise", body: "Everything A36 produces is filtered for quality. No filler. No vanity. Just the work." },
+            { title: "Real Rooms", body: "The most important conversations happen in rooms with serious builders. We create those rooms through events, residencies, and curated programs." },
+            { title: "Signal Over Noise", body: "Everything A36 produces is filtered for quality. No filler. Just the work." },
           ].map((v) => (
             <div key={v.title} className="bg-white border border-border p-6">
               <h3 className="font-black text-xl text-primary">{v.title}</h3>
