@@ -97,6 +97,20 @@ const MediaKit = () => (
           <a href="mailto:hello@a36labs.com" className="text-primary hover:underline">
             hello@a36labs.com
           </a>
+
+          <div className="mt-8 border-t border-border pt-8">
+            <p className="text-primary/70 max-w-2xl leading-relaxed">
+              For interviews, press, and media collaborations, use the media inquiry form
+            </p>
+            <a
+              href="https://forms.gle/5WzAfE6M93ZBJqeVA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-block mt-4"
+            >
+              MEDIA INQUIRY →
+            </a>
+          </div>
         </section>
       </div>
     </main>

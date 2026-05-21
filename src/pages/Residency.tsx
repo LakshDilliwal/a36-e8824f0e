@@ -1,7 +1,7 @@
 import PageWrapper from "@/components/PageWrapper";
 
 const LUMA_URL = "https://luma.com/g3oz48ck";
-const PARTNER_MAILTO = "mailto:hello@a36labs.com?subject=A36 Residency Partnership";
+const PARTNER_FORM_URL = "https://forms.gle/ashs3kUvVVey5k4K9";
 
 const phases = [
   { name: "Arrival & Context", body: "Kickoff, introductions, builder onboarding, residency goals, and working context." },
@@ -138,7 +138,7 @@ const Residency = () => {
           </div>
 
           <div className="mt-10">
-            <a href={PARTNER_MAILTO} className="btn-primary inline-block">PARTNER WITH A36 →</a>
+            <a href={PARTNER_FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">PARTNER WITH A36 →</a>
           </div>
         </div>
       </section>
@@ -154,7 +154,7 @@ const Residency = () => {
             Support the residency, meet high-conviction founders, and build long-term relationships with serious operators across Web3, AI, and emerging tech.
           </p>
           <div className="mt-8">
-            <a href={PARTNER_MAILTO} className="btn-primary inline-block">PARTNER WITH A36 →</a>
+            <a href={PARTNER_FORM_URL} target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">PARTNER WITH A36 →</a>
           </div>
 
           <p className="text-sm text-white/60 mt-12">

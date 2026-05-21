@@ -53,7 +53,7 @@ const PodcastPage = () => {
           </p>
           <div className="flex flex-wrap gap-4 mt-8">
             <a href="#" target="_blank" rel="noopener noreferrer" className="btn-primary">WATCH ON YOUTUBE →</a>
-            <Link to="/apply" className="btn-ghost">BE A GUEST →</Link>
+            <a href="https://forms.gle/CbWcnNHxwXqMyQ159" target="_blank" rel="noopener noreferrer" className="btn-ghost">BE A GUEST →</a>
           </div>
         </div>
       </section>
@@ -90,9 +90,9 @@ const PodcastPage = () => {
                 Subscribe to be notified when Base Layer Episode 001 drops.
               </p>
               <div className="mt-6">
-                <a href="https://a36labs.substack.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
+                <Link to="/newsletter" className="btn-primary inline-block">
                   NOTIFY ME →
-                </a>
+                </Link>
               </div>
             </div>
           </div>

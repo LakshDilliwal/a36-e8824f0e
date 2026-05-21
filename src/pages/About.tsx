@@ -17,9 +17,9 @@ const About = () => (
       <div className="container max-w-3xl mx-auto px-6 md:px-16">
         <h2 className="font-black text-[28px] md:text-[36px] leading-[1.1] tracking-heading text-primary">Why A36Labs exists.</h2>
         <div className="mt-8 space-y-6 text-base text-primary/80 leading-relaxed">
-          <p>A36 Labs is a global builder network operating across 36+ tech verticals. We curate serious builders, founders, and investors, run high-signal summits, and connect talent to protocols, capital, and real work that moves the world forward.</p>
+          <p>A36 Labs is a global builder network operating across 36+ tech verticals. We curate serious builders, founders, and investors, run high-signal events, and connect talent to protocols, capital, and real work that moves the world forward.</p>
           <p>We have hosted 120+ events globally. We publish A36 Signal, a weekly dispatch for operators and founders who need alpha, not scroll.</p>
-          <p>A36 Labs is building toward a full ecosystem operator model with a physical presence, a global investor network, and a cohort program launching in 2027.</p>
+          <p>A36 Labs is building toward a full ecosystem operator model with a physical presence, a global investor network, and residency and operator programs built for serious builders.</p>
         </div>
       </div>
     </section>
@@ -41,8 +41,8 @@ const About = () => (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
           {[
             { title: "High Trust", body: "We curate, not aggregate. Every builder in the A36 network has earned their seat." },
-            { title: "Real Summits", body: "The most important conversations happen in person. We build the summits where they happen." },
-            { title: "Signal Over Noise", body: "Everything A36 produces is filtered for quality. No filler. No vanity. Just the work." },
+            { title: "Real Rooms", body: "The most important conversations happen in rooms with serious builders. We create those rooms through events, residencies, and curated programs." },
+            { title: "Signal Over Noise", body: "Everything A36 produces is filtered for quality. No filler. Just the work." },
           ].map((v) => (
             <div key={v.title} className="bg-white border border-border p-6">
               <h3 className="font-black text-xl text-primary">{v.title}</h3>
@@ -59,7 +59,7 @@ const About = () => (
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           {[
             { num: "120+", label: "IRL Events Hosted" },
-            { num: "36+", label: "Builders" },
+            { num: "50K+", label: "Builders Reached" },
             { num: "36", label: "Verticals" },
             { num: "6", label: "Continents" },
           ].map((s) => (

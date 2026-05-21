@@ -1,5 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
-import { Link } from "react-router-dom";
+
 
 const row1Images = [
   "/events/group1.webp",
@@ -38,10 +38,10 @@ const Events = () => {
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
-            120+ Events.<br />Globally.<br />All Alpha.
+            120+ Events<br />Globally<br />All Signal
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
-            Side events, hacker houses, founder meetups, and builder summits curated by A36 Labs across every major tech conference globally.
+            Side events, hackathons, workshops, founder meetups, builder rooms, and ecosystem events curated by A36 Labs
           </p>
         </div>
       </section>
@@ -87,7 +87,7 @@ const Events = () => {
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
           <h2 className="font-black text-[32px] md:text-[44px] leading-[1.05] tracking-heading text-primary mb-8">
-            Upcoming Summits.
+            Upcoming Events
           </h2>
           <div className="w-full overflow-hidden">
             <iframe
@@ -121,12 +121,12 @@ const Events = () => {
             Want to build with us?
           </h2>
           <p className="text-base text-primary/60 mt-4 max-w-[560px] mx-auto">
-            We co-host with protocols, communities, and funds globally.
+            We co-host events with protocols, communities, startups, and ecosystem partners globally
           </p>
           <div className="mt-10">
-            <Link to="/apply" className="btn-primary inline-block">
+            <a href="https://forms.gle/ww6WThmuo5vLupQ96" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
               PARTNER WITH A36 →
-            </Link>
+            </a>
           </div>
         </div>
       </section>
