@@ -6,52 +6,54 @@ const sections = [
   {
     heading: "ABOUT A36",
     items: [
-      { q: "What is A36?", a: "A36 Labs is a global builder network and ecosystem operator. We curate serious builders across 36 tech verticals and connect them to protocols, capital, and real work." },
-      { q: 'What does "A36" mean?', a: "A36 represents 36 infrastructure domains across four core execution vectors. Every domain has a purpose. Every builder has a lane. Nothing is cosmetic." },
-      { q: "Is A36 only for Web3 builders?", a: "No. A36 operates across 36 tech verticals including infrastructure, deep tech, finance, healthcare, and more. The common thread is serious builders doing real work." },
+      { q: "What is A36 Labs?", a: "A36 Labs is a global builder ecosystem network across Web3, AI, and emerging tech. We curate serious builders, run IRL events and residencies, publish A36 Signal, and connect talent to protocols, capital, and real work." },
+      { q: "What does A36 mean?", a: "A36 is the operating layer for serious builders. It represents the network, events, opportunities, and systems we are building across 36+ tech verticals." },
+      { q: "Is A36 only for Web3 builders?", a: "No. A36 works across Web3, AI, deep tech, developer tools, fintech, consumer, climate, healthcare, infrastructure, and other emerging tech verticals." },
     ],
   },
   {
-    heading: "A36 PASSPORT (COHORT)",
+    heading: "A36 NETWORK",
     items: [
-      { q: "What is the A36 Passport?", a: "A36 Passport is our builder cohort program. Accepted builders get access to ecosystem resources, capital introductions, global event summits, and direct operator mentorship." },
-      { q: "How do I apply?", a: "Submit an application at a36labs.com/apply. We review every application manually. No shortcuts, no exceptions." },
-      { q: "Is A36 Passport free?", a: "The application is free. Cohort details are shared with accepted applicants." },
-      { q: "How long is the cohort?", a: "Duration and structure are shared upon acceptance." },
+      { q: "What is A36 Network?", a: "A36 Network is the community layer of A36 Labs. It connects founders, developers, operators, researchers, community leads, and ecosystem partners through public channels, events, and deeper access layers." },
+      { q: "How do I join?", a: "You can join through the community page. Start with the public WhatsApp, Telegram, Discord, events calendar, or A36 Signal." },
+      { q: "Is the network free?", a: "Public channels are free. Deeper access is curated through contribution, proof of work, events, and trusted relationships." },
+    ],
+  },
+  {
+    heading: "A36 RESIDENCY",
+    items: [
+      { q: "What is A36 Residency?", a: "A36 Residency is a 15-day builder residency for selected founders, developers, and operators working on serious products and ecosystems." },
+      { q: "How do I apply?", a: "Residency applications happen through the live Luma event page when applications are open." },
+      { q: "Is A36 Residency free?", a: "For accepted builders, accommodation, food, and workspace are covered when listed on the residency page. Travel is not covered unless specifically mentioned." },
+      { q: "Who is it for?", a: "Builders with a product shipping or close to shipping, founders at pre-seed or seed stage, protocol operators, ecosystem leads, and developers building real infrastructure." },
     ],
   },
   {
     heading: "IRL EVENTS",
     items: [
-      { q: "How do A36 events work?", a: "A36 hosts high-signal, invite-only summits at global conferences and builder hubs. Events are curated, not open to the public unless specified. Focus is always on operators, infrastructure builders, and capital." },
-      { q: "How do I attend an A36 event?", a: "Request access via the Events page or apply for A36 Passport. Partner protocols and communities receive priority access." },
-      { q: "Where does A36 host events?", a: "A36 hosts summits across APAC, MENA, LATAM, North America, Europe, and Africa. Anywhere serious builders operate." },
+      { q: "How do A36 events work?", a: "A36 hosts hackathons, meetups, workshops, founder connects, side events, and curated builder rooms with ecosystem partners." },
+      { q: "How do I attend an A36 event?", a: "Visit the events page or follow the A36 Luma calendar for upcoming events and registration links." },
+      { q: "Where does A36 host events?", a: "A36 runs events across global builder hubs, with current activity across APAC, MENA, LATAM, North America, Europe, and Africa." },
     ],
   },
   {
     heading: "A36 EARN",
     items: [
-      { q: "What is A36 Earn?", a: "A36 Earn (launching mid-2026) is our bounty and grant platform. Protocols list opportunities, builders complete work, and get paid. Zero commission for builders." },
+      { q: "What is A36 Earn?", a: "A36 Earn is the upcoming opportunity platform for builders. It will curate bounties, grants, jobs, hackathons, and ecosystem work from serious protocols and startups." },
     ],
   },
   {
     heading: "PARTNERSHIPS",
     items: [
-      { q: "How do we partner with A36?", a: "Email hello@a36labs.com or apply via the Become a Partner form. We partner with protocols, funds, communities, and media brands." },
-      { q: "Does A36 take equity?", a: "A36's model is evolving. Current engagements are ecosystem partnership-based. Equity arrangements are considered case-by-case for cohort participants." },
+      { q: "How do we partner with A36?", a: "Use the Partner With A36 Labs form on the Apply page for ecosystem partnerships, community collaborations, event partnerships, sponsorships, media collaborations, and strategic support." },
+      { q: "Does A36 take equity?", a: "A36 does not take equity for joining the network, attending public events, or subscribing to A36 Signal. Specific partnerships, investments, or residency support may have separate terms." },
     ],
   },
   {
     heading: "A36 SIGNAL",
     items: [
-      {
-        q: "What is A36 Signal?",
-        a: "A36 Signal is our weekly newsletter for builders, founders, and ecosystem operators. Published every Wednesday at a36signal.substack.com",
-      },
-      {
-        q: "Is A36 Signal free?",
-        a: "Yes. Free to subscribe at a36signal.substack.com",
-      },
+      { q: "What is A36 Signal?", a: "A36 Signal is the weekly newsletter from A36 Labs covering curated opportunities, grants, bounties, startup moves, protocol updates, events, and alpha drops." },
+      { q: "Is A36 Signal free?", a: "Yes. A36 Signal is free to subscribe." },
     ],
   },
 ];
