@@ -1,5 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
-import { Link } from "react-router-dom";
+
 
 const row1Images = [
   "/events/group1.webp",
