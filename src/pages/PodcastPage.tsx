@@ -90,9 +90,9 @@ const PodcastPage = () => {
                 Subscribe to be notified when Base Layer Episode 001 drops.
               </p>
               <div className="mt-6">
-                <a href="https://a36labs.substack.com" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
+                <Link to="/newsletter" className="btn-primary inline-block">
                   NOTIFY ME →
-                </a>
+                </Link>
               </div>
             </div>
           </div>
