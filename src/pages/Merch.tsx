@@ -27,7 +27,7 @@ const Merch = () => (
           <h3 className="font-black text-3xl text-white">BitSwags</h3>
           <p className="text-sm text-white/40 mt-1">Merch & Swags for Web3 Events</p>
           <p className="text-base text-white/60 mt-6 max-w-[600px]">
-            BitSwags is the official merchandise brand of A36. We produce premium-quality event swags, branded merchandise, and builder gear for conferences, hackathons, and ecosystem events globally.
+            BitSwags is the merchandise partner for A36 events and ecosystem activations. We produce premium-quality event swag, branded merchandise, and builder gear for conferences, hackathons, and ecosystem events globally.
           </p>
           <ul className="mt-6 space-y-2 text-sm text-white/60">
             <li>• Event merchandise for protocols and conferences</li>
