@@ -121,12 +121,12 @@ const Events = () => {
             Want to build with us?
           </h2>
           <p className="text-base text-primary/60 mt-4 max-w-[560px] mx-auto">
-            We co-host with protocols, communities, and funds globally.
+            We co-host events with protocols, communities, startups, and ecosystem partners globally
           </p>
           <div className="mt-10">
-            <Link to="/apply" className="btn-primary inline-block">
+            <a href="https://forms.gle/ww6WThmuo5vLupQ96" target="_blank" rel="noopener noreferrer" className="btn-primary inline-block">
               PARTNER WITH A36 →
-            </Link>
+            </a>
           </div>
         </div>
       </section>
