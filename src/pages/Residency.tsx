@@ -69,7 +69,7 @@ const Residency = () => {
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
           <p className="eyebrow-dark mb-4">WHAT HAPPENS INSIDE</p>
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
-            15 Days. One Room. Real Output.
+            15 Days. One Roof. Real Output.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mt-12">
