@@ -103,7 +103,7 @@ const Events = () => {
           </div>
           <div className="mt-6">
             <a
-              href="https://lu.ma/a36"
+              href="https://luma.com/a36"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-block"
