@@ -12,7 +12,7 @@ const INSTAGRAM_URL = "https://www.instagram.com/a36labs/";
 
 // Replace `image` with real photo URLs later (16:9 recommended).
 const gallery: { image: string }[] = [
-  { image: "" },
+  { image: communityImg1 },
   { image: "" },
   { image: "" },
   { image: "" },
