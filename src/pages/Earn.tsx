@@ -63,7 +63,7 @@ const Earn = () => (
           A36 Earn is built to help builders discover quality opportunities without spam, fake listings, or pay-to-play access.
         </p>
         <div className="mt-8">
-          <Link to="/newsletter" className="btn-accent inline-block">GET NOTIFIED →</Link>
+          <Link to="/newsletter" className="btn-ghost-light inline-block">GET NOTIFIED →</Link>
         </div>
       </div>
     </section>
