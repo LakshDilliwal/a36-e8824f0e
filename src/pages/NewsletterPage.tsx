@@ -17,7 +17,7 @@ const NewsletterPage = () => (
         </h1>
         <p className="text-2xl md:text-3xl text-primary/80 mt-3 font-bold">Weekly signal from the frontier</p>
         <p className="text-base text-primary/70 mt-6 max-w-[640px]">
-          No recap. No noise. One email per week<br />curated by A36 for builders, founders, and ecosystem operators who need alpha signal, not scroll
+          No recap. No noise. One email per week<br />curated by A36 Labs for builders, founders, and ecosystem operators who need alpha signal, not scroll
         </p>
         <p className="text-sm text-muted mt-3 italic">Published every Wednesday</p>
       </div>
