@@ -38,10 +38,10 @@ const Events = () => {
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
-            120+ Events<br />Globally<br />All Signal
+            120+ Events Across Global Builder Hubs
           </h1>
           <p className="text-base text-white/60 mt-6 max-w-[560px]">
-            Side events, hackathons, workshops, founder meetups, builder rooms, and ecosystem events curated by A36 Labs
+            Side events, hackathons, workshops, founder meetups, builder rooms, and ecosystem events curated by A36 Labs.
           </p>
         </div>
       </section>
