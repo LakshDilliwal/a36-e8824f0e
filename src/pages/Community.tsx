@@ -1,4 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
+import communityImg1 from "@/assets/community-1.jpg";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/CdyFYIzDSMj17jWfGJGtkw";
 const TELEGRAM_URL = "https://t.me/+sqfR_6vZCdZhY2Fl";
@@ -11,7 +12,7 @@ const INSTAGRAM_URL = "https://www.instagram.com/a36labs/";
 
 // Replace `image` with real photo URLs later (16:9 recommended).
 const gallery: { image: string }[] = [
-  { image: "" },
+  { image: communityImg1 },
   { image: "" },
   { image: "" },
   { image: "" },
