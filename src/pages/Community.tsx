@@ -1,5 +1,14 @@
 import PageWrapper from "@/components/PageWrapper";
-import communityImg1 from "@/assets/community-1.jpg";
+import communityImg1 from "@/assets/a36-labs-community-image-1.jpg";
+import communityImg2 from "@/assets/a36-labs-community-image-2.jpg";
+import communityImg3 from "@/assets/a36-labs-community-image-3.jpg";
+import communityImg4 from "@/assets/a36-labs-community-image-4.jpg";
+import communityImg5 from "@/assets/a36-labs-community-image-5.jpg";
+import communityImg6 from "@/assets/a36-labs-community-image-6.jpg";
+import communityImg7 from "@/assets/a36-labs-community-image-7.jpg";
+import communityImg8 from "@/assets/a36-labs-community-image-8.jpg";
+import communityImg9 from "@/assets/a36-labs-community-image-9.jpg";
+import communityImg10 from "@/assets/a36-labs-community-image-10.jpg";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/CdyFYIzDSMj17jWfGJGtkw";
 const TELEGRAM_URL = "https://t.me/+sqfR_6vZCdZhY2Fl";
@@ -10,16 +19,17 @@ const X_URL = "https://x.com/A36Labs";
 const LINKEDIN_URL = "https://www.linkedin.com/company/a36labs/";
 const INSTAGRAM_URL = "https://www.instagram.com/a36labs/";
 
-// Replace `image` with real photo URLs later (16:9 recommended).
 const gallery: { image: string }[] = [
   { image: communityImg1 },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
-  { image: "" },
+  { image: communityImg2 },
+  { image: communityImg3 },
+  { image: communityImg4 },
+  { image: communityImg5 },
+  { image: communityImg6 },
+  { image: communityImg7 },
+  { image: communityImg8 },
+  { image: communityImg9 },
+  { image: communityImg10 },
 ];
 
 const Ext = ({ href, className, children }: { href: string; className?: string; children: React.ReactNode }) => (
