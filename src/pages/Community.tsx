@@ -165,9 +165,6 @@ const Community = () => {
           .marquee-track {
             animation: a36-marquee 40s linear infinite;
           }
-          .marquee-track:hover {
-            animation-play-state: paused;
-          }
           @media (prefers-reduced-motion: reduce) {
             .marquee-track { animation: none; }
           }
