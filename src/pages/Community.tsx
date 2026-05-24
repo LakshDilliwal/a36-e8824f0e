@@ -163,7 +163,7 @@ const Community = () => {
             to { transform: translateX(-50%); }
           }
           .marquee-track {
-            animation: a36-marquee 40s linear infinite;
+            animation: a36-marquee 36.36s linear infinite;
           }
           @media (prefers-reduced-motion: reduce) {
             .marquee-track { animation: none; }
