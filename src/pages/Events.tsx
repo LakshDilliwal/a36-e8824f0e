@@ -1,4 +1,14 @@
 import PageWrapper from "@/components/PageWrapper";
+import communityImg1 from "@/assets/a36-labs-community-image-1.jpg";
+import communityImg2 from "@/assets/a36-labs-community-image-2.jpg";
+import communityImg3 from "@/assets/a36-labs-community-image-3.jpg";
+import communityImg4 from "@/assets/a36-labs-community-image-4.jpg";
+import communityImg5 from "@/assets/a36-labs-community-image-5.jpg";
+import communityImg6 from "@/assets/a36-labs-community-image-6.jpg";
+import communityImg7 from "@/assets/a36-labs-community-image-7.jpg";
+import communityImg8 from "@/assets/a36-labs-community-image-8.jpg";
+import communityImg9 from "@/assets/a36-labs-community-image-9.jpg";
+import communityImg10 from "@/assets/a36-labs-community-image-10.jpg";
 
 
 const row1Images = [
@@ -15,16 +25,16 @@ const row1Images = [
 ];
 
 const row2Images = [
-  "/events/candid1.webp",
-  "/events/candid2.webp",
-  "/events/candid3.webp",
-  "/events/candid4.webp",
-  "/events/candid5.webp",
-  "/events/candid6.webp",
-  "/events/candid7.webp",
-  "/events/candid8.webp",
-  "/events/candid9.webp",
-  "/events/candid10.webp",
+  communityImg1,
+  communityImg2,
+  communityImg3,
+  communityImg4,
+  communityImg5,
+  communityImg6,
+  communityImg7,
+  communityImg8,
+  communityImg9,
+  communityImg10,
 ];
 
 const row1 = [...row1Images, ...row1Images];
