@@ -11,7 +11,7 @@ import Logo from "./Logo";
 const platformLinks = [
   { label: "Earn", href: "https://earn.a36labs.com", external: true },
   { label: "Events", to: "/events" },
-  { label: "Network", to: "/community" },
+  { label: "Community", to: "/community" },
   { label: "Residency", to: "/residency" },
   { label: "Ecosystem", to: "/ecosystem" },
   { label: "Apply", to: "/apply" },
@@ -35,8 +35,8 @@ const socials = [
   { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/a36labs" },
   { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/a36labs" },
   { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@a36labs" },
-  { Icon: Send, label: "Telegram", href: "https://t.me/a36labs" },
-  { Icon: Calendar, label: "Luma", href: "https://lu.ma/a36" },
+  { Icon: Send, label: "Telegram", href: "https://t.me/+sqfR_6vZCdZhY2Fl" },
+  { Icon: Calendar, label: "Luma", href: "https://luma.com/a36" },
 ];
 
 const ColHeading = ({ children }: { children: React.ReactNode }) => (
@@ -112,7 +112,7 @@ const Footer = () => (
         <a href="mailto:hello@a36labs.com" className="text-[13px] text-white/45 hover:text-white transition-opacity duration-200">
           hello@a36labs.com
         </a>
-        <p className="text-[13px] text-white/30">© 2026 A36Labs. All rights reserved.</p>
+        <p className="text-[13px] text-white/30">© 2026 A36 Labs. All rights reserved.</p>
       </div>
     </div>
   </footer>
