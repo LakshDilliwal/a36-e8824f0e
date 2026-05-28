@@ -1,7 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 const sections = [
   {
     heading: "ABOUT A36",
@@ -58,19 +56,6 @@ const sections = [
   },
 ];
 
-const FAQItem = ({ q, a }: { q: string; a: string }) => {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-border">
-      <button className="w-full flex justify-between items-center py-5 text-left" onClick={() => setOpen(!open)}>
-        <span className="font-bold text-base text-primary pr-4">{q}</span>
-        <ChevronDown size={18} className={`text-accent flex-shrink-0 transition-transform duration-200 ${open ? "rotate-180" : ""}`} />
-      </button>
-      {open && <p className="text-sm text-muted pb-5 leading-relaxed">{a}</p>}
-    </div>
-  );
-};
-
 const FAQ = () => (
   <PageWrapper>
     <section className="bg-background py-24">
@@ -84,11 +69,18 @@ const FAQ = () => (
           {sections.map((sec) => (
             <div key={sec.heading}>
               <h3 className="font-black text-sm text-accent uppercase tracking-wider mb-4">{sec.heading}</h3>
-              <div>
-                {sec.items.map((item) => (
-                  <FAQItem key={item.q} q={item.q} a={item.a} />
+              <Accordion type="single" collapsible className="w-full">
+                {sec.items.map((item, idx) => (
+                  <AccordionItem key={item.q} value={`${sec.heading}-${idx}`} className="border-b border-border">
+                    <AccordionTrigger className="font-bold text-base text-primary py-5 hover:no-underline text-left">
+                      {item.q}
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm text-muted leading-relaxed pb-5">
+                      {item.a}
+                    </AccordionContent>
+                  </AccordionItem>
                 ))}
-              </div>
+              </Accordion>
             </div>
           ))}
         </div>
@@ -96,5 +88,7 @@ const FAQ = () => (
     </section>
   </PageWrapper>
 );
+
+export default FAQ;
 
 export default FAQ;
