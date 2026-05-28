@@ -46,11 +46,18 @@ const Merch = () => (
     {/* Products */}
     <section className="bg-background py-24">
       <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <p className="eyebrow-dark mb-4">PRODUCT LINES — COMING SOON</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
           {products.map((p) => (
-            <div key={p.title} className="bg-[#C8BFB0] p-8 min-h-[200px] flex flex-col justify-end">
-              <h3 className="font-black text-lg text-primary">{p.title}</h3>
-              <p className="text-sm text-primary/60 mt-1">{p.sub}</p>
+            <div
+              key={p.title}
+              className="border border-border p-8 min-h-[180px] flex flex-col justify-between transition-all duration-150 hover:border-accent hover:-translate-y-px"
+            >
+              <span className="eyebrow-dark text-accent">COMING SOON</span>
+              <div>
+                <h3 className="font-black text-lg text-primary">{p.title}</h3>
+                <p className="text-sm text-primary/60 mt-1">{p.sub}</p>
+              </div>
             </div>
           ))}
         </div>

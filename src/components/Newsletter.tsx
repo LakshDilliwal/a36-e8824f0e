@@ -17,6 +17,7 @@ const Newsletter = () => (
             title="Subscribe to A36 Signal"
             width="100%"
             height="320"
+            loading="lazy"
             style={{ border: 0, background: "transparent" }}
             frameBorder="0"
             scrolling="no"

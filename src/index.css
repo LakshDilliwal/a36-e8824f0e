@@ -144,6 +144,17 @@
   .section-label-charcoal {
     @apply section-label text-primary;
   }
+
+  /* Subtle premium transitions */
+  button, a {
+    transition: color 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out, opacity 0.15s ease-out;
+  }
+}
+
+/* Radix dropdown / accordion micro-fade */
+@keyframes a36-fade-down {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slide-left {

@@ -11,19 +11,6 @@ import communityImg9 from "@/assets/a36-labs-community-image-9.jpg";
 import communityImg10 from "@/assets/a36-labs-community-image-10.jpg";
 
 
-const row1Images = [
-  "/events/group1.webp",
-  "/events/group2.webp",
-  "/events/group3.webp",
-  "/events/group4.webp",
-  "/events/group5.webp",
-  "/events/group6.webp",
-  "/events/group7.webp",
-  "/events/group8.webp",
-  "/events/group9.webp",
-  "/events/group10.webp",
-];
-
 const row2Images = [
   communityImg1,
   communityImg2,
@@ -37,7 +24,6 @@ const row2Images = [
   communityImg10,
 ];
 
-const row1 = [...row1Images, ...row1Images];
 const row2Doubled = [...row2Images, ...row2Images];
 
 const Events = () => {
@@ -56,24 +42,8 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 2 - DUAL PHOTO SLIDERS */}
-      <section className="bg-background py-16 overflow-hidden space-y-6">
-        <div className="overflow-hidden">
-          <div className="flex gap-6 w-max animate-slide-left">
-            {row1.map((src, i) => (
-              <div key={`r1-${i}`} className="w-[320px] h-[200px] flex-shrink-0 bg-warm-cream overflow-hidden">
-                <img
-                  src={src}
-                  alt=""
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* SECTION 2 - PHOTO SLIDER */}
+      <section className="bg-background py-16 overflow-hidden">
         <div className="overflow-hidden">
           <div className="flex gap-6 w-max animate-slide-right">
             {row2Doubled.map((src, i) => (
@@ -81,13 +51,44 @@ const Events = () => {
                 <img
                   src={src}
                   alt=""
+                  loading="lazy"
                   className="w-full h-full object-cover"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
                 />
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3 - LUMA CALENDAR */}
+      <section className="bg-background py-16">
+        <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
+          <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
+          <h2 className="font-black text-[32px] md:text-[44px] leading-[1.05] tracking-heading text-primary mb-8">
+            Upcoming Events
+          </h2>
+          <div className="w-full overflow-hidden">
+            <iframe
+              src="https://luma.com/embed/calendar/cal-PuV3v4w2KzbiPI7/events?lt=light"
+              width="100%"
+              height="650"
+              frameBorder="0"
+              loading="lazy"
+              style={{ border: "1px solid #bfcbda88" }}
+              allowFullScreen
+              aria-hidden={false}
+              tabIndex={0}
+            />
+          </div>
+          <div className="mt-6">
+            <a
+              href="https://luma.com/a36"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-block"
+            >
+              Subscribe on Luma →
+            </a>
           </div>
         </div>
       </section>
