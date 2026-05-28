@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import { Mic, Play } from "lucide-react";
 
-const platforms = [
-  { name: "Spotify", href: "#" },
-  { name: "Apple Podcasts", href: "#" },
-  { name: "YouTube", href: "#" },
-];
+const GUEST_FORM = "https://forms.gle/CbWcnNHxwXqMyQ159";
 
 const Podcast = () => (
   <section className="bg-background py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">BASE LAYER BY A36 Labs</p>
+      <p className="eyebrow-dark mb-4">BASE LAYER BY A36 LABS</p>
       <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Conversations With Builders In The Arena
       </h2>
@@ -19,7 +15,7 @@ const Podcast = () => (
       </p>
 
       {/* Featured episode card */}
-      <div className="mt-12 border border-border bg-white p-8 flex flex-col md:flex-row gap-6">
+      <div className="mt-12 border border-border bg-white p-8 flex flex-col md:flex-row gap-6 transition-all duration-150 hover:border-accent hover:-translate-y-px">
         <div className="w-full md:w-48 h-48 bg-primary flex items-center justify-center flex-shrink-0">
           <Mic size={56} className="text-accent" />
         </div>
@@ -30,8 +26,8 @@ const Podcast = () => (
             Guest outreach is open. We are speaking with builders, operators, and ecosystem leaders shaping the next layer of technology.
           </p>
           <div className="flex items-center gap-4 mt-5 flex-wrap">
-            <Link to="/apply" className="btn-primary !py-2 !px-4 text-xs">APPLY AS GUEST →</Link>
-            <a href="https://a36labs.substack.com" target="_blank" rel="noopener noreferrer" className="btn-ghost !py-2 !px-4 text-xs">GET NOTIFIED →</a>
+            <a href={GUEST_FORM} target="_blank" rel="noopener noreferrer" className="btn-primary !py-2 !px-4 text-xs">APPLY AS GUEST →</a>
+            <Link to="/newsletter" className="btn-ghost !py-2 !px-4 text-xs">GET NOTIFIED →</Link>
           </div>
         </div>
         <div className="hidden md:flex items-center">
@@ -39,16 +35,6 @@ const Podcast = () => (
             <Play size={22} className="text-primary" fill="currentColor" />
           </div>
         </div>
-      </div>
-
-      {/* Platforms */}
-      <div className="mt-10 flex flex-wrap items-center gap-6">
-        <span className="text-[11px] font-bold text-muted uppercase tracking-[0.15em]">Available on</span>
-        {platforms.map((p) => (
-          <a key={p.name} href={p.href} target="_blank" rel="noopener noreferrer" className="font-bold text-primary/70 hover:text-primary transition-opacity duration-200 text-sm">
-            {p.name}
-          </a>
-        ))}
       </div>
 
       <div className="mt-8">

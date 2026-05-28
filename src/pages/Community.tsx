@@ -150,7 +150,7 @@ const Community = () => {
                 className="shrink-0 w-[240px] md:w-[300px] aspect-video bg-primary/10 overflow-hidden"
               >
                 {g.image ? (
-                  <img src={g.image} alt="" className="w-full h-full object-cover" />
+                  <img src={g.image} alt="" loading="lazy" className="w-full h-full object-cover" />
                 ) : null}
               </div>
             ))}
