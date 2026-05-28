@@ -61,7 +61,6 @@ const MediaKit = () => (
             ))}
           </div>
         </section>
-        </section>
 
         {/* Typography */}
         <section className="mt-16">
