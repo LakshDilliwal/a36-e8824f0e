@@ -103,7 +103,7 @@ const Nav = () => {
               CONTENT <ChevronDown size={14} />
             </button>
             {contentOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60] a36-fade-down">
                 {contentItems.map((item) => (
                   <Link
                     key={item.label}
