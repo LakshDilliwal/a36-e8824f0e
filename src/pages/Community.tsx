@@ -187,7 +187,7 @@ const Community = () => {
               // First 3 cards span 2 cols each (full row). Last 2 span 3 cols each (balanced row).
               const span = i < 3 ? "md:col-span-2" : "md:col-span-3";
               return (
-                <div key={c.name} className={`${span} border border-primary/15 p-8 flex flex-col min-h-[240px] hover:border-accent transition-colors`}>
+                <div key={c.name} className={`${span} border border-primary/15 p-8 flex flex-col min-h-[240px] hover:border-accent hover:-translate-y-px transition-[border-color,transform] duration-150`}>
                   <h3 className="font-black text-2xl text-primary">{c.name}</h3>
                   <p className="text-sm text-primary/70 mt-3 flex-1">{c.body}</p>
                   <Ext href={c.href} className="mt-6 text-sm font-bold uppercase tracking-wider text-accent hover:text-primary">
