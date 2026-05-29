@@ -125,7 +125,7 @@ const Nav = () => {
               COMPANY <ChevronDown size={14} />
             </button>
             {companyOpen && (
-              <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+              <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60] a36-fade-down">
                 {companyItems.map((item) => (
                   <Link
                     key={item.label}
