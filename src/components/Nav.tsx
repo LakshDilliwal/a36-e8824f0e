@@ -69,7 +69,7 @@ const Nav = () => {
               PROGRAMS <ChevronDown size={14} />
             </button>
             {programsOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60]">
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60] a36-fade-down">
                 {programsItems.map((item) => (
                   <Link
                     key={item.label}
