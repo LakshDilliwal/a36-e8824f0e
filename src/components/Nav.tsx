@@ -144,7 +144,11 @@ const Nav = () => {
 
         {/* MOBILE TRIGGER */}
         <div className="flex lg:hidden items-center ml-auto">
-          <button onClick={() => setMobileOpen(true)} className="text-white/80 hover:text-white" aria-label="Open menu">
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="text-white/80 hover:text-white inline-flex items-center justify-center w-11 h-11 -mr-2"
+            aria-label="Open menu"
+          >
             <Menu size={24} />
           </button>
         </div>
