@@ -163,9 +163,9 @@ const Nav = () => {
           </div>
 
           <div className="flex flex-col gap-1 mt-12 px-6 flex-1">
-            <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
-            <Link to="/events" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
-            <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
+            <Link to="/earn" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
+            <Link to="/events" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
+            <Link to="/ecosystem" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
 
             {/* Programs accordion */}
             <button
