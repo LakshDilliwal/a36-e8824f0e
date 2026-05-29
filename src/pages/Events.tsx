@@ -44,7 +44,13 @@ const Events = () => {
 
       {/* SECTION 2 - PHOTO SLIDER */}
       <section className="bg-background py-16 overflow-hidden">
-        <div className="overflow-hidden">
+        <div
+          className="overflow-hidden"
+          style={{
+            maskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+            WebkitMaskImage: "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+          }}
+        >
           <div className="flex gap-6 w-max animate-slide-right">
             {row2Doubled.map((src, i) => (
               <div key={`r2-${i}`} className="w-[320px] h-[200px] flex-shrink-0 bg-warm-cream overflow-hidden">
