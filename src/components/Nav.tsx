@@ -69,7 +69,7 @@ const Nav = () => {
               PROGRAMS <ChevronDown size={14} />
             </button>
             {programsOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60]">
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60] a36-fade-down">
                 {programsItems.map((item) => (
                   <Link
                     key={item.label}
@@ -103,7 +103,7 @@ const Nav = () => {
               CONTENT <ChevronDown size={14} />
             </button>
             {contentOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60] a36-fade-down">
                 {contentItems.map((item) => (
                   <Link
                     key={item.label}
@@ -125,7 +125,7 @@ const Nav = () => {
               COMPANY <ChevronDown size={14} />
             </button>
             {companyOpen && (
-              <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60]">
+              <div className="absolute top-full right-0 mt-2 bg-primary border border-white/10 py-2 min-w-[200px] z-[60] a36-fade-down">
                 {companyItems.map((item) => (
                   <Link
                     key={item.label}
@@ -144,7 +144,11 @@ const Nav = () => {
 
         {/* MOBILE TRIGGER */}
         <div className="flex lg:hidden items-center ml-auto">
-          <button onClick={() => setMobileOpen(true)} className="text-white/80 hover:text-white" aria-label="Open menu">
+          <button
+            onClick={() => setMobileOpen(true)}
+            className="text-white/80 hover:text-white inline-flex items-center justify-center w-11 h-11 -mr-2"
+            aria-label="Open menu"
+          >
             <Menu size={24} />
           </button>
         </div>
@@ -155,13 +159,13 @@ const Nav = () => {
         <div className="fixed inset-0 bg-primary z-[100] flex flex-col overflow-y-auto">
           <div className="flex items-center justify-between px-6 pt-6">
             <Logo light />
-            <button onClick={() => setMobileOpen(false)} className="text-white" aria-label="Close menu"><X size={24} /></button>
+            <button onClick={() => setMobileOpen(false)} className="text-white inline-flex items-center justify-center w-11 h-11 -mr-2" aria-label="Close menu"><X size={24} /></button>
           </div>
 
           <div className="flex flex-col gap-1 mt-12 px-6 flex-1">
-            <Link to="/earn" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
-            <Link to="/events" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
-            <Link to="/ecosystem" className="text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
+            <Link to="/earn" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EARN</Link>
+            <Link to="/events" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>EVENTS</Link>
+            <Link to="/ecosystem" className="a36-drawer-link text-white font-bold text-2xl py-2" onClick={() => setMobileOpen(false)}>ECOSYSTEM</Link>
 
             {/* Programs accordion */}
             <button

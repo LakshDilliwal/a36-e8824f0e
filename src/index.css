@@ -157,6 +157,16 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes a36-fade-up {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes a36-stagger-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes slide-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -170,4 +180,74 @@
 }
 .animate-slide-right {
   animation: slide-right 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Route transition */
+  .a36-route-enter {
+    animation: a36-fade-up 200ms ease-out both;
+  }
+
+  /* Dropdown micro-fade */
+  .a36-fade-down {
+    animation: a36-fade-down 150ms ease-out both;
+    transform-origin: top center;
+  }
+
+  /* Hero staggered entrance */
+  .a36-hero-item {
+    animation: a36-stagger-up 320ms ease-out both;
+  }
+  .a36-hero-item-1 { animation-delay: 0ms; }
+  .a36-hero-item-2 { animation-delay: 80ms; }
+  .a36-hero-item-3 { animation-delay: 160ms; }
+  .a36-hero-item-4 { animation-delay: 240ms; }
+
+  /* Scroll-reveal for section H2s (initialized + activated by JS) */
+  .a36-reveal-init {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 280ms ease-out, transform 280ms ease-out;
+    will-change: opacity, transform;
+  }
+  .a36-reveal-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Subtle button hover lift */
+  .btn-primary:hover,
+  .btn-gold:hover,
+  .btn-dark:hover,
+  .btn-ghost:hover,
+  .btn-ghost-light:hover {
+    transform: translateY(-1px);
+  }
+  .btn-primary, .btn-gold, .btn-dark, .btn-ghost, .btn-ghost-light {
+    transition: background-color 0.15s ease-out, color 0.15s ease-out,
+                border-color 0.15s ease-out, transform 0.15s ease-out;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a36-route-enter,
+  .a36-fade-down,
+  .a36-hero-item {
+    animation: none !important;
+  }
+  .a36-reveal-init {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Accessible focus ring (gold) */
+:where(button, a, [role="button"]):focus-visible {
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 2px;
+}
+
+/* Mobile drawer link tap feedback */
+.a36-drawer-link:active {
+  background-color: hsl(0 0% 100% / 0.05);
 }
