@@ -71,7 +71,7 @@ const FAQ = () => (
               <h3 className="font-black text-sm text-accent uppercase tracking-wider mb-4">{sec.heading}</h3>
               <Accordion type="single" collapsible className="w-full">
                 {sec.items.map((item, idx) => (
-                  <AccordionItem key={item.q} value={`${sec.heading}-${idx}`} className="border-b border-border transition-colors data-[state=open]:border-accent">
+                  <AccordionItem key={item.q} value={`${sec.heading}-${idx}`} className="border-b border-border border-l-2 border-l-transparent pl-0 transition-colors data-[state=open]:border-accent data-[state=open]:border-l-accent data-[state=open]:pl-4">
                     <AccordionTrigger className="font-bold text-base text-primary py-5 hover:no-underline text-left">
                       {item.q}
                     </AccordionTrigger>

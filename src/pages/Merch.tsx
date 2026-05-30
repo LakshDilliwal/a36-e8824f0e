@@ -1,9 +1,9 @@
 import PageWrapper from "@/components/PageWrapper";
 
 const products = [
-  { title: "Hoodies & Tees", sub: "Premium cotton. Builder-grade." },
-  { title: "Caps & Accessories", sub: "Structured fits. Conference-ready." },
-  { title: "Event Swag Kits", sub: "Bulk kits for your next event." },
+  { code: "DROP 001 — TBA", title: "Hoodies & Tees", sub: "Premium cotton. Builder-grade." },
+  { code: "EVENT SWAG — TBA", title: "Caps & Accessories", sub: "Structured fits. Conference-ready." },
+  { code: "BUILDER GEAR — TBA", title: "Event Swag Kits", sub: "Bulk kits for your next event." },
 ];
 
 const Merch = () => (
@@ -53,7 +53,10 @@ const Merch = () => (
               key={p.title}
               className="border border-border p-8 min-h-[180px] flex flex-col justify-between transition-all duration-150 hover:border-accent hover:-translate-y-px"
             >
-              <span className="eyebrow-dark text-accent">COMING SOON</span>
+              <div className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-accent inline-block" aria-hidden="true" />
+                <span className="font-bold text-[11px] uppercase tracking-[0.15em] text-accent">{p.code}</span>
+              </div>
               <div>
                 <h3 className="font-black text-lg text-primary">{p.title}</h3>
                 <p className="text-sm text-primary/60 mt-1">{p.sub}</p>

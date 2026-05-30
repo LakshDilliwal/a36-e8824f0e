@@ -30,7 +30,7 @@ const Events = () => {
   return (
     <PageWrapper>
       {/* SECTION 1 - HERO */}
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-24 a36-tick-corners a36-tick-corners-gold relative">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
@@ -40,6 +40,7 @@ const Events = () => {
             Side events, hackathons, workshops, founder meetups, builder rooms, and ecosystem events curated by A36 Labs.
           </p>
         </div>
+        <div className="a36-hairline-gold" />
       </section>
 
       {/* SECTION 2 - PHOTO SLIDER */}
@@ -99,37 +100,6 @@ const Events = () => {
         </div>
       </section>
 
-      {/* SECTION 3 - LUMA CALENDAR */}
-      <section className="bg-background py-16">
-        <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-dark mb-4">2026 CALENDAR</p>
-          <h2 className="font-black text-[32px] md:text-[44px] leading-[1.05] tracking-heading text-primary mb-8">
-            Upcoming Events
-          </h2>
-          <div className="w-full overflow-hidden">
-            <iframe
-              src="https://luma.com/embed/calendar/cal-PuV3v4w2KzbiPI7/events?lt=light"
-              width="100%"
-              height="650"
-              frameBorder="0"
-              style={{ border: "1px solid #bfcbda88", borderRadius: "4px" }}
-              allowFullScreen
-              aria-hidden={false}
-              tabIndex={0}
-            />
-          </div>
-          <div className="mt-6">
-            <a
-              href="https://luma.com/a36"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-block"
-            >
-              Subscribe on Luma →
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* SECTION 5 - CO-HOST CTA */}
       <section className="bg-warm-cream py-24">

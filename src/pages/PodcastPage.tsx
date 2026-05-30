@@ -39,6 +39,22 @@ const PodcastPage = () => {
               <a href={GUEST_FORM} target="_blank" rel="noopener noreferrer" className="btn-ghost inline-block">APPLY AS GUEST →</a>
             </div>
           </div>
+
+          {/* Upcoming episodes placeholder strip */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+            {["EPISODE 001 — TBA", "EPISODE 002 — TBA", "EPISODE 003 — TBA"].map((code) => (
+              <div
+                key={code}
+                className="border border-border bg-white p-6 min-h-[120px] flex flex-col justify-between transition-all duration-150 hover:border-accent hover:-translate-y-px"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-accent inline-block" aria-hidden="true" />
+                  <span className="font-bold text-[11px] uppercase tracking-[0.15em] text-accent">{code}</span>
+                </div>
+                <p className="text-sm text-primary/55 mt-4">Guest and topic to be announced.</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </PageWrapper>
