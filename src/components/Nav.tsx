@@ -56,6 +56,16 @@ const Nav = () => {
 
   const navLinkClass = "text-white/80 hover:text-white font-bold text-sm transition-opacity duration-200";
 
+  const path = location.pathname;
+  const isActive = (matchers: string[]) => matchers.some((m) => path === m || path.startsWith(m + "/"));
+  const programsActive = isActive(["/residency", "/community"]);
+  const contentActive = isActive(["/podcast", "/newsletter"]);
+  const companyActive = isActive(["/about", "/media-kit", "/merch", "/apply", "/faq"]);
+  const earnActive = isActive(["/earn"]);
+  const eventsActive = isActive(["/events"]);
+  const ecosystemActive = isActive(["/ecosystem"]);
+  const activeCls = (on: boolean) => (on ? " a36-nav-active" : "");
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-primary h-16 flex items-center px-6 lg:px-10">
