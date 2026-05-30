@@ -56,7 +56,8 @@ const FExt = ({ href, children }: { href: string; children: React.ReactNode }) =
 );
 
 const Footer = () => (
-  <footer className="bg-primary py-16 px-6 md:px-16">
+  <footer className="bg-primary py-16 px-6 md:px-16 relative">
+    <div className="a36-hairline-gold-top" />
     <div className="container max-w-[1200px] mx-auto">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
