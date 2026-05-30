@@ -44,13 +44,13 @@ const ColHeading = ({ children }: { children: React.ReactNode }) => (
 );
 
 const FLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
-  <Link to={to} className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-1.5">
+  <Link to={to} className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-2 min-h-[36px]">
     {children}
   </Link>
 );
 
 const FExt = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-1.5">
+  <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-2 min-h-[36px]">
     {children}
   </a>
 );
