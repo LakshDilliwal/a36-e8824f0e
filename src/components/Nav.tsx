@@ -166,7 +166,7 @@ const Nav = () => {
 
       {/* MOBILE FULL-SCREEN DRAWER */}
       {mobileOpen && (
-        <div className="fixed inset-0 bg-primary z-[100] flex flex-col overflow-y-auto">
+        <div className="fixed inset-0 bg-primary z-[100] flex flex-col overflow-y-auto a36-drawer-enter">
           <div className="flex items-center justify-between px-6 pt-6">
             <Logo light />
             <button onClick={() => setMobileOpen(false)} className="text-white inline-flex items-center justify-center w-11 h-11 -mr-2" aria-label="Close menu"><X size={24} /></button>
