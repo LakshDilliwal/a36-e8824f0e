@@ -30,7 +30,7 @@ const Events = () => {
   return (
     <PageWrapper>
       {/* SECTION 1 - HERO */}
-      <section className="bg-primary py-24">
+      <section className="bg-primary py-24 a36-tick-corners a36-tick-corners-gold relative">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
           <p className="eyebrow mb-6">A36 EVENTS</p>
           <h1 className="font-black text-[40px] md:text-[64px] leading-[1.05] tracking-heading text-white">
@@ -40,6 +40,7 @@ const Events = () => {
             Side events, hackathons, workshops, founder meetups, builder rooms, and ecosystem events curated by A36 Labs.
           </p>
         </div>
+        <div className="a36-hairline-gold" />
       </section>
 
       {/* SECTION 2 - PHOTO SLIDER */}
