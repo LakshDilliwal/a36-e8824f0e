@@ -1,9 +1,9 @@
 import PageWrapper from "@/components/PageWrapper";
 
 const products = [
-  { title: "Hoodies & Tees", sub: "Premium cotton. Builder-grade." },
-  { title: "Caps & Accessories", sub: "Structured fits. Conference-ready." },
-  { title: "Event Swag Kits", sub: "Bulk kits for your next event." },
+  { code: "DROP 001 — TBA", title: "Hoodies & Tees", sub: "Premium cotton. Builder-grade." },
+  { code: "EVENT SWAG — TBA", title: "Caps & Accessories", sub: "Structured fits. Conference-ready." },
+  { code: "BUILDER GEAR — TBA", title: "Event Swag Kits", sub: "Bulk kits for your next event." },
 ];
 
 const Merch = () => (
