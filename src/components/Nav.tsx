@@ -74,12 +74,12 @@ const Nav = () => {
           <div className="relative" ref={programsRef}>
             <button
               onClick={() => { setProgramsOpen(!programsOpen); setContentOpen(false); setCompanyOpen(false); }}
-              className={`${navLinkClass} flex items-center gap-1`}
+              className={`${navLinkClass} flex items-center gap-1${activeCls(programsActive)}`}
             >
               PROGRAMS <ChevronDown size={14} />
             </button>
             {programsOpen && (
-              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 py-2 min-w-[220px] z-[60] a36-fade-down">
+              <div className="absolute top-full left-0 mt-2 bg-primary border border-white/10 border-t-2 border-t-accent py-2 min-w-[220px] z-[60] a36-fade-down">
                 {programsItems.map((item) => (
                   <Link
                     key={item.label}
@@ -93,8 +93,8 @@ const Nav = () => {
               </div>
             )}
           </div>
-          <Link to="/earn" className={navLinkClass}>EARN</Link>
-          <Link to="/events" className={navLinkClass}>EVENTS</Link>
+          <Link to="/earn" className={`${navLinkClass}${activeCls(earnActive)}`}>EARN</Link>
+          <Link to="/events" className={`${navLinkClass}${activeCls(eventsActive)}`}>EVENTS</Link>
         </div>
 
         {/* CENTER LOGO */}
