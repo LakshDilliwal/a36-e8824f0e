@@ -251,3 +251,70 @@
 .a36-drawer-link:active {
   background-color: hsl(0 0% 100% / 0.05);
 }
+
+/* Subtle gold hairline divider (use as ::after or standalone element) */
+.a36-hairline-gold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: hsl(var(--accent) / 0.18);
+  pointer-events: none;
+}
+.a36-hairline-gold-top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background-color: hsl(var(--accent) / 0.2);
+  pointer-events: none;
+}
+
+/* Architectural corner tick marks (12px L-shapes in section corners) */
+.a36-tick-corners::before,
+.a36-tick-corners::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+.a36-tick-corners::before {
+  top: 16px;
+  left: 16px;
+  border-top: 1px solid currentColor;
+  border-left: 1px solid currentColor;
+}
+.a36-tick-corners::after {
+  bottom: 16px;
+  right: 16px;
+  border-bottom: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+}
+.a36-tick-corners-gold { color: hsl(var(--accent)); }
+.a36-tick-corners-charcoal { color: hsl(var(--primary)); }
+
+/* Nav active route underline */
+.a36-nav-active {
+  position: relative;
+}
+.a36-nav-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background-color: hsl(var(--accent));
+}
+
+/* Mobile drawer enter animation */
+@media (prefers-reduced-motion: no-preference) {
+  .a36-drawer-enter {
+    animation: a36-fade-down 180ms ease-out both;
+  }
+}
+
