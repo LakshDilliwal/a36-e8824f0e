@@ -52,28 +52,28 @@ const cards = [
 ];
 
 const Manifesto = () => (
-  <section className="bg-primary py-24">
+  <section className="bg-primary py-14 md:py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow mb-4">WHAT WE DO</p>
-      <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-white">
+      <p className="eyebrow mb-3 md:mb-4">WHAT WE DO</p>
+      <h2 className="font-black text-[28px] md:text-[52px] leading-[1.05] tracking-heading text-white">
         One Network<br />Six Ways We Operate
       </h2>
-      <p className="text-base text-white/60 mt-4 max-w-[640px]">
+      <p className="text-sm md:text-base text-white/60 mt-3 md:mt-4 max-w-[640px]">
         A36 Labs connects builders to people, opportunities, events, media, ecosystem access, and residency programs across emerging tech.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-16">
         {cards.map((c) => (
-          <div key={c.label} className="bg-dark-card border border-[#374151] p-8 flex flex-col">
+          <div key={c.label} className="bg-dark-card border border-[#374151] p-5 md:p-8 flex flex-col">
             <span className="font-bold text-[11px] text-accent uppercase tracking-[0.15em]">{c.label}</span>
-            <h3 className="font-black text-2xl text-white mt-3">{c.title}</h3>
-            <p className="text-[15px] text-white/60 mt-4 leading-relaxed flex-1">{c.body}</p>
+            <h3 className="font-black text-xl md:text-2xl text-white mt-2 md:mt-3">{c.title}</h3>
+            <p className="text-[14px] md:text-[15px] text-white/60 mt-2 md:mt-4 leading-snug md:leading-relaxed flex-1">{c.body}</p>
             {c.disabled ? (
-              <span className="text-accent/40 font-bold text-sm uppercase tracking-wider mt-6 cursor-not-allowed">
+              <span className="text-accent/40 font-bold text-sm uppercase tracking-wider mt-4 md:mt-6 cursor-not-allowed">
                 {c.cta}
               </span>
             ) : (
-              <Link to={c.href} className="text-accent font-bold text-sm uppercase tracking-wider mt-6 hover:underline">
+              <Link to={c.href} className="text-accent font-bold text-sm uppercase tracking-wider mt-4 md:mt-6 hover:underline">
                 {c.cta} →
               </Link>
             )}

@@ -1,7 +1,7 @@
 const regions = ["APAC", "MENA", "LATAM", "North America", "Europe", "Africa"];
 
 const GlobalPresence = () => (
-  <section className="bg-warm-cream py-24 relative overflow-hidden">
+  <section className="bg-warm-cream py-14 md:py-24 relative overflow-hidden">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16 relative">
       <p className="eyebrow-dark mb-4">WHERE WE OPERATE</p>
       <h2 className="font-black text-[28px] md:text-[36px] leading-[1.05] tracking-heading text-primary mb-4">
