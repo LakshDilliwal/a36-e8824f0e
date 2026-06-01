@@ -4,19 +4,19 @@ import { Mic, Play } from "lucide-react";
 const GUEST_FORM = "https://forms.gle/CbWcnNHxwXqMyQ159";
 
 const Podcast = () => (
-  <section className="bg-background py-16">
+  <section className="bg-background py-12 md:py-16">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-      <p className="eyebrow-dark mb-4">BASE LAYER BY A36 LABS</p>
-      <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
+      <p className="eyebrow-dark mb-3 md:mb-4">BASE LAYER BY A36 LABS</p>
+      <h2 className="font-black text-[28px] md:text-[52px] leading-[1.05] tracking-heading text-primary">
         Conversations With Builders In The Arena
       </h2>
-      <p className="text-base text-primary/65 mt-4 max-w-[640px]">
+      <p className="text-sm md:text-base text-primary/65 mt-3 md:mt-4 max-w-[640px]">
         Base Layer is A36's long-form podcast featuring founders, operators, developers, protocol teams, investors, and ecosystem leaders building across Web3, AI, and emerging tech.
       </p>
 
       {/* Featured episode card */}
-      <div className="mt-12 border border-border bg-white p-8 flex flex-col md:flex-row gap-6 transition-all duration-150 hover:border-accent hover:-translate-y-px">
-        <div className="w-full md:w-48 h-48 bg-primary flex items-center justify-center flex-shrink-0">
+      <div className="mt-8 md:mt-12 border border-border bg-white p-5 md:p-8 flex flex-col md:flex-row gap-5 md:gap-6 transition-all duration-150 hover:border-accent hover:-translate-y-px">
+        <div className="w-full md:w-48 h-36 md:h-48 bg-primary flex items-center justify-center flex-shrink-0">
           <Mic size={56} className="text-accent" />
         </div>
         <div className="flex-1">

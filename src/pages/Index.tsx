@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import EcosystemPartners from "@/components/EcosystemPartners";
+import IRLProof from "@/components/IRLProof";
 import Manifesto from "@/components/Manifesto";
 import Podcast from "@/components/Podcast";
 import Newsletter from "@/components/Newsletter";
@@ -14,6 +15,7 @@ const Index = () => (
     <main className="pt-16">
       <Hero />
       <EcosystemPartners />
+      <IRLProof />
       <Manifesto />
       <Podcast />
       <Newsletter />

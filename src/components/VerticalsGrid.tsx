@@ -20,7 +20,7 @@ const layers = [
 ];
 
 const VerticalsGrid = () => (
-  <section className="bg-background py-24">
+  <section className="bg-background py-14 md:py-24">
     <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
       <p className="eyebrow-dark mb-4">THE ECOSYSTEM</p>
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-4">

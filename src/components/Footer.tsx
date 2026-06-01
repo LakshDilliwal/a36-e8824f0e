@@ -56,12 +56,12 @@ const FExt = ({ href, children }: { href: string; children: React.ReactNode }) =
 );
 
 const Footer = () => (
-  <footer className="bg-primary py-16 px-6 md:px-16 relative">
+  <footer className="bg-primary py-10 md:py-16 px-6 md:px-16 relative">
     <div className="a36-hairline-gold-top" />
     <div className="container max-w-[1200px] mx-auto">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
         {/* Brand */}
-        <div>
+        <div className="col-span-2 lg:col-span-1">
           <Logo light />
           <p className="text-[13px] text-white/60 mt-3 font-bold">The Home of Serious Builders</p>
           <p className="text-[13px] text-white/45 mt-3 max-w-[260px]">
@@ -109,7 +109,7 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="border-t border-white/[0.08] mt-12 pt-6 flex flex-col sm:flex-row justify-between gap-3">
+      <div className="border-t border-white/[0.08] mt-8 md:mt-12 pt-5 md:pt-6 flex flex-col sm:flex-row justify-between gap-3">
         <a href="mailto:hello@a36labs.com" className="text-[13px] text-white/45 hover:text-white transition-opacity duration-200">
           hello@a36labs.com
         </a>
