@@ -1,0 +1,14 @@
+{
+  "name": "A36 Labs",
+  "short_name": "A36",
+  "description": "A36 Labs is a global builder ecosystem connecting founders, developers, operators, researchers, and investors across Web3, AI, and emerging technology.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#FEF7E8",
+  "theme_color": "#1F2937",
+  "icons": [
+    { "src": "/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
