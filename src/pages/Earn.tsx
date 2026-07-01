@@ -1,121 +1,189 @@
 import { useMemo, useState } from "react";
-import { Globe } from "lucide-react";
 import PageWrapper from "@/components/PageWrapper";
 
-type Category = "Content" | "Design" | "Development" | "Grants" | "Other";
+type Category = "Content" | "Design" | "Development" | "Community";
 
 type Opportunity = {
-  company: string;
+  title: string;
   category: Category;
   description: string;
   reward: string;
   location: string;
-  website: string;
-  twitter: string;
-  apply: string;
-  logo?: string;
+  status: string;
+  buttonLabel: string;
 };
 
 const OPPORTUNITIES: Opportunity[] = [
   {
-    company: "MeWe",
-    category: "Content",
+    title: "Full Stack Developer",
+    category: "Development",
     description:
-      "Create educational content showcasing MeWe's social networking platform and creator tools.",
-    reward: "$500 USDC",
+      "Build core products across the A36 Labs ecosystem including Earn, Community, Residency, and internal tools.",
+    reward: "Competitive",
     location: "Remote",
-    website: "https://mewe.com/register",
-    twitter: "https://x.com/mewe",
-    apply: "https://scribble.network/bounties/mewe-1x2f",
-    logo: "https://unavatar.io/x/mewe",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
   },
   {
-    company: "ClusterProtocol",
-    category: "Content",
+    title: "Frontend Developer (React / Next.js)",
+    category: "Development",
     description:
-      "Create engaging video content explaining CodeXero and the ClusterProtocol ecosystem.",
-    reward: "Up to $2,000 USDC",
+      "Build fast, accessible, and premium frontend experiences for A36 Labs products and builders.",
+    reward: "Competitive",
     location: "Remote",
-    website: "https://www.clusterprotocol.ai/",
-    twitter: "https://x.com/clusterprotocol",
-    apply: "https://app.firstdollar.money/company/clusterprotocol/bounty/video-creator-bounty-for-codexero",
-    logo: "https://unavatar.io/x/clusterprotocol",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
   },
   {
-    company: "Superteam Germany",
+    title: "Backend Developer",
+    category: "Development",
+    description:
+      "Design and scale APIs, databases, and backend systems that power the A36 Labs platform.",
+    reward: "Competitive",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
+  },
+  {
+    title: "AI Engineer",
+    category: "Development",
+    description:
+      "Develop AI-powered workflows, automation tools, and builder experiences across the A36 ecosystem.",
+    reward: "Competitive",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
+  },
+  {
+    title: "Mobile App Developer",
+    category: "Development",
+    description:
+      "Build mobile-first experiences for A36 Labs builders, community members, and event attendees.",
+    reward: "Competitive",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
+  },
+  {
+    title: "Short Form Video Creator",
+    category: "Content",
+    description:
+      "Create high-quality short-form videos covering A36 Labs events, builders, startups, AI, Web3, and emerging technologies.",
+    reward: "Paid per project",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Technical Writer",
+    category: "Content",
+    description:
+      "Write documentation, guides, and explainers for A36 Labs products, events, and ecosystem partners.",
+    reward: "Paid",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Newsletter Editor",
+    category: "Content",
+    description:
+      "Curate weekly startup, AI, Web3, funding, and ecosystem opportunities for A36 Signal.",
+    reward: "Paid",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Social Media Content Creator",
+    category: "Content",
+    description:
+      "Create native content for A36 Labs across X, LinkedIn, Instagram, and other platforms.",
+    reward: "Paid per project",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "UI/UX Designer",
     category: "Design",
     description:
-      "Create content highlighting the Best Solana Summit Germany experience and ecosystem.",
-    reward: "$5,000 USDC",
-    location: "Global",
-    website: "https://superteam.fun/",
-    twitter: "https://x.com/SuperteamDE",
-    apply: "https://superteam.fun/earn/listing/best-solana-summit-germany-content-bounty",
-    logo: "https://unavatar.io/x/SuperteamDE",
-  },
-  {
-    company: "Superteam",
-    category: "Development",
-    description: "Build useful agent skills that can be integrated into Solana AI Kit.",
-    reward: "Open Reward",
+      "Design premium builder-first experiences for A36 Labs products and future launches.",
+    reward: "Paid per project",
     location: "Remote",
-    website: "https://superteam.fun/",
-    twitter: "https://x.com/Superteam",
-    apply: "https://superteam.fun/earn/listing/skills/",
-    logo: "https://unavatar.io/x/Superteam",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
   },
   {
-    company: "Superteam",
-    category: "Grants",
+    title: "Motion Graphics Designer",
+    category: "Design",
     description:
-      "Funding for builders creating agentic engineering tools and AI infrastructure.",
-    reward: "Grant Funding Available",
+      "Create motion and video graphics for event recaps, product launches, and social content.",
+    reward: "Paid per project",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Brand Designer",
+    category: "Design",
+    description:
+      "Evolve the A36 Labs visual identity across digital, print, and event touchpoints.",
+    reward: "Paid per project",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Community Moderator",
+    category: "Community",
+    description:
+      "Moderate discussions, enforce Signal Rules, and keep A36 Network spaces productive and welcoming.",
+    reward: "Paid",
+    location: "Remote",
+    status: "Launching Soon",
+    buttonLabel: "Opens Soon",
+  },
+  {
+    title: "Regional Community Lead",
+    category: "Community",
+    description:
+      "Represent A36 Labs in your city, organize local events, and help grow the global builder ecosystem.",
+    reward: "Performance Based",
     location: "Global",
-    website: "https://superteam.fun/",
-    twitter: "https://x.com/Superteam",
-    apply: "https://superteam.fun/earn/grants/agentic-engineering",
-    logo: "https://unavatar.io/x/Superteam",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
+  },
+  {
+    title: "Event Operations Coordinator",
+    category: "Community",
+    description:
+      "Support logistics, production, and attendee experience for A36 Labs IRL events worldwide.",
+    reward: "Paid per project",
+    location: "Hybrid",
+    status: "Launching Soon",
+    buttonLabel: "Coming Soon",
   },
 ];
 
-const FILTERS = ["All", "Content", "Design", "Development", "Grants", "Other"] as const;
+const FILTERS = ["All", "Content", "Design", "Development", "Community"] as const;
 type Filter = (typeof FILTERS)[number];
 
 const LIST_OPP_URL = "https://t.me/LakshDilliwal";
 
-const LogoMark = ({ company, logo }: { company: string; logo?: string }) => {
-  const [errored, setErrored] = useState(false);
-  if (logo && !errored) {
-    return (
-      <img
-        src={logo}
-        alt={`${company} logo`}
-        loading="lazy"
-        onError={() => setErrored(true)}
-        className="w-14 h-14 object-cover border border-border bg-white shrink-0"
-      />
-    );
-  }
-  return (
-    <div className="w-14 h-14 bg-accent text-primary font-black text-xl flex items-center justify-center shrink-0">
-      {company.charAt(0)}
-    </div>
-  );
-};
-
-const XIcon = ({ className = "" }: { className?: string }) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
-    <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.91l-4.82-6.29L5.7 22H2.44l8.03-9.18L1.5 2h7.06l4.36 5.77L18.24 2Zm-2.42 18h1.87L7.27 4H5.27l10.55 16Z" />
-  </svg>
+const LogoMark = () => (
+  <div className="w-14 h-14 bg-accent text-primary font-black text-xl flex items-center justify-center shrink-0">
+    A
+  </div>
 );
 
 const OpportunityCard = ({ o }: { o: Opportunity }) => (
   <article className="bg-white border border-border p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-5 transition-colors hover:border-accent">
     <div className="flex items-start gap-4 md:flex-1 min-w-0">
-      <LogoMark company={o.company} logo={o.logo} />
+      <LogoMark />
       <div className="min-w-0 flex-1">
         <div className="flex items-center gap-3 flex-wrap">
-          <h3 className="font-black text-lg text-primary leading-tight">{o.company}</h3>
+          <h3 className="font-black text-lg text-primary leading-tight">{o.title}</h3>
           <span className="text-[10px] uppercase tracking-[0.15em] font-bold text-accent border border-accent px-2 py-0.5">
             {o.category}
           </span>
@@ -125,6 +193,10 @@ const OpportunityCard = ({ o }: { o: Opportunity }) => (
     </div>
 
     <div className="flex md:flex-col md:items-end md:text-right gap-4 md:gap-1 md:min-w-[140px] md:border-l md:border-border md:pl-5">
+      <div className="flex-1 md:flex-none">
+        <p className="text-muted uppercase tracking-wider text-[10px]">Status</p>
+        <p className="font-bold text-primary text-sm mt-0.5">{o.status}</p>
+      </div>
       <div className="flex-1 md:flex-none">
         <p className="text-muted uppercase tracking-wider text-[10px]">Reward</p>
         <p className="font-bold text-primary text-sm mt-0.5">{o.reward}</p>
@@ -136,32 +208,12 @@ const OpportunityCard = ({ o }: { o: Opportunity }) => (
     </div>
 
     <div className="flex items-center gap-4 md:gap-3 md:shrink-0">
-      <a
-        href={o.apply}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-primary text-xs px-5 py-2.5 flex-1 md:flex-none text-center"
+      <button
+        disabled
+        className="btn-primary text-xs px-5 py-2.5 flex-1 md:flex-none text-center opacity-50 cursor-not-allowed"
       >
-        APPLY →
-      </a>
-      <a
-        href={o.website}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${o.company} website`}
-        className="text-primary/60 hover:text-accent transition-colors"
-      >
-        <Globe className="w-5 h-5" />
-      </a>
-      <a
-        href={o.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`${o.company} on X`}
-        className="text-primary/60 hover:text-accent transition-colors"
-      >
-        <XIcon className="w-4 h-4" />
-      </a>
+        {o.buttonLabel} →
+      </button>
     </div>
   </article>
 );
@@ -237,27 +289,26 @@ const Earn = () => {
             </div>
           </div>
 
-          {filtered.length === 0 ? (
-            <div className="bg-white border border-border p-10 text-center">
-              <p className="text-primary font-bold">
-                No opportunities in this category yet. Check back soon.
-              </p>
-              <a
-                href={LIST_OPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-block mt-5"
-              >
-                LIST AN OPPORTUNITY →
-              </a>
+          {/* Beta announcement */}
+          <div className="bg-primary border border-primary p-5 md:p-6 mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-[10px] uppercase tracking-[0.15em] font-bold bg-accent text-primary px-2 py-0.5">
+                BETA ACCESS
+              </span>
             </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {filtered.map((o, i) => (
-                <OpportunityCard key={`${o.company}-${o.category}-${i}`} o={o} />
-              ))}
-            </div>
-          )}
+            <h3 className="font-black text-xl md:text-2xl text-white leading-tight">
+              Applications Open Soon
+            </h3>
+            <p className="text-sm text-white/70 mt-2 max-w-[720px] leading-relaxed">
+              A36 Earn is launching soon. Browse upcoming opportunities from the A36 Labs ecosystem. Applications will open as the platform enters public beta.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            {filtered.map((o, i) => (
+              <OpportunityCard key={`${o.title}-${o.category}-${i}`} o={o} />
+            ))}
+          </div>
         </div>
       </section>
 
