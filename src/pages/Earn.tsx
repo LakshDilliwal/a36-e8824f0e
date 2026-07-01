@@ -172,8 +172,13 @@ type Filter = (typeof FILTERS)[number];
 const LIST_OPP_URL = "https://t.me/LakshDilliwal";
 
 const LogoMark = () => (
-  <div className="w-14 h-14 bg-accent text-primary font-black text-xl flex items-center justify-center shrink-0">
-    A
+  <div className="w-14 h-14 bg-accent flex items-center justify-center shrink-0 p-2">
+    <img
+      src="/apple-touch-icon.png"
+      alt="A36 Labs logo"
+      className="w-12 h-12 object-contain"
+      loading="lazy"
+    />
   </div>
 );
 
