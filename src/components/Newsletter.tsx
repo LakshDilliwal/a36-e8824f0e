@@ -8,19 +8,19 @@ const posts = [
   {
     cover: cover005,
     title: "The Builder Stack of July 2026",
-    excerpt: "The tools serious builders are actually using to ship faster this month.",
+    excerpt: "The tools serious builders are actually using to ship faster this month",
     href: "https://open.substack.com/pub/a36signal/p/the-builder-stack-of-july-2026?r=8bb3e0&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true",
   },
   {
     cover: cover004,
     title: "The AI Talent War Has Officially Begun",
-    excerpt: "Why compute isn't the only scarce resource anymore.",
+    excerpt: "Why compute isn't the only scarce resource anymore",
     href: "https://a36signal.substack.com/p/the-ai-talent-war-has-officially?r=8bb3e0",
   },
   {
     cover: cover003,
     title: "AI Is a Force Multiplier, Not a Replacement",
-    excerpt: "Why companies embracing AI will outperform the ones that fear it.",
+    excerpt: "Why companies embracing AI will outperform the ones that fear it",
     href: "https://a36signal.substack.com/p/ai-is-a-force-multiplier-not-a-replacement?r=8bb3e0",
   },
 ];
@@ -117,13 +117,13 @@ const Newsletter = () => {
               variants={fadeUp}
               className="font-black text-[30px] md:text-[44px] leading-[1.05] tracking-heading text-white"
             >
-              Signal, not noise.
+              Signal, not noise
             </motion.h2>
             <motion.p
               variants={fadeUp}
               className="text-[14px] md:text-[15px] text-white/60 mt-3 leading-relaxed"
             >
-              A weekly editorial dispatch for serious builders across AI, Web3 and frontier technology.
+              A weekly editorial dispatch for serious builders across AI, Web3 and frontier technology
             </motion.p>
           </div>
           <motion.a
@@ -167,7 +167,7 @@ const Newsletter = () => {
               <span className="eyebrow">A36 SIGNAL</span>
             </div>
             <h3 className="font-black text-white text-[20px] md:text-[22px] leading-tight tracking-heading">
-              Subscribe to the dispatch.
+              Subscribe to the Newsletter
             </h3>
             <p className="text-[13px] md:text-[13.5px] text-white/55 mt-2 leading-relaxed">
               One editorial email per week. No spam. Unsubscribe anytime.
