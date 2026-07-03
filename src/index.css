@@ -149,6 +149,44 @@
   button, a {
     transition: color 0.15s ease-out, background-color 0.15s ease-out, border-color 0.15s ease-out, opacity 0.15s ease-out;
   }
+
+  /* Hero subtle radial glow depth */
+  .a36-hero-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(60% 50% at 85% 20%, hsl(var(--accent) / 0.10), transparent 70%),
+                radial-gradient(50% 50% at 10% 90%, hsl(var(--primary) / 0.06), transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Editorial card polish */
+  .a36-card-lift {
+    transition: transform 180ms ease-out, box-shadow 180ms ease-out, border-color 180ms ease-out;
+  }
+  .a36-card-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px -18px hsl(var(--primary) / 0.25);
+  }
+
+  /* Arrow slide on hover (parents trigger movement) */
+  .a36-arrow {
+    display: inline-block;
+    transition: transform 180ms ease-out;
+  }
+  .group:hover .a36-arrow,
+  a:hover .a36-arrow,
+  button:hover .a36-arrow {
+    transform: translateX(3px);
+  }
+
+  /* Image zoom wrapper */
+  .a36-img-zoom { overflow: hidden; }
+  .a36-img-zoom img {
+    transition: transform 260ms ease-out;
+    will-change: transform;
+  }
+  .a36-img-zoom:hover img { transform: scale(1.04); }
 }
 
 /* Radix dropdown / accordion micro-fade */

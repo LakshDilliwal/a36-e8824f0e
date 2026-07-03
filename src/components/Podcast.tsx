@@ -15,19 +15,23 @@ const Podcast = () => (
       </p>
 
       {/* Featured episode card */}
-      <div className="mt-8 md:mt-12 border border-border bg-white p-5 md:p-8 flex flex-col md:flex-row gap-5 md:gap-6 transition-all duration-150 hover:border-accent hover:-translate-y-px">
-        <div className="w-full md:w-48 h-36 md:h-48 bg-primary flex items-center justify-center flex-shrink-0">
+      <div className="mt-8 md:mt-12 border border-border bg-white p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 a36-card-lift hover:border-accent">
+        <div className="w-full md:w-48 h-40 md:h-48 bg-primary flex items-center justify-center flex-shrink-0">
           <Mic size={56} className="text-accent" />
         </div>
-        <div className="flex-1">
+        <div className="flex-1 min-w-0">
           <p className="eyebrow-dark mb-2">SEASON 1</p>
-          <h3 className="font-black text-[24px] text-primary leading-tight">Season 1 Coming Soon</h3>
-          <p className="text-sm text-primary/70 mt-3">
+          <h3 className="font-black text-[22px] md:text-[26px] text-primary leading-tight">Season 1 Coming Soon</h3>
+          <p className="text-sm md:text-[15px] text-primary/70 mt-3 leading-relaxed">
             Guest outreach is open. We are speaking with builders, operators, and ecosystem leaders shaping the next layer of technology.
           </p>
-          <div className="flex items-center gap-4 mt-5 flex-wrap">
-            <a href={GUEST_FORM} target="_blank" rel="noopener noreferrer" className="btn-primary !py-2 !px-4 text-xs">APPLY AS GUEST →</a>
-            <Link to="/newsletter" className="btn-ghost !py-2 !px-4 text-xs">GET NOTIFIED →</Link>
+          <div className="flex items-center gap-3 md:gap-4 mt-5 md:mt-6 flex-wrap">
+            <a href={GUEST_FORM} target="_blank" rel="noopener noreferrer" className="group btn-primary !py-2 !px-4 text-xs inline-flex items-center gap-1">
+              APPLY AS GUEST <span className="a36-arrow">→</span>
+            </a>
+            <Link to="/newsletter" className="group btn-ghost !py-2 !px-4 text-xs inline-flex items-center gap-1">
+              GET NOTIFIED <span className="a36-arrow">→</span>
+            </Link>
           </div>
         </div>
         <div className="hidden md:flex items-center">
@@ -37,9 +41,9 @@ const Podcast = () => (
         </div>
       </div>
 
-      <div className="mt-8">
-        <Link to="/podcast" className="text-accent font-bold text-sm uppercase hover:underline tracking-wider">
-          MORE EPISODES →
+      <div className="mt-6 md:mt-8">
+        <Link to="/podcast" className="group text-accent font-bold text-sm uppercase hover:underline tracking-wider inline-flex items-center gap-1">
+          MORE EPISODES <span className="a36-arrow">→</span>
         </Link>
       </div>
     </div>

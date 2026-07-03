@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Hero = () => (
-  <section className="min-h-[64vh] md:min-h-[85vh] flex items-center bg-background relative a36-tick-corners a36-tick-corners-charcoal">
+  <section className="min-h-[64vh] md:min-h-[85vh] flex items-center bg-background relative overflow-hidden a36-hero-glow a36-tick-corners a36-tick-corners-charcoal">
     <div className="container max-w-5xl mx-auto px-6 md:px-16 py-10 md:py-16">
       <p className="eyebrow mb-4 md:mb-6 a36-hero-item a36-hero-item-1">A36 LABS</p>
 

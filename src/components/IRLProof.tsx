@@ -31,11 +31,11 @@ const IRLProof = () => (
         WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)",
       }}
     >
-      <div className="flex gap-4 md:gap-6 w-max animate-slide-left">
+      <div className="flex gap-5 md:gap-7 w-max animate-slide-left">
         {doubled.map((src, i) => (
           <div
             key={i}
-            className="w-[220px] h-[124px] sm:w-[280px] sm:h-[158px] md:w-[400px] md:h-[225px] flex-shrink-0 bg-warm-cream overflow-hidden"
+            className="a36-img-zoom a36-card-lift w-[220px] h-[124px] sm:w-[280px] sm:h-[158px] md:w-[400px] md:h-[225px] flex-shrink-0 bg-warm-cream border border-border"
           >
             <img
               src={src}
