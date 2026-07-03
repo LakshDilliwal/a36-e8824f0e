@@ -160,18 +160,34 @@
     pointer-events: none;
   }
 
-  /* Editorial card polish */
+  /* Editorial card polish — premium lift */
   .a36-card-lift {
-    transition: transform 260ms cubic-bezier(0.22,1,0.36,1),
-                box-shadow 260ms cubic-bezier(0.22,1,0.36,1),
-                border-color 200ms ease-out,
-                background-color 200ms ease-out;
+    position: relative;
+    transition: transform 420ms cubic-bezier(0.22,1,0.36,1),
+                box-shadow 420ms cubic-bezier(0.22,1,0.36,1),
+                border-color 260ms ease-out,
+                background-color 260ms ease-out;
     will-change: transform;
   }
   .a36-card-lift:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 48px -24px hsl(var(--primary) / 0.45),
-                0 0 0 1px hsl(var(--accent) / 0.15);
+    transform: translateY(-8px) scale(1.012);
+    box-shadow: 0 32px 60px -24px hsl(var(--primary) / 0.55),
+                0 0 0 1px hsl(var(--accent) / 0.22),
+                0 0 40px -10px hsl(var(--accent) / 0.15);
+  }
+  /* soft moving highlight across card */
+  .a36-card-lift::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 35%, hsl(var(--accent) / 0.06) 50%, transparent 65%);
+    opacity: 0;
+    transform: translateX(-30%);
+    transition: opacity 300ms ease-out, transform 800ms cubic-bezier(0.22,1,0.36,1);
+    pointer-events: none;
+  }
+  .a36-card-lift:hover::before {
+    opacity: 1;
+    transform: translateX(30%);
   }
 
   /* Arrow slide on hover (parents trigger movement) */
