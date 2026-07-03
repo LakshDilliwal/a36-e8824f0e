@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 
 const cards = [
   {
