@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Stagger, StaggerItem } from "@/components/Reveal";
 
 const layers = [
   {
@@ -34,20 +35,21 @@ const VerticalsGrid = () => (
       <p className="text-base text-primary/65 mb-12 max-w-[680px]">
         A36 Labs connects builders across the verticals shaping the next decade of technology, infrastructure, intelligence, frontier systems, capital markets, and digital economies
       </p>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
+      <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border" stagger={0.06}>
         {layers.map((l) => (
-          <Link
-            key={l.title}
-            to="/ecosystem"
-            className="bg-background p-8 md:p-10 group hover:bg-warm-cream transition-colors duration-200"
-          >
-            <h3 className="font-black text-xl md:text-2xl text-primary tracking-heading">
-              {l.title}
-            </h3>
-            <p className="text-sm text-primary/60 mt-3 leading-relaxed">{l.items}</p>
-          </Link>
+          <StaggerItem key={l.title}>
+            <Link
+              to="/ecosystem"
+              className="bg-background p-8 md:p-10 group hover:bg-warm-cream transition-colors duration-200 block h-full"
+            >
+              <h3 className="font-black text-xl md:text-2xl text-primary tracking-heading transition-transform duration-200 group-hover:translate-x-1">
+                {l.title}
+              </h3>
+              <p className="text-sm text-primary/60 mt-3 leading-relaxed">{l.items}</p>
+            </Link>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   </section>
 );

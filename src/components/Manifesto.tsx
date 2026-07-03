@@ -63,29 +63,28 @@ const Manifesto = () => (
         A36 Labs connects builders to people, opportunities, events, media, ecosystem access, and residency programs across emerging tech.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-16">
+      <Stagger className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-16" stagger={0.07}>
         {cards.map((c) => (
-          <div
-            key={c.label}
-            className="group bg-dark-card border border-[#374151] p-6 md:p-8 flex flex-col a36-card-lift hover:border-accent/70"
-          >
-            <span className="font-bold text-[11px] text-accent uppercase tracking-[0.15em]">{c.label}</span>
-            <h3 className="font-black text-xl md:text-2xl text-white mt-3 leading-tight transition-transform duration-200 group-hover:scale-[1.02] origin-left">
-              {c.title}
-            </h3>
-            <p className="text-[14px] md:text-[15px] text-white/60 mt-3 md:mt-4 leading-snug md:leading-relaxed flex-1">{c.body}</p>
-            {c.disabled ? (
-              <span className="text-accent/40 font-bold text-sm uppercase tracking-wider mt-5 md:mt-6 cursor-not-allowed">
-                {c.cta}
-              </span>
-            ) : (
-              <Link to={c.href} className="text-accent font-bold text-sm uppercase tracking-wider mt-5 md:mt-6 hover:underline inline-flex items-center gap-1">
-                {c.cta} <span className="a36-arrow">→</span>
-              </Link>
-            )}
-          </div>
+          <StaggerItem key={c.label}>
+            <div className="group bg-dark-card border border-[#374151] p-6 md:p-8 flex flex-col h-full a36-card-lift hover:border-accent/70">
+              <span className="font-bold text-[11px] text-accent uppercase tracking-[0.15em]">{c.label}</span>
+              <h3 className="font-black text-xl md:text-2xl text-white mt-3 leading-tight transition-transform duration-200 group-hover:scale-[1.02] origin-left">
+                {c.title}
+              </h3>
+              <p className="text-[14px] md:text-[15px] text-white/60 mt-3 md:mt-4 leading-snug md:leading-relaxed flex-1">{c.body}</p>
+              {c.disabled ? (
+                <span className="text-accent/40 font-bold text-sm uppercase tracking-wider mt-5 md:mt-6 cursor-not-allowed">
+                  {c.cta}
+                </span>
+              ) : (
+                <Link to={c.href} className="text-accent font-bold text-sm uppercase tracking-wider mt-5 md:mt-6 hover:underline inline-flex items-center gap-1">
+                  {c.cta} <span className="a36-arrow">→</span>
+                </Link>
+              )}
+            </div>
+          </StaggerItem>
         ))}
-      </div>
+      </Stagger>
     </div>
   </section>
 );

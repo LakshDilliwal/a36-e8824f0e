@@ -31,9 +31,9 @@ const GlobalPresence = () => (
           {regions.map((r) => (
             <div
               key={r}
-              className="bg-warm-cream p-8 flex items-center gap-3 relative group hover:bg-cream transition-colors duration-200"
+              className="bg-warm-cream p-8 flex items-center gap-3 relative group hover:bg-cream transition-all duration-200 hover:-translate-y-0.5"
             >
-              <span className="w-2 h-2 bg-accent shrink-0" />
+              <span className="w-2 h-2 bg-accent shrink-0 transition-transform duration-200 group-hover:scale-150" />
               <p className="font-black text-sm md:text-base uppercase tracking-wider text-primary">
                 {r}
               </p>
