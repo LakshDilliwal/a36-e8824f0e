@@ -15,9 +15,9 @@ const Podcast = () => (
       </p>
 
       {/* Featured episode card */}
-      <div className="mt-8 md:mt-12 border border-border bg-white p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 a36-card-lift hover:border-accent">
-        <div className="w-full md:w-48 h-40 md:h-48 bg-primary flex items-center justify-center flex-shrink-0">
-          <Mic size={56} className="text-accent" />
+      <div className="mt-8 md:mt-12 border border-border bg-white p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 a36-card-lift hover:border-accent group">
+        <div className="w-full md:w-48 h-40 md:h-48 bg-primary flex items-center justify-center flex-shrink-0 overflow-hidden">
+          <Mic size={56} className="text-accent transition-transform duration-500 ease-out group-hover:scale-110" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="eyebrow-dark mb-2">SEASON 1</p>
@@ -35,11 +35,12 @@ const Podcast = () => (
           </div>
         </div>
         <div className="hidden md:flex items-center">
-          <div className="w-14 h-14 bg-accent flex items-center justify-center">
+          <div className="w-14 h-14 bg-accent flex items-center justify-center transition-transform duration-300 ease-out group-hover:scale-110 group-hover:shadow-[0_0_30px_-4px_hsl(var(--accent)/0.6)]">
             <Play size={22} className="text-primary" fill="currentColor" />
           </div>
         </div>
       </div>
+
 
       <div className="mt-6 md:mt-8">
         <Link to="/podcast" className="group text-accent font-bold text-sm uppercase hover:underline tracking-wider inline-flex items-center gap-1">

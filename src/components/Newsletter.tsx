@@ -36,52 +36,44 @@ const ArticleCard = ({ post, index }: { post: typeof posts[number]; index: numbe
       href={post.href}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex bg-dark-card border border-[#2a3340] hover:border-accent/40 overflow-hidden"
-      initial={{ opacity: 0, y: reduce ? 0 : 14 }}
+      className="a36-signal-card group relative flex flex-col bg-dark-card border border-[#2a3340] overflow-hidden"
+      initial={{ opacity: 0, y: reduce ? 0 : 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease, delay: index * 0.1 }}
-      whileHover={reduce ? {} : { y: -4 }}
-      style={{ transition: "border-color .35s ease-out" }}
+      transition={{ duration: 0.55, ease, delay: index * 0.1 }}
     >
-      {/* Cover — 16:9, never cropped square. Width ~38% */}
-      <div className="relative w-[38%] flex-shrink-0 overflow-hidden bg-primary self-stretch">
-        <div className="relative w-full h-full min-h-[160px]" style={{ aspectRatio: "16 / 9" }}>
-          <img
-            src={post.cover}
-            alt={post.title}
-            loading="lazy"
-            onLoad={() => setLoaded(true)}
-            className="absolute inset-0 w-full h-full object-cover object-center will-change-transform"
-            style={{
-              transition: "transform 600ms cubic-bezier(0.22,1,0.36,1), opacity 500ms ease-out",
-              opacity: loaded ? 1 : 0,
-            }}
-          />
-        </div>
+      {/* 16:9 cover, never cropped */}
+      <div className="relative w-full overflow-hidden bg-primary" style={{ aspectRatio: "16 / 9" }}>
+        <img
+          src={post.cover}
+          alt={post.title}
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+          className="a36-signal-img absolute inset-0 w-full h-full object-cover object-center will-change-transform"
+          style={{
+            transition: "transform 600ms cubic-bezier(0.22,1,0.36,1), opacity 500ms ease-out, filter 400ms ease-out",
+            opacity: loaded ? 1 : 0,
+          }}
+        />
+        {/* shine sweep */}
+        <span className="a36-signal-shine pointer-events-none absolute inset-0" aria-hidden />
       </div>
 
-      {/* Text */}
-      <div className="flex-1 min-w-0 p-5 md:p-6 flex flex-col justify-center">
-        <h3 className="font-black text-[16px] md:text-[18px] text-white leading-[1.2] tracking-heading line-clamp-2">
+      {/* body */}
+      <div className="flex-1 flex flex-col p-5 md:p-6">
+        <h3 className="font-black text-[17px] md:text-[19px] text-white leading-[1.2] tracking-heading line-clamp-2">
           {post.title}
         </h3>
-        <p className="text-[13px] md:text-[13.5px] text-white/55 mt-2 leading-relaxed line-clamp-2">
+        <p className="text-[13.5px] md:text-[14px] text-white/55 mt-2 leading-relaxed line-clamp-2 flex-1">
           {post.excerpt}
         </p>
-        <span className="text-accent font-bold text-[11px] uppercase tracking-[0.18em] mt-3 inline-flex items-center gap-2">
+        <span className="text-accent font-bold text-[11px] uppercase tracking-[0.18em] mt-4 inline-flex items-center gap-2">
           READ ARTICLE
           <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1.5">
             →
           </span>
         </span>
       </div>
-
-      {/* Hover image scale via group */}
-      <style>{`
-        .a36-signal-card-${index}:hover img { transform: scale(1.03); }
-      `}</style>
-      <span className={`a36-signal-card-${index} absolute inset-0 pointer-events-none`} />
     </motion.a>
   );
 };
@@ -94,88 +86,155 @@ const Newsletter = () => {
     show: (i = 0) => ({
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, ease, delay: i * 0.07 },
+      transition: { duration: 0.55, ease, delay: i * 0.07 },
     }),
   };
 
   return (
-    <section id="newsletter" className="bg-primary py-12 md:py-16">
-      <div className="container max-w-[1240px] mx-auto px-6 md:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-20 gap-8 lg:gap-12" style={{ gridTemplateColumns: undefined }}>
-          <div className="grid grid-cols-1 lg:grid-cols-[35fr_65fr] gap-8 lg:gap-12 w-full col-span-full">
-            {/* LEFT — 35% */}
-            <motion.div
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={{ hidden: {}, show: { transition: { staggerChildren: 0.07 } } }}
-              className="flex flex-col"
+    <section id="newsletter" className="relative bg-primary py-14 md:py-20 overflow-hidden">
+      {/* subtle premium background accents */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 40% at 15% 0%, hsl(var(--accent) / 0.06), transparent 70%), radial-gradient(50% 40% at 90% 100%, hsl(var(--accent) / 0.05), transparent 70%)",
+        }}
+      />
+
+      <div className="container relative max-w-[1240px] mx-auto px-6 md:px-16">
+        {/* Header */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-12"
+        >
+          <div className="max-w-[560px]">
+            <motion.p variants={fadeUp} className="eyebrow mb-3">A36 SIGNAL</motion.p>
+            <motion.h2
+              variants={fadeUp}
+              className="font-black text-[30px] md:text-[44px] leading-[1.05] tracking-heading text-white"
             >
-              <motion.p variants={fadeUp} className="eyebrow mb-3">
-                A36 SIGNAL
-              </motion.p>
-              <motion.h2
-                variants={fadeUp}
-                className="font-black text-[26px] md:text-[32px] leading-[1.05] tracking-heading text-white"
-              >
-                Signal, not noise.
-              </motion.h2>
-              <motion.p
-                variants={fadeUp}
-                className="text-[13.5px] md:text-[14.5px] text-white/60 mt-3 max-w-[360px] leading-relaxed"
-              >
-                A weekly editorial dispatch for serious builders across AI, Web3 and frontier technology.
-              </motion.p>
+              Signal, not noise.
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              className="text-[14px] md:text-[15px] text-white/60 mt-3 leading-relaxed"
+            >
+              A weekly editorial dispatch for serious builders across AI, Web3 and frontier technology.
+            </motion.p>
+          </div>
+          <motion.a
+            variants={fadeUp}
+            href="https://a36signal.substack.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group btn-primary inline-flex items-center gap-2 self-start md:self-auto"
+          >
+            READ ON SUBSTACK
+            <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1.5">
+              →
+            </span>
+          </motion.a>
+        </motion.div>
 
-              <motion.a
-                variants={fadeUp}
-                href="https://a36signal.substack.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group btn-primary inline-flex items-center gap-2 mt-5 self-start"
-              >
-                READ ON SUBSTACK
-                <span className="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1.5">
-                  →
-                </span>
-              </motion.a>
+        {/* Three cards — one horizontal row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+          {posts.map((p, i) => (
+            <ArticleCard key={p.href} post={p} index={i} />
+          ))}
+        </div>
 
-              {/* Embedded Substack — native A36 wrapper */}
-              <motion.div
-                variants={fadeUp}
-                className="mt-5 bg-dark-card border border-[#2a3340] p-4 md:p-5 max-w-[440px]"
-                style={{ boxShadow: "0 20px 40px -28px rgba(0,0,0,0.6)" }}
-              >
-                <p className="eyebrow mb-3">SUBSCRIBE</p>
-                <div className="w-full overflow-hidden">
-                  <iframe
-                    title="A36 Signal — Substack subscribe"
-                    src="https://a36signal.substack.com/embed?transparent=1&light=1"
-                    width="480"
-                    height="150"
-                    style={{
-                      border: 0,
-                      background: "transparent",
-                      width: "100%",
-                      maxWidth: "480px",
-                      display: "block",
-                    }}
-                    frameBorder={0}
-                    scrolling="no"
-                  />
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* RIGHT — 65% */}
-            <div className="flex flex-col gap-4 md:gap-5">
-              {posts.map((p, i) => (
-                <ArticleCard key={p.href} post={p} index={i} />
-              ))}
+        {/* Subscribe card — below cards, centered */}
+        <motion.div
+          initial={{ opacity: 0, y: reduce ? 0 : 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.55, ease, delay: 0.1 }}
+          className="mt-10 md:mt-14 flex justify-center"
+        >
+          <div
+            className="a36-subscribe-card relative w-full max-w-[560px] bg-dark-card border border-[#2a3340] p-6 md:p-8"
+            style={{ boxShadow: "0 30px 60px -30px rgba(0,0,0,0.65)" }}
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <span className="font-black text-white text-[20px] tracking-heading">
+                A36<span className="text-accent">.</span>
+              </span>
+              <span className="h-4 w-px bg-white/20" />
+              <span className="eyebrow">A36 SIGNAL</span>
+            </div>
+            <h3 className="font-black text-white text-[20px] md:text-[22px] leading-tight tracking-heading">
+              Subscribe to the dispatch.
+            </h3>
+            <p className="text-[13px] md:text-[13.5px] text-white/55 mt-2 leading-relaxed">
+              One editorial email per week. No spam. Unsubscribe anytime.
+            </p>
+            <div className="w-full mt-5 overflow-hidden">
+              <iframe
+                title="A36 Signal — Substack subscribe"
+                src="https://a36signal.substack.com/embed?transparent=1&light=1"
+                width="480"
+                height="150"
+                style={{
+                  border: 0,
+                  background: "transparent",
+                  width: "100%",
+                  maxWidth: "480px",
+                  display: "block",
+                }}
+                frameBorder={0}
+                scrolling="no"
+              />
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
+
+      {/* scoped interactions */}
+      <style>{`
+        .a36-signal-card {
+          transition: transform 380ms cubic-bezier(0.22,1,0.36,1),
+                      border-color 300ms ease-out,
+                      box-shadow 380ms cubic-bezier(0.22,1,0.36,1);
+          will-change: transform;
+        }
+        .a36-signal-card:hover {
+          transform: translateY(-8px);
+          border-color: hsl(var(--accent) / 0.55);
+          box-shadow: 0 30px 60px -28px rgba(0,0,0,0.7),
+                      0 0 0 1px hsl(var(--accent) / 0.18);
+        }
+        .a36-signal-card:hover .a36-signal-img {
+          transform: scale(1.05);
+          filter: brightness(1.05);
+        }
+        .a36-signal-shine {
+          background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.08) 50%, transparent 70%);
+          transform: translateX(-120%);
+          transition: transform 800ms cubic-bezier(0.22,1,0.36,1);
+        }
+        .a36-signal-card:hover .a36-signal-shine {
+          transform: translateX(120%);
+        }
+        .a36-subscribe-card {
+          transition: transform 380ms cubic-bezier(0.22,1,0.36,1),
+                      border-color 300ms ease-out,
+                      box-shadow 380ms cubic-bezier(0.22,1,0.36,1);
+        }
+        .a36-subscribe-card:hover {
+          transform: translateY(-4px);
+          border-color: hsl(var(--accent) / 0.4);
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .a36-signal-card, .a36-subscribe-card, .a36-signal-img, .a36-signal-shine {
+            transition: none !important;
+            transform: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
