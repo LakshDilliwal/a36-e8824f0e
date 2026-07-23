@@ -94,8 +94,8 @@ const MediaKit = () => (
         {/* Contact */}
         <section className="mt-16">
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Contact</h2>
-          <a href="mailto:hello@a36labs.com" className="text-primary hover:underline">
-            hello@a36labs.com
+          <a href="mailto:marketing@a36labs.com" className="text-primary hover:underline">
+            marketing@a36labs.com
           </a>
 
           <div className="mt-8 border-t border-border pt-8">

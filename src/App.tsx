@@ -18,6 +18,8 @@ import NewsletterPage from "./pages/NewsletterPage";
 import FAQ from "./pages/FAQ";
 
 import Residency from "./pages/Residency";
+import Cohort from "./pages/Cohort";
+import Careers from "./pages/Careers";
 import MediaKit from "./pages/MediaKit";
 import Merch from "./pages/Merch";
 import Privacy from "./pages/Privacy";
@@ -177,6 +179,32 @@ const App = () => (
                 breadcrumbs: crumbs("Residency", "/residency"),
               },
               <Residency />,
+            )}
+          />
+          <Route
+            path="/cohort"
+            element={withSeo(
+              {
+                title: "A36 Cohort | Coming Soon",
+                description:
+                  "A36 Cohort is an upcoming structured program for builders, operators, founders, students, and emerging talent across AI, Web3, startups, and frontier technology.",
+                path: "/cohort",
+                breadcrumbs: crumbs("Cohort", "/cohort"),
+              },
+              <Cohort />,
+            )}
+          />
+          <Route
+            path="/careers"
+            element={withSeo(
+              {
+                title: "Careers at A36 Labs | Build With Us",
+                description:
+                  "Explore careers and opportunities at A36 Labs across ecosystem growth, partnerships, events, community, product, content, development, and frontier technology.",
+                path: "/careers",
+                breadcrumbs: crumbs("Careers", "/careers"),
+              },
+              <Careers />,
             )}
           />
           <Route

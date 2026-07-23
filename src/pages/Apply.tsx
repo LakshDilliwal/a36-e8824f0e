@@ -85,8 +85,8 @@ const Apply = () => {
 
           <p className="text-sm text-muted mt-12 text-center">
             Questions?{" "}
-            <a href="mailto:hello@a36labs.com" className="text-accent hover:underline font-bold">
-              hello@a36labs.com
+            <a href="mailto:contact@a36labs.com" className="text-accent hover:underline font-bold">
+              contact@a36labs.com
             </a>
           </p>
         </div>
