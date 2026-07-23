@@ -9,10 +9,11 @@ const XIcon = ({ size = 16 }: { size?: number }) => (
 import Logo from "./Logo";
 
 const platformLinks = [
-  { label: "Earn", href: "https://earn.a36labs.com", external: true },
+  { label: "Earn", to: "/earn" },
   { label: "Events", to: "/events" },
   { label: "Community", to: "/community" },
   { label: "Residency", to: "/residency" },
+  { label: "Cohort", to: "/cohort" },
   { label: "Ecosystem", to: "/ecosystem" },
   { label: "Apply", to: "/apply" },
 ];
@@ -26,6 +27,7 @@ const contentLinks = [
 
 const companyLinks = [
   { label: "About", to: "/about" },
+  { label: "Careers", to: "/careers" },
   { label: "Partner With Us", to: "/apply" },
   { label: "FAQ", to: "/faq" },
 ];
@@ -62,7 +64,9 @@ const Footer = () => (
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-10">
         {/* Brand */}
         <div className="col-span-2 lg:col-span-1">
-          <Logo light />
+          <Link to="/" aria-label="A36 Labs — Home" className="inline-flex items-center">
+            <Logo variant="footer" />
+          </Link>
           <p className="text-[13px] text-white/60 mt-3 font-bold">The Home of Serious Builders</p>
           <p className="text-[13px] text-white/45 mt-3 max-w-[260px]">
             A global builder ecosystem network. Curating serious founders across Web3, AI, and emerging tech.
