@@ -159,8 +159,8 @@ const Residency = () => {
 
           <p className="text-sm text-white/60 mt-12">
             Partnership packages available. Contact{" "}
-            <a href="mailto:hello@a36labs.com" className="font-bold text-white underline">
-              hello@a36labs.com
+            <a href="mailto:partnerships@a36labs.com" className="font-bold text-white underline">
+              partnerships@a36labs.com
             </a>
           </p>
         </div>
