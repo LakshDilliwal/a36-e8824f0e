@@ -51,11 +51,6 @@ const FLink = ({ to, children }: { to: string; children: React.ReactNode }) => (
   </Link>
 );
 
-const FExt = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <a href={href} target="_blank" rel="noopener noreferrer" className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-2 min-h-[36px]">
-    {children}
-  </a>
-);
 
 const Footer = () => (
   <footer className="bg-primary py-10 md:py-16 px-6 md:px-16 relative">

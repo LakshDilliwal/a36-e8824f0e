@@ -41,7 +41,7 @@ const Cohort = () => {
       <section id="cohort-subscribe" className="bg-primary py-24 md:py-32 relative">
         <div className="a36-hairline-gold-top" />
         <div className="container max-w-[900px] mx-auto px-6 md:px-16">
-          <p className="eyebrow-light mb-4">A36 SIGNAL</p>
+          <p className="eyebrow mb-4">A36 SIGNAL</p>
           <h2 className="font-black text-[32px] md:text-[48px] leading-[1.05] tracking-heading text-white max-w-[720px]">
             Be first to know when applications open.
           </h2>
