@@ -89,13 +89,9 @@ const Footer = () => (
 
         <div>
           <ColHeading>PLATFORM</ColHeading>
-          {platformLinks.map((l) =>
-            l.external ? (
-              <FExt key={l.label} href={l.href!}>{l.label}</FExt>
-            ) : (
-              <FLink key={l.label} to={l.to!}>{l.label}</FLink>
-            )
-          )}
+          {platformLinks.map((l) => (
+            <FLink key={l.label} to={l.to}>{l.label}</FLink>
+          ))}
         </div>
 
         <div>
