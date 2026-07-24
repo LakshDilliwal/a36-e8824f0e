@@ -1,5 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import a36LogoDark from "@/assets/a36-labs-logo-dark.svg.asset.json";
+import a36LogoWhite from "@/assets/a36-labs-logo-white.svg.asset.json";
 
 const swatches = [
   { color: "#FEF5E6", label: "Vintage Ivory", token: "--background" },
