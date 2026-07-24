@@ -1,6 +1,44 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
+const MediaKitWordmark = ({ variant }: { variant: "light" | "dark" }) => {
+  const wordColor = variant === "light" ? "#1F2937" : "#FEF5E6";
+  return (
+    <div
+      aria-label="A36 Labs logo"
+      role="img"
+      className="inline-flex items-baseline"
+      style={{ whiteSpace: "nowrap", lineHeight: 1 }}
+    >
+      <span
+        aria-hidden="true"
+        style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 900,
+          fontSize: "72px",
+          letterSpacing: "-0.15em",
+          lineHeight: 1,
+          color: wordColor,
+          paddingRight: "0.15em",
+        }}
+      >
+        A36
+      </span>
+      <span
+        aria-hidden="true"
+        style={{
+          display: "inline-block",
+          width: "14px",
+          height: "14px",
+          backgroundColor: "#FDB813",
+          marginLeft: "2px",
+        }}
+      />
+    </div>
+  );
+};
+
+
 const swatches = [
   { color: "#FEF5E6", label: "Vintage Ivory", token: "--background" },
   { color: "#1F2937", label: "Deep Charcoal", token: "--primary" },
@@ -36,11 +74,11 @@ const MediaKit = () => (
         <section className="mt-16">
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Logo</h2>
           <div className="flex gap-8 items-center">
-            <div className="bg-background border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-primary">A36<span className="text-accent">.</span></span>
+            <div className="bg-background border border-border p-8 flex items-center justify-center">
+              <MediaKitWordmark variant="light" />
             </div>
-            <div className="bg-primary border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-white">A36<span className="text-accent">.</span></span>
+            <div className="bg-primary border border-border p-8 flex items-center justify-center">
+              <MediaKitWordmark variant="dark" />
             </div>
           </div>
         </section>
