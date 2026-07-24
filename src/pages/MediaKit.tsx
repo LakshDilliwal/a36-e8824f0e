@@ -1,5 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import a36LogoDark from "@/assets/a36-labs-logo-dark.svg.asset.json";
+import a36LogoWhite from "@/assets/a36-labs-logo-white.svg.asset.json";
 
 const swatches = [
   { color: "#FEF5E6", label: "Vintage Ivory", token: "--background" },
@@ -36,11 +38,19 @@ const MediaKit = () => (
         <section className="mt-16">
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Logo</h2>
           <div className="flex gap-8 items-center">
-            <div className="bg-background border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-primary">A36<span className="text-accent">.</span></span>
+            <div className="bg-background border border-border p-8 flex items-center justify-center w-[220px] h-[140px]">
+              <img
+                src={a36LogoDark.url}
+                alt="A36 Labs dark logo"
+                className="h-auto w-full max-w-[160px] object-contain"
+              />
             </div>
-            <div className="bg-primary border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-white">A36<span className="text-accent">.</span></span>
+            <div className="bg-primary border border-border p-8 flex items-center justify-center w-[220px] h-[140px]">
+              <img
+                src={a36LogoWhite.url}
+                alt="A36 Labs white logo"
+                className="h-auto w-full max-w-[160px] object-contain"
+              />
             </div>
           </div>
         </section>
