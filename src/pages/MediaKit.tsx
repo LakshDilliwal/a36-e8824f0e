@@ -1,6 +1,44 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 
+const MediaKitWordmark = ({ variant }: { variant: "light" | "dark" }) => {
+  const wordColor = variant === "light" ? "#1F2937" : "#FEF5E6";
+  return (
+    <div
+      aria-label="A36 Labs logo"
+      role="img"
+      className="inline-flex items-baseline"
+      style={{ whiteSpace: "nowrap", lineHeight: 1 }}
+    >
+      <span
+        aria-hidden="true"
+        style={{
+          fontFamily: "Montserrat, sans-serif",
+          fontWeight: 900,
+          fontSize: "72px",
+          letterSpacing: "-0.15em",
+          lineHeight: 1,
+          color: wordColor,
+          paddingRight: "0.15em",
+        }}
+      >
+        A36
+      </span>
+      <span
+        aria-hidden="true"
+        style={{
+          display: "inline-block",
+          width: "14px",
+          height: "14px",
+          backgroundColor: "#FDB813",
+          marginLeft: "2px",
+        }}
+      />
+    </div>
+  );
+};
+
+
 const swatches = [
   { color: "#FEF5E6", label: "Vintage Ivory", token: "--background" },
   { color: "#1F2937", label: "Deep Charcoal", token: "--primary" },
