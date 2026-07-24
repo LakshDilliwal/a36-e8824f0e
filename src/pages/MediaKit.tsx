@@ -36,11 +36,11 @@ const MediaKit = () => (
         <section className="mt-16">
           <h2 className="font-black text-2xl text-primary tracking-heading mb-4">Logo</h2>
           <div className="flex gap-8 items-center">
-            <div className="bg-background border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-primary">A36<span className="text-accent">.</span></span>
+            <div className="bg-background border border-border p-8 flex items-center justify-center">
+              <MediaKitWordmark variant="light" />
             </div>
-            <div className="bg-primary border border-border p-8">
-              <span className="font-black text-5xl tracking-logo text-white">A36<span className="text-accent">.</span></span>
+            <div className="bg-primary border border-border p-8 flex items-center justify-center">
+              <MediaKitWordmark variant="dark" />
             </div>
           </div>
         </section>
