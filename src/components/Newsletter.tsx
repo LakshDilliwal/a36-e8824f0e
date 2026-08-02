@@ -3,8 +3,17 @@ import { motion, useReducedMotion } from "framer-motion";
 import cover005 from "@/assets/signal-005-builder-stack.png";
 import cover004 from "@/assets/signal-004-ai-talent-war.png";
 import cover003 from "@/assets/signal-003-force-multiplier.png";
+import cover006 from "@/assets/a36-signal-006-jack-of-all-trades.png";
 
 const posts = [
+  {
+    cover: cover006,
+    alt: "Jack of All Trades, Master of None? — A36 Signal 006",
+    issue: "A36 SIGNAL #006",
+    title: "Jack of All Trades, Master of None?",
+    excerpt: "What to do when you have no clue what to do with your life.",
+    href: "https://substack.com/@a36signal/note/p-209483093?r=8bb3e0&utm_source=notes-share-action&utm_medium=web",
+  },
   {
     cover: cover005,
     title: "The Builder Stack of July 2026",
