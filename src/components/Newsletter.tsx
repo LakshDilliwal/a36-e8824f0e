@@ -3,8 +3,17 @@ import { motion, useReducedMotion } from "framer-motion";
 import cover005 from "@/assets/signal-005-builder-stack.png";
 import cover004 from "@/assets/signal-004-ai-talent-war.png";
 import cover003 from "@/assets/signal-003-force-multiplier.png";
+import cover006 from "@/assets/a36-signal-006-jack-of-all-trades.png";
 
 const posts = [
+  {
+    cover: cover006,
+    alt: "Jack of All Trades, Master of None? — A36 Signal 006",
+    issue: "A36 SIGNAL #006",
+    title: "Jack of All Trades, Master of None?",
+    excerpt: "What to do when you have no clue what to do with your life.",
+    href: "https://substack.com/@a36signal/note/p-209483093?r=8bb3e0&utm_source=notes-share-action&utm_medium=web",
+  },
   {
     cover: cover005,
     title: "The Builder Stack of July 2026",
@@ -46,7 +55,7 @@ const ArticleCard = ({ post, index }: { post: typeof posts[number]; index: numbe
       <div className="relative w-full overflow-hidden bg-primary" style={{ aspectRatio: "16 / 9" }}>
         <img
           src={post.cover}
-          alt={post.title}
+          alt={"alt" in post ? post.alt : post.title}
           loading="lazy"
           onLoad={() => setLoaded(true)}
           className="a36-signal-img absolute inset-0 w-full h-full object-cover object-center will-change-transform"
@@ -61,6 +70,9 @@ const ArticleCard = ({ post, index }: { post: typeof posts[number]; index: numbe
 
       {/* body */}
       <div className="flex-1 flex flex-col p-5 md:p-6">
+        {"issue" in post && (
+          <p className="text-accent font-bold text-[10px] uppercase tracking-[0.2em] mb-2">{post.issue}</p>
+        )}
         <h3 className="font-black text-[17px] md:text-[19px] text-white leading-[1.2] tracking-heading line-clamp-2">
           {post.title}
         </h3>
@@ -141,7 +153,7 @@ const Newsletter = () => {
         </motion.div>
 
         {/* Three cards — one horizontal row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {posts.map((p, i) => (
             <ArticleCard key={p.href} post={p} index={i} />
           ))}
