@@ -55,7 +55,7 @@ const ArticleCard = ({ post, index }: { post: typeof posts[number]; index: numbe
       <div className="relative w-full overflow-hidden bg-primary" style={{ aspectRatio: "16 / 9" }}>
         <img
           src={post.cover}
-          alt={post.title}
+          alt={"alt" in post ? post.alt : post.title}
           loading="lazy"
           onLoad={() => setLoaded(true)}
           className="a36-signal-img absolute inset-0 w-full h-full object-cover object-center will-change-transform"
@@ -70,6 +70,9 @@ const ArticleCard = ({ post, index }: { post: typeof posts[number]; index: numbe
 
       {/* body */}
       <div className="flex-1 flex flex-col p-5 md:p-6">
+        {"issue" in post && (
+          <p className="text-accent font-bold text-[10px] uppercase tracking-[0.2em] mb-2">{post.issue}</p>
+        )}
         <h3 className="font-black text-[17px] md:text-[19px] text-white leading-[1.2] tracking-heading line-clamp-2">
           {post.title}
         </h3>
