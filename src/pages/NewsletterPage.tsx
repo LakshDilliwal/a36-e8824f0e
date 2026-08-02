@@ -4,10 +4,20 @@ import PageWrapper from "@/components/PageWrapper";
 import cover005 from "@/assets/signal-005-builder-stack.png";
 import cover004 from "@/assets/signal-004-ai-talent-war.png";
 import cover003 from "@/assets/signal-003-force-multiplier.png";
+import cover006 from "@/assets/a36-signal-006-jack-of-all-trades.png";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
 const issues = [
+  {
+    cover: cover006,
+    alt: "Jack of All Trades, Master of None? — A36 Signal 006",
+    category: "A36 SIGNAL #006",
+    date: "ISSUE 006",
+    title: "Jack of All Trades, Master of None?",
+    excerpt: "What to do when you have no clue what to do with your life.",
+    href: "https://substack.com/@a36signal/note/p-209483093?r=8bb3e0&utm_source=notes-share-action&utm_medium=web",
+  },
   {
     cover: cover005,
     category: "BUILDER STACK",
@@ -95,7 +105,7 @@ const HeroMockup = () => {
              style={{ aspectRatio: "16/9", boxShadow: "0 50px 100px -30px rgba(0,0,0,0.7), 0 0 0 1px hsl(var(--accent) / 0.12)" }}>
           <img
             src={issues[0].cover}
-            alt={issues[0].title}
+            alt={issues[0].alt ?? issues[0].title}
             loading="eager"
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
           />
@@ -179,14 +189,14 @@ const NewsletterPage = () => {
             </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
             {issues.map((post, i) => (
               <motion.a key={post.href} href={post.href} target="_blank" rel="noopener noreferrer"
                 initial={{ opacity: 0, y: reduce ? 0 : 24 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }} transition={{ duration: 0.55, ease, delay: i * 0.1 }}
                 className="a36-issue-card group relative flex flex-col bg-white border border-border overflow-hidden">
                 <div className="relative w-full overflow-hidden bg-primary" style={{ aspectRatio: "16/9" }}>
-                  <img src={post.cover} alt={post.title} loading="lazy"
+                  <img src={post.cover} alt={"alt" in post ? post.alt : post.title} loading="lazy"
                     className="a36-issue-img absolute inset-0 w-full h-full object-cover"
                     style={{ transition: "transform 700ms cubic-bezier(0.22,1,0.36,1), filter 400ms ease" }} />
                   <span className="a36-issue-shine pointer-events-none absolute inset-0" aria-hidden />
