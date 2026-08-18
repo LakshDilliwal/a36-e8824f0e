@@ -120,12 +120,12 @@ const Hero = () => {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-primary text-primary-foreground min-h-[88vh] md:min-h-[92vh] flex items-center"
+      className="relative isolate flex min-h-[78vh] items-center overflow-hidden bg-primary text-primary-foreground md:min-h-[92vh]"
     >
       {/* image plane */}
       <motion.div
         style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-y-0 right-0 w-full md:w-[62%] will-change-transform"
+        className="absolute inset-y-0 right-0 z-[2] w-full will-change-transform md:w-[62%]"
       >
         <img
           src={heroAsset.url}
@@ -136,33 +136,33 @@ const Hero = () => {
       </motion.div>
 
       {/* navy gradient veil extending from the image into the copy area */}
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_34%,hsl(var(--primary)/0.92)_48%,hsl(var(--primary)/0.55)_62%,transparent_88%)] md:bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_30%,hsl(var(--primary)/0.85)_44%,hsl(var(--primary)/0.35)_58%,transparent_78%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,transparent,hsl(var(--primary)))]" />
+      <div className="pointer-events-none absolute inset-0 z-[3] bg-[linear-gradient(180deg,hsl(var(--primary)/0.92)_0%,hsl(var(--primary)/0.82)_45%,hsl(var(--primary)/0.94)_100%)] md:bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_30%,hsl(var(--primary)/0.85)_44%,hsl(var(--primary)/0.35)_58%,transparent_78%)]" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-32 bg-[linear-gradient(180deg,transparent,hsl(var(--primary)))] md:h-40" />
 
-      {/* bridge cables behind composition */}
+      {/* bridge cables behind composition (desktop only) */}
       <motion.div
         style={{ x: nx, y: ny }}
-        className="pointer-events-none absolute inset-x-0 bottom-[8%] h-[220px] opacity-45 will-change-transform"
+        className="pointer-events-none absolute inset-x-0 bottom-[8%] z-[3] hidden h-[220px] opacity-40 will-change-transform md:block"
       >
         <MumbaiWireBridge className="h-full w-full" />
       </motion.div>
 
-      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-28 opacity-45" />
+      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] hidden h-28 opacity-45 md:block" />
 
       {/* grid marks */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.10] bg-[linear-gradient(hsl(var(--accent)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)/0.35)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="pointer-events-none absolute inset-0 z-[3] opacity-[0.05] bg-[linear-gradient(hsl(var(--accent)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)/0.35)_1px,transparent_1px)] bg-[size:96px_96px] md:opacity-[0.10] md:bg-[size:72px_72px]" />
 
       <motion.div
         style={{ x: px, y: py }}
-        className="container relative z-10 max-w-6xl mx-auto px-6 md:px-16 py-20 will-change-transform"
+        className="container relative z-[5] mx-auto w-full max-w-6xl px-5 py-16 will-change-transform max-[389px]:px-4 md:px-16 md:py-20"
       >
         <Rise>
-          <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-accent">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent md:text-[11px]">
             A36 GLOBAL RESIDENCY · MUMBAI 2026
           </p>
         </Rise>
 
-        <h1 className="mt-5 font-black tracking-tighter leading-[0.95] text-[clamp(38px,9vw,88px)] max-w-[13ch]">
+        <h1 className="mt-4 max-w-[13ch] font-black tracking-tighter leading-[0.98] text-[clamp(2.5rem,11vw,5.5rem)] md:mt-5">
           {["16 Days.", "One Room.", "Real Progress."].map((line, i) => (
             <span key={line} className="block overflow-hidden">
               <motion.span
@@ -178,23 +178,22 @@ const Hero = () => {
         </h1>
 
         <Rise delay={0.35}>
-          <p className="mt-5 font-bold uppercase tracking-[0.18em] text-xs md:text-sm text-accent">
+          <p className="mt-4 font-bold uppercase tracking-[0.16em] text-[clamp(0.7rem,3.2vw,0.875rem)] text-accent md:mt-5">
             15 days inside the residency. Day 16 to show what changed.
           </p>
-          <p className="mt-4 max-w-[62ch] text-sm md:text-base text-primary-foreground/75 leading-relaxed">
-            A focused global residency where selected builders live, work and ship alongside each
-            other in Mumbai.
+          <p className="mt-3 max-w-[62ch] text-[clamp(0.9rem,3.8vw,1.05rem)] leading-relaxed text-primary-foreground/75 md:mt-4">
+            Selected builders live and work in the same room in Mumbai and ship while they are there.
           </p>
         </Rise>
 
         <Rise delay={0.45}>
-          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
-            <a href="#apply" className="btn-gold min-h-[44px] inline-flex items-center justify-center">
+          <div className="relative z-10 mt-7 flex flex-col flex-wrap gap-3 sm:flex-row md:mt-8">
+            <a href="#apply" className="btn-gold inline-flex min-h-[44px] items-center justify-center">
               APPLY FOR RESIDENCY <span className="a36-arrow ml-2">→</span>
             </a>
             <a
               href={PARTNER_MAIL}
-              className="btn-ghost-light min-h-[44px] inline-flex items-center justify-center"
+              className="btn-ghost-light inline-flex min-h-[44px] items-center justify-center"
             >
               PARTNER WITH A36 <span className="a36-arrow ml-2">→</span>
             </a>
@@ -202,13 +201,13 @@ const Hero = () => {
         </Rise>
 
         <Rise delay={0.55}>
-          <dl className="mt-10 grid grid-cols-2 md:flex md:flex-wrap gap-y-5 gap-x-10 border-t border-primary-foreground/15 pt-6 max-w-2xl">
+          <dl className="mt-8 grid max-w-2xl grid-cols-2 gap-x-6 gap-y-4 border-t border-primary-foreground/15 pt-5 md:mt-10 md:flex md:flex-wrap md:gap-x-10 md:gap-y-5 md:pt-6">
             {[
               ["DATES", "18 OCT — 2 NOV 2026"],
               ["LOCATION", "MUMBAI, INDIA"],
               ["COHORT", "36 SELECTED RESIDENTS"],
             ].map(([k, v]) => (
-              <div key={k}>
+              <div key={k} className="min-w-0">
                 <dt className="font-mono text-[9px] uppercase tracking-[0.24em] text-primary-foreground/45">
                   {k}
                 </dt>
@@ -222,7 +221,7 @@ const Hero = () => {
       {/* floating UI chips */}
       <motion.div
         style={{ x: nx, y: ny }}
-        className="pointer-events-none hidden lg:block absolute right-10 top-28 z-10 text-right"
+        className="pointer-events-none absolute right-10 top-28 z-[4] hidden text-right lg:block"
       >
         <div className="a36-drift border border-accent/35 bg-primary/60 backdrop-blur-sm px-4 py-3">
           <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001</p>
@@ -234,11 +233,12 @@ const Hero = () => {
       </motion.div>
 
       <MumbaiHorizon
-        className="pointer-events-none absolute bottom-0 left-0 h-24 w-1/2 opacity-20"
+        className="pointer-events-none absolute bottom-0 left-0 z-[3] hidden h-24 w-1/2 opacity-20 md:block"
         tone="gold"
       />
     </section>
   );
+
 };
 
 /* ---------------- 02 · RESIDENCY OS ---------------- */
