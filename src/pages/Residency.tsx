@@ -779,9 +779,12 @@ const FAQS = [
 ];
 
 const Application = () => (
-  <section id="apply" className="relative overflow-hidden bg-primary text-primary-foreground">
+  <section
+    id="apply"
+    className="relative isolate overflow-hidden bg-primary text-primary-foreground"
+  >
     {/* transition visual */}
-    <div className="relative h-[180px] md:h-[300px]">
+    <div className="relative z-[2] h-[150px] sm:h-[200px] md:h-[300px]">
       <img
         src={applyAsset.url}
         alt="A36 Residency Mumbai skyline banner"
@@ -789,57 +792,55 @@ const Application = () => (
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--primary)/0.55),hsl(var(--primary)))]" />
-      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-50" />
+      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-24 opacity-50 md:block" />
     </div>
 
-    <div className="container relative max-w-4xl mx-auto px-6 md:px-16 pb-24 -mt-8">
+    <div className="container relative z-[5] mx-auto -mt-8 w-full max-w-4xl px-5 pb-20 max-[389px]:px-4 md:px-16 md:pb-24">
       <Rise>
-        <MumbaiCoordinates light />
-        <h2 className="mt-5 font-black tracking-tighter leading-[1.03] text-[clamp(28px,5.6vw,56px)]">
+        <MumbaiCoordinates light className="hidden md:block" />
+        <h2 className="font-black tracking-tighter leading-[1.05] text-[clamp(1.75rem,7.5vw,3.5rem)] md:mt-5">
           Think you should be in the room?
         </h2>
-        <p className="mt-5 max-w-[62ch] text-sm md:text-base text-primary-foreground/70 leading-relaxed">
-          Every application is reviewed manually. Selection is based on what you have built, what you
-          can build and what you want to accomplish during the residency.
+        <p className="mt-4 max-w-[62ch] text-[15px] md:text-base text-primary-foreground/70 leading-relaxed">
+          Every application is reviewed manually. We look at what you have built and what you want to
+          get done in Mumbai.
         </p>
       </Rise>
 
       <Rise delay={0.1}>
-        <div className="mt-10 w-full max-w-full md:max-w-[720px] border border-accent/30 bg-primary-foreground/[0.04] p-2">
+        <div className="mt-8 w-full min-w-0 max-w-full border border-accent/30 bg-primary-foreground/[0.04] p-2 md:mt-10 md:max-w-[720px]">
           <iframe
             src={LUMA_EMBED}
             title="A36 Global Residency Mumbai registration"
-            width="600"
-            height="450"
             loading="lazy"
             allow="fullscreen; payment"
-            className="block h-[450px] w-full border-0"
+            className="relative z-10 block h-[450px] w-full border-0"
           />
         </div>
         <a
           href={LUMA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex min-h-[44px] items-center font-bold text-[11px] uppercase tracking-[0.16em] text-accent"
+          className="relative z-10 mt-4 inline-flex min-h-[44px] items-center font-bold text-[11px] uppercase tracking-[0.16em] text-accent"
         >
           OPEN FULL LUMA REGISTRATION <span className="a36-arrow ml-2">→</span>
         </a>
       </Rise>
 
       <Rise delay={0.1}>
-        <div className="mt-14 border-t border-primary-foreground/15 pt-8">
+        <div className="mt-12 border-t border-primary-foreground/15 pt-8 md:mt-14">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">QUESTIONS?</p>
           <Accordion type="single" collapsible className="mt-4 w-full">
             {FAQS.map((f, i) => (
               <AccordionItem
                 key={f.q}
                 value={`faq-${i}`}
-                className="border-b border-primary-foreground/12"
+                className="border-b border-primary-foreground/20"
               >
-                <AccordionTrigger className="py-4 text-left font-bold text-sm hover:no-underline">
-                  {f.q}
+                <AccordionTrigger className="min-h-[48px] items-start gap-4 py-4 text-left font-bold text-sm hover:no-underline [&>svg]:mt-1 [&>svg]:shrink-0">
+                  <span className="min-w-0 flex-1">{f.q}</span>
                 </AccordionTrigger>
-                <AccordionContent className="pb-5 text-sm text-primary-foreground/70 leading-relaxed max-w-[68ch]">
+                <AccordionContent className="max-w-[68ch] pb-5 text-sm leading-relaxed text-primary-foreground/70">
                   {f.a}
                 </AccordionContent>
               </AccordionItem>
@@ -850,6 +851,7 @@ const Application = () => (
     </div>
   </section>
 );
+
 
 /* ---------------- sticky mobile CTA ---------------- */
 
