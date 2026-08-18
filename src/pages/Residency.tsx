@@ -245,13 +245,14 @@ const Hero = () => {
 
 const NODES = [
   { n: "01", k: "ARRIVE", d: "Meet the room. Set your goals." },
-  { n: "02", k: "BUILD", d: "Deep work, product building and optional office hours." },
-  { n: "03", k: "REVIEW", d: "Show progress. Identify blockers." },
-  { n: "04", k: "BUILD AGAIN", d: "Ship the next iteration." },
-  { n: "05", k: "REFINE", d: "Product, GTM, security and founder clinics." },
+  { n: "02", k: "BUILD", d: "Deep work and optional mentor access." },
+  { n: "03", k: "REVIEW", d: "Show progress and identify blockers." },
+  { n: "04", k: "BUILD AGAIN", d: "Ship the next version." },
+  { n: "05", k: "REFINE", d: "Product, GTM and technical clinics." },
   { n: "06", k: "PREPARE", d: "Final reviews and demo preparation." },
   { n: "07", k: "DEMO", d: "Show what changed." },
 ];
+
 
 const ResidencyOS = () => {
   const ref = useRef<HTMLDivElement>(null);
