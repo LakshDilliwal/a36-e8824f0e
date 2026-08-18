@@ -268,32 +268,35 @@ const ResidencyOS = () => {
   }, [progress]);
 
   return (
-    <section className="relative bg-background overflow-hidden py-20 md:py-28">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[linear-gradient(hsl(var(--primary))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary))_1px,transparent_1px)] bg-[size:56px_56px]" />
+    <section className="relative isolate overflow-hidden bg-background py-16 md:py-28">
+      <div className="pointer-events-none absolute inset-0 z-[1] hidden opacity-[0.05] bg-[linear-gradient(hsl(var(--primary))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary))_1px,transparent_1px)] bg-[size:56px_56px] md:block" />
 
-      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+      <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
         <Rise>
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
             THE RESIDENCY OS
           </p>
-          <h2 className="mt-4 font-black tracking-tighter leading-[1.02] text-primary text-[clamp(30px,6vw,60px)]">
+          <h2 className="mt-3 font-black tracking-tighter leading-[1.05] text-primary text-[clamp(1.75rem,7vw,3.75rem)] md:mt-4">
             Build first.<br />Everything else supports that.
           </h2>
-          <p className="mt-5 max-w-[62ch] text-sm md:text-base text-muted leading-relaxed">
-            The residency is designed around uninterrupted building, with the right people and
-            resources available when they are useful.
+          <p className="mt-4 max-w-[62ch] text-[15px] md:text-base text-muted leading-relaxed">
+            The days are built around long stretches of uninterrupted work, with the right people
+            around when you need them.
           </p>
         </Rise>
 
         {/* stat strip */}
         <Rise delay={0.1}>
-          <div className="mt-10 grid grid-cols-3 border-y border-border">
+          <div className="mt-8 grid grid-cols-3 border-y border-border md:mt-10">
             {[
               { v: <CountUp to={16} />, l: "DAYS" },
               { v: <CountUp to={36} />, l: "RESIDENTS" },
               { v: <CountUp to={1} />, l: "DEMO DAY" },
             ].map((s, i) => (
-              <div key={s.l} className={`py-5 px-2 ${i > 0 ? "border-l border-border" : ""}`}>
+              <div
+                key={s.l}
+                className={`min-w-0 px-2 py-4 md:py-5 ${i > 0 ? "border-l border-border" : ""}`}
+              >
                 <p className="font-black text-[28px] md:text-[40px] text-accent leading-none">{s.v}</p>
                 <p className="mt-1 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-muted">
                   {s.l}
@@ -304,7 +307,7 @@ const ResidencyOS = () => {
         </Rise>
 
         {/* scroll-linked bridge timeline */}
-        <div ref={ref} className="relative mt-14 md:mt-20">
+        <div ref={ref} className="relative mt-10 md:mt-20">
           {/* desktop horizontal */}
           <div className="hidden md:block">
             <div className="relative h-[2px] bg-border">
@@ -314,7 +317,7 @@ const ResidencyOS = () => {
               {NODES.map((node, i) => {
                 const on = i <= active;
                 return (
-                  <div key={node.n} className="flex flex-col items-start pr-3">
+                  <div key={node.n} className="flex min-w-0 flex-col items-start pr-3">
                     <span
                       className={`h-3 w-3 border-2 transition-colors duration-300 ${
                         on ? "bg-accent border-accent" : "bg-background border-border"
@@ -353,24 +356,26 @@ const ResidencyOS = () => {
             </div>
           </div>
 
-          {/* mobile vertical */}
-          <div className="md:hidden relative pl-6">
-            <div className="absolute left-[5px] top-1 bottom-1 w-px bg-border" />
+          {/* mobile vertical — one continuous line */}
+          <div className="relative pl-7 md:hidden">
+            <div className="pointer-events-none absolute left-[5px] top-2 bottom-2 w-px bg-border" />
             <motion.div
               style={{ scaleY: progress }}
-              className="absolute left-[5px] top-1 bottom-1 w-px bg-accent origin-top"
+              className="pointer-events-none absolute left-[5px] top-2 bottom-2 w-px origin-top bg-accent"
             />
-            <ul className="space-y-7">
+            <ul>
               {NODES.map((node, i) => (
-                <li key={node.n} className="relative">
+                <li key={node.n} className="relative min-w-0 pb-7 last:pb-0">
                   <span
-                    className={`absolute -left-6 top-1 h-[11px] w-[11px] border-2 transition-colors ${
+                    className={`absolute -left-7 top-1.5 h-[11px] w-[11px] border-2 transition-colors ${
                       i <= active ? "bg-accent border-accent" : "bg-background border-border"
                     }`}
                   />
                   <p className="font-mono text-[10px] tracking-[0.2em] text-accent">{node.n}</p>
-                  <p className="mt-0.5 font-black text-sm uppercase text-primary">{node.k}</p>
-                  <p className="mt-1 text-xs text-muted leading-snug max-w-[46ch]">{node.d}</p>
+                  <p className="mt-1 font-black text-[17px] uppercase leading-tight text-primary">
+                    {node.k}
+                  </p>
+                  <p className="mt-1 max-w-[46ch] text-[14px] leading-snug text-muted">{node.d}</p>
                 </li>
               ))}
             </ul>
@@ -378,13 +383,12 @@ const ResidencyOS = () => {
         </div>
 
         <Rise delay={0.1}>
-          <p className="mt-12 border-l-2 border-accent pl-4 max-w-[64ch] text-sm text-primary/80 italic">
-            Mentor sessions, technical clinics and workshops happen around the work — not instead of
-            it.
+          <p className="mt-10 max-w-[64ch] border-l-2 border-accent pl-4 text-sm text-primary/80 md:mt-12">
+            Mentor sessions, clinics and workshops happen around the work, not instead of it.
           </p>
           <a
             href="#apply"
-            className="btn-dark mt-8 inline-flex min-h-[44px] items-center justify-center"
+            className="btn-dark relative z-10 mt-6 inline-flex min-h-[44px] items-center justify-center md:mt-8"
           >
             APPLY FOR RESIDENCY <span className="a36-arrow ml-2">→</span>
           </a>
@@ -393,6 +397,7 @@ const ResidencyOS = () => {
     </section>
   );
 };
+
 
 /* ---------------- 03 · INSIDE THE ROOM ---------------- */
 
