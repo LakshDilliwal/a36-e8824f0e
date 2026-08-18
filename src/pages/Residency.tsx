@@ -41,7 +41,7 @@ const useMouseParallax = () => {
 
   useEffect(() => {
     if (reduce) return;
-    if (window.matchMedia("(pointer: coarse)").matches) return;
+    if (window.matchMedia("(pointer: coarse), (max-width: 767px)").matches) return;
     const onMove = (e: MouseEvent) => {
       x.set(e.clientX / window.innerWidth - 0.5);
       y.set(e.clientY / window.innerHeight - 0.5);
@@ -49,6 +49,7 @@ const useMouseParallax = () => {
     window.addEventListener("mousemove", onMove, { passive: true });
     return () => window.removeEventListener("mousemove", onMove);
   }, [reduce, x, y]);
+
 
   return { mx: sx, my: sy };
 };
