@@ -142,15 +142,15 @@ const Hero = () => {
       {/* bridge cables behind composition */}
       <motion.div
         style={{ x: nx, y: ny }}
-        className="pointer-events-none absolute inset-x-0 bottom-[8%] h-[220px] opacity-70 will-change-transform"
+        className="pointer-events-none absolute inset-x-0 bottom-[8%] h-[220px] opacity-45 will-change-transform"
       >
         <MumbaiWireBridge className="h-full w-full" />
       </motion.div>
 
-      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-28 opacity-70" />
+      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-28 opacity-45" />
 
       {/* grid marks */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.16] bg-[linear-gradient(hsl(var(--accent)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)/0.35)_1px,transparent_1px)] bg-[size:72px_72px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.10] bg-[linear-gradient(hsl(var(--accent)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)/0.35)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
       <motion.div
         style={{ x: px, y: py }}
@@ -179,7 +179,7 @@ const Hero = () => {
 
         <Rise delay={0.35}>
           <p className="mt-5 font-bold uppercase tracking-[0.18em] text-xs md:text-sm text-accent">
-            15 days to build. Day 16 to show what changed.
+            15 days inside the residency. Day 16 to show what changed.
           </p>
           <p className="mt-4 max-w-[62ch] text-sm md:text-base text-primary-foreground/75 leading-relaxed">
             A focused global residency where selected builders live, work and ship alongside each
@@ -234,7 +234,7 @@ const Hero = () => {
       </motion.div>
 
       <MumbaiHorizon
-        className="pointer-events-none absolute bottom-0 left-0 h-24 w-1/2 opacity-30"
+        className="pointer-events-none absolute bottom-0 left-0 h-24 w-1/2 opacity-20"
         tone="gold"
       />
     </section>
@@ -327,22 +327,22 @@ const ResidencyOS = () => {
                       }`}
                     />
                     <p
-                      className={`font-mono text-[10px] tracking-[0.2em] transition-colors ${
-                        on ? "text-accent" : "text-muted/60"
+                      className={`font-mono text-[11px] tracking-[0.2em] transition-colors ${
+                        on ? "text-accent" : "text-primary/45"
                       }`}
                     >
                       {node.n}
                     </p>
                     <p
-                      className={`mt-1 font-black text-[13px] uppercase tracking-tight transition-colors ${
-                        on ? "text-primary" : "text-muted/50"
+                      className={`mt-1 font-black text-[15px] lg:text-[17px] uppercase tracking-tight transition-colors ${
+                        on ? "text-primary" : "text-primary/55"
                       }`}
                     >
                       {node.k}
                     </p>
                     <p
-                      className={`mt-2 text-xs leading-snug transition-opacity duration-500 ${
-                        on ? "opacity-100 text-muted" : "opacity-35 text-muted"
+                      className={`mt-2 text-[13px] lg:text-sm leading-snug text-muted transition-opacity duration-500 ${
+                        on ? "opacity-100" : "opacity-60"
                       }`}
                     >
                       {node.d}
@@ -720,7 +720,7 @@ const Partners = () => (
             (cat) => (
               <li
                 key={cat}
-                className="group relative flex min-h-[92px] items-center justify-center bg-background px-4 text-center transition-colors hover:bg-secondary"
+                className="group relative flex min-h-[92px] items-center justify-center bg-background px-4 text-center transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-secondary hover:-translate-y-[2px] hover:z-10 hover:shadow-[0_10px_24px_-14px_hsl(var(--primary)/0.45),inset_0_0_0_1px_hsl(var(--accent)/0.55)]"
               >
                 <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-primary/60 transition-colors group-hover:text-accent">
                   {cat}
@@ -805,7 +805,7 @@ const Application = () => (
       </Rise>
 
       <Rise delay={0.1}>
-        <div className="mt-10 w-full max-w-[680px] border border-accent/30 bg-primary-foreground/[0.04] p-2">
+        <div className="mt-10 w-full max-w-full md:max-w-[720px] border border-accent/30 bg-primary-foreground/[0.04] p-2">
           <iframe
             src={LUMA_EMBED}
             title="A36 Global Residency Mumbai registration"
