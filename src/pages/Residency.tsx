@@ -701,28 +701,28 @@ const DemoDay = () => {
 /* ---------------- 05 · PARTNERS ---------------- */
 
 const Partners = () => (
-  <section className="relative overflow-hidden bg-background py-20 md:py-24">
-    <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+  <section className="relative isolate overflow-hidden bg-background py-16 md:py-24">
+    <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
       <Rise>
         <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">PARTNERS</p>
-        <h2 className="mt-4 font-black tracking-tighter leading-[1.03] text-primary text-[clamp(28px,5.4vw,52px)]">
+        <h2 className="mt-3 font-black tracking-tighter leading-[1.05] text-primary text-[clamp(1.75rem,7vw,3.25rem)] md:mt-4">
           Help build the room.
         </h2>
-        <p className="mt-5 max-w-[64ch] text-sm md:text-base text-muted leading-relaxed">
-          Residency partners can bring technology, mentors, developer resources, challenges and
-          meaningful support directly to selected builders.
+        <p className="mt-4 max-w-[64ch] text-[15px] md:text-base text-muted leading-relaxed">
+          Partners bring technology, mentors, developer resources and real challenges to the builders
+          in the room.
         </p>
       </Rise>
 
       <Rise delay={0.1}>
-        <ul className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
+        <ul className="mt-8 grid grid-cols-2 gap-3 max-[359px]:grid-cols-1 md:mt-10 md:grid-cols-3 md:gap-4">
           {["TECHNOLOGY", "ECOSYSTEM", "INSTITUTIONAL", "MEDIA", "COMMUNITY", "RESIDENCY"].map(
             (cat) => (
               <li
                 key={cat}
-                className="group relative flex min-h-[92px] items-center justify-center bg-background px-4 text-center transition-[background-color,box-shadow,transform] duration-200 ease-out hover:bg-secondary hover:-translate-y-[2px] hover:z-10 hover:shadow-[0_10px_24px_-14px_hsl(var(--primary)/0.45),inset_0_0_0_1px_hsl(var(--accent)/0.55)]"
+                className="group relative flex min-h-[76px] min-w-0 items-center justify-center border border-border bg-background px-4 py-5 text-center transition-[background-color,box-shadow,transform] duration-200 ease-out md:min-h-[92px] md:hover:-translate-y-[2px] md:hover:bg-secondary md:hover:shadow-[0_10px_24px_-14px_hsl(var(--primary)/0.45),inset_0_0_0_1px_hsl(var(--accent)/0.55)]"
               >
-                <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-primary/60 transition-colors group-hover:text-accent">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary/60 transition-colors group-hover:text-accent md:text-[11px]">
                   {cat}
                 </span>
               </li>
@@ -732,18 +732,21 @@ const Partners = () => (
       </Rise>
 
       <Rise delay={0.15}>
-        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
           <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
             PARTNERS — ANNOUNCING SOON
           </p>
-          <div className="hidden sm:block h-px flex-1 bg-border" />
-          <a href={PARTNER_MAIL} className="btn-dark min-h-[44px] inline-flex items-center justify-center">
+          <div className="hidden h-px flex-1 bg-border sm:block" />
+          <a
+            href={PARTNER_MAIL}
+            className="btn-dark relative z-10 inline-flex min-h-[44px] items-center justify-center"
+          >
             PARTNER WITH A36 <span className="a36-arrow ml-2">→</span>
           </a>
         </div>
         <a
           href={PARTNER_MAIL}
-          className="mt-4 inline-block font-mono text-[11px] tracking-[0.12em] text-primary/70 underline underline-offset-4 hover:text-accent"
+          className="relative z-10 mt-4 inline-block font-mono text-[11px] tracking-[0.12em] text-primary/70 underline underline-offset-4 hover:text-accent"
         >
           partnerships@a36labs.com
         </a>
@@ -751,6 +754,7 @@ const Partners = () => (
     </div>
   </section>
 );
+
 
 /* ---------------- 06 · APPLICATION ---------------- */
 
