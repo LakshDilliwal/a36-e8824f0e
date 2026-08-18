@@ -2,1126 +2,905 @@ import { useEffect, useRef, useState } from "react";
 import {
   motion,
   useInView,
+  useMotionValue,
   useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
 import PageWrapper from "@/components/PageWrapper";
-import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import heroImage from "@/assets/a36-labs-community-image-3.jpg";
-import roomImage from "@/assets/a36-labs-community-image-7.jpg";
+import {
+  MumbaiWireBridge,
+  MumbaiCoordinates,
+  MumbaiHorizon,
+  OceanGrid,
+  ResidencyNodes,
+} from "@/components/residency/MumbaiVisuals";
+import heroAsset from "@/assets/a36-residency-hero.png.asset.json";
+import squareAsset from "@/assets/a36-residency-square.png.asset.json";
+import applyAsset from "@/assets/a36-residency-apply.png.asset.json";
 
 const LUMA_URL = "https://luma.com/g3oz48ck";
 const LUMA_EMBED = "https://luma.com/embed/event/evt-Xw3tOfbza5zUUKd/simple";
-const PARTNER_FORM_URL = "https://forms.gle/ashs3kUvVVey5k4K9";
+const PARTNER_MAIL = "mailto:partnerships@a36labs.com?subject=A36%20Residency%20Partnership";
 
-/* ---------------------------------- data ---------------------------------- */
+/* ---------------- shared motion helpers ---------------- */
 
-const meta = [
-  "18 OCT — 2 NOV 2026",
-  "MUMBAI, INDIA",
-  "36 SELECTED RESIDENTS",
-];
+const useMouseParallax = () => {
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const sx = useSpring(x, { stiffness: 60, damping: 20, mass: 0.6 });
+  const sy = useSpring(y, { stiffness: 60, damping: 20, mass: 0.6 });
+  const reduce = useReducedMotion();
 
-const thesis = [
-  { k: "BUILD", v: "Focused time to work on something that matters." },
-  {
-    k: "ACCESS",
-    v: "Relevant founders, engineers, mentors, operators and partners around you.",
-  },
-  {
-    k: "SHIP",
-    v: "Leave with meaningful progress, not another folder of conference notes.",
-  },
-];
+  useEffect(() => {
+    if (reduce) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    const onMove = (e: MouseEvent) => {
+      x.set(e.clientX / window.innerWidth - 0.5);
+      y.set(e.clientY / window.innerHeight - 0.5);
+    };
+    window.addEventListener("mousemove", onMove, { passive: true });
+    return () => window.removeEventListener("mousemove", onMove);
+  }, [reduce, x, y]);
 
-const phases = [
-  {
-    n: "01",
-    tag: "ARRIVE",
-    title: "Arrival + Founder Diagnosis",
-    body: "Onboarding, introductions, product walkthroughs and individual goals for the residency.",
-  },
-  {
-    n: "02",
-    tag: "BUILD",
-    title: "Build Cycle I",
-    body: "Focused building with optional technical clinics and mentor office hours.",
-  },
-  {
-    n: "03",
-    tag: "REVIEW",
-    title: "Midpoint Review",
-    body: "Show what changed, identify blockers and connect each builder with relevant people or resources.",
-  },
-  {
-    n: "04",
-    tag: "BUILD AGAIN",
-    title: "Build Cycle II",
-    body: "Continue shipping with optional partner tracks, technical resources and targeted workshops.",
-  },
-  {
-    n: "05",
-    tag: "REFINE",
-    title: "Product, GTM & Founder Clinics",
-    body: "Product review, distribution, security, fundraising, storytelling and scaling sessions.",
-  },
-  {
-    n: "06",
-    tag: "PREPARE",
-    title: "Demo Preparation",
-    body: "Final product reviews, storytelling and demos.",
-  },
-  {
-    n: "07",
-    tag: "DEMO",
-    title: "A36 Demo Day · 2 November",
-    body: "Selected residents present what they built to invited founders, investors, mentors, ecosystem leaders and partners.",
-  },
-];
+  return { mx: sx, my: sy };
+};
 
-const rhythm = [
-  ["08:00", "Breakfast / slow start"],
-  ["09:00", "Deep work"],
-  ["11:00", "Optional mentor office hours"],
-  ["13:00", "Lunch"],
-  ["14:00", "Build"],
-  ["17:00", "Optional workshop / product clinic"],
-  ["19:00", "Dinner"],
-  ["20:00", "Founder conversations / build / reset"],
-];
-
-const keywords = [
-  "AI",
-  "WEB3",
-  "AI × WEB3",
-  "OPEN SOURCE",
-  "DEVELOPER TOOLS",
-  "PAYMENTS",
-  "CONSUMER",
-  "INFRASTRUCTURE",
-  "AUTOMATION",
-  "PRIVACY",
-  "SECURITY",
-  "ONCHAIN",
-  "EXPERIMENTAL TECH",
-];
-
-const mentorFormats = [
-  "1:1 office hours",
-  "Technical clinics",
-  "Product reviews",
-  "Small workshops",
-  "Founder firesides",
-  "Investor conversations",
-  "Dinner conversations",
-];
-
-const tracks = [
-  { t: "AI INFRASTRUCTURE", d: "Compute, models, tooling and agent infrastructure." },
-  { t: "DEVELOPER TOOLS", d: "SDKs, testing, deployment and builder workflow." },
-  { t: "PAYMENTS", d: "Rails, settlement, stablecoins and money movement." },
-  { t: "OPEN INNOVATION", d: "Open briefs, bounties and experimental challenges." },
-];
-
-const applyYes = [
-  "You are actively building.",
-  "You have shipped before or can start quickly.",
-  "You are a technical founder, developer, product builder, researcher, designer who builds or exceptional student.",
-  "You want focused time around ambitious people.",
-  "You are comfortable giving and receiving feedback.",
-  "You want to leave Mumbai with meaningful progress.",
-];
-
-const applyNo = [
-  "You are applying only for accommodation.",
-  "You mainly want networking.",
-  "You expect a conference schedule.",
-  "You are not planning to build.",
-  "You want spectatorship instead of participation.",
-];
-
-const benefits = [
-  "A36 Residency house",
-  "Shared workspace",
-  "Residency programming",
-  "Mentor and expert access",
-  "Partner workshops and technical resources",
-  "Founder community",
-  "A36 Demo Day",
-  "A36 Residency Alumni Network",
-];
-
-const demoItems = [
-  "Product shipped",
-  "New features",
-  "Technical integrations",
-  "Experiments",
-  "Open-source work",
-  "Early traction",
-  "Customer insights",
-  "Next milestones",
-];
-
-const alumniPerks = [
-  "Founder introductions",
-  "Investor connections",
-  "Ecosystem opportunities",
-  "Partner programs",
-  "Alumni gatherings",
-  "Future A36 programs",
-  "Cross-cohort collaboration",
-  "Opportunities to mentor future residents",
-];
-
-const partnerCategories = [
-  "Residency Partners",
-  "Technology Partners",
-  "Ecosystem Partners",
-  "Institutional Partners",
-  "Media Partners",
-  "Community Partners",
-];
-
-const faqs = [
-  ["What is A36 Residency?", "A curated 16-day builder residency in Mumbai."],
-  ["When is it?", "18 October – 2 November 2026."],
-  ["How many people will be selected?", "The residency is capped at 36 selected residents."],
-  ["Is this a hackathon?", "No. It is a focused residential building program."],
-  [
-    "Do I need an existing startup?",
-    "No. Applicants should, however, be capable of building and shipping meaningful work.",
-  ],
-  [
-    "Is it only for AI or Web3?",
-    "No. The residency is open to builders across AI, Web3 and adjacent frontier technologies.",
-  ],
-  [
-    "Is accommodation included?",
-    "Final accommodation, meal and resident-support details will be communicated to selected applicants based on the final residency partner structure.",
-  ],
-  [
-    "Do you provide visas?",
-    "No. International applicants must independently arrange and hold the appropriate visa/documentation required to enter India.",
-  ],
-  [
-    "How are residents selected?",
-    "Every application is reviewed manually based on previous work, ability to execute and what the applicant wants to accomplish during the residency.",
-  ],
-];
-
-/* -------------------------------- utilities ------------------------------- */
+const Rise = ({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) => {
+  const reduce = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: reduce ? 0 : 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const CountUp = ({ to, suffix = "" }: { to: number; suffix?: string }) => {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();
-  const [value, setValue] = useState(0);
+  const [n, setN] = useState(reduce ? to : 0);
 
   useEffect(() => {
-    if (!inView) return;
-    if (reduce) {
-      setValue(to);
-      return;
-    }
+    if (!inView || reduce) return;
     let raf = 0;
     const start = performance.now();
-    const dur = 1100;
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - start) / dur);
-      setValue(Math.round(to * (1 - Math.pow(1 - p, 3))));
+    const tick = (t: number) => {
+      const p = Math.min((t - start) / 900, 1);
+      setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [inView, to, reduce]);
+  }, [inView, reduce, to]);
 
   return (
     <span ref={ref}>
-      {value}
+      {n}
       {suffix}
     </span>
   );
 };
 
-/* Decorative hero technical layer */
-const HeroTech = () => (
-  <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-    {/* grid */}
-    <div
-      className="absolute inset-0 opacity-[0.35]"
-      style={{
-        backgroundImage:
-          "linear-gradient(to right, hsl(var(--primary)/0.07) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--primary)/0.07) 1px, transparent 1px)",
-        backgroundSize: "64px 64px",
-        maskImage: "radial-gradient(80% 70% at 60% 30%, #000 20%, transparent 90%)",
-        WebkitMaskImage: "radial-gradient(80% 70% at 60% 30%, #000 20%, transparent 90%)",
-      }}
-    />
-    {/* orbits */}
-    <svg
-      className="absolute -right-24 -top-24 h-[620px] w-[620px] a36-orbit-slow"
-      viewBox="0 0 600 600"
-      fill="none"
-    >
-      <circle cx="300" cy="300" r="290" stroke="hsl(var(--accent)/0.30)" strokeWidth="1" />
-      <circle
-        cx="300"
-        cy="300"
-        r="210"
-        stroke="hsl(var(--accent)/0.22)"
-        strokeWidth="1"
-        strokeDasharray="4 8"
-      />
-      <circle cx="300" cy="300" r="130" stroke="hsl(var(--primary)/0.15)" strokeWidth="1" />
-      <circle cx="590" cy="300" r="4" fill="hsl(var(--accent))" />
-      <circle cx="300" cy="90" r="3" fill="hsl(var(--accent)/0.7)" />
-    </svg>
-    <svg
-      className="absolute -left-32 bottom-[-160px] h-[460px] w-[460px] a36-orbit-rev"
-      viewBox="0 0 400 400"
-      fill="none"
-    >
-      <circle
-        cx="200"
-        cy="200"
-        r="190"
-        stroke="hsl(var(--accent)/0.20)"
-        strokeWidth="1"
-        strokeDasharray="2 10"
-      />
-      <circle cx="200" cy="10" r="3" fill="hsl(var(--accent)/0.6)" />
-    </svg>
-  </div>
-);
+/* ---------------- 01 · HERO ---------------- */
 
-/* ---------------------------------- page ---------------------------------- */
+const Hero = () => {
+  const { mx, my } = useMouseParallax();
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
+  const imgScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.12]);
 
-const Residency = () => {
-  const reduce = useReducedMotion();
-  const heroRef = useRef<HTMLElement>(null);
-  const timelineRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress: heroProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-  const imgY = useTransform(heroProgress, [0, 1], [0, reduce ? 0 : 60]);
-
-  const { scrollYProgress: tlProgress } = useScroll({
-    target: timelineRef,
-    offset: ["start 80%", "end 60%"],
-  });
-  const tlScale = useSpring(tlProgress, { stiffness: 120, damping: 30, mass: 0.4 });
+  const px = useTransform(mx, [-0.5, 0.5], [14, -14]);
+  const py = useTransform(my, [-0.5, 0.5], [10, -10]);
+  const nx = useTransform(mx, [-0.5, 0.5], [-22, 22]);
+  const ny = useTransform(my, [-0.5, 0.5], [-14, 14]);
 
   return (
-    <PageWrapper>
-      {/* ============================ 1. HERO ============================ */}
-      <section
-        ref={heroRef}
-        className="relative overflow-hidden bg-background pt-16 pb-20 md:pt-24 md:pb-28"
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-primary text-primary-foreground min-h-[88vh] md:min-h-[92vh] flex items-center"
+    >
+      {/* image plane */}
+      <motion.div
+        style={{ y: imgY, scale: imgScale }}
+        className="absolute inset-y-0 right-0 w-full md:w-[62%] will-change-transform"
       >
-        <HeroTech />
-        <div className="container relative max-w-[1360px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            <div className="lg:col-span-7">
-              <Reveal>
-                <p className="eyebrow-dark mb-6">A36 GLOBAL RESIDENCY · MUMBAI 2026</p>
-              </Reveal>
-              <h1 className="font-black text-[42px] sm:text-[58px] lg:text-[80px] leading-[0.95] tracking-heading text-primary">
-                <Reveal y={22}>
-                  <span className="block">16 Days.</span>
-                </Reveal>
-                <Reveal y={22} delay={0.08}>
-                  <span className="block">
-                    One Room Full of{" "}
-                    <span className="relative inline-block">
-                      People Who Ship.
-                      <span
-                        aria-hidden
-                        className="absolute left-0 -bottom-1 h-[3px] w-full bg-accent/70"
-                      />
-                    </span>
-                  </span>
-                </Reveal>
-              </h1>
-              <Reveal delay={0.16}>
-                <p className="mt-8 max-w-[560px] text-base md:text-lg text-primary/70">
-                  A36 Global Residency brings together a selected group of builders in Mumbai to
-                  live, build, learn and ship alongside each other.
-                </p>
-                <p className="mt-3 max-w-[560px] text-sm font-bold uppercase tracking-[0.08em] text-primary/60">
-                  15 days of focused building. Day 16 ends with A36 Demo Day.
-                </p>
-              </Reveal>
+        <img
+          src={heroAsset.url}
+          alt="A36 Global Residency Mumbai 2026 key visual"
+          className="h-full w-full object-cover"
+          fetchPriority="high"
+        />
+      </motion.div>
 
-              <Reveal delay={0.22}>
-                <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4 border-y border-border py-5">
-                  {meta.map((m) => (
-                    <dd
-                      key={m}
-                      className="text-[11px] font-black uppercase tracking-[0.18em] text-primary/70"
-                    >
-                      {m}
-                    </dd>
-                  ))}
-                </dl>
-              </Reveal>
+      {/* navy gradient veil extending from the image into the copy area */}
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_34%,hsl(var(--primary)/0.92)_48%,hsl(var(--primary)/0.55)_62%,transparent_88%)] md:bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_30%,hsl(var(--primary)/0.85)_44%,hsl(var(--primary)/0.35)_58%,transparent_78%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(180deg,transparent,hsl(var(--primary)))]" />
 
-              <Reveal delay={0.28}>
-                <div className="mt-10 flex flex-col sm:flex-row gap-3">
-                  <a href="#apply" className="btn-primary group inline-block text-center">
-                    APPLY FOR RESIDENCY <span className="a36-arrow">→</span>
-                  </a>
-                  <a
-                    href={PARTNER_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-ghost group inline-block text-center"
-                  >
-                    PARTNER WITH A36 <span className="a36-arrow">→</span>
-                  </a>
-                </div>
-              </Reveal>
-            </div>
+      {/* bridge cables behind composition */}
+      <motion.div
+        style={{ x: nx, y: ny }}
+        className="pointer-events-none absolute inset-x-0 bottom-[8%] h-[220px] opacity-70 will-change-transform"
+      >
+        <MumbaiWireBridge className="h-full w-full" />
+      </motion.div>
 
-            {/* image */}
-            <div className="lg:col-span-5">
-              <motion.div style={{ y: imgY }} className="relative">
-                <div className="absolute -inset-3 border border-accent/40" aria-hidden />
-                <div className="a36-img-zoom relative border border-border bg-warm-cream">
-                  <img
-                    src={heroImage}
-                    alt="Builders working together at an A36 Labs residency environment"
-                    loading="eager"
-                    className="aspect-[4/5] w-full object-cover"
-                  />
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-primary/45 via-transparent to-transparent"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-white">
-                    <span>COHORT 001</span>
-                    <span className="text-accent">MUMBAI / 2026</span>
-                  </div>
-                </div>
-                <span
-                  aria-hidden
-                  className="absolute -left-6 top-1/3 hidden h-px w-16 bg-accent/60 lg:block"
-                />
-                <span className="mt-4 block text-[10px] font-black uppercase tracking-[0.24em] text-primary/40">
-                  19.0760° N / 72.8777° E · A36 RESIDENCY
-                </span>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-28 opacity-70" />
 
-      {/* =========================== 2. THESIS =========================== */}
-      <section className="bg-warm-cream py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">WHY A RESIDENCY?</p>
-            <h2 className="font-black text-[34px] md:text-[60px] leading-[1.02] tracking-heading text-primary max-w-[900px]">
-              The room is part of the product.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[980px]">
-              <p className="text-base text-primary/70">
-                Great builders do not always need another conference, accelerator or packed
-                schedule.
-              </p>
-              <p className="text-base text-primary/70">
-                Sometimes they need uninterrupted time, the right people nearby and enough space to
-                make meaningful progress. A36 Residency is designed around that idea.
-              </p>
-            </div>
-          </Reveal>
+      {/* grid marks */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.16] bg-[linear-gradient(hsl(var(--accent)/0.35)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent)/0.35)_1px,transparent_1px)] bg-[size:72px_72px]" />
 
-          <Stagger className="mt-16 divide-y divide-border border-y border-border">
-            {thesis.map((t) => (
-              <StaggerItem key={t.k}>
-                <div className="group grid grid-cols-1 md:grid-cols-12 items-baseline gap-3 py-8 transition-colors duration-200 hover:bg-background/60">
-                  <h3 className="md:col-span-4 font-black text-[34px] md:text-[52px] leading-none tracking-heading text-primary group-hover:text-accent transition-colors duration-200">
-                    {t.k}
-                  </h3>
-                  <p className="md:col-span-7 md:col-start-6 text-base text-primary/70">{t.v}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
+      <motion.div
+        style={{ x: px, y: py }}
+        className="container relative z-10 max-w-6xl mx-auto px-6 md:px-16 py-20 will-change-transform"
+      >
+        <Rise>
+          <p className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.28em] text-accent">
+            A36 GLOBAL RESIDENCY · MUMBAI 2026
+          </p>
+        </Rise>
 
-      {/* ========================= 3. RESIDENCY OS ======================== */}
-      <section className="bg-background py-20 md:py-28 overflow-hidden">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">THE RESIDENCY OS</p>
-            <h2 className="font-black text-[34px] md:text-[56px] leading-[1.02] tracking-heading text-primary max-w-[820px]">
-              15 days to build.
-              <br />1 day to show what changed.
-            </h2>
-          </Reveal>
+        <h1 className="mt-5 font-black tracking-tighter leading-[0.95] text-[clamp(38px,9vw,88px)] max-w-[13ch]">
+          {["16 Days.", "One Room.", "Real Progress."].map((line, i) => (
+            <span key={line} className="block overflow-hidden">
+              <motion.span
+                className="block"
+                initial={{ y: "110%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+              >
+                {line}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
 
-          <div ref={timelineRef} className="relative mt-14">
-            {/* progress rail */}
-            <div
-              aria-hidden
-              className="absolute left-[11px] top-0 h-full w-px bg-border md:left-0 md:top-[11px] md:h-px md:w-full"
-            >
-              <motion.div
-                style={
-                  reduce
-                    ? undefined
-                    : { scaleY: tlScale, scaleX: tlScale, transformOrigin: "top left" }
-                }
-                className="h-full w-full bg-accent md:origin-left"
-              />
-            </div>
+        <Rise delay={0.35}>
+          <p className="mt-5 font-bold uppercase tracking-[0.18em] text-xs md:text-sm text-accent">
+            15 days to build. Day 16 to show what changed.
+          </p>
+          <p className="mt-4 max-w-[62ch] text-sm md:text-base text-primary-foreground/75 leading-relaxed">
+            A focused global residency where selected builders live, work and ship alongside each
+            other in Mumbai.
+          </p>
+        </Rise>
 
-            <ol className="grid grid-cols-1 gap-8 pl-9 md:grid-cols-7 md:gap-4 md:pl-0 md:pt-10">
-              {phases.map((p, i) => (
-                <li key={p.n} className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute -left-9 top-1.5 h-2.5 w-2.5 bg-accent md:-top-[43px] md:left-0"
-                  />
-                  <Reveal delay={i * 0.05}>
-                    <p className="text-[11px] font-black tracking-[0.2em] text-accent">{p.n}</p>
-                    <p className="mt-1 text-[10px] font-black uppercase tracking-[0.2em] text-primary/40">
-                      {p.tag}
-                    </p>
-                    <h3 className="mt-3 font-black text-base leading-tight text-primary">
-                      {p.title}
-                    </h3>
-                    <p className="mt-2 text-xs leading-relaxed text-muted">{p.body}</p>
-                  </Reveal>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      {/* ======================== 4. DAILY RHYTHM ======================== */}
-      <section className="bg-warm-cream py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <div className="lg:sticky lg:top-28">
-                <Reveal>
-                  <p className="eyebrow-dark mb-5">THE DAILY RHYTHM</p>
-                  <h2 className="font-black text-[32px] md:text-[48px] leading-[1.04] tracking-heading text-primary">
-                    Build first. Everything else supports that.
-                  </h2>
-                  <p className="mt-6 text-base text-primary/70 max-w-[420px]">
-                    There is no mandatory conference schedule.
-                  </p>
-                  <p className="mt-3 text-base text-primary/70 max-w-[420px]">
-                    Most workshops, mentor sessions and clinics are optional. The residency exists
-                    to create focus, not destroy it.
-                  </p>
-                </Reveal>
-              </div>
-            </div>
-
-            <div className="lg:col-span-7">
-              <Stagger className="border-t border-border" stagger={0.05}>
-                {rhythm.map(([time, label]) => (
-                  <StaggerItem key={time}>
-                    <div className="group flex items-baseline gap-6 border-b border-border py-5 transition-colors duration-200 hover:bg-background/70">
-                      <span className="w-[68px] shrink-0 font-black text-sm tracking-[0.06em] text-accent">
-                        {time}
-                      </span>
-                      <span className="text-base text-primary/80 group-hover:text-primary transition-colors duration-200">
-                        {label}
-                      </span>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ====================== 5. WHAT PEOPLE BUILD ===================== */}
-      <section className="bg-background py-20 md:py-28 overflow-hidden">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">SCOPE</p>
-            <h2 className="font-black text-[32px] md:text-[52px] leading-[1.03] tracking-heading text-primary max-w-[860px]">
-              No narrow brief. Build what deserves to exist.
-            </h2>
-          </Reveal>
-        </div>
-
-        <div className="relative mt-12 border-y border-border py-5" aria-hidden>
-          <div className="flex w-max animate-marquee-full items-center">
-            {[...keywords, ...keywords, ...keywords].map((k, i) => (
-              <span key={i} className="flex items-center">
-                <span className="px-7 text-[15px] font-black uppercase tracking-[0.18em] text-primary/70">
-                  {k}
-                </span>
-                <span className="text-accent text-[10px]">✦</span>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[980px]">
-              <p className="text-base text-primary/70">
-                Residents are not forced into a predefined category.
-              </p>
-              <p className="text-base text-primary/70">
-                Partner-powered tracks, technologies, credits, bounties or challenges may be
-                introduced during the residency, but builders remain free to work on the product
-                that makes sense for them.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============================ 6. MENTORS ========================= */}
-      <section className="bg-warm-cream py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-6">
-              <Reveal>
-                <p className="eyebrow-dark mb-5">MENTORS, NOT LECTURES</p>
-                <h2 className="font-black text-[32px] md:text-[50px] leading-[1.03] tracking-heading text-primary">
-                  The right person at the right moment.
-                </h2>
-                <p className="mt-6 text-base text-primary/70 max-w-[520px]">
-                  A36 Labs will bring selected founders, engineers, researchers, investors, product
-                  leaders and operators into the residency throughout the program.
-                </p>
-                <p className="mt-8 font-black text-xl md:text-2xl leading-tight text-primary max-w-[480px]">
-                  The goal is not to collect mentors.
-                  <br />
-                  <span className="text-accent">The goal is to unblock builders.</span>
-                </p>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-6">
-              <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {mentorFormats.map((f) => (
-                  <StaggerItem key={f}>
-                    <div className="a36-card-lift border border-border bg-background p-4 text-sm font-bold text-primary">
-                      {f}
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-
-              <Reveal delay={0.1}>
-                <div className="mt-6 border border-dashed border-border bg-background/60 p-6">
-                  <div className="flex flex-wrap gap-3">
-                    {Array.from({ length: 6 }).map((_, i) => (
-                      <span
-                        key={i}
-                        aria-hidden
-                        className="h-12 w-12 border border-border bg-warm-cream a36-drift"
-                        style={{ animationDelay: `${i * 0.4}s` }}
-                      />
-                    ))}
-                  </div>
-                  <p className="mt-5 text-[11px] font-black uppercase tracking-[0.2em] text-primary/50">
-                    MENTORS &amp; OPERATORS — ANNOUNCING SOON
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ========================= 7. PARTNER TRACKS ===================== */}
-      <section className="bg-background py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">PARTNER TRACKS</p>
-            <h2 className="font-black text-[32px] md:text-[50px] leading-[1.03] tracking-heading text-primary max-w-[860px]">
-              Partners don't just put logos on the wall.
-            </h2>
-            <p className="mt-6 text-base text-primary/70 max-w-[720px]">
-              Residency partners may bring technology, infrastructure, developer credits, product
-              challenges, mentors, bounties and technical support directly into the room.
-            </p>
-          </Reveal>
-
-          <Stagger className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {tracks.map((t) => (
-              <StaggerItem key={t.t}>
-                <div className="a36-card-lift a36-tick-corners a36-tick-corners-gold h-full border border-border bg-warm-cream p-6">
-                  <h3 className="font-black text-sm uppercase tracking-[0.1em] text-primary">
-                    {t.t}
-                  </h3>
-                  <p className="mt-3 text-xs leading-relaxed text-muted">{t.d}</p>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-
-          <Reveal delay={0.1}>
-            <p className="mt-8 text-sm text-primary/60">
-              Partner-powered tracks will be announced as the residency develops.
-            </p>
-            <a
-              href={PARTNER_FORM_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-dark group mt-8 inline-block"
-            >
-              PARTNER WITH THE RESIDENCY <span className="a36-arrow">→</span>
+        <Rise delay={0.45}>
+          <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
+            <a href="#apply" className="btn-gold min-h-[44px] inline-flex items-center justify-center">
+              APPLY FOR RESIDENCY <span className="a36-arrow ml-2">→</span>
             </a>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ========================= 8. WHO APPLIES ======================== */}
-      <section className="bg-warm-cream py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">WHO SHOULD APPLY?</p>
-            <h2 className="font-black text-[32px] md:text-[50px] leading-[1.03] tracking-heading text-primary max-w-[760px]">
-              Selective by design.
-            </h2>
-          </Reveal>
-
-          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <Reveal>
-              <div className="h-full border border-border bg-background p-7">
-                <h3 className="font-black text-lg text-primary">You should probably apply if:</h3>
-                <ul className="mt-6 space-y-4">
-                  {applyYes.map((r) => (
-                    <li key={r} className="flex items-start gap-3">
-                      <span
-                        aria-hidden
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-green-600/40 text-[11px] font-black text-green-700"
-                      >
-                        ✓
-                      </span>
-                      <p className="text-sm text-primary/80">{r}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <div className="h-full border border-border bg-background p-7">
-                <h3 className="font-black text-lg text-primary">Probably not for you if:</h3>
-                <ul className="mt-6 space-y-4">
-                  {applyNo.map((r) => (
-                    <li key={r} className="flex items-start gap-3">
-                      <span
-                        aria-hidden
-                        className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center border border-red-600/30 text-[11px] font-black text-red-700"
-                      >
-                        ✗
-                      </span>
-                      <p className="text-sm text-primary/80">{r}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+            <a
+              href={PARTNER_MAIL}
+              className="btn-ghost-light min-h-[44px] inline-flex items-center justify-center"
+            >
+              PARTNER WITH A36 <span className="a36-arrow ml-2">→</span>
+            </a>
           </div>
-        </div>
-      </section>
+        </Rise>
 
-      {/* ===================== 9. INTERNATIONAL BUILDERS ================= */}
-      <section className="bg-background py-16 md:py-20">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <div className="border-l-2 border-accent bg-warm-cream/60 p-7 md:p-10">
-              <h2 className="font-black text-[26px] md:text-[38px] leading-tight tracking-heading text-primary">
-                Global applications are welcome. 🌍
-              </h2>
-              <p className="mt-4 text-base text-primary/70 max-w-[720px]">
-                International builders are welcome to apply and join the Mumbai residency.
-              </p>
-              <p className="mt-5 font-bold text-sm md:text-base text-primary max-w-[760px]">
-                International residents must be visa-ready and independently eligible to enter
-                India. A36 Labs does not provide visa sponsorship or visa processing support.
-              </p>
-              <p className="mt-3 text-sm text-primary/60 max-w-[720px]">
-                Applicants should have the required travel and visa documentation before confirming
-                participation.
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ====================== 10. WHAT RESIDENTS GET =================== */}
-      <section className="bg-warm-cream py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-5">
-              <Reveal>
-                <p className="eyebrow-dark mb-5">WHAT RESIDENTS GET</p>
-                <h2 className="font-black text-[32px] md:text-[50px] leading-[1.03] tracking-heading text-primary">
-                  Everything around the work.
-                </h2>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <div className="a36-img-zoom mt-8 hidden border border-border lg:block">
-                  <img
-                    src={roomImage}
-                    alt="Builders collaborating in a shared A36 Labs workspace"
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-              </Reveal>
-            </div>
-            <div className="lg:col-span-7">
-              <Stagger className="border-t border-border" stagger={0.05}>
-                {benefits.map((b, i) => (
-                  <StaggerItem key={b}>
-                    <div className="group flex items-baseline gap-5 border-b border-border py-5">
-                      <span className="text-[11px] font-black tracking-[0.18em] text-accent">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <span className="text-base md:text-lg font-bold text-primary group-hover:text-accent transition-colors duration-200">
-                        {b}
-                      </span>
-                    </div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-              <Reveal delay={0.1}>
-                <p className="mt-6 text-sm text-primary/60">
-                  Accommodation, meals, travel and additional resident support will depend on the
-                  final residency partner structure and will be communicated clearly to selected
-                  residents before confirmation.
-                </p>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================== 11. DEMO DAY ======================== */}
-      <section className="relative overflow-hidden bg-primary py-20 md:py-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, hsl(var(--accent)/0.10) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--accent)/0.10) 1px, transparent 1px)",
-            backgroundSize: "72px 72px",
-            maskImage: "radial-gradient(70% 70% at 30% 40%, #000, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(70% 70% at 30% 40%, #000, transparent 85%)",
-          }}
-        />
-        <div className="container relative max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow mb-5">DAY 16 · 02 NOV 2026</p>
-            <h2 className="font-black text-[46px] md:text-[86px] leading-[0.95] tracking-heading text-white">
-              Show what changed.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-[900px]">
-              <p className="text-base text-white/70">
-                Demo Day is not about polished startup theatre.
-              </p>
-              <p className="text-base text-white/70">
-                Residents show what they shipped, tested, learned and where the product goes next.
-              </p>
-            </div>
-          </Reveal>
-
-          <Stagger className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10">
-            {demoItems.map((d) => (
-              <StaggerItem key={d}>
-                <div className="h-full bg-primary p-5 text-sm font-bold text-white/80 transition-colors duration-200 hover:text-accent">
-                  {d}
-                </div>
-              </StaggerItem>
+        <Rise delay={0.55}>
+          <dl className="mt-10 grid grid-cols-2 md:flex md:flex-wrap gap-y-5 gap-x-10 border-t border-primary-foreground/15 pt-6 max-w-2xl">
+            {[
+              ["DATES", "18 OCT — 2 NOV 2026"],
+              ["LOCATION", "MUMBAI, INDIA"],
+              ["COHORT", "36 SELECTED RESIDENTS"],
+            ].map(([k, v]) => (
+              <div key={k}>
+                <dt className="font-mono text-[9px] uppercase tracking-[0.24em] text-primary-foreground/45">
+                  {k}
+                </dt>
+                <dd className="mt-1 font-bold text-xs md:text-sm uppercase tracking-[0.08em]">{v}</dd>
+              </div>
             ))}
-          </Stagger>
+          </dl>
+        </Rise>
+      </motion.div>
 
-          <Reveal delay={0.1}>
-            <div className="mt-12 flex flex-wrap items-end gap-10">
-              <div>
-                <p className="font-black text-[48px] md:text-[64px] leading-none text-accent">
-                  <CountUp to={36} />
-                </p>
-                <p className="mt-2 text-[11px] font-black uppercase tracking-[0.2em] text-white/50">
-                  Selected residents
-                </p>
-              </div>
-              <div>
-                <p className="font-black text-[48px] md:text-[64px] leading-none text-accent">
-                  <CountUp to={16} />
-                </p>
-                <p className="mt-2 text-[11px] font-black uppercase tracking-[0.2em] text-white/50">
-                  Days in the room
-                </p>
-              </div>
-              <div>
-                <p className="font-black text-[48px] md:text-[64px] leading-none text-accent">
-                  <CountUp to={1} />
-                </p>
-                <p className="mt-2 text-[11px] font-black uppercase tracking-[0.2em] text-white/50">
-                  Demo Day
-                </p>
-              </div>
-            </div>
-            <p className="mt-10 text-sm text-white/60 max-w-[720px]">
-              Selected residents may present to an invited audience of founders, investors,
-              ecosystem leaders, mentors and residency partners.
-            </p>
-          </Reveal>
+      {/* floating UI chips */}
+      <motion.div
+        style={{ x: nx, y: ny }}
+        className="pointer-events-none hidden lg:block absolute right-10 top-28 z-10 text-right"
+      >
+        <div className="a36-drift border border-accent/35 bg-primary/60 backdrop-blur-sm px-4 py-3">
+          <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001</p>
+          <p className="font-mono text-[10px] tracking-[0.2em] text-primary-foreground/60">
+            18.10.26 — 02.11.26
+          </p>
         </div>
-      </section>
+        <MumbaiCoordinates light className="mt-4 text-right" />
+      </motion.div>
 
-      {/* ============================ 12. ALUMNI ========================= */}
-      <section className="bg-background py-20 md:py-28">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-6">
-              <Reveal>
-                <p className="eyebrow-dark mb-5">A36 RESIDENCY ALUMNI</p>
-                <h2 className="font-black text-[32px] md:text-[52px] leading-[1.02] tracking-heading text-primary">
-                  The residency ends.
-                  <br />
-                  The network doesn't.
-                </h2>
-                <p className="mt-6 text-base text-primary/70 max-w-[520px]">
-                  Selected residents become part of the private A36 Residency Alumni Network.
-                </p>
-              </Reveal>
-
-              <Reveal delay={0.1}>
-                <div className="mt-10 flex flex-wrap items-center gap-3">
-                  {["001", "002", "003"].map((c, i) => (
-                    <span key={c} className="flex items-center gap-3">
-                      <span
-                        className={`border px-4 py-2 text-[11px] font-black tracking-[0.2em] ${
-                          i === 0
-                            ? "border-accent bg-accent/10 text-primary"
-                            : "border-dashed border-border text-primary/40"
-                        }`}
-                      >
-                        {c}
-                      </span>
-                      <span aria-hidden className="text-accent">
-                        →
-                      </span>
-                    </span>
-                  ))}
-                  <span className="text-[11px] font-black tracking-[0.2em] text-primary/30">
-                    ...
-                  </span>
-                </div>
-              </Reveal>
-            </div>
-
-            <div className="lg:col-span-6">
-              <Stagger className="grid grid-cols-1 sm:grid-cols-2 gap-px border border-border bg-border">
-                {alumniPerks.map((p) => (
-                  <StaggerItem key={p}>
-                    <div className="h-full bg-background p-5 text-sm text-primary/80">{p}</div>
-                  </StaggerItem>
-                ))}
-              </Stagger>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===================== 13. PARTNERS & COLLABORATORS ============== */}
-      <section className="bg-warm-cream py-20 md:py-24">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">PARTNERS &amp; COLLABORATORS</p>
-            <h2 className="font-black text-[28px] md:text-[42px] leading-[1.05] tracking-heading text-primary">
-              Residency Partners — Announcing Soon
-            </h2>
-          </Reveal>
-          <Stagger className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-            {partnerCategories.map((c) => (
-              <StaggerItem key={c}>
-                <div className="border border-dashed border-border bg-background/50 p-5 text-center">
-                  <span className="text-[10px] font-black uppercase tracking-[0.16em] text-primary/50">
-                    {c}
-                  </span>
-                </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ============================ 14. A36 LABS ======================= */}
-      <section className="bg-background py-16 md:py-20">
-        <div className="container max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-border pt-12">
-              <h2 className="lg:col-span-4 font-black text-[28px] md:text-[38px] leading-tight tracking-heading text-primary">
-                Built by A36 Labs.
-              </h2>
-              <div className="lg:col-span-7 lg:col-start-6">
-                <p className="text-base text-primary/70">
-                  A36 Labs is a global frontier technology ecosystem connecting founders,
-                  developers, operators, students, startups and emerging technology communities.
-                </p>
-                <p className="mt-4 text-base text-primary/70">
-                  We create environments where ambitious people can meet the right people, access
-                  useful resources and ship meaningful work.
-                </p>
-                <a
-                  href="https://a36labs.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group mt-6 inline-block text-sm font-black uppercase tracking-[0.12em] text-primary underline underline-offset-4 hover:text-accent"
-                >
-                  a36labs.com <span className="a36-arrow">→</span>
-                </a>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* =============================== FAQ ============================= */}
-      <section className="bg-warm-cream py-20 md:py-24">
-        <div className="container max-w-[900px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow-dark mb-5">FAQ</p>
-            <h2 className="font-black text-[30px] md:text-[44px] leading-[1.05] tracking-heading text-primary">
-              Questions, answered.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <Accordion type="single" collapsible className="mt-10 border-t border-border">
-              {faqs.map(([q, a]) => (
-                <AccordionItem key={q} value={q} className="border-b border-border">
-                  <AccordionTrigger className="text-left font-black text-base text-primary hover:text-accent hover:no-underline">
-                    {q}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-sm text-primary/70">{a}</AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ========================== 15. APPLICATION ====================== */}
-      <section id="apply" className="relative overflow-hidden bg-primary py-20 md:py-28">
-        <div className="container relative max-w-[1360px] mx-auto px-6 md:px-12">
-          <Reveal>
-            <p className="eyebrow mb-5">APPLICATIONS</p>
-            <h2 className="font-black text-[34px] md:text-[58px] leading-[1.02] tracking-heading text-white max-w-[760px]">
-              Think you should be in the room?
-            </h2>
-            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-[1000px]">
-              <p className="text-sm text-white/70">Every application is reviewed manually.</p>
-              <p className="text-sm text-white/70">
-                Selection is based on what you have built, what you are capable of building and
-                what you want to accomplish during the residency.
-              </p>
-              <p className="text-sm text-white/70">
-                Registration does not guarantee acceptance.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <div className="mx-auto mt-12 w-full max-w-[680px]">
-              <iframe
-                src={LUMA_EMBED}
-                title="A36 Global Residency Mumbai registration"
-                frameBorder="0"
-                loading="lazy"
-                allow="fullscreen; payment"
-                aria-hidden="false"
-                tabIndex={0}
-                style={{ border: "1px solid #bfcbda88" }}
-                className="block h-[600px] w-full md:h-[620px]"
-              />
-              <p className="mt-6 text-sm text-white/60">
-                Having trouble with the embed?{" "}
-                <a
-                  href={LUMA_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group font-bold text-white underline underline-offset-4 hover:text-accent"
-                >
-                  OPEN FULL LUMA REGISTRATION <span className="a36-arrow">→</span>
-                </a>
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ======================= 16. PARTNERSHIP CTA ===================== */}
-      <section className="relative overflow-hidden bg-dark-bg py-20 md:py-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 a36-grid-drift opacity-50"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, hsl(var(--accent)/0.12) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--accent)/0.12) 1px, transparent 1px)",
-            backgroundSize: "56px 56px",
-            maskImage: "radial-gradient(70% 80% at 50% 50%, #000, transparent 85%)",
-            WebkitMaskImage: "radial-gradient(70% 80% at 50% 50%, #000, transparent 85%)",
-          }}
-        />
-        <div className="container relative max-w-[1360px] mx-auto px-6 md:px-12 text-center">
-          <Reveal>
-            <h2 className="font-black text-[38px] md:text-[68px] leading-[0.98] tracking-heading text-white">
-              Help build the room.
-            </h2>
-            <p className="mx-auto mt-6 max-w-[700px] text-base text-white/70">
-              A36 Residency partners get direct access to a selected builder ecosystem and
-              opportunities to support real products, integrations, learning and founder
-              relationships.
-            </p>
-            <div className="mt-10 flex flex-col items-center gap-4">
-              <a
-                href={PARTNER_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary group inline-block"
-              >
-                PARTNER WITH A36 <span className="a36-arrow">→</span>
-              </a>
-              <a
-                href="mailto:partnerships@a36labs.com"
-                className="text-sm font-bold text-white/70 underline underline-offset-4 hover:text-accent"
-              >
-                partnerships@a36labs.com
-              </a>
-            </div>
-            <p className="mt-12 text-[10px] font-black uppercase tracking-[0.24em] text-white/35">
-              A36 GLOBAL RESIDENCY · MUMBAI 2026
-            </p>
-          </Reveal>
-        </div>
-      </section>
-    </PageWrapper>
+      <MumbaiHorizon
+        className="pointer-events-none absolute bottom-0 left-0 h-24 w-1/2 opacity-30"
+        tone="gold"
+      />
+    </section>
   );
 };
+
+/* ---------------- 02 · RESIDENCY OS ---------------- */
+
+const NODES = [
+  { n: "01", k: "ARRIVE", d: "Meet the room. Set your goals." },
+  { n: "02", k: "BUILD", d: "Deep work, product building and optional office hours." },
+  { n: "03", k: "REVIEW", d: "Show progress. Identify blockers." },
+  { n: "04", k: "BUILD AGAIN", d: "Ship the next iteration." },
+  { n: "05", k: "REFINE", d: "Product, GTM, security and founder clinics." },
+  { n: "06", k: "PREPARE", d: "Final reviews and demo preparation." },
+  { n: "07", k: "DEMO", d: "Show what changed." },
+];
+
+const ResidencyOS = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start 70%", "end 60%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 24 });
+  const width = useTransform(progress, [0, 1], ["0%", "100%"]);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const unsub = progress.on("change", (v) =>
+      setActive(Math.min(NODES.length - 1, Math.floor(v * NODES.length))),
+    );
+    return () => unsub();
+  }, [progress]);
+
+  return (
+    <section className="relative bg-background overflow-hidden py-20 md:py-28">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-[linear-gradient(hsl(var(--primary))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--primary))_1px,transparent_1px)] bg-[size:56px_56px]" />
+
+      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+        <Rise>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+            THE RESIDENCY OS
+          </p>
+          <h2 className="mt-4 font-black tracking-tighter leading-[1.02] text-primary text-[clamp(30px,6vw,60px)]">
+            Build first.<br />Everything else supports that.
+          </h2>
+          <p className="mt-5 max-w-[62ch] text-sm md:text-base text-muted leading-relaxed">
+            The residency is designed around uninterrupted building, with the right people and
+            resources available when they are useful.
+          </p>
+        </Rise>
+
+        {/* stat strip */}
+        <Rise delay={0.1}>
+          <div className="mt-10 grid grid-cols-3 border-y border-border">
+            {[
+              { v: <CountUp to={16} />, l: "DAYS" },
+              { v: <CountUp to={36} />, l: "RESIDENTS" },
+              { v: <CountUp to={1} />, l: "DEMO DAY" },
+            ].map((s, i) => (
+              <div key={s.l} className={`py-5 px-2 ${i > 0 ? "border-l border-border" : ""}`}>
+                <p className="font-black text-[28px] md:text-[40px] text-accent leading-none">{s.v}</p>
+                <p className="mt-1 font-mono text-[9px] md:text-[10px] uppercase tracking-[0.22em] text-muted">
+                  {s.l}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Rise>
+
+        {/* scroll-linked bridge timeline */}
+        <div ref={ref} className="relative mt-14 md:mt-20">
+          {/* desktop horizontal */}
+          <div className="hidden md:block">
+            <div className="relative h-[2px] bg-border">
+              <motion.div style={{ width }} className="absolute inset-y-0 left-0 bg-accent" />
+            </div>
+            <div className="relative grid grid-cols-7 -mt-[7px]">
+              {NODES.map((node, i) => {
+                const on = i <= active;
+                return (
+                  <div key={node.n} className="flex flex-col items-start pr-3">
+                    <span
+                      className={`h-3 w-3 border-2 transition-colors duration-300 ${
+                        on ? "bg-accent border-accent" : "bg-background border-border"
+                      }`}
+                    />
+                    {/* vertical cable */}
+                    <span
+                      className={`w-px transition-all duration-500 ${
+                        on ? "h-6 bg-accent/60" : "h-4 bg-border"
+                      }`}
+                    />
+                    <p
+                      className={`font-mono text-[10px] tracking-[0.2em] transition-colors ${
+                        on ? "text-accent" : "text-muted/60"
+                      }`}
+                    >
+                      {node.n}
+                    </p>
+                    <p
+                      className={`mt-1 font-black text-[13px] uppercase tracking-tight transition-colors ${
+                        on ? "text-primary" : "text-muted/50"
+                      }`}
+                    >
+                      {node.k}
+                    </p>
+                    <p
+                      className={`mt-2 text-xs leading-snug transition-opacity duration-500 ${
+                        on ? "opacity-100 text-muted" : "opacity-35 text-muted"
+                      }`}
+                    >
+                      {node.d}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* mobile vertical */}
+          <div className="md:hidden relative pl-6">
+            <div className="absolute left-[5px] top-1 bottom-1 w-px bg-border" />
+            <motion.div
+              style={{ scaleY: progress }}
+              className="absolute left-[5px] top-1 bottom-1 w-px bg-accent origin-top"
+            />
+            <ul className="space-y-7">
+              {NODES.map((node, i) => (
+                <li key={node.n} className="relative">
+                  <span
+                    className={`absolute -left-6 top-1 h-[11px] w-[11px] border-2 transition-colors ${
+                      i <= active ? "bg-accent border-accent" : "bg-background border-border"
+                    }`}
+                  />
+                  <p className="font-mono text-[10px] tracking-[0.2em] text-accent">{node.n}</p>
+                  <p className="mt-0.5 font-black text-sm uppercase text-primary">{node.k}</p>
+                  <p className="mt-1 text-xs text-muted leading-snug max-w-[46ch]">{node.d}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <Rise delay={0.1}>
+          <p className="mt-12 border-l-2 border-accent pl-4 max-w-[64ch] text-sm text-primary/80 italic">
+            Mentor sessions, technical clinics and workshops happen around the work — not instead of
+            it.
+          </p>
+          <a
+            href="#apply"
+            className="btn-dark mt-8 inline-flex min-h-[44px] items-center justify-center"
+          >
+            APPLY FOR RESIDENCY <span className="a36-arrow ml-2">→</span>
+          </a>
+        </Rise>
+      </div>
+    </section>
+  );
+};
+
+/* ---------------- 03 · INSIDE THE ROOM ---------------- */
+
+const KEYWORDS = [
+  { k: "BUILD", d: "Focused time to move your product forward." },
+  { k: "LEARN", d: "Optional mentor sessions and technical workshops." },
+  { k: "CONNECT", d: "Live alongside ambitious people from different markets." },
+  { k: "SHIP", d: "Leave with meaningful progress." },
+];
+
+const TAGS = [
+  "AI",
+  "WEB3",
+  "OPEN SOURCE",
+  "PRODUCT",
+  "INFRASTRUCTURE",
+  "CONSUMER",
+  "EXPERIMENTAL TECH",
+];
+
+const FIT = {
+  yes: ["Actively building", "Capable of shipping", "Want focused time", "Contribute to the room"],
+  no: ["Only want accommodation", "Only want networking", "Not planning to build", "Want to spectate"],
+};
+
+const TiltCard = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const rx = useMotionValue(0);
+  const ry = useMotionValue(0);
+  const srx = useSpring(rx, { stiffness: 120, damping: 18 });
+  const sry = useSpring(ry, { stiffness: 120, damping: 18 });
+  const reduce = useReducedMotion();
+
+  const onMove = (e: React.MouseEvent) => {
+    if (reduce || !ref.current) return;
+    const r = ref.current.getBoundingClientRect();
+    ry.set(((e.clientX - r.left) / r.width - 0.5) * 12);
+    rx.set(-((e.clientY - r.top) / r.height - 0.5) * 10);
+  };
+
+  return (
+    <div className="[perspective:1200px]">
+      <motion.div
+        ref={ref}
+        onMouseMove={onMove}
+        onMouseLeave={() => {
+          rx.set(0);
+          ry.set(0);
+        }}
+        style={{ rotateX: srx, rotateY: sry, transformStyle: "preserve-3d" }}
+        className="relative will-change-transform"
+      >
+        <div className="relative border border-accent/40 bg-primary/5 p-2">
+          <img
+            src={squareAsset.url}
+            alt="A36 Residency Mumbai residence visual"
+            loading="lazy"
+            className="w-full aspect-square object-cover"
+          />
+          {/* technical corners */}
+          {[
+            "top-0 left-0 border-t-2 border-l-2",
+            "top-0 right-0 border-t-2 border-r-2",
+            "bottom-0 left-0 border-b-2 border-l-2",
+            "bottom-0 right-0 border-b-2 border-r-2",
+          ].map((c) => (
+            <span key={c} className={`pointer-events-none absolute h-5 w-5 border-accent ${c}`} />
+          ))}
+        </div>
+        <div
+          style={{ transform: "translateZ(40px)" }}
+          className="a36-drift absolute -bottom-5 -left-4 border border-accent bg-background px-4 py-2 shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.5)]"
+        >
+          <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001 · MUMBAI</p>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+const InsideTheRoom = () => {
+  const [openWord, setOpenWord] = useState<string | null>("BUILD");
+  const [fit, setFit] = useState<"yes" | "no">("yes");
+
+  return (
+    <section className="relative overflow-hidden bg-secondary py-20 md:py-28">
+      <MumbaiHorizon className="pointer-events-none absolute right-0 top-10 h-28 w-2/3 opacity-20" />
+
+      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16 items-start">
+          <Rise>
+            <TiltCard />
+          </Rise>
+
+          <div>
+            <Rise>
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+                INSIDE THE ROOM
+              </p>
+              <h2 className="mt-4 font-black tracking-tighter leading-[1.03] text-primary text-[clamp(28px,5.4vw,54px)]">
+                One roof.<br />Different minds.<br />Same momentum.
+              </h2>
+            </Rise>
+
+            <Rise delay={0.1}>
+              <ul className="mt-9 border-t border-border">
+                {KEYWORDS.map((w) => {
+                  const on = openWord === w.k;
+                  return (
+                    <li key={w.k} className="border-b border-border">
+                      <button
+                        type="button"
+                        onMouseEnter={() => setOpenWord(w.k)}
+                        onClick={() => setOpenWord(on ? null : w.k)}
+                        className="group flex w-full items-center justify-between py-4 min-h-[44px] text-left"
+                      >
+                        <span
+                          className={`font-black text-[20px] md:text-[26px] tracking-tight uppercase transition-colors ${
+                            on ? "text-accent" : "text-primary"
+                          }`}
+                        >
+                          {w.k}
+                        </span>
+                        <span className="a36-arrow text-accent">→</span>
+                      </button>
+                      <div
+                        className={`grid transition-all duration-300 ease-out ${
+                          on ? "grid-rows-[1fr] opacity-100 pb-4" : "grid-rows-[0fr] opacity-0"
+                        }`}
+                      >
+                        <p className="overflow-hidden text-sm text-muted max-w-[58ch]">{w.d}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </Rise>
+
+            <Rise delay={0.15}>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {TAGS.map((t) => (
+                  <span
+                    key={t}
+                    className="border border-border px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-primary/70 transition-colors hover:border-accent hover:text-accent"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </Rise>
+          </div>
+        </div>
+
+        {/* fit toggle */}
+        <Rise delay={0.1}>
+          <div className="mt-16 border border-border bg-background p-6 md:p-8">
+            <div className="flex flex-wrap gap-0 border border-border w-full sm:w-auto sm:inline-flex">
+              {(["yes", "no"] as const).map((k) => (
+                <button
+                  key={k}
+                  type="button"
+                  onClick={() => setFit(k)}
+                  className={`flex-1 sm:flex-none min-h-[44px] px-5 font-bold text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                    fit === k ? "bg-primary text-primary-foreground" : "bg-transparent text-primary/60"
+                  }`}
+                >
+                  {k === "yes" ? "YOU SHOULD APPLY" : "PROBABLY NOT"}
+                </button>
+              ))}
+            </div>
+            <motion.ul
+              key={fit}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28 }}
+              className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2"
+            >
+              {FIT[fit].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-sm text-primary/80">
+                  <span className={fit === "yes" ? "text-accent" : "text-muted"}>
+                    {fit === "yes" ? "→" : "×"}
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </motion.ul>
+          </div>
+        </Rise>
+
+        {/* global notice */}
+        <Rise delay={0.1}>
+          <div className="mt-8 border-l-2 border-accent bg-accent/10 px-5 py-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+              🌍 GLOBAL APPLICATIONS WELCOME
+            </p>
+            <p className="mt-3 max-w-[66ch] text-sm text-primary/80 leading-relaxed">
+              International residents must be independently visa-ready and eligible to enter India.
+              A36 Labs does not provide visa sponsorship or visa processing support.
+            </p>
+          </div>
+        </Rise>
+      </div>
+    </section>
+  );
+};
+
+/* ---------------- 04 · DAY 16 + ALUMNI ---------------- */
+
+const DemoDay = () => {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const bigY = useTransform(scrollYProgress, [0, 1], ["12%", "-12%"]);
+
+  return (
+    <section
+      ref={ref}
+      className="relative overflow-hidden bg-primary text-primary-foreground py-24 md:py-32"
+    >
+      <motion.p
+        style={{ y: bigY }}
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-1/4 text-center font-black leading-none text-[38vw] text-primary-foreground/[0.05] select-none"
+      >
+        16
+      </motion.p>
+      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 top-6 h-40 opacity-40" />
+      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-50" />
+
+      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+        <Rise>
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">DAY 16</p>
+          <h2 className="mt-4 font-black tracking-tighter leading-[1.02] text-[clamp(32px,7vw,72px)]">
+            Show what changed.
+          </h2>
+          <p className="mt-5 max-w-[64ch] text-sm md:text-base text-primary-foreground/70 leading-relaxed">
+            Selected residents will have the opportunity to present what they built to an invited
+            room of founders, investors, mentors, ecosystem leaders and residency partners.
+          </p>
+        </Rise>
+
+        <Rise delay={0.1}>
+          <ul className="mt-10 grid gap-px bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3 border border-primary-foreground/10">
+            {[
+              "Products shipped",
+              "Technical integrations",
+              "Experiments",
+              "Early traction",
+              "Open-source work",
+              "What comes next",
+            ].map((item, i) => (
+              <li
+                key={item}
+                className="group bg-primary px-5 py-6 transition-colors hover:bg-primary-foreground/[0.04]"
+              >
+                <span className="font-mono text-[10px] tracking-[0.2em] text-accent">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <p className="mt-2 font-bold text-sm uppercase tracking-tight">{item}</p>
+              </li>
+            ))}
+          </ul>
+        </Rise>
+
+        {/* alumni flow */}
+        <Rise delay={0.1}>
+          <div className="mt-20 border-t border-primary-foreground/15 pt-14 grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
+                A36 RESIDENCY ALUMNI
+              </p>
+              <h3 className="mt-4 font-black tracking-tighter leading-[1.05] text-[clamp(26px,4.6vw,44px)]">
+                The residency ends.<br />The network doesn&apos;t.
+              </h3>
+              <p className="mt-5 max-w-[62ch] text-sm text-primary-foreground/70 leading-relaxed">
+                Selected residents become part of the A36 Residency Alumni Network for future founder
+                introductions, ecosystem opportunities, gatherings and cross-cohort collaboration.
+              </p>
+            </div>
+
+            <div className="relative">
+              <ResidencyNodes className="w-full h-24 opacity-90" />
+              <ol className="mt-2 space-y-3">
+                {["DAY 16", "COHORT 001", "A36 RESIDENCY ALUMNI", "001 → 002 → 003 → …"].map(
+                  (step, i) => (
+                    <motion.li
+                      key={step}
+                      initial={{ opacity: 0, x: -10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, amount: 0.5 }}
+                      transition={{ duration: 0.45, delay: i * 0.1 }}
+                      className="flex items-center gap-3 border-l-2 border-accent/50 pl-4 font-mono text-[11px] tracking-[0.2em] text-primary-foreground/80"
+                    >
+                      {step}
+                    </motion.li>
+                  ),
+                )}
+              </ol>
+            </div>
+          </div>
+        </Rise>
+      </div>
+    </section>
+  );
+};
+
+/* ---------------- 05 · PARTNERS ---------------- */
+
+const Partners = () => (
+  <section className="relative overflow-hidden bg-background py-20 md:py-24">
+    <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+      <Rise>
+        <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">PARTNERS</p>
+        <h2 className="mt-4 font-black tracking-tighter leading-[1.03] text-primary text-[clamp(28px,5.4vw,52px)]">
+          Help build the room.
+        </h2>
+        <p className="mt-5 max-w-[64ch] text-sm md:text-base text-muted leading-relaxed">
+          Residency partners can bring technology, mentors, developer resources, challenges and
+          meaningful support directly to selected builders.
+        </p>
+      </Rise>
+
+      <Rise delay={0.1}>
+        <ul className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-px bg-border border border-border">
+          {["TECHNOLOGY", "ECOSYSTEM", "INSTITUTIONAL", "MEDIA", "COMMUNITY", "RESIDENCY"].map(
+            (cat) => (
+              <li
+                key={cat}
+                className="group relative flex min-h-[92px] items-center justify-center bg-background px-4 text-center transition-colors hover:bg-secondary"
+              >
+                <span className="font-mono text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-primary/60 transition-colors group-hover:text-accent">
+                  {cat}
+                </span>
+              </li>
+            ),
+          )}
+        </ul>
+      </Rise>
+
+      <Rise delay={0.15}>
+        <div className="mt-8 flex flex-col sm:flex-row sm:items-center gap-4">
+          <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted">
+            PARTNERS — ANNOUNCING SOON
+          </p>
+          <div className="hidden sm:block h-px flex-1 bg-border" />
+          <a href={PARTNER_MAIL} className="btn-dark min-h-[44px] inline-flex items-center justify-center">
+            PARTNER WITH A36 <span className="a36-arrow ml-2">→</span>
+          </a>
+        </div>
+        <a
+          href={PARTNER_MAIL}
+          className="mt-4 inline-block font-mono text-[11px] tracking-[0.12em] text-primary/70 underline underline-offset-4 hover:text-accent"
+        >
+          partnerships@a36labs.com
+        </a>
+      </Rise>
+    </div>
+  </section>
+);
+
+/* ---------------- 06 · APPLICATION ---------------- */
+
+const FAQS = [
+  {
+    q: "What is A36 Residency?",
+    a: "A 16-day global builder residency in Mumbai where selected founders, developers and product builders live and work in the same room for 15 build days, closing with a Day 16 Demo Day.",
+  },
+  { q: "When is it?", a: "18 October — 2 November 2026, in Mumbai, India." },
+  {
+    q: "How are residents selected?",
+    a: "Every application is reviewed manually. Selection is based on what you have built, what you can build and what you want to accomplish during the residency.",
+  },
+  {
+    q: "Do I need an existing startup?",
+    a: "No. You need to be actively building something real — a product, protocol, tool or open-source project — and be able to ship during the residency.",
+  },
+  {
+    q: "Is accommodation included?",
+    a: "Residency logistics, including accommodation and workspace details, are confirmed with selected residents. Nothing is guaranteed before selection.",
+  },
+  {
+    q: "Do you provide visa support?",
+    a: "No. International applicants must be independently visa-ready and eligible to enter India. A36 Labs does not provide visa sponsorship or processing.",
+  },
+];
+
+const Application = () => (
+  <section id="apply" className="relative overflow-hidden bg-primary text-primary-foreground">
+    {/* transition visual */}
+    <div className="relative h-[180px] md:h-[300px]">
+      <img
+        src={applyAsset.url}
+        alt="A36 Residency Mumbai skyline banner"
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--primary)/0.55),hsl(var(--primary)))]" />
+      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-50" />
+    </div>
+
+    <div className="container relative max-w-4xl mx-auto px-6 md:px-16 pb-24 -mt-8">
+      <Rise>
+        <MumbaiCoordinates light />
+        <h2 className="mt-5 font-black tracking-tighter leading-[1.03] text-[clamp(28px,5.6vw,56px)]">
+          Think you should be in the room?
+        </h2>
+        <p className="mt-5 max-w-[62ch] text-sm md:text-base text-primary-foreground/70 leading-relaxed">
+          Every application is reviewed manually. Selection is based on what you have built, what you
+          can build and what you want to accomplish during the residency.
+        </p>
+      </Rise>
+
+      <Rise delay={0.1}>
+        <div className="mt-10 w-full max-w-[680px] border border-accent/30 bg-primary-foreground/[0.04] p-2">
+          <iframe
+            src={LUMA_EMBED}
+            title="A36 Global Residency Mumbai registration"
+            width="600"
+            height="450"
+            loading="lazy"
+            allow="fullscreen; payment"
+            className="block h-[450px] w-full border-0"
+          />
+        </div>
+        <a
+          href={LUMA_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-5 inline-flex min-h-[44px] items-center font-bold text-[11px] uppercase tracking-[0.16em] text-accent"
+        >
+          OPEN FULL LUMA REGISTRATION <span className="a36-arrow ml-2">→</span>
+        </a>
+      </Rise>
+
+      <Rise delay={0.1}>
+        <div className="mt-14 border-t border-primary-foreground/15 pt-8">
+          <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">QUESTIONS?</p>
+          <Accordion type="single" collapsible className="mt-4 w-full">
+            {FAQS.map((f, i) => (
+              <AccordionItem
+                key={f.q}
+                value={`faq-${i}`}
+                className="border-b border-primary-foreground/12"
+              >
+                <AccordionTrigger className="py-4 text-left font-bold text-sm hover:no-underline">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="pb-5 text-sm text-primary-foreground/70 leading-relaxed max-w-[68ch]">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </Rise>
+    </div>
+  </section>
+);
+
+/* ---------------- sticky mobile CTA ---------------- */
+
+const StickyCTA = () => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const apply = document.getElementById("apply");
+    const onScroll = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.85;
+      const applyVisible = apply
+        ? apply.getBoundingClientRect().top < window.innerHeight * 0.9
+        : false;
+      setShow(pastHero && !applyVisible);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div
+      className={`md:hidden fixed inset-x-0 bottom-0 z-40 border-t border-accent/40 bg-primary/95 backdrop-blur-sm px-4 py-3 flex items-center justify-between gap-3 transition-transform duration-300 ${
+        show ? "translate-y-0" : "translate-y-full"
+      }`}
+    >
+      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
+        A36 RESIDENCY · MUMBAI
+      </p>
+      <a
+        href="#apply"
+        className="btn-gold min-h-[44px] inline-flex items-center justify-center px-5 py-2 text-[11px]"
+      >
+        APPLY
+      </a>
+    </div>
+  );
+};
+
+/* ---------------- page ---------------- */
+
+const Residency = () => (
+  <PageWrapper>
+    <Hero />
+    <ResidencyOS />
+    <InsideTheRoom />
+    <DemoDay />
+    <Partners />
+    <Application />
+    <StickyCTA />
+  </PageWrapper>
+);
 
 export default Residency;
