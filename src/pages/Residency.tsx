@@ -604,37 +604,37 @@ const InsideTheRoom = () => {
 const DemoDay = () => {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const bigY = useTransform(scrollYProgress, [0, 1], ["12%", "-12%"]);
+  const bigY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
 
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden bg-primary text-primary-foreground py-24 md:py-32"
+      className="relative isolate overflow-hidden bg-primary text-primary-foreground py-16 md:py-32"
     >
       <motion.p
         style={{ y: bigY }}
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-1/4 text-center font-black leading-none text-[38vw] text-primary-foreground/[0.05] select-none"
+        className="pointer-events-none absolute inset-x-0 top-[18%] z-[1] select-none text-center font-black leading-none text-[22vw] text-primary-foreground/[0.035] md:top-1/4 md:text-[38vw] md:text-primary-foreground/[0.05]"
       >
         16
       </motion.p>
-      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 top-6 h-40 opacity-40" />
-      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 h-24 opacity-50" />
+      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 top-6 z-[1] hidden h-40 opacity-40 md:block" />
+      <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 opacity-30 md:opacity-50" />
 
-      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
+      <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
         <Rise>
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">DAY 16</p>
-          <h2 className="mt-4 font-black tracking-tighter leading-[1.02] text-[clamp(32px,7vw,72px)]">
+          <h2 className="mt-3 font-black tracking-tighter leading-[1.05] text-[clamp(2rem,9vw,4.5rem)] md:mt-4">
             Show what changed.
           </h2>
-          <p className="mt-5 max-w-[64ch] text-sm md:text-base text-primary-foreground/70 leading-relaxed">
-            Selected residents will have the opportunity to present what they built to an invited
-            room of founders, investors, mentors, ecosystem leaders and residency partners.
+          <p className="mt-4 max-w-[64ch] text-[15px] md:text-base text-primary-foreground/70 leading-relaxed">
+            Selected residents present what they built to an invited room of founders, investors,
+            mentors and residency partners.
           </p>
         </Rise>
 
         <Rise delay={0.1}>
-          <ul className="mt-10 grid gap-px bg-primary-foreground/10 sm:grid-cols-2 lg:grid-cols-3 border border-primary-foreground/10">
+          <ul className="mt-8 grid grid-cols-1 gap-px border border-primary-foreground/10 bg-primary-foreground/10 sm:grid-cols-2 md:mt-10 lg:grid-cols-3">
             {[
               "Products shipped",
               "Technical integrations",
@@ -645,12 +645,12 @@ const DemoDay = () => {
             ].map((item, i) => (
               <li
                 key={item}
-                className="group bg-primary px-5 py-6 transition-colors hover:bg-primary-foreground/[0.04]"
+                className="group min-w-0 bg-primary px-5 py-5 transition-colors hover:bg-primary-foreground/[0.04] md:py-6"
               >
                 <span className="font-mono text-[10px] tracking-[0.2em] text-accent">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="mt-2 font-bold text-sm uppercase tracking-tight">{item}</p>
+                <p className="mt-1.5 font-bold text-sm uppercase tracking-tight">{item}</p>
               </li>
             ))}
           </ul>
@@ -658,22 +658,22 @@ const DemoDay = () => {
 
         {/* alumni flow */}
         <Rise delay={0.1}>
-          <div className="mt-20 border-t border-primary-foreground/15 pt-14 grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-            <div>
+          <div className="mt-16 grid items-center gap-8 border-t border-primary-foreground/15 pt-10 md:mt-20 md:pt-14 lg:grid-cols-2 lg:gap-16">
+            <div className="min-w-0">
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
                 A36 RESIDENCY ALUMNI
               </p>
-              <h3 className="mt-4 font-black tracking-tighter leading-[1.05] text-[clamp(26px,4.6vw,44px)]">
+              <h3 className="mt-3 font-black tracking-tighter leading-[1.08] text-[clamp(1.6rem,6.5vw,2.75rem)] md:mt-4">
                 The residency ends.<br />The network doesn&apos;t.
               </h3>
-              <p className="mt-5 max-w-[62ch] text-sm text-primary-foreground/70 leading-relaxed">
-                Selected residents become part of the A36 Residency Alumni Network for future founder
-                introductions, ecosystem opportunities, gatherings and cross-cohort collaboration.
+              <p className="mt-4 max-w-[62ch] text-[15px] text-primary-foreground/70 leading-relaxed">
+                Residents stay in the A36 Residency Alumni Network for introductions, ecosystem
+                opportunities and work across future cohorts.
               </p>
             </div>
 
-            <div className="relative">
-              <ResidencyNodes className="w-full h-24 opacity-90" />
+            <div className="relative min-w-0">
+              <ResidencyNodes className="pointer-events-none h-20 w-full opacity-90 md:h-24" />
               <ol className="mt-2 space-y-3">
                 {["DAY 16", "COHORT 001", "A36 RESIDENCY ALUMNI", "001 → 002 → 003 → …"].map(
                   (step, i) => (
@@ -697,6 +697,7 @@ const DemoDay = () => {
     </section>
   );
 };
+
 
 /* ---------------- 05 · PARTNERS ---------------- */
 
