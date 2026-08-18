@@ -383,3 +383,23 @@
   }
 }
 
+
+/* ===== /residency decorative motion ===== */
+@keyframes a36-spin { to { transform: rotate(360deg); } }
+@keyframes a36-spin-rev { to { transform: rotate(-360deg); } }
+@keyframes a36-drift-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+@keyframes a36-grid-pan {
+  from { background-position: 0 0; }
+  to { background-position: 56px 56px; }
+}
+.a36-orbit-slow { animation: a36-spin 90s linear infinite; }
+.a36-orbit-rev { animation: a36-spin-rev 120s linear infinite; }
+.a36-drift { animation: a36-drift-y 4s ease-in-out infinite; }
+.a36-grid-drift { animation: a36-grid-pan 12s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .a36-orbit-slow, .a36-orbit-rev, .a36-drift, .a36-grid-drift { animation: none !important; }
+}
