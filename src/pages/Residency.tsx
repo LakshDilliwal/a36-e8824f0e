@@ -428,13 +428,14 @@ const TiltCard = () => {
 
   const onMove = (e: React.MouseEvent) => {
     if (reduce || !ref.current) return;
+    if (window.matchMedia("(pointer: coarse), (max-width: 767px)").matches) return;
     const r = ref.current.getBoundingClientRect();
     ry.set(((e.clientX - r.left) / r.width - 0.5) * 12);
     rx.set(-((e.clientY - r.top) / r.height - 0.5) * 10);
   };
 
   return (
-    <div className="[perspective:1200px]">
+    <div className="w-full min-w-0 md:[perspective:1200px]">
       <motion.div
         ref={ref}
         onMouseMove={onMove}
@@ -450,7 +451,7 @@ const TiltCard = () => {
             src={squareAsset.url}
             alt="A36 Residency Mumbai residence visual"
             loading="lazy"
-            className="w-full aspect-square object-cover"
+            className="aspect-square w-full object-cover"
           />
           {/* technical corners */}
           {[
@@ -464,7 +465,7 @@ const TiltCard = () => {
         </div>
         <div
           style={{ transform: "translateZ(40px)" }}
-          className="a36-drift absolute -bottom-5 -left-4 border border-accent bg-background px-4 py-2 shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.5)]"
+          className="a36-drift pointer-events-none absolute -bottom-4 left-2 border border-accent bg-background px-3 py-2 shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.5)] md:-left-4 md:-bottom-5 md:px-4"
         >
           <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001 · MUMBAI</p>
         </div>
@@ -478,39 +479,38 @@ const InsideTheRoom = () => {
   const [fit, setFit] = useState<"yes" | "no">("yes");
 
   return (
-    <section className="relative overflow-hidden bg-secondary py-20 md:py-28">
-      <MumbaiHorizon className="pointer-events-none absolute right-0 top-10 h-28 w-2/3 opacity-20" />
+    <section className="relative isolate overflow-hidden bg-secondary py-16 md:py-28">
+      <MumbaiHorizon className="pointer-events-none absolute right-0 top-10 z-[1] hidden h-28 w-2/3 opacity-20 md:block" />
 
-      <div className="container relative max-w-6xl mx-auto px-6 md:px-16">
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16 items-start">
-          <Rise>
+      <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
+        <div className="grid items-start gap-10 md:gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
+          <Rise className="min-w-0">
             <TiltCard />
           </Rise>
 
-          <div>
+          <div className="min-w-0">
             <Rise>
               <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent">
                 INSIDE THE ROOM
               </p>
-              <h2 className="mt-4 font-black tracking-tighter leading-[1.03] text-primary text-[clamp(28px,5.4vw,54px)]">
+              <h2 className="mt-3 font-black tracking-tighter leading-[1.06] text-primary text-[clamp(1.75rem,7vw,3.375rem)] md:mt-4">
                 One roof.<br />Different minds.<br />Same momentum.
               </h2>
             </Rise>
 
             <Rise delay={0.1}>
-              <ul className="mt-9 border-t border-border">
+              <ul className="mt-7 border-t border-border md:mt-9">
                 {KEYWORDS.map((w) => {
                   const on = openWord === w.k;
                   return (
                     <li key={w.k} className="border-b border-border">
                       <button
                         type="button"
-                        onMouseEnter={() => setOpenWord(w.k)}
                         onClick={() => setOpenWord(on ? null : w.k)}
-                        className="group flex w-full items-center justify-between py-4 min-h-[44px] text-left"
+                        className="group flex min-h-[52px] w-full items-center justify-between gap-4 py-3 text-left md:py-4"
                       >
                         <span
-                          className={`font-black text-[20px] md:text-[26px] tracking-tight uppercase transition-colors ${
+                          className={`font-black text-[20px] uppercase tracking-tight transition-colors md:text-[26px] ${
                             on ? "text-accent" : "text-primary"
                           }`}
                         >
@@ -523,7 +523,7 @@ const InsideTheRoom = () => {
                           on ? "grid-rows-[1fr] opacity-100 pb-4" : "grid-rows-[0fr] opacity-0"
                         }`}
                       >
-                        <p className="overflow-hidden text-sm text-muted max-w-[58ch]">{w.d}</p>
+                        <p className="max-w-[58ch] overflow-hidden text-sm text-muted">{w.d}</p>
                       </div>
                     </li>
                   );
@@ -532,7 +532,7 @@ const InsideTheRoom = () => {
             </Rise>
 
             <Rise delay={0.15}>
-              <div className="mt-8 flex flex-wrap gap-2">
+              <div className="mt-6 flex flex-wrap gap-2 md:mt-8">
                 {TAGS.map((t) => (
                   <span
                     key={t}
@@ -548,14 +548,14 @@ const InsideTheRoom = () => {
 
         {/* fit toggle */}
         <Rise delay={0.1}>
-          <div className="mt-16 border border-border bg-background p-6 md:p-8">
-            <div className="flex flex-wrap gap-0 border border-border w-full sm:w-auto sm:inline-flex">
+          <div className="mt-12 border border-border bg-background p-5 md:mt-16 md:p-8">
+            <div className="grid w-full grid-cols-2 border border-border max-[389px]:grid-cols-1 sm:inline-grid sm:w-auto">
               {(["yes", "no"] as const).map((k) => (
                 <button
                   key={k}
                   type="button"
                   onClick={() => setFit(k)}
-                  className={`flex-1 sm:flex-none min-h-[44px] px-5 font-bold text-[11px] uppercase tracking-[0.16em] transition-colors ${
+                  className={`min-h-[46px] px-4 font-bold text-[11px] uppercase tracking-[0.14em] transition-colors max-[389px]:border-b max-[389px]:border-border max-[389px]:last:border-b-0 sm:px-5 ${
                     fit === k ? "bg-primary text-primary-foreground" : "bg-transparent text-primary/60"
                   }`}
                 >
@@ -568,7 +568,7 @@ const InsideTheRoom = () => {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28 }}
-              className="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2"
+              className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2"
             >
               {FIT[fit].map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-primary/80">
@@ -584,11 +584,11 @@ const InsideTheRoom = () => {
 
         {/* global notice */}
         <Rise delay={0.1}>
-          <div className="mt-8 border-l-2 border-accent bg-accent/10 px-5 py-5">
+          <div className="mt-6 border-l-2 border-accent bg-accent/10 px-4 py-4 md:px-5 md:py-5">
             <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
-              🌍 GLOBAL APPLICATIONS WELCOME
+              GLOBAL APPLICATIONS WELCOME
             </p>
-            <p className="mt-3 max-w-[66ch] text-sm text-primary/80 leading-relaxed">
+            <p className="mt-2 max-w-[66ch] text-sm leading-relaxed text-primary/80">
               International residents must be independently visa-ready and eligible to enter India.
               A36 Labs does not provide visa sponsorship or visa processing support.
             </p>
@@ -598,6 +598,7 @@ const InsideTheRoom = () => {
     </section>
   );
 };
+
 
 /* ---------------- 04 · DAY 16 + ALUMNI ---------------- */
 
