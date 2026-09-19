@@ -164,7 +164,7 @@ const Links = () => {
           {contentLinks.map((item) => <LinkRow key={item.label} item={item} />)}
         </HubSection>
 
-        <HubSection eyebrow="EVENTS" title="Meet A36 IRL.">
+        <HubSection eyebrow="EVENTS" title="Meet IRL">
           <a href={A36_LINKS.events.calendar} target="_blank" rel="noopener noreferrer" className="a36-links-event group relative flex min-h-[74px] items-center gap-4 overflow-hidden border border-accent bg-primary px-5 py-4 text-primary-foreground focus-visible:outline-none">
             <span className="a36-links-accent" aria-hidden="true" />
             <CalendarDays className="shrink-0 text-accent" size={22} aria-hidden="true" />
@@ -176,7 +176,7 @@ const Links = () => {
           </a>
         </HubSection>
 
-        <HubSection eyebrow="WORK WITH A36" title="Build with us.">
+        <HubSection eyebrow="WORK WITH A36 LABS" title="Build with us">
           {workLinks.map((item) => <LinkRow key={item.label} item={item} />)}
         </HubSection>
 
