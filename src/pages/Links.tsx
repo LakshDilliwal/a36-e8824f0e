@@ -97,6 +97,10 @@ const HubSection = ({ eyebrow, title, children }: { eyebrow: string; title: stri
 
 const Links = () => {
   useEffect(() => {
+    document.querySelectorAll<HTMLLinkElement>('link[rel="canonical"]').forEach((link) => {
+      if (link.href === "https://www.a36labs.com/") link.remove();
+    });
+
     const elements = Array.from(document.querySelectorAll<HTMLElement>("[data-links-reveal]"));
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       elements.forEach((element) => element.classList.add("is-visible"));
@@ -120,7 +124,7 @@ const Links = () => {
     <main className="a36-links-page min-h-screen overflow-x-hidden bg-background text-primary">
       <div className="mx-auto w-full max-w-[580px] px-5 pb-[calc(32px+env(safe-area-inset-bottom))] pt-[calc(32px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-12">
         <header className="a36-links-intro border-b border-border pb-8">
-          <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center">
+          <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center bg-primary px-3 py-2">
             <Logo className="!h-auto !w-[92px]" />
           </Link>
           <p className="eyebrow-dark mt-6">A36 LABS</p>
@@ -177,7 +181,7 @@ const Links = () => {
         </HubSection>
 
         <footer className="a36-links-reveal mt-14 border-t border-border pt-8" data-links-reveal>
-          <Logo className="!h-auto !w-[74px]" />
+          <span className="inline-flex bg-primary px-2.5 py-2"><Logo className="!h-auto !w-[74px]" /></span>
           <p className="mt-4 text-sm font-black">A36 Labs</p>
           <p className="mt-1 text-xs text-muted">The Home of Serious Builders</p>
           <a href="https://www.a36labs.com" className="mt-4 inline-flex min-h-11 items-center text-xs font-bold text-primary hover:text-muted">a36labs.com</a>
