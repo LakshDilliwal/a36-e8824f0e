@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoAsset from "@/assets/a36-labs-official-logo.svg.asset.json";
+import logoAsset from "@/assets/a36-labs-official-logo.svg";
 
 type LogoProps = {
   light?: boolean;
@@ -16,7 +16,7 @@ const Logo = ({ className = "", variant = "nav", linked = false }: LogoProps) =>
 
   const img = (
     <img
-      src={logoAsset.url}
+      src={logoAsset}
       alt="A36 Labs"
       className={`${sizeCls} object-contain select-none ${className}`}
       draggable={false}

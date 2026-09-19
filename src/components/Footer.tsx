@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-react";
+import { FOOTER_SOCIAL_LINKS } from "@/config/links";
 
 const XIcon = ({ size = 16 }: { size?: number }) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -23,6 +24,7 @@ const contentLinks = [
   { label: "Newsletter", to: "/newsletter" },
   { label: "Merch", to: "/merch" },
   { label: "Media Kit", to: "/media-kit" },
+  { label: "Links", to: "/links" },
 ];
 
 const companyLinks = [
@@ -32,14 +34,19 @@ const companyLinks = [
   { label: "FAQ", to: "/faq" },
 ];
 
-const socials = [
-  { Icon: XIcon, label: "X", href: "https://x.com/A36Labs" },
-  { Icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/a36labs" },
-  { Icon: Instagram, label: "Instagram", href: "https://www.instagram.com/a36labs" },
-  { Icon: Youtube, label: "YouTube", href: "https://www.youtube.com/@a36labs" },
-  { Icon: Send, label: "Telegram", href: "https://t.me/+sqfR_6vZCdZhY2Fl" },
-  { Icon: Calendar, label: "Luma", href: "https://luma.com/a36" },
-];
+const socialIcons = {
+  x: XIcon,
+  linkedin: Linkedin,
+  instagram: Instagram,
+  youtube: Youtube,
+  telegram: Send,
+  luma: Calendar,
+};
+
+const socials = FOOTER_SOCIAL_LINKS.map((social) => ({
+  ...social,
+  Icon: socialIcons[social.id],
+}));
 
 const ColHeading = ({ children }: { children: React.ReactNode }) => (
   <span className="font-bold text-[11px] text-accent uppercase tracking-[0.15em] mb-4 block">{children}</span>
