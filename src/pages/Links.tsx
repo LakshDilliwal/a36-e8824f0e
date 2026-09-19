@@ -1,5 +1,6 @@
 import { useEffect, type ElementType, type ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -118,6 +119,17 @@ const Links = () => {
 
   return (
     <main className="a36-links-page min-h-screen overflow-x-hidden bg-background text-primary">
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "A36 Labs Links",
+            url: "https://www.a36labs.com/links",
+            description: "Official A36 Labs links for community channels, events, opportunities, A36 Signal, Base Layer and social profiles.",
+          })}
+        </script>
+      </Helmet>
       <div className="mx-auto w-full max-w-[580px] px-5 pb-[calc(32px+env(safe-area-inset-bottom))] pt-[calc(32px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-12">
         <header className="a36-links-intro border-b border-border pb-8">
           <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center">
