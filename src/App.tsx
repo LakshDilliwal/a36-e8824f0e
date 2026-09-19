@@ -266,6 +266,14 @@ const App = () => (
                 description:
                   "Official A36 Labs links for community channels, events, opportunities, A36 Signal, Base Layer and social profiles.",
                 path: "/links",
+                jsonLd: {
+                  "@context": "https://schema.org",
+                  "@type": "WebPage",
+                  name: "A36 Labs Links",
+                  url: "https://www.a36labs.com/links",
+                  description:
+                    "Official A36 Labs links for community channels, events, opportunities, A36 Signal, Base Layer and social profiles.",
+                },
               },
               <Links />,
             )}
