@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoAsset from "@/assets/a36-labs-official-logo.svg.asset.json";
+import logoAsset from "@/assets/a36-labs-official-logo.svg";
 
 type LogoProps = {
   light?: boolean;

@@ -1,6 +1,5 @@
 import { useEffect, type ElementType, type ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 import {
   ArrowUpRight,
   BriefcaseBusiness,
@@ -73,13 +72,13 @@ const LinkRow = ({ item, compact = false }: { item: HubLink; compact?: boolean }
       <span className="a36-links-accent" aria-hidden="true" />
       <span className="a36-links-icon"><Icon size={20} strokeWidth={1.8} /></span>
       <span className="min-w-0 flex-1">
-        <span className="block text-sm font-black leading-tight text-primary">{item.label}</span>
+        <span className={`block font-black leading-tight text-primary ${compact ? "text-xs" : "text-sm"}`}>{item.label}</span>
         {item.description ? <span className="mt-1 block text-[11px] leading-[1.45] text-muted">{item.description}</span> : null}
       </span>
       {item.external ? <ArrowUpRight className="a36-links-arrow shrink-0" size={18} aria-hidden="true" /> : <ChevronRight className="a36-links-arrow shrink-0" size={19} aria-hidden="true" />}
     </>
   );
-  const className = `a36-links-row group relative flex min-h-[60px] items-center gap-3 overflow-hidden border border-border bg-card px-4 py-3 focus-visible:outline-none ${compact ? "sm:min-h-[56px]" : ""}`;
+  const className = `a36-links-row group relative flex min-h-[60px] items-center overflow-hidden border border-border bg-card py-3 focus-visible:outline-none ${compact ? "gap-2 px-3 sm:min-h-[56px]" : "gap-3 px-4"}`;
 
   return item.external ? (
     <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>{body}</a>
@@ -119,17 +118,6 @@ const Links = () => {
 
   return (
     <main className="a36-links-page min-h-screen overflow-x-hidden bg-background text-primary">
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            name: "A36 Labs Links",
-            url: "https://www.a36labs.com/links",
-            description: "Official A36 Labs links for community channels, events, opportunities, A36 Signal, Base Layer and social profiles.",
-          })}
-        </script>
-      </Helmet>
       <div className="mx-auto w-full max-w-[580px] px-5 pb-[calc(32px+env(safe-area-inset-bottom))] pt-[calc(32px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-12">
         <header className="a36-links-intro border-b border-border pb-8">
           <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center">
@@ -163,7 +151,7 @@ const Links = () => {
         </HubSection>
 
         <HubSection eyebrow="SOCIAL" title="Follow A36.">
-          <div className="grid grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
             {socialLinks.map((item) => <LinkRow key={item.label} item={item} compact />)}
           </div>
         </HubSection>
