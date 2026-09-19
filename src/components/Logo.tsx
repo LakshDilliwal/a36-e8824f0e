@@ -16,7 +16,7 @@ const Logo = ({ className = "", variant = "nav", linked = false }: LogoProps) =>
 
   const img = (
     <img
-      src={logoAsset.url}
+      src={logoAsset}
       alt="A36 Labs"
       className={`${sizeCls} object-contain select-none ${className}`}
       draggable={false}
