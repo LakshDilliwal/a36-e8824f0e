@@ -24,6 +24,7 @@ import MediaKit from "./pages/MediaKit";
 import Merch from "./pages/Merch";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import Links from "./pages/Links";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -255,6 +256,18 @@ const App = () => (
                 breadcrumbs: crumbs("Terms", "/terms"),
               },
               <Terms />,
+            )}
+          />
+          <Route
+            path="/links"
+            element={withSeo(
+              {
+                title: "A36 Labs Links | Community, Events & Socials",
+                description:
+                  "Official A36 Labs links for community channels, events, opportunities, A36 Signal, Base Layer and social profiles.",
+                path: "/links",
+              },
+              <Links />,
             )}
           />
           <Route path="*" element={<NotFound />} />
