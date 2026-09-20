@@ -9,10 +9,11 @@ import communityImg7 from "@/assets/a36-labs-community-image-7.jpg";
 import communityImg8 from "@/assets/a36-labs-community-image-8.jpg";
 import communityImg9 from "@/assets/a36-labs-community-image-9.jpg";
 import communityImg10 from "@/assets/a36-labs-community-image-10.jpg";
+import { A36_LINKS } from "@/config/links";
 
 const WHATSAPP_URL = "https://chat.whatsapp.com/CdyFYIzDSMj17jWfGJGtkw";
 const TELEGRAM_URL = "https://t.me/+sqfR_6vZCdZhY2Fl";
-const DISCORD_URL = "https://discord.gg/Ha5yvx3R";
+const DISCORD_URL = A36_LINKS.community.discord;
 const SUBSTACK_URL = "https://a36signal.substack.com/";
 const LUMA_URL = "https://luma.com/a36";
 const X_URL = "https://x.com/A36Labs";

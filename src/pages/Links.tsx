@@ -5,8 +5,6 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   ChevronRight,
-  CircleUserRound,
-  Disc3,
   FileText,
   Instagram,
   Linkedin,
@@ -18,7 +16,7 @@ import {
   Users,
   Youtube,
 } from "lucide-react";
-import Logo from "@/components/Logo";
+import a36LogoDark from "@/assets/a36-labs-logo-dark.svg.asset.json";
 import { A36_LINKS } from "@/config/links";
 
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -36,10 +34,9 @@ type HubLink = {
 };
 
 const communityLinks: HubLink[] = [
-  { label: "WhatsApp", description: "Regional updates and local groups", href: A36_LINKS.community.whatsapp, icon: MessageCircle, external: true },
-  { label: "Telegram", description: "Global discussion and announcements", href: A36_LINKS.community.telegram, icon: Send, external: true },
-  { label: "Discord", description: "Builders, opportunities and deeper collaboration", href: A36_LINKS.community.discord, icon: Radio, external: true },
-  { label: "Community page", description: "Explore the A36 builder network", href: A36_LINKS.site.community, icon: Users },
+  { label: "WhatsApp", description: "Regional groups and quick updates.", href: A36_LINKS.community.whatsapp, icon: MessageCircle, external: true },
+  { label: "Telegram", description: "Global chat and announcements.", href: A36_LINKS.community.telegram, icon: Send, external: true },
+  { label: "Discord", description: "Builder rooms, opportunities and deeper conversations.", href: A36_LINKS.community.discord, icon: Radio, external: true },
 ];
 
 const socialLinks: HubLink[] = [
@@ -50,22 +47,21 @@ const socialLinks: HubLink[] = [
 ];
 
 const contentLinks: HubLink[] = [
-  { label: "A36 Signal", description: "Weekly signal for serious builders", href: A36_LINKS.site.newsletter, icon: Newspaper },
-  { label: "A36 Signal on Substack", description: "Read the latest dispatch", href: A36_LINKS.content.substack, icon: ArrowUpRight, external: true },
-  { label: "Base Layer", description: "Long-form conversations with builders and operators", href: A36_LINKS.site.podcast, icon: Mic2 },
-  { label: "Media Kit", description: "Official A36 brand and press resources", href: A36_LINKS.site.mediaKit, icon: FileText },
+  { label: "A36 Signal", description: "Weekly signal for serious builders.", href: A36_LINKS.site.newsletter, icon: Newspaper },
+  { label: "Base Layer", description: "Long-form conversations with builders and operators.", href: A36_LINKS.site.podcast, icon: Mic2 },
+  { label: "Media Kit", description: "Official A36 brand and press resources.", href: A36_LINKS.site.mediaKit, icon: FileText },
 ];
 
 const workLinks: HubLink[] = [
-  { label: "A36 Earn", description: "Curated ecosystem opportunities", href: A36_LINKS.site.earn, icon: BriefcaseBusiness },
-  { label: "Residency", description: "The flagship global builder residency", href: A36_LINKS.site.residency, icon: CircleUserRound },
-  { label: "Cohort", description: "Structured programs for emerging builders", href: A36_LINKS.site.cohort, icon: Users },
-  { label: "Careers", description: "Build the A36 ecosystem with us", href: A36_LINKS.site.careers, icon: BriefcaseBusiness },
-  { label: "Partner With A36", description: "Collaborate with the A36 network", href: A36_LINKS.applications.partner, icon: ArrowUpRight, external: true },
-  { label: "Apply as an Operator", description: "Support A36 programs and operations", href: A36_LINKS.applications.operator, icon: ArrowUpRight, external: true },
+  { label: "A36 Earn", description: "Opportunities for builders.", href: A36_LINKS.site.earn, icon: BriefcaseBusiness },
+  { label: "Residency", description: "Live, build and ship together.", href: A36_LINKS.site.residency, icon: Users },
+  { label: "Cohort", description: "Structured builder programs.", href: A36_LINKS.site.cohort, icon: Users },
+  { label: "Careers", description: "Join the A36 team.", href: A36_LINKS.site.careers, icon: BriefcaseBusiness },
+  { label: "Partner", description: "Build something with A36.", href: A36_LINKS.applications.partner, icon: ArrowUpRight, external: true },
+  { label: "Operator", description: "Help run the ecosystem.", href: A36_LINKS.applications.operator, icon: ArrowUpRight, external: true },
 ];
 
-const LinkRow = ({ item, compact = false }: { item: HubLink; compact?: boolean }) => {
+const LinkRow = ({ item, compact = false, social = false }: { item: HubLink; compact?: boolean; social?: boolean }) => {
   const Icon = item.icon;
   const body = (
     <>
@@ -78,7 +74,7 @@ const LinkRow = ({ item, compact = false }: { item: HubLink; compact?: boolean }
       {item.external ? <ArrowUpRight className="a36-links-arrow shrink-0" size={18} aria-hidden="true" /> : <ChevronRight className="a36-links-arrow shrink-0" size={19} aria-hidden="true" />}
     </>
   );
-  const className = `a36-links-row group relative flex min-h-[60px] items-center overflow-hidden border border-border bg-card py-3 focus-visible:outline-none ${compact ? "gap-2 px-3 sm:min-h-[56px]" : "gap-3 px-4"}`;
+  const className = `a36-links-row group relative flex min-h-[60px] items-center overflow-hidden border border-border bg-card py-3 focus-visible:outline-none ${compact ? "gap-2 px-3 sm:min-h-[56px]" : "gap-3 px-4"} ${social ? "a36-links-social" : ""}`;
 
   return item.external ? (
     <a href={item.href} target="_blank" rel="noopener noreferrer" className={className}>{body}</a>
@@ -88,10 +84,10 @@ const LinkRow = ({ item, compact = false }: { item: HubLink; compact?: boolean }
 };
 
 const HubSection = ({ eyebrow, title, children }: { eyebrow: string; title: string; children: ReactNode }) => (
-  <section className="a36-links-reveal mt-12" data-links-reveal>
+  <section className="a36-links-reveal mt-9" data-links-reveal>
     <p className="eyebrow-dark mb-2">{eyebrow}</p>
     <h2 className="text-[26px] font-black leading-tight text-primary">{title}</h2>
-    <div className="mt-5 space-y-2.5">{children}</div>
+    <div className="a36-links-items mt-4 space-y-2.5">{children}</div>
   </section>
 );
 
@@ -122,104 +118,110 @@ const Links = () => {
 
   return (
     <main className="a36-links-page min-h-screen overflow-x-hidden bg-background text-primary">
-      <div className="mx-auto w-full max-w-[580px] px-5 pb-[calc(32px+env(safe-area-inset-bottom))] pt-[calc(32px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-12">
-        <header className="a36-links-intro border-b border-border pb-8">
-          <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center bg-primary px-3 py-2">
-            <Logo className="!h-auto !w-[92px]" />
+      <div className="a36-links-ambient" aria-hidden="true"><span /><span /></div>
+      <div className="relative z-10 mx-auto w-full max-w-[580px] px-5 pb-[calc(28px+env(safe-area-inset-bottom))] pt-[calc(28px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-10">
+        <header className="border-b border-border pb-7">
+          <Link to="/" aria-label="A36 Labs — Home" className="a36-links-logo inline-flex min-h-11 items-center focus-visible:outline-none">
+            <img src={a36LogoDark.url} alt="A36 Labs" className="h-auto w-[112px] object-contain" />
           </Link>
-          <p className="eyebrow-dark mt-6">A36 LABS</p>
-          <h1 className="mt-3 text-[34px] font-black leading-[1.04] text-primary min-[390px]:text-[38px] sm:text-[44px]">
+          <div className="a36-links-copy">
+          <p className="eyebrow-dark mt-5">A36 LABS</p>
+          <h1 className="mt-2.5 text-[32px] font-black leading-[1.06] text-primary min-[390px]:text-[36px] sm:text-[42px]">
             Where serious builders operate.
           </h1>
-          <p className="mt-4 max-w-[500px] text-sm leading-relaxed text-primary/70">
-            Community, events, opportunities, content and ways to work with A36.
+          <p className="mt-3 max-w-[520px] text-[13px] leading-[1.65] text-primary/70 min-[390px]:text-sm">
+            Everything A36 in one place. Join the community, find events, follow the work, or build with us.
           </p>
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] font-bold uppercase tracking-[0.15em] text-muted">
-            <span className="text-primary normal-case tracking-[0.04em]">a36labs.com</span>
-            <span aria-hidden="true">/</span>
-            <span>Global Builder Ecosystem</span>
+          <p className="mt-4 text-[9px] font-bold uppercase leading-relaxed tracking-[0.13em] text-muted min-[390px]:text-[10px]">COMMUNITY · EVENTS · OPPORTUNITIES · CONTENT</p>
           </div>
         </header>
 
-        <div className="a36-links-actions mt-6">
-          <a href={A36_LINKS.community.whatsapp} target="_blank" rel="noopener noreferrer" className="a36-links-primary group flex min-h-[58px] w-full items-center justify-between bg-accent px-5 py-3 text-sm font-black uppercase text-accent-foreground focus-visible:outline-none">
-            <span>Join the community</span><ArrowUpRight className="a36-links-arrow" size={20} aria-hidden="true" />
-          </a>
-          <Link to={A36_LINKS.site.home} className="mt-2 flex min-h-12 w-full items-center justify-center border border-primary px-5 py-3 text-xs font-black uppercase text-primary hover:bg-primary hover:text-primary-foreground">
-            Explore A36 →
+        <div className="a36-links-actions mt-5">
+          <Link to={A36_LINKS.site.community} className="a36-links-primary group flex min-h-[56px] w-full items-center justify-between bg-accent px-5 py-3 text-sm font-black uppercase text-accent-foreground focus-visible:outline-none">
+            <span>Join the community</span><ChevronRight className="a36-links-arrow" size={20} aria-hidden="true" />
           </Link>
         </div>
 
-        <HubSection eyebrow="COMMUNITY" title="Join the network.">
+        <HubSection eyebrow="COMMUNITY" title="Find your people.">
           {communityLinks.map((item) => <LinkRow key={item.label} item={item} />)}
         </HubSection>
 
-        <HubSection eyebrow="SOCIAL" title="Follow A36.">
-          <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
-            {socialLinks.map((item) => <LinkRow key={item.label} item={item} compact />)}
+        <HubSection eyebrow="SOCIAL" title="Follow the work.">
+          <div className="grid grid-cols-2 gap-2.5">
+            {socialLinks.map((item) => <LinkRow key={item.label} item={item} compact social />)}
           </div>
         </HubSection>
 
-        <HubSection eyebrow="CONTENT" title="Read. Watch. Listen.">
+        <HubSection eyebrow="CONTENT" title="Signals and conversations.">
           {contentLinks.map((item) => <LinkRow key={item.label} item={item} />)}
         </HubSection>
 
-        <HubSection eyebrow="EVENTS" title="Meet IRL">
-          <a href={A36_LINKS.events.calendar} target="_blank" rel="noopener noreferrer" className="a36-links-event group relative flex min-h-[74px] items-center gap-4 overflow-hidden border border-accent bg-primary px-5 py-4 text-primary-foreground focus-visible:outline-none">
+        <HubSection eyebrow="IRL" title="Meet in real life.">
+          <Link to={A36_LINKS.site.events} className="a36-links-event group relative flex min-h-[92px] items-center gap-4 overflow-hidden border border-accent bg-primary px-5 py-4 text-primary-foreground focus-visible:outline-none">
             <span className="a36-links-accent" aria-hidden="true" />
             <CalendarDays className="shrink-0 text-accent" size={22} aria-hidden="true" />
             <span className="min-w-0 flex-1">
-              <span className="block text-[10px] font-bold uppercase tracking-[0.15em] text-accent">Upcoming events</span>
-              <span className="mt-1 block text-sm font-black">View the A36 calendar</span>
+              <span className="block text-sm font-black">A36 Events</span>
+              <span className="mt-1 block text-[11px] leading-[1.45] text-primary-foreground/65">Workshops, builder rooms, meetups and ecosystem gatherings.</span>
+              <span className="mt-2 block text-[10px] font-black uppercase text-accent">View events →</span>
             </span>
-            <ArrowUpRight className="a36-links-arrow shrink-0" size={19} aria-hidden="true" />
-          </a>
+            <ChevronRight className="a36-links-arrow shrink-0" size={19} aria-hidden="true" />
+          </Link>
+          <a href={A36_LINKS.events.calendar} target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-11 items-center text-xs font-bold text-primary focus-visible:outline-none">A36 Calendar ↗</a>
         </HubSection>
 
-        <HubSection eyebrow="WORK WITH A36 LABS" title="Build with us">
-          {workLinks.map((item) => <LinkRow key={item.label} item={item} />)}
-        </HubSection>
-
-        <footer className="a36-links-reveal mt-14 border-t border-border pt-8" data-links-reveal>
-          <span className="inline-flex bg-primary px-2.5 py-2"><Logo className="!h-auto !w-[74px]" /></span>
-          <p className="mt-4 text-sm font-black">A36 Labs</p>
-          <p className="mt-1 text-xs text-muted">The Home of Serious Builders</p>
-          <a href="https://www.a36labs.com" className="mt-4 inline-flex min-h-11 items-center text-xs font-bold text-primary hover:text-muted">a36labs.com</a>
-          <div className="mt-3 flex gap-2">
-            {socialLinks.map((item) => {
-              const Icon = item.icon;
-              return (
-                <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" aria-label={item.label} className="flex h-11 w-11 items-center justify-center border border-border text-primary hover:border-accent hover:bg-card">
-                  <Icon size={17} strokeWidth={1.8} />
-                </a>
-              );
-            })}
+        <HubSection eyebrow="BUILD WITH A36" title="Find your way in.">
+          <div className="grid grid-cols-1 gap-2.5 min-[360px]:grid-cols-2">
+            {workLinks.map((item) => <LinkRow key={item.label} item={item} compact />)}
           </div>
-          <p className="mt-7 text-[10px] uppercase tracking-[0.12em] text-muted">© 2026 A36 Labs</p>
+        </HubSection>
+
+        <footer className="a36-links-reveal mt-11 border-t border-border pt-7" data-links-reveal>
+          <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center focus-visible:outline-none">
+            <img src={a36LogoDark.url} alt="A36 Labs" className="h-auto w-[92px] object-contain" />
+          </Link>
+          <p className="mt-2 text-xs font-bold text-primary">The Home of Serious Builders</p>
+          <a href="https://www.a36labs.com" target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-11 items-center text-xs font-bold text-primary hover:text-muted focus-visible:outline-none">a36labs.com</a>
+          <p className="mt-3 text-[10px] uppercase tracking-[0.12em] text-muted">© 2026 A36 Labs</p>
         </footer>
       </div>
 
       <style>{`
-        .a36-links-intro { animation: a36LinksEnter 340ms cubic-bezier(.22,1,.36,1) 60ms both; }
-        .a36-links-actions { animation: a36LinksEnter 360ms cubic-bezier(.22,1,.36,1) 160ms both; }
+        .a36-links-page { position: relative; isolation: isolate; }
+        .a36-links-logo { animation: a36LinksEnter 260ms cubic-bezier(.22,1,.36,1) 20ms both; }
+        .a36-links-copy { animation: a36LinksEnter 300ms cubic-bezier(.22,1,.36,1) 75ms both; }
+        .a36-links-actions { animation: a36LinksEnter 320ms cubic-bezier(.22,1,.36,1) 125ms both; }
         .a36-links-reveal { opacity: 0; transform: translateY(8px); transition: opacity 340ms cubic-bezier(.22,1,.36,1), transform 340ms cubic-bezier(.22,1,.36,1); }
         .a36-links-reveal.is-visible { opacity: 1; transform: translateY(0); }
-        .a36-links-row, .a36-links-event { transition: transform 190ms ease-out, border-color 190ms ease-out, background-color 190ms ease-out; }
+        .a36-links-reveal .a36-links-items > * { transition-delay: 0ms; }
+        .a36-links-reveal.is-visible .a36-links-items > *:nth-child(2) { transition-delay: 25ms; }
+        .a36-links-reveal.is-visible .a36-links-items > *:nth-child(3) { transition-delay: 50ms; }
+        .a36-links-reveal.is-visible .a36-links-items > *:nth-child(4) { transition-delay: 75ms; }
+        .a36-links-row, .a36-links-event { transition: transform 200ms ease-out, border-color 200ms ease-out, background-color 200ms ease-out, box-shadow 200ms ease-out; }
         .a36-links-icon { display: flex; width: 36px; height: 36px; flex: none; align-items: center; justify-content: center; border: 1px solid hsl(var(--border)); color: hsl(var(--primary)); transition: transform 190ms ease-out, border-color 190ms ease-out; }
         .a36-links-arrow { transition: transform 190ms ease-out; }
-        .a36-links-accent { position: absolute; inset: 0 auto 0 0; width: 2px; background: hsl(var(--accent)); transform: scaleY(.35); transform-origin: center; transition: transform 160ms ease-out; }
-        .a36-links-row:hover { transform: translateY(-2px); border-color: hsl(var(--accent)); background: hsl(var(--card) / .72); }
+        .a36-links-accent { position: absolute; inset: 0 auto 0 0; width: 2px; background: hsl(var(--accent)); transform: scaleY(.35); transform-origin: center; transition: transform 180ms ease-out, width 180ms ease-out; }
+        .a36-links-row:hover, .a36-links-row:focus-visible { transform: translateY(-3px); border-color: hsl(var(--accent)); background: hsl(var(--card) / .78); box-shadow: 0 10px 24px -18px hsl(var(--primary) / .55); }
+        .a36-links-event:hover, .a36-links-event:focus-visible { transform: translateY(-3px); box-shadow: 0 12px 26px -18px hsl(var(--primary) / .65); }
         .a36-links-row:hover .a36-links-arrow, .a36-links-event:hover .a36-links-arrow, .a36-links-primary:hover .a36-links-arrow { transform: translateX(4px); }
         .a36-links-row:hover .a36-links-icon { transform: scale(1.04); border-color: hsl(var(--accent)); }
-        .a36-links-row:hover .a36-links-accent, .a36-links-event:hover .a36-links-accent { transform: scaleY(1); }
+        .a36-links-row:hover .a36-links-accent, .a36-links-row:focus-visible .a36-links-accent, .a36-links-event:hover .a36-links-accent, .a36-links-event:focus-visible .a36-links-accent { transform: scaleY(1); width: 3px; }
         .a36-links-row:active, .a36-links-event:active, .a36-links-primary:active { transform: scale(.985); }
-        .a36-links-row:active .a36-links-accent, .a36-links-event:active .a36-links-accent { transform: scaleY(1); }
-        @keyframes a36LinksEnter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .a36-links-row:active .a36-links-accent, .a36-links-event:active .a36-links-accent { transform: scaleY(1); width: 4px; }
+        .a36-links-page a:focus-visible { box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--accent)); }
+        .a36-links-ambient { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+        .a36-links-ambient span { position: absolute; width: 72rem; height: 72rem; opacity: .04; filter: blur(90px); background: radial-gradient(circle, hsl(var(--accent)) 0%, transparent 68%); animation: a36AmbientOne 22s ease-in-out infinite alternate; }
+        .a36-links-ambient span:first-child { top: -38rem; left: -34rem; }
+        .a36-links-ambient span:last-child { right: -42rem; bottom: -38rem; opacity: .035; background: radial-gradient(circle, hsl(var(--primary)) 0%, hsl(var(--secondary)) 34%, transparent 68%); animation-name: a36AmbientTwo; animation-duration: 27s; }
+        @keyframes a36LinksEnter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes a36AmbientOne { from { transform: translate3d(-2%, -1%, 0) scale(.98); } to { transform: translate3d(6%, 4%, 0) scale(1.04); } }
+        @keyframes a36AmbientTwo { from { transform: translate3d(2%, 3%, 0) scale(1); } to { transform: translate3d(-5%, -4%, 0) scale(1.05); } }
         @media (prefers-reduced-motion: reduce) {
-          .a36-links-intro, .a36-links-actions { animation: none; }
+          .a36-links-logo, .a36-links-copy, .a36-links-actions, .a36-links-ambient span { animation: none; }
           .a36-links-reveal { opacity: 1; transform: none; transition: opacity 120ms linear; }
           .a36-links-row, .a36-links-event, .a36-links-primary, .a36-links-icon, .a36-links-arrow, .a36-links-accent { transition-duration: 0ms; }
         }
+        @media (max-width: 339px) { .a36-links-ambient { display: none; } }
         @supports (-webkit-touch-callout: none) {
           .a36-links-page { min-height: -webkit-fill-available; }
         }
