@@ -1,26 +1,18 @@
-# A36 Links Hub
+# A36 Links Refinement
 
 ## Scope
-- Add a permanent public `/links` route without changing the main navigation or any existing page.
-- Add one `Links` item to the existing footer.
-- Reuse only destinations already verified in the current project.
+- Replace every A36-owned Discord invite with `https://discord.gg/8rzpt4tCqE`, using the existing shared links configuration as the canonical source where possible.
+- Visually change only `/links`; inspect but do not edit the Media Kit page.
 
 ## Build
-1. Create a small shared links configuration for verified community, social, event, newsletter, and application destinations.
-2. Update the existing footer to consume its social destinations from that configuration and add `/links` to the Content column.
-3. Build a lightweight, mobile-first links page using the existing A36 logo, colors, typography, sharp corners, and icons.
-4. Include compact identity, primary community action, Community, Social, Content, Work With A36, event calendar, and utility footer sections.
-5. Use semantic internal/external links, focus states, 44px+ targets, safe-area spacing, fast entrance/reveal motion, touch feedback, and reduced-motion behavior.
-6. Register `/links` with the existing SEO system and exact canonical path.
-
-## Verified destinations to reuse
-- Community: WhatsApp, Telegram, Discord, `/community`, and A36 Luma calendar.
-- Social: X, LinkedIn, Instagram, YouTube, Telegram, and Luma from the footer/community page.
-- Content: `/newsletter`, existing A36 Signal Substack, `/podcast`, `/media-kit`.
-- Work: `/earn`, `/residency`, `/cohort`, `/careers`, plus the existing partnership and operator Google Forms.
+1. Update the shared Discord URL and point the Community page at that shared value without altering its presentation.
+2. Rebuild `/links` with the exact requested sections, copy, routes, forms, and non-duplicated destinations.
+3. Reuse the exact dark Media Kit wordmark asset at the top and bottom of `/links`.
+4. Keep the narrow mobile-first layout, compact cards, 44px targets, visible focus states, and sharp A36 styling.
+5. Add fast opening and one-time scroll reveals, stronger card feedback, reduced-motion support, and subtle ambient CSS fields confined to `/links`.
 
 ## Validation
-- Check TypeScript/build output and runtime console.
-- Verify `/links` and `/links?utm_source=qr&utm_medium=offline`.
-- Test 320, 360, 375, 390, 430, and desktop widths for overflow, tap targets, logo rendering, link behavior, focus order, and absence of embeds.
-- Confirm existing pages remain untouched except the requested footer item and shared social configuration.
+- Confirm no old A36 Discord invite remains and third-party Discord links are unchanged.
+- Verify `/links` and `/links?utm_source=qr&utm_medium=offline` without runtime errors.
+- Test 320, 360, 375, 390, 412, 430, and desktop widths for overflow, tap targets, layout, wordmark rendering, and reduced motion.
+- Run TypeScript checks and a production build.

@@ -5,6 +5,7 @@ export const A36_LINKS = {
     newsletter: "/newsletter",
     podcast: "/podcast",
     mediaKit: "/media-kit",
+    events: "/events",
     earn: "/earn",
     residency: "/residency",
     cohort: "/cohort",
@@ -13,7 +14,7 @@ export const A36_LINKS = {
   community: {
     whatsapp: "https://chat.whatsapp.com/CdyFYIzDSMj17jWfGJGtkw",
     telegram: "https://t.me/+sqfR_6vZCdZhY2Fl",
-    discord: "https://discord.gg/Ha5yvx3R",
+    discord: "https://discord.gg/8rzpt4tCqE",
   },
   social: {
     x: "https://x.com/A36Labs",
