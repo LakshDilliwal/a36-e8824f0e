@@ -7,4 +7,4 @@
 - [x] Validate builds, runtime, interactions, and requested responsive widths
 - [x] Replace all A36-owned Discord invites with the new canonical URL
 - [x] Refine only `/links` content, wordmark, interactions, and ambient background
-- [ ] Validate `/links` across requested widths, UTM parameters, reduced motion, typecheck, build, and runtime
+- [x] Validate `/links` across requested widths, UTM parameters, reduced motion, typecheck, build, and runtime
