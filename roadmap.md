@@ -5,6 +5,6 @@
 - [x] Add `Links` to the existing Footer Content column only
 - [x] Register SEO and route
 - [x] Validate builds, runtime, interactions, and requested responsive widths
-- [ ] Replace all A36-owned Discord invites with the new canonical URL
-- [ ] Refine only `/links` content, wordmark, interactions, and ambient background
+- [x] Replace all A36-owned Discord invites with the new canonical URL
+- [x] Refine only `/links` content, wordmark, interactions, and ambient background
 - [ ] Validate `/links` across requested widths, UTM parameters, reduced motion, typecheck, build, and runtime

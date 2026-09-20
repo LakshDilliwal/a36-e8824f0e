@@ -16,7 +16,7 @@ import {
   Users,
   Youtube,
 } from "lucide-react";
-import a36LogoDark from "@/assets/a36-labs-logo-dark.svg.asset.json";
+import a36LogoDark from "@/assets/a36-labs-logo-dark.svg";
 import { A36_LINKS } from "@/config/links";
 
 const XIcon = ({ size = 20 }: { size?: number }) => (
@@ -122,7 +122,7 @@ const Links = () => {
       <div className="relative z-10 mx-auto w-full max-w-[580px] px-5 pb-[calc(28px+env(safe-area-inset-bottom))] pt-[calc(28px+env(safe-area-inset-top))] min-[390px]:px-6 sm:pt-10">
         <header className="border-b border-border pb-7">
           <Link to="/" aria-label="A36 Labs — Home" className="a36-links-logo inline-flex min-h-11 items-center focus-visible:outline-none">
-            <img src={a36LogoDark.url} alt="A36 Labs" className="h-auto w-[112px] object-contain" />
+            <img src={a36LogoDark} alt="A36 Labs" className="h-auto w-[112px] object-contain" />
           </Link>
           <div className="a36-links-copy">
           <p className="eyebrow-dark mt-5">A36 LABS</p>
@@ -178,7 +178,7 @@ const Links = () => {
 
         <footer className="a36-links-reveal mt-11 border-t border-border pt-7" data-links-reveal>
           <Link to="/" aria-label="A36 Labs — Home" className="inline-flex min-h-11 items-center focus-visible:outline-none">
-            <img src={a36LogoDark.url} alt="A36 Labs" className="h-auto w-[92px] object-contain" />
+            <img src={a36LogoDark} alt="A36 Labs" className="h-auto w-[92px] object-contain" />
           </Link>
           <p className="mt-2 text-xs font-bold text-primary">The Home of Serious Builders</p>
           <a href="https://www.a36labs.com" target="_blank" rel="noopener noreferrer" className="mt-1 inline-flex min-h-11 items-center text-xs font-bold text-primary hover:text-muted focus-visible:outline-none">a36labs.com</a>
