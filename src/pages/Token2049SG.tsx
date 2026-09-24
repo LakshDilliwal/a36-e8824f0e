@@ -75,7 +75,7 @@ const partnershipIncludes = [
 const SectionIntro = ({ eyebrow, children, light = false }: { eyebrow: string; children: ReactNode; light?: boolean }) => (
   <Reveal>
     <p className={light ? "eyebrow" : "eyebrow-dark"}>{eyebrow}</p>
-    <h2 className={`mt-3 text-[34px] font-black leading-[1.02] sm:text-[44px] lg:text-[56px] ${light ? "text-primary-foreground" : "text-primary"}`}>
+    <h2 className={`mt-3 max-w-[1080px] text-[clamp(2rem,3vw,3.75rem)] font-black leading-[1.02] ${light ? "text-primary-foreground" : "text-primary"}`}>
       {children}
     </h2>
   </Reveal>
@@ -321,7 +321,7 @@ const Token2049SG = () => {
            .token-deck-link:hover { transform: translateY(-2px); border-color: hsl(var(--accent)); color: hsl(var(--accent)); }
           .token-button:active { transform: scale(.985); }
           .token-button-gold:hover { box-shadow: 0 12px 26px -16px hsl(var(--accent) / .7); }
-          .token-event-card { --tilt-x: 0deg; --tilt-y: 0deg; --image-x: 0px; --image-y: 0px; transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style: preserve-3d; transition: transform 180ms ease, border-color 200ms ease, box-shadow 200ms ease; }
+           .token-event-card { --tilt-x: 0deg; --tilt-y: 0deg; --image-x: 0px; --image-y: 0px; transform: perspective(1000px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)); transform-style: preserve-3d; touch-action: pan-y; will-change: transform; transition: transform 180ms ease, border-color 200ms ease, box-shadow 200ms ease; }
           .token-event-card:hover { border-color: hsl(var(--accent)); box-shadow: 0 24px 44px -30px hsl(var(--primary) / .7); }
           .token-event-media img { transform: scale(1.025) translate(var(--image-x), var(--image-y)); transition: transform 220ms ease; }
           .token-placeholder { background-image: linear-gradient(hsl(var(--primary-foreground) / .06) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary-foreground) / .06) 1px, transparent 1px); background-size: 32px 32px; }
