@@ -8,3 +8,8 @@
 - [x] Replace all A36-owned Discord invites with the new canonical URL
 - [x] Refine only `/links` content, wordmark, interactions, and ambient background
 - [x] Validate `/links` across requested widths, UTM parameters, reduced motion, typecheck, build, and runtime
+- [ ] Build the `/token2049sg` event and partnership page
+- [ ] Add TOKEN2049 Singapore to the Programs navigation
+- [ ] Remove the concluded Indore/Team1 block from `/links`
+- [ ] Add route SEO, Event structured data, and sitemap entry
+- [ ] Validate responsive layouts, interactions, TypeScript, build, and runtime
