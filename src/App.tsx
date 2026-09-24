@@ -25,12 +25,13 @@ import Merch from "./pages/Merch";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Links from "./pages/Links";
+import Token2049SG from "./pages/Token2049SG";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const withSeo = (
-  props: { title: string; description: string; path: string; breadcrumbs?: { name: string; path: string }[]; jsonLd?: Record<string, unknown> | Record<string, unknown>[] },
+  props: { title: string; description: string; path: string; image?: string; type?: "website" | "article"; ogTitle?: string; ogDescription?: string; breadcrumbs?: { name: string; path: string }[]; jsonLd?: Record<string, unknown> | Record<string, unknown>[] },
   Element: JSX.Element,
 ) => (
   <>
@@ -256,6 +257,60 @@ const App = () => (
                 breadcrumbs: crumbs("Terms", "/terms"),
               },
               <Terms />,
+            )}
+          />
+          <Route
+            path="/token2049sg"
+            element={withSeo(
+              {
+                title: "A36 Labs TOKEN2049 Singapore Week 2026 | Events & Partnerships",
+                description:
+                  "Join A36 Labs during TOKEN2049 Singapore Week 2026 for Run the Bay, Whale Talks and Pickleball + Crypto Whales. Explore events and partnership opportunities across three curated experiences in Singapore.",
+                path: "/token2049sg",
+                ogTitle: "A36 Labs at TOKEN2049 Singapore Week 2026",
+                ogDescription:
+                  "Three curated A36 Labs events across running, markets, capital, payments and community during TOKEN2049 Singapore Week.",
+                breadcrumbs: crumbs("TOKEN2049 Singapore", "/token2049sg"),
+                jsonLd: [
+                  {
+                    "@context": "https://schema.org",
+                    "@type": "Event",
+                    name: "Run the Bay: Crypto Whales Edition",
+                    startDate: "2026-10-06T07:00:00+08:00",
+                    endDate: "2026-10-06T10:00:00+08:00",
+                    eventStatus: "https://schema.org/EventScheduled",
+                    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                    location: { "@type": "Place", name: "Marina Bay Sands", address: { "@type": "PostalAddress", addressLocality: "Singapore", addressCountry: "SG" } },
+                    url: "https://luma.com/cja6d4ku",
+                    organizer: { "@type": "Organization", name: "A36 Labs", url: "https://www.a36labs.com" },
+                  },
+                  {
+                    "@context": "https://schema.org",
+                    "@type": "Event",
+                    name: "Whale Talks: Trading, Capital & Payments",
+                    startDate: "2026-10-06T14:00:00+08:00",
+                    endDate: "2026-10-06T18:00:00+08:00",
+                    eventStatus: "https://schema.org/EventScheduled",
+                    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                    location: { "@type": "Place", name: "Marina Bay Sands", address: { "@type": "PostalAddress", addressLocality: "Singapore", addressCountry: "SG" } },
+                    url: "https://luma.com/5kdau1ak",
+                    organizer: { "@type": "Organization", name: "A36 Labs", url: "https://www.a36labs.com" },
+                  },
+                  {
+                    "@context": "https://schema.org",
+                    "@type": "Event",
+                    name: "Pickleball + Crypto Whales",
+                    startDate: "2026-10-09T14:00:00+08:00",
+                    endDate: "2026-10-09T18:00:00+08:00",
+                    eventStatus: "https://schema.org/EventScheduled",
+                    eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+                    location: { "@type": "Place", name: "Dempsey Hill", address: { "@type": "PostalAddress", addressLocality: "Singapore", addressCountry: "SG" } },
+                    url: "https://luma.com/6mv7bwxa",
+                    organizer: { "@type": "Organization", name: "A36 Labs", url: "https://www.a36labs.com" },
+                  },
+                ],
+              },
+              <Token2049SG />,
             )}
           />
           <Route
