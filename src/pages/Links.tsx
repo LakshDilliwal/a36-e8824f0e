@@ -136,36 +136,6 @@ const Links = () => {
           </div>
         </header>
 
-        <section className="a36-links-actions mt-5 border border-accent bg-primary px-4 py-5 text-primary-foreground min-[390px]:px-5" aria-labelledby="indore-community-title">
-          <p className="text-[10px] font-black uppercase text-accent">TODAY IN INDORE</p>
-          <h2 id="indore-community-title" className="mt-2 text-[24px] font-black leading-tight">Join the community</h2>
-          <p className="mt-2 text-xs leading-relaxed text-primary-foreground/70">Stay connected during the session and after it.</p>
-          <div className="mt-4 grid gap-2.5">
-            <a
-              href={A36_LINKS.community.telegram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="a36-links-event group relative flex min-h-[56px] items-center gap-3 overflow-hidden border border-accent bg-background px-4 py-3 text-primary focus-visible:outline-none"
-            >
-              <span className="a36-links-accent" aria-hidden="true" />
-              <Send className="shrink-0" size={21} strokeWidth={1.9} aria-hidden="true" />
-              <span className="flex-1 text-sm font-black uppercase">A36 Community</span>
-              <ArrowUpRight className="a36-links-arrow shrink-0" size={18} aria-hidden="true" />
-            </a>
-            <a
-              href="https://t.me/avalanche_hi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="a36-links-event group relative flex min-h-[56px] items-center gap-3 overflow-hidden border border-accent bg-accent px-4 py-3 text-accent-foreground focus-visible:outline-none"
-            >
-              <span className="a36-links-accent" aria-hidden="true" />
-              <Send className="shrink-0" size={21} strokeWidth={1.9} aria-hidden="true" />
-              <span className="flex-1 text-sm font-black uppercase">Team1 Community</span>
-              <ArrowUpRight className="a36-links-arrow shrink-0" size={18} aria-hidden="true" />
-            </a>
-          </div>
-        </section>
-
         <div className="a36-links-actions mt-5">
           <Link to={A36_LINKS.site.community} className="a36-links-primary group flex min-h-[56px] w-full items-center justify-between bg-accent px-5 py-3 text-sm font-black uppercase text-accent-foreground focus-visible:outline-none">
             <span>Join the community</span><ChevronRight className="a36-links-arrow" size={20} aria-hidden="true" />

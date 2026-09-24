@@ -6,6 +6,8 @@ export type SeoProps = {
   path: string; // e.g. "/events"
   image?: string; // absolute URL
   type?: "website" | "article";
+  ogTitle?: string;
+  ogDescription?: string;
   breadcrumbs?: { name: string; path: string }[];
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 };
@@ -13,7 +15,7 @@ export type SeoProps = {
 const SITE = "https://www.a36labs.com";
 const DEFAULT_IMAGE = `${SITE}/og-image.jpg`;
 
-const Seo = ({ title, description, path, image, type = "website", breadcrumbs, jsonLd }: SeoProps) => {
+const Seo = ({ title, description, path, image, type = "website", ogTitle, ogDescription, breadcrumbs, jsonLd }: SeoProps) => {
   const url = `${SITE}${path === "/" ? "" : path}`;
   const ogImage = image || DEFAULT_IMAGE;
 
@@ -53,15 +55,15 @@ const Seo = ({ title, description, path, image, type = "website", breadcrumbs, j
 
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="A36 Labs" />
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={ogTitle || title} />
+      <meta property="og:description" content={ogDescription || description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={ogImage} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content="@a36labs" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:title" content={ogTitle || title} />
+      <meta name="twitter:description" content={ogDescription || description} />
       <meta name="twitter:image" content={ogImage} />
 
       {ldList.map((obj, i) => (
