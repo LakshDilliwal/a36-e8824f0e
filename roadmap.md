@@ -13,7 +13,7 @@
 - [x] Remove the concluded Indore/Team1 block from `/links`
 - [x] Add route SEO, Event structured data, and sitemap entry
 - [x] Validate responsive layouts, interactions, TypeScript, build, and runtime
-- [ ] Refine `/token2049sg` responsive layout across requested viewports
-- [ ] Add previous TOKEN2049 moments and past attendee proof sections
-- [ ] Add sponsorship deck links and validate existing event destinations
-- [ ] Validate `/token2049sg` typecheck, build, runtime, and responsive layouts
+- [x] Refine `/token2049sg` responsive layout across requested viewports
+- [x] Add previous TOKEN2049 moments and past attendee proof sections
+- [x] Add sponsorship deck links and validate existing event destinations
+- [x] Validate `/token2049sg` typecheck, build, runtime, and responsive layouts
