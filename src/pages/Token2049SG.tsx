@@ -7,7 +7,19 @@ import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import runTheBayAsset from "@/assets/run-the-bay-token2049-singapore.gif.asset.json";
 import whiteLogoAsset from "@/assets/a36-labs-logo-white.svg.asset.json";
 
-const events = [
+type EventCard = {
+  number: string;
+  title: string;
+  date: string;
+  time: string;
+  location: string;
+  description: string;
+  href: string;
+  image?: string;
+  placeholder?: string;
+};
+
+const events: EventCard[] = [
   {
     number: "01",
     title: "Run the Bay: Crypto Whales Edition",
@@ -38,7 +50,7 @@ const events = [
     href: "https://luma.com/6mv7bwxa",
     placeholder: "PICKLEBALL + CRYPTO WHALES",
   },
-] as const;
+];
 
 const audiences = [
   ["TRADERS & MARKET MAKERS", "Liquidity, trading platforms and market infrastructure."],

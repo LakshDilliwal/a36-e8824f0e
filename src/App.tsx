@@ -31,7 +31,7 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const withSeo = (
-  props: { title: string; description: string; path: string; breadcrumbs?: { name: string; path: string }[]; jsonLd?: Record<string, unknown> | Record<string, unknown>[] },
+  props: { title: string; description: string; path: string; image?: string; type?: "website" | "article"; ogTitle?: string; ogDescription?: string; breadcrumbs?: { name: string; path: string }[]; jsonLd?: Record<string, unknown> | Record<string, unknown>[] },
   Element: JSX.Element,
 ) => (
   <>
