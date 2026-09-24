@@ -12,4 +12,4 @@
 - [x] Add TOKEN2049 Singapore to the Programs navigation
 - [x] Remove the concluded Indore/Team1 block from `/links`
 - [x] Add route SEO, Event structured data, and sitemap entry
-- [ ] Validate responsive layouts, interactions, TypeScript, build, and runtime
+- [x] Validate responsive layouts, interactions, TypeScript, build, and runtime
