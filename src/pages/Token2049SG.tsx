@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import Logo from "@/components/Logo";
 import Reveal, { Stagger, StaggerItem } from "@/components/Reveal";
 import runTheBayAsset from "@/assets/run-the-bay-token2049-singapore.gif.asset.json";
-import whiteLogoAsset from "@/assets/a36-labs-logo-white.svg.asset.json";
+import officialLogo from "@/assets/a36-labs-official-logo.svg";
 
 type EventCard = {
   number: string;
@@ -118,13 +118,13 @@ const Token2049SG = () => {
       <main ref={pageRef} className="token-page overflow-hidden bg-background pt-16 text-primary">
         <div className="token-cursor" aria-hidden="true" />
 
-        <section className="token-hero relative isolate flex min-h-[calc(100svh-4rem)] items-end overflow-hidden bg-primary px-5 pb-12 pt-16 text-primary-foreground sm:px-8 sm:pb-16 lg:px-16 lg:pb-20">
+        <section className="token-hero relative isolate flex min-h-[720px] items-end overflow-hidden bg-primary px-5 pb-12 pt-16 text-primary-foreground sm:px-8 sm:pb-16 lg:h-[min(900px,calc(100svh-4rem))] lg:min-h-[720px] lg:px-16 lg:pb-20">
           <div className="token-grid" aria-hidden="true" />
           <div className="token-orbit token-orbit-one" aria-hidden="true" />
           <div className="token-orbit token-orbit-two" aria-hidden="true" />
           <div className="relative z-10 mx-auto w-full max-w-[1200px]">
             <div className="a36-hero-item a36-hero-item-1 mb-10 flex items-center justify-between border-b border-primary-foreground/15 pb-5">
-              <img src={whiteLogoAsset.url} alt="A36 Labs" className="h-auto w-[108px] sm:w-[132px]" />
+              <img src={officialLogo} alt="A36 Labs" className="h-auto w-[108px] sm:w-[132px]" />
               <span className="text-right text-[9px] font-bold uppercase text-primary-foreground/55 sm:text-[10px]">6–9 October 2026<br />Singapore</span>
             </div>
             <p className="a36-hero-item a36-hero-item-1 eyebrow">TOKEN2049 SINGAPORE WEEK 2026</p>
