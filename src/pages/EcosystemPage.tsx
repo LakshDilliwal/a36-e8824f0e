@@ -1,29 +1,25 @@
 import PageWrapper from "@/components/PageWrapper";
 import { useState, useMemo, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { ChevronDown, ChevronRight, Search, X, SlidersHorizontal, Link as LinkIcon } from "lucide-react";
+import { ChevronDown, ChevronRight, Search, SlidersHorizontal, Link as LinkIcon } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
-import { verticalGroups, regions, partnerTypes } from "@/lib/verticals";
+import { regions, partnerTypes } from "@/lib/verticals";
+import { ecosystemVerticalGroups as verticalGroups, type EcosystemEntry } from "@/lib/ecosystem";
+import { Button } from "@/components/ui/button";
+import { Checkbox as FilterCheckbox } from "@/components/ui/checkbox";
+import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
+import EntryLogo from "@/components/ecosystem/EntryLogo";
 
-type Partner = {
-  name: string;
-  location: string;
-  description: string;
-  vertical: string;
-  vertical_group: string;
-  region: string;
-  type: string;
-  isA36Partner: boolean;
-  openToBuilders: boolean;
-  logo: string;
-  website: string;
-  twitter: string;
-  stage: string;
-  tags: string;
-};
+const Checkbox = ({ checked, onChange, label, indeterminate = false }: {
+  checked: boolean; onChange: () => void; label: string; indeterminate?: boolean;
+}) => (
+  <label className="flex items-center gap-2 min-h-9 lg:min-h-7 py-1 cursor-pointer text-sm text-primary/80 hover:text-primary">
+    <FilterCheckbox checked={indeterminate ? "indeterminate" : checked} onCheckedChange={onChange} className="border-2 bg-card data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground" />
+    <span className="min-w-0 select-none">{label}</span>
+  </label>
+);
 
 const EcosystemPage = () => {
-  const [partners, setPartners] = useState<Partner[]>([]);
+  const [partners, setPartners] = useState<EcosystemEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,9 +43,9 @@ const EcosystemPage = () => {
           .from('partners')
           .select('*');
         if (err) throw new Error(err.message);
-        setPartners((data as any) || []);
-      } catch (err: any) {
-        setError(err?.message || 'Failed to load partners');
+        setPartners(data || []);
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Failed to load ecosystem entries');
       } finally {
         setLoading(false);
       }
@@ -64,6 +60,8 @@ const EcosystemPage = () => {
     setter(next);
   };
 
+  const activeFilterCount = verticalFilters.size + regionFilters.size + typeFilters.size + quickFilters.size;
+
   const clearAll = () => {
     setSearch("");
     setVerticalFilters(new Set());
@@ -77,47 +75,20 @@ const EcosystemPage = () => {
       if (
         search &&
         !p.name.toLowerCase().includes(search.toLowerCase()) &&
-        !p.description.toLowerCase().includes(search.toLowerCase())
+        !(p.description ?? "").toLowerCase().includes(search.toLowerCase())
       )
         return false;
-      if (verticalFilters.size > 0 && !verticalFilters.has(p.vertical)) return false;
-      if (regionFilters.size > 0 && !regionFilters.has(p.region)) return false;
-      if (typeFilters.size > 0 && !typeFilters.has(p.type)) return false;
-      if (quickFilters.has("Featured Partners") && !p.isA36Partner) return false;
+      if (verticalFilters.size > 0 && !verticalFilters.has(p.vertical ?? "")) return false;
+      if (regionFilters.size > 0 && !regionFilters.has(p.region ?? "")) return false;
+      if (typeFilters.size > 0 && !typeFilters.has(p.type ?? "")) return false;
+      if (quickFilters.has("Featured") && !p.isA36Partner) return false;
       if (quickFilters.has("Open to Builders") && !p.openToBuilders) return false;
       return true;
     });
+    if (sort === "recent") list = [...list].sort((a, b) => (b.created_at ?? "").localeCompare(a.created_at ?? ""));
     if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name));
     return list;
   }, [partners, search, verticalFilters, regionFilters, typeFilters, quickFilters, sort]);
-
-  const Checkbox = ({
-    checked,
-    onChange,
-    label,
-    indeterminate = false,
-  }: {
-    checked: boolean;
-    onChange: () => void;
-    label: string;
-    indeterminate?: boolean;
-  }) => (
-    <label className="flex items-center gap-2 py-1 cursor-pointer text-sm text-primary/80 hover:text-primary">
-      <span
-        onClick={(e) => {
-          e.preventDefault();
-          onChange();
-        }}
-        className={`w-4 h-4 border-2 flex items-center justify-center flex-shrink-0 ${
-          checked || indeterminate ? "bg-primary border-primary" : "border-border bg-white"
-        }`}
-      >
-        {checked && !indeterminate && <span className="text-accent text-xs leading-none">✓</span>}
-        {indeterminate && <span className="text-accent text-xs leading-none opacity-50">✓</span>}
-      </span>
-      <span className="select-none">{label}</span>
-    </label>
-  );
 
   // Parent group checkbox helper
   const setGroupVerticals = (groupVerticals: string[], select: boolean) => {
@@ -129,12 +100,12 @@ const EcosystemPage = () => {
     setVerticalFilters(next);
   };
 
-  const FiltersContent = () => (
+  const renderFilters = () => (
     <>
       {/* Quick Filters */}
       <div>
         <p className="font-bold text-[10px] text-primary uppercase tracking-[0.15em] mb-3">QUICK FILTERS</p>
-        {["Featured Partners", "Open to Builders"].map((f) => (
+        {["Featured", "Open to Builders"].map((f) => (
           <Checkbox
             key={f}
             checked={quickFilters.has(f)}
@@ -159,23 +130,22 @@ const EcosystemPage = () => {
           return (
             <div key={g.name} className="mb-2">
               <div className="flex items-center gap-2 py-1">
-                <span
-                  onClick={() => setGroupVerticals(g.verticals, !allChecked)}
-                  className={`w-4 h-4 border-2 flex items-center justify-center flex-shrink-0 cursor-pointer ${
-                    allChecked || someChecked ? "bg-primary border-primary" : "border-border bg-white"
-                  }`}
-                >
-                  {allChecked && <span className="text-accent text-xs leading-none">✓</span>}
-                  {someChecked && <span className="text-accent text-xs leading-none opacity-50">✓</span>}
-                </span>
-                <button
+                <FilterCheckbox
+                  aria-label={`Select ${g.name}`}
+                  checked={someChecked ? "indeterminate" : allChecked}
+                  onCheckedChange={() => setGroupVerticals(g.verticals, !allChecked)}
+                  className="border-2 bg-card data-[state=indeterminate]:bg-primary data-[state=indeterminate]:text-primary-foreground"
+                />
+                <Button
+                  variant="ghost"
+                  aria-expanded={openGroups[g.name]}
                   onClick={() => setOpenGroups({ ...openGroups, [g.name]: !openGroups[g.name] })}
-                  className="flex items-center gap-1 text-sm font-bold text-primary flex-1 text-left"
+                  className="h-auto min-h-9 lg:min-h-7 p-0 flex items-center justify-start gap-1 text-sm font-bold text-primary flex-1 min-w-0 whitespace-normal text-left hover:bg-transparent hover:text-primary"
                 >
                   {openGroups[g.name] ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-                  <span>{g.name}</span>
-                  <span className="text-muted font-normal">({g.verticals.length})</span>
-                </button>
+                  <span className="min-w-0">{g.name}</span>
+                  <span className="text-muted font-normal flex-shrink-0">({g.verticals.length})</span>
+                </Button>
               </div>
               {openGroups[g.name] && (
                 <div className="pl-5 mt-1">
@@ -220,9 +190,9 @@ const EcosystemPage = () => {
         ))}
       </div>
 
-      <button onClick={clearAll} className="mt-6 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
+      <Button variant="link" onClick={clearAll} className="mt-6 px-0 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
         Clear all filters
-      </button>
+      </Button>
     </>
   );
 
@@ -236,24 +206,27 @@ const EcosystemPage = () => {
             36+ Verticals<br />One Network
           </h1>
           <p className="text-lg text-primary/65 mt-5 max-w-[560px]">
-            Every serious player across 36+ verticals. Curated by A36 Labs.
+            A curated directory of organizations, communities, platforms, events and spaces A36 has engaged with across builder initiatives and ecosystem activity.
           </p>
           <div className="mt-8">
-            <Link to="/apply" className="btn-primary inline-block">
-              Apply to Join →
-            </Link>
+            <Button asChild className="btn-primary h-auto whitespace-normal hover:bg-accent/90">
+              <a href="#ecosystem-directory">EXPLORE THE ECOSYSTEM ↓</a>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* Directory layout */}
-      <section className="bg-warm-cream py-12">
+      <section id="ecosystem-directory" className="bg-warm-cream py-12 scroll-mt-20">
         <div className="container max-w-[1400px] mx-auto px-6 md:px-10">
+          <p className="text-sm text-primary/65 leading-relaxed mb-8 max-w-[1100px]">
+            Directory entries reflect organizations, communities, events and platforms A36 has interacted with, collaborated with, participated alongside or included in previous ecosystem initiatives. Inclusion does not imply a current partnership, sponsorship, endorsement or commercial relationship.
+          </p>
           <div className="flex flex-col lg:flex-row gap-8">
             {/* Sidebar - desktop only */}
             <aside className="hidden lg:block w-[280px] flex-shrink-0">
-              <div className="bg-white border border-border p-5 lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
-                <FiltersContent />
+              <div className="bg-card border border-border p-5 lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto">
+                {renderFilters()}
               </div>
             </aside>
 
@@ -264,30 +237,31 @@ const EcosystemPage = () => {
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
                 <input
                   type="text"
-                  placeholder="Search builders, protocols, companies..."
+                  placeholder="Search companies, communities, events, platforms..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className="w-full bg-white border border-border text-primary text-sm pl-10 pr-3 py-3 focus:outline-none focus:border-accent"
+                  className="w-full bg-card border border-border text-primary text-sm pl-10 pr-3 py-3 focus:outline-none focus:border-accent"
                 />
               </div>
 
               {/* Count + Sort row */}
-              <div className="flex items-center justify-between gap-3 pb-4 border-b border-border">
+              <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border">
                 <p className="text-sm text-primary/70">
                   {loading ? (
-                    <>Loading partners…</>
+                    <>Loading ecosystem entries…</>
                   ) : (
                     <>
-                      Showing <span className="font-bold text-primary">{filtered.length}</span> partners
+                      Showing <span className="font-bold text-primary">{filtered.length}</span> ecosystem {filtered.length === 1 ? "entry" : "entries"}
                     </>
                   )}
                 </p>
                 <div className="flex items-center gap-2">
                   <span className="hidden sm:inline text-xs font-bold text-muted uppercase tracking-wider">Sort:</span>
                   <select
+                    aria-label="Sort ecosystem entries"
                     value={sort}
                     onChange={(e) => setSort(e.target.value)}
-                    className="bg-white border border-border text-sm text-primary px-3 py-1.5 focus:outline-none"
+                    className="bg-card border border-border text-sm text-primary px-3 py-1.5 focus:outline-none"
                   >
                     <option value="default">Default</option>
                     <option value="recent">Recently Added</option>
@@ -297,17 +271,18 @@ const EcosystemPage = () => {
               </div>
 
               {/* Mobile filters button */}
-              <button
+              <Button
+                variant="outline"
                 onClick={() => setDrawerOpen(true)}
-                className="lg:hidden w-full mt-4 bg-white border-2 border-primary text-primary font-bold text-sm uppercase tracking-wider py-3 flex items-center justify-center gap-2"
+                className="lg:hidden w-full mt-4 bg-card border-2 border-primary text-primary font-bold text-sm uppercase tracking-wider py-3 flex items-center justify-center gap-2"
               >
                 <SlidersHorizontal size={16} />
-                Filters
-              </button>
+                Filters {activeFilterCount > 0 && `(${activeFilterCount})`}
+              </Button>
 
               {error && (
-                <div className="bg-white border border-border p-6 mt-6">
-                  <p className="text-sm text-primary font-bold">Couldn't load partners.</p>
+                <div className="bg-card border border-border p-6 mt-6">
+                  <p className="text-sm text-primary font-bold">Couldn't load ecosystem entries.</p>
                   <p className="text-xs text-muted mt-1">{error}</p>
                 </div>
               )}
@@ -315,14 +290,14 @@ const EcosystemPage = () => {
               {loading ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                   {Array.from({ length: 6 }).map((_, i) => (
-                    <div key={i} className="bg-white border border-border p-5">
+                    <div key={i} className="bg-card border border-border p-5">
                       <div className="flex gap-4">
-                        <div className="w-12 h-12 bg-[#C8BFB0] flex-shrink-0 animate-pulse" />
+                        <div className="w-12 h-12 bg-border flex-shrink-0 animate-pulse" />
                         <div className="flex-1 min-w-0 space-y-2">
-                          <div className="h-4 bg-[#C8BFB0] w-1/2 animate-pulse" />
-                          <div className="h-3 bg-[#C8BFB0]/70 w-1/3 animate-pulse" />
-                          <div className="h-3 bg-[#C8BFB0]/50 w-full animate-pulse mt-3" />
-                          <div className="h-3 bg-[#C8BFB0]/50 w-5/6 animate-pulse" />
+                          <div className="h-4 bg-border w-1/2 animate-pulse" />
+                          <div className="h-3 bg-border/70 w-1/3 animate-pulse" />
+                          <div className="h-3 bg-border/50 w-full animate-pulse mt-3" />
+                          <div className="h-3 bg-border/50 w-5/6 animate-pulse" />
                         </div>
                       </div>
                     </div>
@@ -331,25 +306,12 @@ const EcosystemPage = () => {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                   {filtered.map((p) => (
-                    <div key={p.name} className="bg-white border border-border p-5 hover:border-accent transition-colors">
+                    <div key={p.name} className="bg-card border border-border p-5 hover:border-accent transition-colors">
                       <div className="flex gap-4">
-                        <img
-                          src={p.logo}
-                          alt={p.name}
-                          onError={(e) => {
-                            e.currentTarget.src = "/logos/fallback.png";
-                            e.currentTarget.onerror = null;
-                          }}
-                          className="w-12 h-12 object-contain bg-warm-cream p-1 flex-shrink-0"
-                        />
+                        <EntryLogo key={p.logo} name={p.name} logo={p.logo} />
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between gap-2">
-                            <h3 className="font-black text-base text-primary truncate">{p.name}</h3>
-                            {p.isA36Partner && (
-                              <span className="text-[9px] font-bold uppercase tracking-wider bg-accent text-primary px-1.5 py-0.5 flex-shrink-0">
-                                A36 PARTNER
-                              </span>
-                            )}
+                            <h3 className="font-black text-base text-primary break-words">{p.name}</h3>
                           </div>
                           <p className="text-xs text-muted mt-0.5">{p.location}</p>
                           <p className="text-sm text-primary/75 mt-2 line-clamp-2">{p.description}</p>
@@ -397,11 +359,11 @@ const EcosystemPage = () => {
               )}
 
               {!loading && !error && filtered.length === 0 && (
-                <div className="bg-white border border-border p-12 text-center mt-6">
-                  <p className="text-sm text-muted">No partners match the current filters.</p>
-                  <button onClick={clearAll} className="mt-3 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
+                <div className="bg-card border border-border p-12 text-center mt-6">
+                  <p className="text-sm text-muted">No ecosystem entries match the current filters.</p>
+                  <Button variant="link" onClick={clearAll} className="mt-3 px-0 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
                     Clear filters
-                  </button>
+                  </Button>
                 </div>
               )}
 
@@ -411,37 +373,19 @@ const EcosystemPage = () => {
       </section>
 
       {/* Mobile filters drawer */}
-      {drawerOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 flex">
-          <div
-            className="absolute inset-0 bg-primary/40"
-            onClick={() => setDrawerOpen(false)}
-          />
-          <div className="relative bg-white w-[88%] max-w-[380px] h-full flex flex-col shadow-2xl animate-in slide-in-from-left">
-            <div className="flex items-center justify-between p-4 border-b border-border flex-shrink-0">
-              <p className="font-black text-sm uppercase tracking-wider text-primary">Filters</p>
-              <button
-                onClick={() => setDrawerOpen(false)}
-                className="text-primary hover:text-accent"
-                aria-label="Close filters"
-              >
-                <X size={20} />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto p-5">
-              <FiltersContent />
-            </div>
-            <div className="p-4 border-t border-border flex-shrink-0 bg-white">
-              <button
-                onClick={() => setDrawerOpen(false)}
-                className="w-full bg-primary text-background font-bold text-sm uppercase tracking-wider py-3"
-              >
-                Show {filtered.length} partners
-              </button>
-            </div>
+      <Sheet open={drawerOpen} onOpenChange={setDrawerOpen}>
+        <SheetContent side="left" aria-describedby={undefined} className="w-[90%] max-w-[380px] sm:max-w-[380px] h-[100dvh] flex flex-col p-0 bg-card motion-reduce:animate-none [&>button]:min-h-11 [&>button]:min-w-11 [&>button]:right-2 [&>button]:top-2">
+          <div className="p-5 pr-16 border-b border-border flex-shrink-0">
+            <SheetTitle className="font-black text-sm uppercase text-primary">Filters {activeFilterCount > 0 && `(${activeFilterCount})`}</SheetTitle>
           </div>
-        </div>
-      )}
+          <div className="flex-1 min-h-0 overflow-y-auto p-5">{renderFilters()}</div>
+          <div className="p-4 border-t border-border flex-shrink-0 bg-card">
+            <Button onClick={() => setDrawerOpen(false)} className="w-full min-h-11 h-auto whitespace-normal bg-primary text-primary-foreground font-bold text-sm uppercase py-3">
+              Show {filtered.length} ecosystem {filtered.length === 1 ? "entry" : "entries"}
+            </Button>
+          </div>
+        </SheetContent>
+      </Sheet>
     </PageWrapper>
   );
 };
