@@ -17,3 +17,6 @@
 - [x] Add previous TOKEN2049 moments and past attendee proof sections
 - [x] Add sponsorship deck links and validate existing event destinations
 - [x] Validate `/token2049sg` typecheck, build, runtime, and responsive layouts
+- [x] Neutralize `/ecosystem` terminology and badges, preserve and audit all existing entries
+- [x] Extend ecosystem-only taxonomy and improve accessible mobile filters and logo fallback
+- [x] Verify ecosystem search, sort, filters, layout, and build health
