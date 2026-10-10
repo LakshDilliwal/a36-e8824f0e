@@ -100,7 +100,7 @@ const EcosystemPage = () => {
     setVerticalFilters(next);
   };
 
-  const renderFilters = () => (
+  const renderFilters = (showClear = true) => (
     <>
       {/* Quick Filters */}
       <div>
@@ -190,9 +190,9 @@ const EcosystemPage = () => {
         ))}
       </div>
 
-      <Button variant="link" onClick={clearAll} className="mt-6 px-0 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
+      {showClear && <Button variant="link" onClick={clearAll} className="mt-6 px-0 text-xs font-bold text-accent hover:underline uppercase tracking-wider">
         Clear all filters
-      </Button>
+      </Button>}
     </>
   );
 
@@ -380,8 +380,9 @@ const EcosystemPage = () => {
           <div className="p-5 pr-16 border-b border-border flex-shrink-0">
             <SheetTitle className="font-black text-sm uppercase text-primary">Filters {activeFilterCount > 0 && `(${activeFilterCount})`}</SheetTitle>
           </div>
-          <div className="flex-1 min-h-0 overflow-y-auto p-5">{renderFilters()}</div>
+          <div className="flex-1 min-h-0 overflow-y-auto p-5">{renderFilters(false)}</div>
           <div className="p-4 border-t border-border flex-shrink-0 bg-card">
+            <Button variant="link" onClick={clearAll} className="w-full min-h-11 text-primary font-bold text-xs uppercase">Clear all filters</Button>
             <Button onClick={() => setDrawerOpen(false)} className="w-full min-h-11 h-auto whitespace-normal bg-primary text-primary-foreground font-bold text-sm uppercase py-3">
               Show {filtered.length} ecosystem {filtered.length === 1 ? "entry" : "entries"}
             </Button>
