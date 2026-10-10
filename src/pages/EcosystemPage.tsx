@@ -236,7 +236,8 @@ const EcosystemPage = () => {
               <div className="relative mb-4">
                 <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
                 <input
-                  type="text"
+                   type="search"
+                   aria-label="Search ecosystem entries"
                   placeholder="Search companies, communities, events, platforms..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -246,7 +247,7 @@ const EcosystemPage = () => {
 
               {/* Count + Sort row */}
               <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-border">
-                <p className="text-sm text-primary/70">
+                <p aria-live="polite" className="text-sm text-primary/70">
                   {loading ? (
                     <>Loading ecosystem entries…</>
                   ) : (
@@ -315,7 +316,8 @@ const EcosystemPage = () => {
                           </div>
                           <p className="text-xs text-muted mt-0.5">{p.location}</p>
                           <p className="text-sm text-primary/75 mt-2 line-clamp-2">{p.description}</p>
-                          <div className="flex flex-wrap gap-1.5 mt-3">
+                           {p.engagementType && <p className="text-xs text-muted mt-2">{p.engagementType}</p>}
+                           <div className="flex flex-wrap gap-1.5 mt-3">
                             {p.vertical && (
                               <span className="text-[10px] font-bold uppercase tracking-wider bg-warm-cream text-primary px-2 py-1">
                                 {p.vertical}
