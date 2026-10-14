@@ -16,12 +16,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
-  MumbaiWireBridge,
-  MumbaiCoordinates,
-  MumbaiHorizon,
+  ResidencyWireStructure,
+  ResidencyStatus,
+  ResidencyHorizon,
   OceanGrid,
   ResidencyNodes,
-} from "@/components/residency/MumbaiVisuals";
+} from "@/components/residency/ResidencyVisuals";
 import heroAsset from "@/assets/a36-residency-hero.png.asset.json";
 import squareAsset from "@/assets/a36-residency-square.png.asset.json";
 import applyAsset from "@/assets/a36-residency-apply.png.asset.json";
@@ -130,7 +130,7 @@ const Hero = () => {
       >
         <img
           src={heroAsset.url}
-          alt="A36 Global Residency Mumbai 2026 key visual"
+          alt="A36 Global Residency key visual"
           className="h-full w-full object-cover"
           fetchPriority="high"
         />
@@ -145,7 +145,7 @@ const Hero = () => {
         style={{ x: nx, y: ny }}
         className="pointer-events-none absolute inset-x-0 bottom-[8%] z-[3] hidden h-[220px] opacity-40 will-change-transform md:block"
       >
-        <MumbaiWireBridge className="h-full w-full" />
+        <ResidencyWireStructure className="h-full w-full" />
       </motion.div>
 
       <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] hidden h-28 opacity-45 md:block" />
@@ -159,7 +159,7 @@ const Hero = () => {
       >
         <Rise>
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-accent md:text-[11px]">
-            A36 GLOBAL RESIDENCY · MUMBAI 2026
+            A36 GLOBAL RESIDENCY
           </p>
         </Rise>
 
@@ -183,7 +183,7 @@ const Hero = () => {
             15 days inside the residency. Day 16 to show what changed.
           </p>
           <p className="mt-3 max-w-[62ch] text-[clamp(0.9rem,3.8vw,1.05rem)] leading-relaxed text-primary-foreground/75 md:mt-4">
-            Selected builders live and work in the same room in Mumbai and ship while they are there.
+            Selected builders live and work in the same room and ship while they are there.
           </p>
         </Rise>
 
@@ -204,8 +204,8 @@ const Hero = () => {
         <Rise delay={0.55}>
           <dl className="mt-8 grid max-w-2xl grid-cols-2 gap-x-6 gap-y-4 border-t border-primary-foreground/15 pt-5 md:mt-10 md:flex md:flex-wrap md:gap-x-10 md:gap-y-5 md:pt-6">
             {[
-              ["DATES", "18 OCT — 2 NOV 2026"],
-              ["LOCATION", "MUMBAI, INDIA"],
+              ["DATES", "DATES COMING SOON"],
+              ["LOCATION", "LOCATION COMING SOON"],
               ["COHORT", "36 SELECTED RESIDENTS"],
             ].map(([k, v]) => (
               <div key={k} className="min-w-0">
@@ -227,13 +227,13 @@ const Hero = () => {
         <div className="a36-drift border border-accent/35 bg-primary/60 backdrop-blur-sm px-4 py-3">
           <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001</p>
           <p className="font-mono text-[10px] tracking-[0.2em] text-primary-foreground/60">
-            18.10.26 — 02.11.26
+            DATES COMING SOON
           </p>
         </div>
-        <MumbaiCoordinates light className="mt-4 text-right" />
+        <ResidencyStatus light className="mt-4 text-right" />
       </motion.div>
 
-      <MumbaiHorizon
+      <ResidencyHorizon
         className="pointer-events-none absolute bottom-0 left-0 z-[3] hidden h-24 w-1/2 opacity-20 md:block"
         tone="gold"
       />
@@ -456,7 +456,7 @@ const TiltCard = () => {
         <div className="relative border border-accent/40 bg-primary/5 p-2">
           <img
             src={squareAsset.url}
-            alt="A36 Residency Mumbai residence visual"
+            alt="A36 Residency residence visual"
             loading="lazy"
             className="aspect-square w-full object-cover"
           />
@@ -474,7 +474,7 @@ const TiltCard = () => {
           style={{ transform: "translateZ(40px)" }}
           className="a36-drift pointer-events-none absolute -bottom-4 left-2 border border-accent bg-background px-3 py-2 shadow-[0_20px_40px_-20px_hsl(var(--primary)/0.5)] md:-left-4 md:-bottom-5 md:px-4"
         >
-          <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001 · MUMBAI</p>
+          <p className="font-mono text-[10px] tracking-[0.2em] text-accent">COHORT 001 · A36 RESIDENCY</p>
         </div>
       </motion.div>
     </div>
@@ -487,7 +487,7 @@ const InsideTheRoom = () => {
 
   return (
     <section className="relative isolate overflow-hidden bg-secondary py-16 md:py-28">
-      <MumbaiHorizon className="pointer-events-none absolute right-0 top-10 z-[1] hidden h-28 w-2/3 opacity-20 md:block" />
+      <ResidencyHorizon className="pointer-events-none absolute right-0 top-10 z-[1] hidden h-28 w-2/3 opacity-20 md:block" />
 
       <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
         <div className="grid items-start gap-10 md:gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
@@ -596,8 +596,7 @@ const InsideTheRoom = () => {
               GLOBAL APPLICATIONS WELCOME
             </p>
             <p className="mt-2 max-w-[66ch] text-sm leading-relaxed text-primary/80">
-              International residents must be independently visa-ready and eligible to enter India.
-              A36 Labs does not provide visa sponsorship or visa processing support.
+              Travel and visa guidance will be shared once the residency location is announced.
             </p>
           </div>
         </Rise>
@@ -626,7 +625,7 @@ const DemoDay = () => {
       >
         16
       </motion.p>
-      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 top-6 z-[1] hidden h-40 opacity-40 md:block" />
+      <ResidencyWireStructure className="pointer-events-none absolute inset-x-0 top-6 z-[1] hidden h-40 opacity-40 md:block" />
       <OceanGrid className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-24 opacity-30 md:opacity-50" />
 
       <div className="container relative z-[5] mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
@@ -770,9 +769,9 @@ const Partners = () => (
 const FAQS = [
   {
     q: "What is A36 Residency?",
-    a: "A 16-day global builder residency in Mumbai where selected founders, developers and product builders live and work in the same room for 15 build days, closing with a Day 16 Demo Day.",
+    a: "A 16-day global builder residency where selected founders, developers and product builders live and work in the same room for 15 build days, closing with a Day 16 Demo Day.",
   },
-  { q: "When is it?", a: "18 October — 2 November 2026, in Mumbai, India." },
+  { q: "When and where is it?", a: "DATES COMING SOON · LOCATION COMING SOON" },
   {
     q: "How are residents selected?",
     a: "Every application is reviewed manually. Selection is based on what you have built, what you can build and what you want to accomplish during the residency.",
@@ -787,7 +786,7 @@ const FAQS = [
   },
   {
     q: "Do you provide visa support?",
-    a: "No. International applicants must be independently visa-ready and eligible to enter India. A36 Labs does not provide visa sponsorship or processing.",
+    a: "Travel and visa guidance will be shared once the residency location is announced.",
   },
 ];
 
@@ -800,23 +799,23 @@ const Application = () => (
     <div className="relative z-[2] h-[150px] sm:h-[200px] md:h-[300px]">
       <img
         src={applyAsset.url}
-        alt="A36 Residency Mumbai skyline banner"
+        alt="A36 Residency banner"
         loading="lazy"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,hsl(var(--primary)/0.55),hsl(var(--primary)))]" />
-      <MumbaiWireBridge className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-24 opacity-50 md:block" />
+      <ResidencyWireStructure className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-24 opacity-50 md:block" />
     </div>
 
     <div className="container relative z-[5] mx-auto -mt-8 w-full max-w-4xl px-5 pb-20 max-[389px]:px-4 md:px-16 md:pb-24">
       <Rise>
-        <MumbaiCoordinates light className="hidden md:block" />
+        <ResidencyStatus light className="hidden md:block" />
         <h2 className="font-black tracking-tighter leading-[1.05] text-[clamp(1.75rem,7.5vw,3.5rem)] md:mt-5">
           Think you should be in the room?
         </h2>
         <p className="mt-4 max-w-[62ch] text-[15px] md:text-base text-primary-foreground/70 leading-relaxed">
           Every application is reviewed manually. We look at what you have built and what you want to
-          get done in Mumbai.
+          accomplish during the residency.
         </p>
       </Rise>
 
@@ -824,7 +823,7 @@ const Application = () => (
         <div className="mt-8 w-full min-w-0 max-w-full border border-accent/30 bg-primary-foreground/[0.04] p-2 md:mt-10 md:max-w-[720px]">
           <iframe
             src={LUMA_EMBED}
-            title="A36 Global Residency Mumbai registration"
+            title="A36 Global Residency registration"
             loading="lazy"
             allow="fullscreen; payment"
             className="relative z-10 block h-[450px] w-full border-0"
@@ -892,7 +891,7 @@ const StickyCTA = () => {
       }`}
     >
       <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-        A36 RESIDENCY · MUMBAI
+        A36 RESIDENCY
       </p>
       <a
         href="#apply"
