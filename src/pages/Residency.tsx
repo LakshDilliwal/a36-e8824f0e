@@ -22,7 +22,6 @@ import {
   OceanGrid,
   ResidencyNodes,
 } from "@/components/residency/ResidencyVisuals";
-import heroAsset from "@/assets/a36-residency-hero.png.asset.json";
 import squareAsset from "@/assets/a36-residency-square.png.asset.json";
 import applyAsset from "@/assets/a36-residency-apply.png.asset.json";
 
@@ -108,10 +107,6 @@ const CountUp = ({ to, suffix = "" }: { to: number; suffix?: string }) => {
 
 const Hero = () => {
   const { mx, my } = useMouseParallax();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const imgY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const imgScale = useTransform(scrollYProgress, [0, 1], [1.04, 1.12]);
 
   const px = useTransform(mx, [-0.5, 0.5], [14, -14]);
   const py = useTransform(my, [-0.5, 0.5], [10, -10]);
@@ -120,24 +115,17 @@ const Hero = () => {
 
   return (
     <section
-      ref={ref}
       className="relative isolate flex min-h-[78vh] items-center overflow-hidden bg-primary text-primary-foreground md:min-h-[92vh]"
     >
-      {/* image plane */}
-      <motion.div
-        style={{ y: imgY, scale: imgScale }}
-        className="absolute inset-y-0 right-0 z-[2] w-full will-change-transform md:w-[62%]"
-      >
-        <img
-          src={heroAsset.url}
-          alt="A36 Global Residency key visual"
-          className="h-full w-full object-cover"
-          fetchPriority="high"
-        />
-      </motion.div>
+      {/* navy/ivory/gold treatment in place of the former hero image */}
+      <div className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(55%_50%_at_76%_20%,hsl(var(--accent)/0.15),transparent_70%),radial-gradient(40%_45%_at_12%_88%,hsl(var(--primary)/0.5),transparent_70%)] md:bg-[radial-gradient(50%_60%_at_74%_18%,hsl(var(--accent)/0.17),transparent_72%)]" />
+      <ResidencyHorizon
+        tone="gold"
+        className="pointer-events-none absolute bottom-[22%] right-0 z-[2] hidden h-36 w-1/2 opacity-50 md:block"
+      />
 
-      {/* navy gradient veil extending from the image into the copy area */}
-      <div className="pointer-events-none absolute inset-0 z-[3] bg-[linear-gradient(180deg,hsl(var(--primary)/0.92)_0%,hsl(var(--primary)/0.82)_45%,hsl(var(--primary)/0.94)_100%)] md:bg-[linear-gradient(90deg,hsl(var(--primary))_0%,hsl(var(--primary))_30%,hsl(var(--primary)/0.85)_44%,hsl(var(--primary)/0.35)_58%,transparent_78%)]" />
+      {/* navy veil keeping copy contrast */}
+      <div className="pointer-events-none absolute inset-0 z-[3] bg-[linear-gradient(180deg,hsl(var(--primary)/0.5)_0%,hsl(var(--primary)/0.3)_45%,hsl(var(--primary)/0.7)_100%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[3] h-32 bg-[linear-gradient(180deg,transparent,hsl(var(--primary)))] md:h-40" />
 
       {/* bridge cables behind composition (desktop only) */}
