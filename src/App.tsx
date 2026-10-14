@@ -173,9 +173,9 @@ const App = () => (
             path="/residency"
             element={withSeo(
               {
-                title: "A36 Global Residency | A36 Labs",
+                title: "A36 Residency | Live, Build and Explore What’s Next",
                 description:
-                  "The upcoming A36 Global Residency brings selected founders, developers and product builders together for 15 build days followed by a Day 16 Demo Day.",
+                  "A36 Residency brings ambitious builders, founders and researchers together to live, build and explore new ideas in a focused, high-signal environment. Dates and location coming soon.",
                 path: "/residency",
                 breadcrumbs: crumbs("Residency", "/residency"),
               },
