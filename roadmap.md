@@ -12,3 +12,4 @@
 - [x] Neutralize `/ecosystem` terminology and badges, preserve and audit all existing entries
 - [x] Extend ecosystem-only taxonomy and improve accessible mobile filters and logo fallback
 - [x] Verify ecosystem search, sort, filters, layout, and build health
+- [x] Neutralize upcoming `/residency` dates, location details, travel guidance, visuals, and metadata

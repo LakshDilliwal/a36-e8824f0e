@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-/** Abstract cable-stayed bridge inspired by the Bandra-Worli Sea Link. SVG only. */
-export const MumbaiWireBridge = ({
+/** Abstract wire structure used across the residency page. SVG only. */
+export const ResidencyWireStructure = ({
   className = "",
   tone = "gold",
   animate = true,
@@ -79,7 +79,7 @@ export const MumbaiWireBridge = ({
 };
 
 /** Editorial coordinate stamp. */
-export const MumbaiCoordinates = ({
+export const ResidencyStatus = ({
   className = "",
   light = false,
 }: {
@@ -91,9 +91,8 @@ export const MumbaiCoordinates = ({
       light ? "text-primary-foreground/55" : "text-primary/50"
     } ${className}`}
   >
-    <div className="text-accent">MUMBAI</div>
-    <div>19.0760° N</div>
-    <div>72.8777° E</div>
+    <div className="text-accent">DATES COMING SOON</div>
+    <div>LOCATION COMING SOON</div>
   </div>
 );
 
@@ -130,7 +129,7 @@ export const ResidencyNodes = ({ className = "" }: { className?: string }) => {
 };
 
 /** Abstract geometric skyline silhouette. */
-export const MumbaiHorizon = ({
+export const ResidencyHorizon = ({
   className = "",
   tone = "gold",
 }: {
