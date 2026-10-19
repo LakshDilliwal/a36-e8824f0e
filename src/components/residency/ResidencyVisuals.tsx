@@ -52,7 +52,7 @@ export const ResidencyLineField = ({ className = "" }: { className?: string }) =
 
 export const ResidencyStatus = ({ className = "" }: { className?: string }) => (
   <div className={`font-mono text-[10px] uppercase leading-[1.7] tracking-[0.2em] ${className}`}>
-    <div className="text-accent">DATES COMING SOON</div>
-    <div>LOCATION COMING SOON</div>
+    <div className="text-accent">{"\n"}</div>
+    <div>{"\n"}</div>
   </div>
 );
