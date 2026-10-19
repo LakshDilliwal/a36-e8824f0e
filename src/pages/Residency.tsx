@@ -9,9 +9,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { ResidencyLineField, ResidencyStatus } from "@/components/residency/ResidencyVisuals";
+import residencyImage from "@/assets/a36-residency-coming-soon.png.asset.json";
+import { A36_LINKS } from "@/config/links";
 
-const LUMA_URL = "https://luma.com/g3oz48ck";
-const LUMA_EMBED = "https://luma.com/embed/event/evt-Xw3tOfbza5zUUKd/simple";
 const PARTNER_MAIL = "mailto:partnerships@a36labs.com?subject=A36%20Residency%20Partnership";
 
 const Rise = ({
@@ -27,7 +27,7 @@ const Rise = ({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: reduce ? 0 : 18 }}
+      initial={reduce ? false : { opacity: 0, y: 18 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
@@ -51,14 +51,14 @@ const Hero = () => (
 
     <div className="container relative z-10 mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
       <Rise>
-        <Eyebrow light>A36 RESIDENCY</Eyebrow>
+        <Eyebrow light>A36 RESIDENCY · COMING SOON</Eyebrow>
       </Rise>
       <h1 className="mt-5 max-w-[12ch] font-black leading-[0.98] tracking-tighter text-[clamp(2.75rem,10vw,6.5rem)]">
         {["The right room", "changes what’s", "possible."].map((line, index) => (
           <span key={line} className="block overflow-hidden">
             <motion.span
               className="block"
-              initial={{ y: "110%" }}
+               initial={window.matchMedia("(prefers-reduced-motion: reduce)").matches ? false : { y: "110%" }}
               animate={{ y: 0 }}
               transition={{ duration: 0.85, delay: 0.08 + index * 0.1, ease: [0.22, 1, 0.36, 1] }}
             >
@@ -77,11 +77,11 @@ const Hero = () => (
       </Rise>
       <Rise delay={0.46}>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild className="btn-gold h-auto min-h-[48px] rounded-none px-6">
-            <a href="#apply">APPLY FOR RESIDENCY <span className="a36-arrow">→</span></a>
+          <Button asChild className="btn-gold h-auto min-h-[48px] rounded-none bg-accent px-6 text-accent-foreground hover:bg-accent/90">
+            <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer" className="whitespace-normal text-center">STAY UPDATED VIA A36 SIGNAL <span className="a36-arrow">↗</span></a>
           </Button>
           <Button asChild className="btn-ghost-light h-auto min-h-[48px] rounded-none px-6">
-            <a href={PARTNER_MAIL}>PARTNER WITH A36 <span className="a36-arrow">→</span></a>
+            <a href={PARTNER_MAIL} target="_blank" rel="noopener noreferrer">PARTNER WITH A36 <span className="a36-arrow">→</span></a>
           </Button>
         </div>
       </Rise>
@@ -101,16 +101,28 @@ const PRINCIPLES = [
 const Idea = () => (
   <section className="bg-background py-20 md:py-32">
     <div className="container mx-auto w-full max-w-6xl px-5 max-[389px]:px-4 md:px-16">
-      <Rise>
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
+      <Rise className="min-w-0">
         <Eyebrow>THE IDEA</Eyebrow>
         <h2 className="mt-4 max-w-[14ch] font-black leading-[1.03] tracking-tighter text-primary text-[clamp(2rem,7vw,4.5rem)]">
           Get out of the noise.<br />Into the room.
         </h2>
         <div className="mt-7 max-w-2xl space-y-4 text-[15px] leading-relaxed text-muted md:text-lg">
-          <p>Some ideas need more than another call, accelerator or online community. They need time, proximity and the right people around them.</p>
-          <p>A36 Residency creates that environment for people building ambitious things across technology, science, culture and new markets.</p>
+          <p>Ambitious ideas need time, proximity and the right people around them.</p>
+          <p>A curated environment for serious builders. Space to think deeply, exchange ideas and find momentum.</p>
         </div>
       </Rise>
+      <Rise delay={0.12} className="min-w-0">
+        <figure>
+          <div className="aspect-square w-full overflow-hidden border border-border">
+            <img src={residencyImage.url} alt="A36 Residency editorial artwork: a modern retreat overlooking the water at golden hour" width="768" height="768" loading="lazy" className="block h-full w-full object-contain" />
+          </div>
+          <figcaption className="mt-3 flex flex-wrap justify-between gap-2 text-[10px] font-semibold uppercase text-muted">
+            <span>A36 RESIDENCY</span><span>A VISION, NOT A VENUE ANNOUNCEMENT</span>
+          </figcaption>
+        </figure>
+      </Rise>
+      </div>
       <div className="mt-14 grid border-y border-border md:grid-cols-3">
         {PRINCIPLES.map(([title, copy], index) => (
           <Rise key={title} delay={index * 0.08} className={`min-w-0 py-7 md:px-7 md:py-9 ${index > 0 ? "border-t border-border md:border-l md:border-t-0" : ""}`}>
@@ -253,7 +265,7 @@ const Partners = () => (
           ))}
         </ul>
         <Button asChild className="btn-dark mt-8 h-auto min-h-[48px] rounded-none px-6">
-          <a href={PARTNER_MAIL}>PARTNER WITH A36 <span className="a36-arrow">→</span></a>
+          <a href={PARTNER_MAIL} target="_blank" rel="noopener noreferrer">PARTNER WITH A36 <span className="a36-arrow">→</span></a>
         </Button>
       </Rise>
     </div>
@@ -261,43 +273,30 @@ const Partners = () => (
 );
 
 const FAQS = [
-  ["What is A36 Residency?", "A focused, high-signal environment where ambitious builders, founders and researchers live, build and exchange ideas together."],
-  ["Who should apply?", "Founders, builders, researchers and operators already in motion on ambitious or unconventional work."],
-  ["What should I be working on?", "An ambitious idea or question you are ready to move forward. Details will be shared with selected applicants once the next residency is announced."],
-  ["Where will the next residency happen?", "Details will be shared with selected applicants once the next residency is announced."],
-  ["When will dates be announced?", "Details will be shared with selected applicants once the next residency is announced."],
-  ["Is accommodation included?", "Details will be shared with selected applicants once the next residency is announced."],
-  ["Can international applicants apply?", "Yes. Travel and visa guidance will be shared once the residency location is announced."],
-  ["How are residents selected?", "Applications are considered for alignment with the room and the work. Further details are shared directly with selected applicants."],
-  ["Can organizations partner with the residency?", "Yes. Organizations can support the venue, infrastructure, tools, travel, community or wider ecosystem."],
+  ["Who is the residency for?", "Serious builders, founders, researchers and operators working on ambitious ideas."],
+  ["When and where will it happen?", "DATES COMING SOON · LOCATION COMING SOON."],
+  ["How can I stay in the loop?", "Subscribe to A36 Signal on Substack for residency announcements and application updates."],
+  ["Can organizations support the residency?", "Yes. Get in touch with A36 to explore supporting the room and the people in it."],
 ];
 
-const Application = () => (
-  <section id="apply" className="relative isolate overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+const ComingSoon = () => (
+  <section id="stay-updated" className="relative isolate overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
     <div className="pointer-events-none absolute inset-0 opacity-[0.07] bg-[linear-gradient(hsl(var(--accent))_1px,transparent_1px),linear-gradient(90deg,hsl(var(--accent))_1px,transparent_1px)] bg-[size:72px_72px]" />
     <ResidencyLineField className="pointer-events-none absolute inset-x-0 top-0 h-64 w-full opacity-25" />
     <div className="container relative z-10 mx-auto w-full max-w-4xl px-5 max-[389px]:px-4 md:px-16">
       <Rise>
-        <Eyebrow light>APPLICATIONS</Eyebrow>
-        <h2 className="mt-4 font-black leading-[1.04] tracking-tighter text-[clamp(2rem,7vw,4rem)]">Think you should<br />be in the room?</h2>
+        <Eyebrow light>THE NEXT ROOM</Eyebrow>
+        <h2 className="mt-4 font-black leading-[1.04] tracking-normal text-4xl md:text-6xl">Applications<br />coming soon.</h2>
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/70 md:text-lg">
-          Applications will open for the next A36 Residency soon.
+          The right room is worth waiting for. Stay in the loop with A36 Signal.
         </p>
         <ResidencyStatus className="mt-7 text-primary-foreground/60" />
       </Rise>
       <Rise delay={0.1}>
-        <div className="mt-10 w-full min-w-0 max-w-[720px] border border-accent/30 bg-primary-foreground/[0.04] p-2">
-          <iframe
-            src={LUMA_EMBED}
-            title="A36 Residency application"
-            loading="lazy"
-            allow="fullscreen; payment"
-            className="relative z-10 block h-[450px] w-full border-0"
-          />
-        </div>
-        <Button asChild className="btn-gold mt-4 h-auto min-h-[48px] rounded-none px-6">
-          <a href={LUMA_URL} target="_blank" rel="noopener noreferrer">APPLY FOR RESIDENCY <span className="a36-arrow">→</span></a>
+        <Button asChild className="btn-gold mt-9 h-auto min-h-[52px] max-w-full rounded-none bg-accent px-6 py-4 text-accent-foreground hover:bg-accent/90">
+          <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer" className="whitespace-normal text-center">SUBSCRIBE ON SUBSTACK <span className="a36-arrow">↗</span></a>
         </Button>
+        <p className="mt-4 text-xs text-primary-foreground/60">Residency announcements. Application updates. A36 Signal.</p>
       </Rise>
       <Rise delay={0.1}>
         <div className="mt-16 border-t border-primary-foreground/15 pt-10">
@@ -323,9 +322,9 @@ const StickyCTA = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      const apply = document.getElementById("apply");
-      const applyVisible = apply ? apply.getBoundingClientRect().top < window.innerHeight * 0.9 : false;
-      setShow(window.scrollY > window.innerHeight * 0.8 && !applyVisible);
+       const updates = document.getElementById("stay-updated");
+       const updatesVisible = updates ? updates.getBoundingClientRect().top < window.innerHeight * 0.9 : false;
+       setShow(window.scrollY > window.innerHeight * 0.8 && !updatesVisible);
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -335,8 +334,8 @@ const StickyCTA = () => {
   return (
     <div className={`fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-accent/40 bg-primary/95 px-4 py-3 backdrop-blur-sm transition-transform duration-300 md:hidden ${show ? "translate-y-0" : "translate-y-full"}`}>
       <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">A36 RESIDENCY</p>
-      <Button asChild className="btn-gold h-auto min-h-[44px] rounded-none px-5 py-2 text-[11px]">
-        <a href="#apply">APPLY</a>
+      <Button asChild className="btn-gold h-auto min-h-[44px] rounded-none bg-accent px-5 py-2 text-[11px] text-accent-foreground hover:bg-accent/90">
+         <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer">A36 SIGNAL <span className="a36-arrow">↗</span></a>
       </Button>
     </div>
   );
@@ -348,10 +347,9 @@ const Residency = () => (
     <Idea />
     <Room />
     <WhoItsFor />
-    <WhyResidency />
     <Outcomes />
     <Partners />
-    <Application />
+    <ComingSoon />
     <StickyCTA />
   </PageWrapper>
 );
