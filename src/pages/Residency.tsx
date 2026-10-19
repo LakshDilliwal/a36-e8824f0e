@@ -77,7 +77,7 @@ const Hero = () => (
       </Rise>
       <Rise delay={0.46}>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button asChild className="btn-gold h-auto min-h-[48px] rounded-none px-6">
+          <Button asChild className="btn-gold h-auto min-h-[48px] rounded-none bg-accent px-6 text-accent-foreground hover:bg-accent/90">
             <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer" className="whitespace-normal text-center">STAY UPDATED VIA A36 SIGNAL <span className="a36-arrow">↗</span></a>
           </Button>
           <Button asChild className="btn-ghost-light h-auto min-h-[48px] rounded-none px-6">
@@ -293,7 +293,7 @@ const ComingSoon = () => (
         <ResidencyStatus className="mt-7 text-primary-foreground/60" />
       </Rise>
       <Rise delay={0.1}>
-        <Button asChild className="btn-gold mt-9 h-auto min-h-[52px] max-w-full rounded-none px-6 py-4">
+        <Button asChild className="btn-gold mt-9 h-auto min-h-[52px] max-w-full rounded-none bg-accent px-6 py-4 text-accent-foreground hover:bg-accent/90">
           <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer" className="whitespace-normal text-center">SUBSCRIBE ON SUBSTACK <span className="a36-arrow">↗</span></a>
         </Button>
         <p className="mt-4 text-xs text-primary-foreground/60">Residency announcements. Application updates. A36 Signal.</p>
@@ -334,7 +334,7 @@ const StickyCTA = () => {
   return (
     <div className={`fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-accent/40 bg-primary/95 px-4 py-3 backdrop-blur-sm transition-transform duration-300 md:hidden ${show ? "translate-y-0" : "translate-y-full"}`}>
       <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">A36 RESIDENCY</p>
-      <Button asChild className="btn-gold h-auto min-h-[44px] rounded-none px-5 py-2 text-[11px]">
+      <Button asChild className="btn-gold h-auto min-h-[44px] rounded-none bg-accent px-5 py-2 text-[11px] text-accent-foreground hover:bg-accent/90">
          <a href={A36_LINKS.content.substack} target="_blank" rel="noopener noreferrer">A36 SIGNAL <span className="a36-arrow">↗</span></a>
       </Button>
     </div>
