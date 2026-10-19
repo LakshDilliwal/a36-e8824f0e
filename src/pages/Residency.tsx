@@ -54,7 +54,7 @@ const Hero = () => (
         <Eyebrow light>A36 RESIDENCY · COMING SOON</Eyebrow>
       </Rise>
       <h1 className="mt-5 max-w-[12ch] font-black leading-[0.98] tracking-tighter text-[clamp(2.75rem,10vw,6.5rem)]">
-        {["The right room", "changes what’s", "possible."].map((line, index) => (
+      {["The right room", "changes what’s", "possible"].map((line, index) => (
           <span key={line} className="block overflow-hidden">
             <motion.span
               className="block"
@@ -93,9 +93,9 @@ const Hero = () => (
 );
 
 const PRINCIPLES = [
-  ["DEEP WORK", "Time and space to focus on what matters."],
-  ["PROXIMITY", "Builders, operators and thinkers under one roof."],
-  ["COLLISION", "Unexpected conversations that move ideas forward."],
+  ["DEEP WORK", "Time and space to focus on what matters"],
+  ["PROXIMITY", "Builders, operators and thinkers under one roof"],
+  ["COLLISION", "Unexpected conversations that move ideas forward"],
 ];
 
 const Idea = () => (
@@ -105,11 +105,11 @@ const Idea = () => (
       <Rise className="min-w-0">
         <Eyebrow>THE IDEA</Eyebrow>
         <h2 className="mt-4 max-w-[14ch] font-black leading-[1.03] tracking-tighter text-primary text-[clamp(2rem,7vw,4.5rem)]">
-          Get out of the noise.<br />Into the room.
+          Get out of the noise<br />Into the room
         </h2>
         <div className="mt-7 max-w-2xl space-y-4 text-[15px] leading-relaxed text-muted md:text-lg">
-          <p>Ambitious ideas need time, proximity and the right people around them.</p>
-          <p>A curated environment for serious builders. Space to think deeply, exchange ideas and find momentum.</p>
+          <p>Ambitious ideas need time, proximity and the right people around them</p>
+          <p>A curated environment for serious builders. Space to think deeply, exchange ideas and find momentum</p>
         </div>
       </Rise>
       <Rise delay={0.12} className="min-w-0">
@@ -118,7 +118,7 @@ const Idea = () => (
             <img src={residencyImage.url} alt="A36 Residency editorial artwork: a modern retreat overlooking the water at golden hour" width="768" height="768" loading="lazy" className="block h-full w-full object-contain" />
           </div>
           <figcaption className="mt-3 flex flex-wrap justify-between gap-2 text-[10px] font-semibold uppercase text-muted">
-            <span>A36 RESIDENCY</span><span>A VISION, NOT A VENUE ANNOUNCEMENT</span>
+            <span>A36 RESIDENCY</span><span>{"\n"}</span>
           </figcaption>
         </figure>
       </Rise>
@@ -136,10 +136,10 @@ const Idea = () => (
 );
 
 const ROOM_LABELS = [
-  ["BUILD", "Work on something real."],
-  ["LEARN", "Exchange ideas with people outside your usual circle."],
-  ["CONNECT", "Find collaborators, peers and second believers."],
-  ["SHIP", "Move the work forward."],
+  ["BUILD", "Work on something real"],
+  ["LEARN", "Exchange ideas with people outside your usual circle"],
+  ["CONNECT", "Find collaborators, peers and second believers"],
+  ["SHIP", "Move the work forward"],
 ];
 
 const Room = () => (
@@ -150,10 +150,10 @@ const Room = () => (
       <Rise>
         <Eyebrow light>THE ROOM</Eyebrow>
         <h2 className="mt-4 max-w-[13ch] font-black leading-[1.03] tracking-tighter text-[clamp(2rem,7vw,4.5rem)]">
-          Different minds.<br />Shared momentum.
+          Different minds<br />Shared momentum
         </h2>
         <p className="mt-7 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/72 md:text-lg">
-          The value is not a packed calendar. It is who is in the room, what they are building, and what becomes possible when those people spend meaningful time together.
+          {"\n"}
         </p>
       </Rise>
       <div className="mt-14 grid gap-px border border-primary-foreground/15 bg-primary-foreground/15 sm:grid-cols-2">
@@ -228,13 +228,13 @@ const Outcomes = () => (
       <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
         <Rise>
           <Eyebrow light>WHAT YOU LEAVE WITH</Eyebrow>
-          <h2 className="mt-4 font-black leading-[1.04] tracking-tighter text-[clamp(2rem,7vw,4rem)]">Something moved forward.</h2>
+          <h2 className="mt-4 font-black leading-[1.04] tracking-tighter text-[clamp(2rem,7vw,4rem)]">Something moved forward</h2>
           <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-primary-foreground/70 md:text-lg">
             That might be a product, a new direction, a collaborator, a company, a research question or simply much greater clarity on what comes next.
           </p>
         </Rise>
         <Rise delay={0.1} className="border-l-2 border-accent pl-6 md:pl-9 lg:self-end">
-          <h3 className="font-black leading-[1.08] tracking-tighter text-[clamp(1.7rem,5vw,3rem)]">The residency ends.<br />The network stays.</h3>
+          <h3 className="font-black leading-[1.08] tracking-tighter text-[clamp(1.7rem,5vw,3rem)]">The residency ends<br />The network stays</h3>
           <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-primary-foreground/70">
             The room is temporary. The relationships, collaborations and work that begin there can continue long after people leave.
           </p>
@@ -253,7 +253,7 @@ const Partners = () => (
         <Eyebrow>PARTNERS</Eyebrow>
         <h2 className="mt-4 font-black leading-[1.04] tracking-tighter text-primary text-[clamp(2rem,7vw,4rem)]">Help build the room.</h2>
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-muted md:text-lg">
-          Support the environment through venue, infrastructure, tools, travel support, community and ecosystem support.
+          Support the environment through venue, infrastructure, tools, travel support, community and ecosystem support
         </p>
       </Rise>
       <Rise delay={0.1}>
@@ -286,7 +286,7 @@ const ComingSoon = () => (
     <div className="container relative z-10 mx-auto w-full max-w-4xl px-5 max-[389px]:px-4 md:px-16">
       <Rise>
         <Eyebrow light>THE NEXT ROOM</Eyebrow>
-        <h2 className="mt-4 font-black leading-[1.04] tracking-normal text-4xl md:text-6xl">Applications<br />coming soon.</h2>
+        <h2 className="mt-4 font-black leading-[1.04] tracking-normal text-4xl md:text-6xl">Applications<br />coming soon</h2>
         <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-primary-foreground/70 md:text-lg">
           The right room is worth waiting for. Stay in the loop with A36 Signal.
         </p>
