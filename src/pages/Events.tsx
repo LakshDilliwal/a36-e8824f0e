@@ -100,8 +100,28 @@ const Events = () => {
         </div>
       </section>
 
+      {/* SECTION 4 - EVENT PARTICIPATION GUIDELINES */}
+      <section className="bg-warm-cream py-16">
+        <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
+          <h2 className="font-black text-[24px] md:text-[32px] leading-[1.05] tracking-heading text-primary mb-4">
+            Event Participation Guidelines
+          </h2>
+          <p className="text-base text-primary/60 max-w-[640px]">
+            By registering for or attending A36 Labs events, participants are expected to follow our{" "}
+            <a
+              href="/documents/A36_Labs_Event_Participation_Policy.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 hover:text-primary transition-colors duration-200"
+            >
+              Event Participation Policy ↗
+            </a>
+            , including our community code of conduct, event safety guidelines, photography notice, and participation
+            terms.
+          </p>
+        </div>
+      </section>
 
-      {/* SECTION 5 - CO-HOST CTA */}
       <section className="bg-warm-cream py-24">
         <div className="container max-w-5xl mx-auto px-6 md:px-16 text-center">
           <h2 className="font-black text-[36px] md:text-[52px] leading-[1.05] tracking-heading text-primary">

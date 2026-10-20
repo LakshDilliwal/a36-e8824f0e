@@ -108,6 +108,14 @@ const Footer = () => (
           {companyLinks.map((l) => (
             <FLink key={l.label} to={l.to}>{l.label}</FLink>
           ))}
+          <a
+            href="/documents/A36_Labs_Event_Participation_Policy.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-white/55 hover:text-white transition-opacity duration-200 block py-2 min-h-[36px]"
+          >
+            Event Participation Policy
+          </a>
         </div>
       </div>
 
