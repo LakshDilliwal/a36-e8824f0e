@@ -101,9 +101,8 @@ const Events = () => {
       </section>
 
       {/* SECTION 4 - EVENT PARTICIPATION GUIDELINES */}
-      <section className="bg-warm-cream py-16 border-t border-primary/10">
+      <section className="bg-warm-cream py-16">
         <div className="container max-w-[1200px] mx-auto px-6 md:px-16">
-          <p className="text-sm text-primary/50 mb-3">EVENT PARTICIPATION GUIDELINES</p>
           <h2 className="font-black text-[24px] md:text-[32px] leading-[1.05] tracking-heading text-primary mb-4">
             Event Participation Guidelines
           </h2>
