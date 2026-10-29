@@ -1,5 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
-import { Link } from "react-router-dom";
+
 import { A36_LINKS } from "@/config/links";
 import { Ghost, Globe, Timer, Trophy, Building2, Handshake, Zap, Users, Rocket, Sparkles } from "lucide-react";
 import shipAsset from "@/assets/stranger/sb-ship.jpg.asset.json";
@@ -7,7 +7,6 @@ import firstAppAsset from "@/assets/stranger/sb-first-app.jpg.asset.json";
 import welcomeAsset from "@/assets/stranger/sb-welcome.jpg.asset.json";
 
 const registerPageUrl = A36_LINKS.strangerBuilds.registerPage;
-const communityUrl = A36_LINKS.site.community;
 
 const facts = [
   { Icon: Timer, label: "STARTS", value: "31 October 2026" },
@@ -76,15 +75,6 @@ const RegisterButton = ({ label = "REGISTER NOW" }: { label?: string }) => (
   </a>
 );
 
-const CommunityButton = () => (
-  <Link
-    to={communityUrl}
-    className="inline-block border-2 border-white/40 px-6 py-3 font-bold text-[13px] uppercase tracking-[0.1em] text-white transition-colors hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
-  >
-    {"\n"}
-  </Link>
-);
-
 const StrangerBuilds = () => {
   return (
     <PageWrapper>
@@ -129,7 +119,6 @@ const StrangerBuilds = () => {
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <RegisterButton />
-            <CommunityButton />
           </div>
           <p className="mt-4 text-[12px] font-bold uppercase tracking-[0.1em] text-white/45">Registration requires host approval</p>
 
@@ -164,8 +153,7 @@ const StrangerBuilds = () => {
                 </p>
                 <div className="mt-8 flex flex-wrap gap-4">
                   <RegisterButton />
-                  <CommunityButton />
-                </div>
+                      </div>
               </div>
               <div className="flex flex-col items-start md:items-end">
                 <span className="font-black leading-none text-accent text-[clamp(64px,10vw,128px)] sb-title">$1.5K</span>
