@@ -1,5 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
-
+import { Link } from "react-router-dom";
 import { A36_LINKS } from "@/config/links";
 import { Ghost, Globe, Timer, Trophy, Building2, Handshake, Zap, Users, Rocket, Sparkles } from "lucide-react";
 import shipAsset from "@/assets/stranger/sb-ship.jpg.asset.json";
@@ -7,6 +7,7 @@ import firstAppAsset from "@/assets/stranger/sb-first-app.jpg.asset.json";
 import welcomeAsset from "@/assets/stranger/sb-welcome.jpg.asset.json";
 
 const registerPageUrl = A36_LINKS.strangerBuilds.registerPage;
+const communityUrl = A36_LINKS.site.community;
 
 const facts = [
   { Icon: Timer, label: "STARTS", value: "31 October 2026" },
