@@ -14,3 +14,4 @@
 - [x] Verify ecosystem search, sort, filters, layout, and build health
 - [x] Neutralize upcoming `/residency` dates, location details, travel guidance, visuals, and metadata
 - [x] Refine only Residency with the supplied square image and A36 Signal coming-soon actions; remove registration and verify desktop/mobile
+- [x] Stranger Builds partnership promotion: homepage/events announcement strip, /stranger-builds landing page, Programs nav item, tracked Luma registration links, footer Luma → Partiful swap (brief 2026-10-29)
