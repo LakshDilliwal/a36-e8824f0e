@@ -81,7 +81,7 @@ const CommunityButton = () => (
     to={communityUrl}
     className="inline-block border-2 border-white/40 px-6 py-3 font-bold text-[13px] uppercase tracking-[0.1em] text-white transition-colors hover:border-accent hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
   >
-    JOIN A36 COMMUNITY <span className="a36-arrow">→</span>
+    {"\n"}
   </Link>
 );
 
