@@ -19,6 +19,7 @@ import FAQ from "./pages/FAQ";
 
 import Residency from "./pages/Residency";
 import Cohort from "./pages/Cohort";
+import StrangerBuilds from "./pages/StrangerBuilds";
 import Careers from "./pages/Careers";
 import MediaKit from "./pages/MediaKit";
 import Merch from "./pages/Merch";
@@ -180,6 +181,19 @@ const App = () => (
                 breadcrumbs: crumbs("Residency", "/residency"),
               },
               <Residency />,
+            )}
+          />
+          <Route
+            path="/stranger-builds"
+            element={withSeo(
+              {
+                title: "Stranger Builds Halloween Hackathon | A36 Labs Community Partner",
+                description:
+                  "A36 Labs is a Community Partner for Stranger Builds — the online Halloween hackathon hosted by NERDCONF. Seven days to build and find first users, starting 31 October 2026, with US$10K in prizes and credits.",
+                path: "/stranger-builds",
+                breadcrumbs: crumbs("Stranger Builds", "/stranger-builds"),
+              },
+              <StrangerBuilds />,
             )}
           />
           <Route

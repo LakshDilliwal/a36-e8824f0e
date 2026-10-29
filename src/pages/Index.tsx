@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import StrangerBuildsStrip from "@/components/StrangerBuildsStrip";
 import Hero from "@/components/Hero";
 import EcosystemPartners from "@/components/EcosystemPartners";
 import IRLProof from "@/components/IRLProof";
@@ -13,6 +14,7 @@ const Index = () => (
   <>
     <Nav />
     <main className="pt-16">
+      <StrangerBuildsStrip />
       <Hero />
       <EcosystemPartners />
       <IRLProof />

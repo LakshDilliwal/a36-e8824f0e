@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Linkedin, Instagram, Youtube, Send, Calendar } from "lucide-react";
+import { Linkedin, Instagram, Youtube, Send, PartyPopper } from "lucide-react";
 import { FOOTER_SOCIAL_LINKS } from "@/config/links";
 
 const XIcon = ({ size = 16 }: { size?: number }) => (
@@ -40,7 +40,7 @@ const socialIcons = {
   instagram: Instagram,
   youtube: Youtube,
   telegram: Send,
-  luma: Calendar,
+  partiful: PartyPopper,
 };
 
 const socials = FOOTER_SOCIAL_LINKS.map((social) => ({
