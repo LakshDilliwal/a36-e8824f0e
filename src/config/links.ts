@@ -28,6 +28,15 @@ export const A36_LINKS = {
   events: {
     calendar: "https://luma.com/a36",
   },
+  strangerBuilds: {
+    page: "/stranger-builds",
+    registerHomepage:
+      "https://luma.com/strangerbuilds-online?utm_source=a36labs&utm_medium=community_partner&utm_campaign=stranger_builds_2026&utm_content=homepage_banner",
+    registerEvents:
+      "https://luma.com/strangerbuilds-online?utm_source=a36labs&utm_medium=community_partner&utm_campaign=stranger_builds_2026&utm_content=events_banner",
+    registerPage:
+      "https://luma.com/strangerbuilds-online?utm_source=a36labs&utm_medium=community_partner&utm_campaign=stranger_builds_2026&utm_content=stranger_builds_page",
+  },
   applications: {
     partner: "https://forms.gle/ww6WThmuo5vLupQ96",
     operator: "https://forms.gle/72NttXRmytK4uH1z7",
@@ -40,5 +49,5 @@ export const FOOTER_SOCIAL_LINKS = [
   { id: "instagram", label: "Instagram", href: A36_LINKS.social.instagram },
   { id: "youtube", label: "YouTube", href: A36_LINKS.social.youtube },
   { id: "telegram", label: "Telegram", href: A36_LINKS.community.telegram },
-  { id: "luma", label: "Luma", href: A36_LINKS.events.calendar },
+  { id: "partiful", label: "Partiful", href: "https://partiful.com/u/MgOP9XNj4NUJtAIJnhWz" },
 ] as const;
