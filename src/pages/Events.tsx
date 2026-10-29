@@ -1,4 +1,5 @@
 import PageWrapper from "@/components/PageWrapper";
+import StrangerBuildsStrip from "@/components/StrangerBuildsStrip";
 import communityImg1 from "@/assets/a36-labs-community-image-1.jpg";
 import communityImg2 from "@/assets/a36-labs-community-image-2.jpg";
 import communityImg3 from "@/assets/a36-labs-community-image-3.jpg";
@@ -29,6 +30,7 @@ const row2Doubled = [...row2Images, ...row2Images];
 const Events = () => {
   return (
     <PageWrapper>
+      <StrangerBuildsStrip />
       {/* SECTION 1 - HERO */}
       <section className="bg-primary py-24 a36-tick-corners a36-tick-corners-gold relative">
         <div className="container max-w-5xl mx-auto px-6 md:px-16">
