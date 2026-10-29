@@ -6,6 +6,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const programsItems = [
   { label: "Residency", to: "/residency" },
   { label: "Cohort", to: "/cohort" },
+  { label: "Stranger Builds", to: "/stranger-builds" },
 ];
 
 const contentItems = [
@@ -61,7 +62,7 @@ const Nav = () => {
   const path = location.pathname;
   const isActive = (matchers: string[]) => matchers.some((m) => path === m || path.startsWith(m + "/"));
   const communityActive = isActive(["/community"]);
-  const programsActive = isActive(["/residency", "/cohort"]);
+  const programsActive = isActive(["/residency", "/cohort", "/stranger-builds"]);
   const contentActive = isActive(["/podcast", "/newsletter"]);
   const companyActive = isActive(["/about", "/careers", "/media-kit", "/merch", "/apply", "/faq"]);
   const earnActive = isActive(["/earn"]);
