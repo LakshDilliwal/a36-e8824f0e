@@ -290,7 +290,7 @@ const StrangerBuilds = () => {
                 <div className={`grid gap-x-6 gap-y-5 ${group.label === "Main sponsors" ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"}`}>
                   {group.entries.map((entry) => (
                     <figure key={entry.name} className="flex min-w-0 flex-col items-center justify-center gap-3">
-                      <img src={entry.logo} alt={`${entry.name} official logo`} loading="lazy" decoding="async" width={200} height={64} className="h-12 w-full max-w-[180px] object-contain" />
+                      <img src={entry.logo} alt={`${entry.name} official logo`} loading="lazy" decoding="async" width={200} height={64} className={`h-12 w-full max-w-[180px] object-contain ${entry.name === "TrueFoundry" ? "bg-primary p-2" : ""}`} />
                       <figcaption className="text-center text-xs font-semibold text-primary">{entry.name}</figcaption>
                     </figure>
                   ))}
