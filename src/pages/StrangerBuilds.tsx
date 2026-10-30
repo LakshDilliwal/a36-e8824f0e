@@ -5,6 +5,13 @@ import { Ghost, Globe, Timer, Trophy, Building2, Handshake, Zap, Users, Rocket, 
 import shipAsset from "@/assets/stranger/sb-ship.jpg.asset.json";
 import firstAppAsset from "@/assets/stranger/sb-first-app.jpg.asset.json";
 import welcomeAsset from "@/assets/stranger/sb-welcome.jpg.asset.json";
+import base44Logo from "@/assets/stranger/base44.svg.asset.json";
+import fetchLogo from "@/assets/stranger/fetch-ai.svg.asset.json";
+import vonageLogo from "@/assets/stranger/vonage.svg.asset.json";
+import trueFoundryLogo from "@/assets/stranger/truefoundry.avif.asset.json";
+import shelledLogo from "@/assets/stranger/shelled-ai.png.asset.json";
+import mlaiLogo from "@/assets/stranger/mlai-aus.png.asset.json";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const registerPageUrl = A36_LINKS.strangerBuilds.registerPage;
 const communityUrl = A36_LINKS.site.community;
@@ -30,6 +37,28 @@ const timeline = [
   { tag: "31 OCT", title: "Halloween kickoff", copy: "The hackathon opens. Lock in your idea and start building." },
   { tag: "DAYS 1–7", title: "Build & find first users", copy: "Seven days to ship your project and get it in front of real people." },
   { tag: "AFTER", title: "Prizes", copy: "Winners share US$10K in prizes and credits, plus the A36 community bonus." },
+];
+
+// Official assets: base44.com (inline logo), fetch.ai/Images/logo,
+// vonage.com brand assets, truefoundry.com header, shelled.ai and mlai.au/press-kit.
+const sponsorGroups = [
+  { label: "Main sponsors", entries: [
+    { name: "Base44", logo: base44Logo.url },
+    { name: "Fetch.ai", logo: fetchLogo.url },
+  ] },
+  { label: "Supporting partners", entries: [
+    { name: "Vonage", logo: vonageLogo.url },
+    { name: "TrueFoundry", logo: trueFoundryLogo.url },
+    { name: "Shelled AI", logo: shelledLogo.url },
+    { name: "MLAI AUS", logo: mlaiLogo.url },
+  ] },
+];
+
+const faqs = [
+  { question: "Who can participate?", answer: "Builders can apply solo or with a team. Check the official application for eligibility requirements; participation is subject to host approval." },
+  { question: "Can I participate online?", answer: "Yes. The online edition lets you participate remotely. Kickoff locations include San Francisco, Melbourne and Bengaluru, alongside online participation." },
+  { question: "Do I need a team?", answer: "No — participate solo or as a team. Build and ship in seven days, collect feedback and find real users." },
+  { question: "Is registration automatically approved?", answer: "No. Submit your application using REGISTER NOW. Registration requires host approval; submitting an application does not confirm your place." },
 ];
 
 const floaters = [
@@ -123,6 +152,11 @@ const StrangerBuilds = () => {
           </div>
           <p className="mt-4 text-[12px] font-bold uppercase tracking-[0.1em] text-white/45">Registration requires host approval</p>
 
+          <p className="mt-6 max-w-[680px] text-sm leading-relaxed text-primary-foreground/70">
+            <span className="font-bold text-accent">KICKOFF LOCATIONS</span>
+            <span className="mt-1 block font-semibold text-primary-foreground">San Francisco · Melbourne · Bengaluru · Online</span>
+          </p>
+
           <div className="mt-14 grid grid-cols-2 gap-px border border-white/10 bg-white/10 md:grid-cols-3">
             {facts.map(({ Icon, label, value }) => (
               <div key={label} className="min-w-0 bg-primary/90 p-4 md:p-5 backdrop-blur-sm transition-colors hover:bg-white/5">
@@ -177,6 +211,9 @@ const StrangerBuilds = () => {
               Stranger Builds is the online Halloween hackathon hosted by NERDCONF, starting 31 October 2026. Builders get seven days
               to build and find first users, competing for US$10K in prizes and credits. A36 Labs joins as a Community Partner —
               and brings an extra prize pool for our builders.
+            </p>
+            <p className="mt-4 text-base text-primary/65">
+              Participate solo or with a team. Build and ship in seven days, collect feedback and find real users.
             </p>
           </div>
           <figure className="sb-poster min-w-0 border-2 border-primary">
@@ -244,6 +281,23 @@ const StrangerBuilds = () => {
               <p className="mt-1 text-sm text-white/60">An additional prize pool for builders from the A36 Labs community.</p>
             </div>
           </div>
+
+          <div className="mt-12 border-t border-primary/15 pt-8" aria-labelledby="sb-sponsors-heading">
+            <h3 id="sb-sponsors-heading" className="mb-6 text-xl font-black text-primary">Sponsors &amp; Partners</h3>
+            {sponsorGroups.map((group) => (
+              <div key={group.label} className="mt-6">
+                <p className="mb-4 text-xs font-bold uppercase text-primary/60">{group.label}</p>
+                <div className={`grid gap-x-6 gap-y-5 ${group.label === "Main sponsors" ? "grid-cols-2" : "grid-cols-2 sm:grid-cols-4"}`}>
+                  {group.entries.map((entry) => (
+                    <figure key={entry.name} className="flex min-w-0 flex-col items-center justify-center gap-3">
+                      <img src={entry.logo} alt={`${entry.name} official logo`} loading="lazy" decoding="async" width={200} height={64} className={`h-12 w-full max-w-[180px] object-contain ${entry.name === "TrueFoundry" ? "bg-primary p-2" : ""}`} />
+                      <figcaption className="text-center text-xs font-semibold text-primary">{entry.name}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -290,6 +344,20 @@ const StrangerBuilds = () => {
             </Link>
           </div>
           <p className="mt-4 text-[12px] font-bold uppercase tracking-[0.1em] text-primary/45">Registration requires host approval</p>
+
+          <div className="mx-auto mt-14 max-w-[720px] border-t border-primary/15 pt-8 text-left">
+            <h3 className="mb-4 text-xl font-black text-primary">Frequently asked questions</h3>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={faq.question} value={`sb-faq-${index}`} className="border-primary/15">
+                  <AccordionTrigger className="min-h-[52px] gap-4 text-left text-sm font-bold text-primary hover:no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-relaxed text-primary/65">{faq.answer}</AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
       </section>
     </PageWrapper>
